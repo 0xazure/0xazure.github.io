@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Filesystem Events in NodeJS</title>
+      <link>https://stuartcrust.com/2018/09/filesystem-events-in-nodejs/</link>
+      <pubDate>Thu, 13 Sep 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/2018/09/filesystem-events-in-nodejs/</guid>
+      <description>I have a personal interest in automation, mostly because I believe that we should be trying to offload everything we possibly can onto computing systems so that we can spend our time thinking about interesting problems rather than manually repeating the same tasks over and over again. Good programmers, coders, and software engineers (depending on how you identify) should be trying to automate as much of their jobs as possible for all kinds of reasons: to help mitigate the bus factor, to get rid of boring and repetitive parts of their jobs, and even to better document internal and external processes (if the process has been put into code - especially well-commented code - that is a form of documentation about the process!</description>
+    </item>
+    
+    <item>
       <title>Third Time&#39;s The Charm</title>
       <link>https://stuartcrust.com/2018/09/third-times-the-charm/</link>
       <pubDate>Thu, 13 Sep 2018 00:00:00 -0400</pubDate>
