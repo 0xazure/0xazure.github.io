@@ -3,19 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts &middot; stuart crust</title>
+    <title>It&#39;s Dependencies All the Way Down &middot; stuart crust</title>
 
-    <meta name="description" content="a constant work in progress">
+    <meta name="description" content="">
 
     <meta name="generator" content="Hugo 0.49" />
     <meta name="twitter:card" content="summary">
     
-    <meta name="twitter:title" content="Posts &middot; stuart crust">
-    <meta name="twitter:description" content="a constant work in progress">
+    <meta name="twitter:title" content="It&#39;s Dependencies All the Way Down &middot; stuart crust">
+    <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Posts &middot; stuart crust">
-    <meta property="og:description" content="a constant work in progress">
+    <meta property="og:title" content="It&#39;s Dependencies All the Way Down &middot; stuart crust">
+    <meta property="og:description" content="">
 
     
         
@@ -82,37 +82,6 @@
         <div>
             
             <div class="posts">
-                
-                <h1 class="content-subhead">29 Sep 2018</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://stuartcrust.com/2018/09/a-return-to-open-source/" class="post-title">A Return to Open Source</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                
-                                <a class="post-category post-category-writing" href="https://stuartcrust.com//categories/writing">writing</a><a class="post-category post-category-open source" href="https://stuartcrust.com//categories/open-source">open source</a><a class="post-category post-category-nodejs" href="https://stuartcrust.com//categories/nodejs">nodejs</a><a class="post-category post-category-filer" href="https://stuartcrust.com//categories/filer">filer</a>
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <div class="document">
-
-
-<p>Today marks the first month of my return to open source. I say <em>return</em> even though I never really <em>left</em>, it's more of a return to active participation in the community. As I <a class="reference external" href="/2018/09/third-times-the-charm/">wrote about earlier</a>, one of my courses right now focuses on open source development, so I have been able to <a class="reference external" href="https://github.com/0xazure?tab=overview&amp;from=2018-09-01&amp;to=2018-09-30">contribute much more regularly</a> and I hope to be able to continue to do so even after the course is over.</p>
-<p>This past month has been all about getting back into the swing of things by contributing to <a class="reference external" href="https://github.com/filerjs/filer">filerjs/filer</a>, a port of NodeJS' <cite>fs</cite> module to the web using backends like IndexedDB. My first contribution to filer, which I have <a class="reference external" href="/2018/09/its-dependencies-all-the-way-down/">already blogged about</a>, was to update a development dependency to resolve package vulnerabilities as reported by <tt class="docutils literal">npm audit</tt>. This issue was logged as <a class="reference external" href="https://github.com/filerjs/filer/issues/384">filer#384</a> and fixed in <a class="reference external" href="https://github.com/filerjs/filer/pull/385">filer#385</a> by updating the vulnerable dependency. This issue also spawned some discussion as <a class="reference external" href="https://github.com/filerjs/filer/issues/386">filer#386</a> about automating the process of keeping project dependencies up to date so it is much easier to stay on top of new versions of dependencies.</p>
-<p>Open source isn't just about contributing code and documentation though. It's also about the community, interacting with other developers, discussing issues and potential solutions, as well as reviewing and helping out other members of the community. In addition to helping out my classmates over Slack and in-class throughout the month, I also reviewed a few pull requests opened against the filer repository.</p>
-<p>The first issue I reviewed, <a class="reference external" href="https://github.com/filerjs/filer/pull/478">filer#478</a>, is a pull request that adds a test to <tt class="docutils literal">fs.watch()</tt> to verify the event type emitted when renaming an existing file. Other than the boilerplate mocha test code, the test logic itself is fairly straight forward. However, <tt class="docutils literal">fs.watch()</tt> and related watching functions are an interesting set of methods because they are not guaranted to be consistent due to the <a class="reference external" href="https://nodejs.org/api/fs.html#fs_caveats">underlying implementation details</a>. I actually had to go back to this pull request and re-review it because it turns out that filer <a class="reference external" href="https://github.com/filerjs/filer/issues/411#issuecomment-422946490">doesn't currently have support</a> for <tt class="docutils literal">rename</tt> events at all. This issue was also interesting because I picked out a minor style nitpick in the form of a missing semi-colon that the Travis build <a class="reference external" href="https://github.com/filerjs/filer/issues/482">didn't seem to pick up</a> for some reason. Rerunning the build resolved the issue, but it's always worrying when you run into issues with your build infrastructure and tests because it can shake your faith in them a bit.</p>
-<p>Another issue that I reviewed was <a class="reference external" href="https://github.com/filerjs/filer/pull/472">filer#472</a>. This pull request adds a test to ensure that reading from a nonexistant file results in an error. The submission is well done overall, with one minor nitpick that lead to me filing <a class="reference external" href="https://github.com/filerjs/filer/pull/498">filer#498</a> to reduce small nitpick-type comments on reviews. Nitpicks are generally a waste of everyone's time because style should be automatically enforced by some kind of automated tool before code is pushed; JavaScript doesn't have anything quite like <a class="reference external" href="https://golang.org/cmd/gofmt/">gofmt</a> or <a class="reference external" href="https://github.com/rust-lang-nursery/rustfmt">rustfmt</a>, but tools like <a class="reference external" href="https://github.com/xojs/xo">xo</a> and <a class="reference external" href="https://github.com/prettier/prettier">prettier</a> can help. In this review I also cautioned the original author of the pull request about changing multiple variables at a time in a test, which we ideally would like to avoid as we can easily end up testing more code paths than we either need or want to, thereby complicating the test or making it fragile against future changes to the code.</p>
-<p>Looking ahead, October marks the beginning of <a class="reference external" href="https://hacktoberfest.digitalocean.com/">Hacktoberfest</a>. I'm really excited to be participating this year; I participated once before but I either missed the cutoff or something happened to my package because I never received my t-shirt from DigitalOcean. I'll be writing a lot more short blog posts throughout October as I chronicle my participation in this event, and I'm hoping to find some interesting projects to contribute to for at least the rest of this year and hopefully well into the next.</p>
-</div>
-                    </div>
-                </section>
-                
                 <h1 class="content-subhead">29 Sep 2018</h1>
                 <section class="post">
                     <header class="post-header">
@@ -128,7 +97,7 @@
                             
                         </p>
                     </header>
-
+                    
                     <div class="post-description">
                         <div class="document">
 
@@ -252,142 +221,9 @@ found <span class="literal number">6</span> vulnerabilities <span class="operato
 </div>
 </div>
                     </div>
+                    
                 </section>
-                
-                <h1 class="content-subhead">13 Sep 2018</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://stuartcrust.com/2018/09/filesystem-events-in-nodejs/" class="post-title">Filesystem Events in NodeJS</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                
-                                <a class="post-category post-category-open source" href="https://stuartcrust.com//categories/open-source">open source</a><a class="post-category post-category-nodejs" href="https://stuartcrust.com//categories/nodejs">nodejs</a><a class="post-category post-category-event-based programming" href="https://stuartcrust.com//categories/event-based-programming">event-based programming</a>
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <div class="document">
-
-
-<p>I have a personal interest in <a class="reference external" href="https://en.wikipedia.org/wiki/Automation">automation</a>, mostly because I believe that we should be trying to offload everything we possibly can onto computing systems so that we can spend our time thinking about interesting problems rather than manually repeating the same tasks over and over again.
-Good programmers, coders, and software engineers (depending on how you identify) should be trying to automate as much of their jobs as possible for all kinds of reasons: to help mitigate the <a class="reference external" href="https://en.wikipedia.org/wiki/Bus_factor">bus factor</a>, to get rid of boring and repetitive parts of their jobs, and even to better document internal and external processes (if the process has been put into code - especially well-commented code - that is a form of documentation about the process!) that can then be tracked and versioned in a version control system.</p>
-<div class="section" id="the-programming-loop">
-<h2>The Programming Loop</h2>
-<p>Why am I talking about automation when the title of this post is about filesystem events? Before we talk about those kinds of events, we need to take a look at a simplified but typical example of the programming loop when writing code. Such a loop might look something like the following:</p>
-<ol class="arabic simple">
-<li>Make a change to some code</li>
-<li>Check the editor or IDE for feedback about the code you just wrote</li>
-<li>Run tools that check for programming errors, outright bugs, and stylistic errors</li>
-<li>Run the project's tests (the project <em>has</em> tests, right?)</li>
-<li>Review tool and test feedback, and resolve issues</li>
-<li>Return to Step 1 and repeat</li>
-</ol>
-<p>That's a lot to do every time the code changes, but the tools are there to help write better code and catch a lot of little or subtle issues that people aren't as good at noticing as computers can be. To take advantage of all of these tools and their output, we want to make this loop from writing some code to reviewing feedback as quick as possible so the programmer isn't waiting around for feedback, gets annoyed at how long the process takes, and stops using the tools. Some projects also use a lot of different tools, and it can be a lot to remember how to run each tool individually and what command line arguments are required for the current project.</p>
-<p>Instead of having to remember all this information, it would be great to have to remember fewer commands to get feedback from all the tools. Automation to the rescue! Instead of running each tool separately ourselves, we can use a tool that runs other tools; in this case we want to use a task runner. <tt class="docutils literal">make</tt> is a well-known tool for automating this process, and can be used for many different kinds of projects:</p>
-<blockquote>
-<p>C programs [...] are most common, but you can use <em>make</em> with any programming language whose compiler can be run with a shell command. In fact, <em>make</em> is not limited to programs. You can use it to describe any task where some files must be updated automatically from others whenever the others change.</p>
-<p class="attribution">&mdash;<a class="reference external" href="https://linux.die.net/man/1/make">make manpage</a></p>
-</blockquote>
-<p>Using a tool like <tt class="docutils literal">make</tt> can simplify the loop to something like the following:</p>
-<ol class="arabic simple">
-<li>Make a change to some code</li>
-<li>Run <tt class="docutils literal">make</tt></li>
-<li>Review tool and test feedback from each tool that <tt class="docutils literal">make</tt> runs, and resolve issues</li>
-<li>Return to Step 1 and repeat</li>
-</ol>
-<p>This significantly reduces the steps the programmer has to take every time they make a change as well as the number of commands they need to remember: all they have to do is run <tt class="docutils literal">make</tt>! But do we really need to remember to run a command? Is there some way that we can have <tt class="docutils literal">make</tt> or something like it run whenever we make a change to the code?</p>
-</div>
-<div class="section" id="enter-filesystem-events">
-<h2>Enter: Filesystem Events</h2>
-<p>Filesystem events are a great way to trigger other tasks. Other kinds of task runners such as <a class="reference external" href="https://gruntjs.com/">grunt</a> and <a class="reference external" href="https://gulpjs.com/">gulp</a> in NodeJS, as well as <a class="reference external" href="https://guardgem.org/">guard</a> in Ruby, let the programmer set up a process to &quot;watch&quot; individual files or entire directories for changes. When a file changes, these task runners pick up the change and perform whatever tasks the programmer has specified.</p>
-<p>NodeJS core exposes this functionality to the JavaScript runtime through functions in the <a class="reference external" href="https://nodejs.org/api/fs.html">fs module</a>. These functions include:</p>
-<ul class="simple">
-<li><a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener">fs.watch()</a></li>
-<li><a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener">fs.watchFile()</a></li>
-<li><a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_unwatchfile_filename_listener">fs.unwatchFile()</a></li>
-</ul>
-<p>These functions respond to changes in the filesystem and communicate data about the detected changed file back to their listener functions.</p>
-</div>
-<div class="section" id="a-simple-example">
-<h2>A Simple Example</h2>
-<p>The following is an example of how to use the <tt class="docutils literal">fs.watch()</tt> function in NodeJS. This is the recommended function to use because it supports single files as well as directories where <tt class="docutils literal">fs.watchFile()</tt> only watches individual files, and it is <a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener">more efficient</a> than both <tt class="docutils literal">fs.watchFile()</tt> and <tt class="docutils literal">fs.unwatchFile()</tt>.</p>
-<pre class="code js literal-block">
-<span class="literal string single">'use strict'</span> <span class="comment single">// enforce JavaScript strict mode
-</span>
-<span class="keyword reserved">const</span> <span class="name other">fs</span> <span class="operator">=</span> <span class="name other">require</span><span class="punctuation">(</span><span class="literal string single">'fs'</span><span class="punctuation">);</span> <span class="comment single">// import the core module
-</span>
-<span class="keyword reserved">const</span> <span class="name other">path</span> <span class="operator">=</span> <span class="literal string single">'.'</span> <span class="comment single">// start watching in the current directory
-</span>
-<span class="name other">fs</span><span class="punctuation">.</span><span class="name other">watch</span><span class="punctuation">(</span><span class="name other">path</span><span class="punctuation">,</span> <span class="punctuation">(</span><span class="name other">eventType</span><span class="punctuation">,</span> <span class="name other">filename</span><span class="punctuation">)</span> <span class="punctuation">=&gt;</span> <span class="punctuation">{</span>
-    <span class="keyword">if</span> <span class="punctuation">(</span><span class="name other">eventType</span> <span class="operator">===</span> <span class="literal string single">'change'</span><span class="punctuation">)</span> <span class="punctuation">{</span>
-        <span class="name other">console</span><span class="punctuation">.</span><span class="name other">log</span><span class="punctuation">(</span><span class="literal string backtick">`</span><span class="literal string interpol">${</span><span class="name other">filename</span><span class="literal string interpol">}</span><span class="literal string backtick"> changed!`</span><span class="punctuation">)</span>
-    <span class="punctuation">}</span>
-<span class="punctuation">})</span>
-</pre>
-</div>
-<div class="section" id="some-caveats">
-<h2>Some Caveats</h2>
-<p>The <tt class="docutils literal">fs.watch()</tt> function does <a class="reference external" href="https://nodejs.org/api/fs.html#fs_caveats">come with some caveats</a> due to the state of this kind of filesystem event handling on various platforms; specifically, the API is not 100% consistent across platforms and some options are not universally available due to the underlying implementations.</p>
-<p>Also, because <tt class="docutils literal">fs.watch()</tt> is event-driven, there is no matching set of functions in the experimental <tt class="docutils literal">fs</tt> Promise API <a class="reference external" href="https://nodejs.org/en/blog/release/v10.0.0/">introduced in Node 10.0.0</a> and there is no synchronous equivalent like there are for many other functions in the <tt class="docutils literal">fs</tt> module because the task is inherently asynchronous.</p>
-<p>However, this is still really useful functionality when working with files and filesystems, and is of particular interest in our pursuit of efficient automation.</p>
-</div>
-<div class="section" id="one-last-twist">
-<h2>One Last Twist</h2>
-<p>After looking a bit more into how <a class="reference external" href="https://gruntjs.com/">grunt</a> and <a class="reference external" href="https://gulpjs.com/">gulp</a> actually implement their file-watching functionality, it turns out that neither one of these popular test runners uses any of the <tt class="docutils literal">fs.watch()</tt> functions directly and don't even use the same dependency to provide watching functionality!</p>
-<p>Grunt's file-watching functionality is provided in a Grunt plugin called <a class="reference external" href="https://www.npmjs.com/package/grunt-contrib-watch">grunt-contrib-watch</a>, which uses the <a class="reference external" href="https://www.npmjs.com/package/gaze">gaze</a> package to interact with filesystem events.</p>
-<p>Gulp, on the other hand, relies on <a class="reference external" href="https://www.npmjs.com/pakage/gulp-watch">gulp-watch</a> for watching files, which uses a package called <a class="reference external" href="https://www.npmjs.com/package/chokidar">chokidar</a>.</p>
-<p>Chokidar goes <a class="reference external" href="https://www.npmjs.com/package/chokidar#why">into some detail</a> as to why <tt class="docutils literal">fs.watch()</tt> is insufficient, and gaze lists a <a class="reference external" href="https://www.npmjs.com/package/gaze#similar-projects">number of alternative projects</a>, so there are clearly some community opinions on the quality of the built-in functions.</p>
-<p>Some notable functionality <tt class="docutils literal">fs.watch()</tt> lacks:</p>
-<ul class="simple">
-<li>no wildcard support (e.g. cannot watch only for files that end with a particular extension, like <tt class="docutils literal">*.js</tt>)</li>
-<li>does not support recursive watching on platforms other than Windows or macOS (see <a class="reference external" href="https://nodejs.org/api/fs.html#fs_caveats">the fs watch caveats</a>)</li>
-<li><tt class="docutils literal">eventType</tt> is only one of <tt class="docutils literal">'rename'</tt> or <tt class="docutils literal">'change'</tt>, no support for other file events such as <tt class="docutils literal">'removed'</tt></li>
-</ul>
-<p>As in everything, there are trade-offs when implementing functionality. For simple use cases, <tt class="docutils literal">fs.watch()</tt> may be sufficient and will not require including additional project dependencies. However, if file watching is a core piece of functionality, it might be worth evaluating some of the other options available on npm to find one with the necessary functionality for the project at hand, while also keeping you from tearing your hair out tracking down odd edgecases.</p>
-</div>
-</div>
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">13 Sep 2018</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://stuartcrust.com/2018/09/third-times-the-charm/" class="post-title">Third Time&#39;s The Charm</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                
-                                <a class="post-category post-category-writing" href="https://stuartcrust.com//categories/writing">writing</a><a class="post-category post-category-hugo" href="https://stuartcrust.com//categories/hugo">hugo</a>
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <div class="document">
-
-
-<p>I've been meaning to start blogging for a while. Not even blogging <em>consistently</em>, just writing some long-form-ish pieces on projects that I've been working on, things I've learned, or things that I might want for my own reference. I've tried at least twice before - once when I purchased this domain back in December of <em>2013</em> and again at the end of 2016 - and as evidenced by the utter lack of content it's pretty clear I haven't been successful.</p>
-<p>I made a real attempt to begin publishing at the end of 2016 with the release of that year's <a class="reference external" href="http://adventofcode.com/2016/">Advent of Code</a>, but coursework kept me pretty busy and I never managed to finish and publish any of the posts I was working on at the time. I'll probably revisit some of them, clean them up, and post them - if I still remember what I was writing about - and the rest I may throw into a backlog so that if I ever run into a simiar topic again I can incorporate my draft.</p>
-<p>The reason I'm giving it another try now is I'm taking a course that specifically focuses on open source and includes a requirement that the students blog about their work and experiences as they gain exposure to the open source community. I'm <a class="reference external" href="https://github.com/0xazure">not exactly a stranger</a> to open source work, but I haven't had time to be as active as I would like to be so this course is giving me a good excuse to commit more time to getting involved and getting my hands dirty with some contributions.</p>
-<p>On the technical side, this site is built using the static site generator <a class="reference external" href="https://gohugo.io/">Hugo</a>. I've been learning a lot about the ins and outs of Hugo's project structure as I set this blog up, but so far I'm pretty happy with the results. Hugo is written in <a class="reference external" href="https://golang.org/">Go</a>, the Google-sponsored C/++ replacement, and Hugo has a very active community that keeps improving the project.</p>
-<p>One issue that I did run into was some confusion over themes in Hugo. Each Hugo site has a <tt class="docutils literal">config.toml</tt> that sets parameters for how the static site content should be generated. Those parameters also include information like social media links that get embedded in certain parts of the Hugo theme that structures the site content and controls the look and feel. Unfortunately, there don't seem to be standard keys for many of these parameters, so the key name for your GitHub or StackOverflow account information needs to be updated if you decide to change your site theme. You can see some of the work I had to do <a class="reference external" href="https://github.com/0xazure/0xazure/commit/ed9a74d58acbcd49f0be613cfd14dbefb725a842">in this commit</a> to update these values when I changed my theme from <a class="reference external" href="https://github.com/zyro/hyde-x">hyde-x</a> to <a class="reference external" href="https://github.com/dplesca/purehugo">purehugo</a>.</p>
-<p>I've been keeping my eye on other static site generators as well, but Hugo is very popular and has a lot of great community contributions and support so I'll be using it for a while yet. Now that things are up and running I might take a stab at customizing my theme a little bit more, an opportunity I wouldn't have if Hugo and its public themes weren't open source. Where many static site generators use things like <a class="reference external" href="http://handlebarsjs.com/">Handlebars</a> or <a class="reference external" href="https://shopify.github.io/liquid/">Liquid</a> for templating, Hugo actually delegates straight to the built-in <a class="reference external" href="https://golang.org/pkg/text/template/">text.template</a> package in Go. This makes it immediately familiar to most Go developers, but I haven't had the opportunity to use Go much - especially recently - so I'll likely be spending a lot of time reading the documentation.</p>
-<p>Hopefully this third attempt will be the one that sticks. Stay tuned for more posts on topics including <a class="reference external" href="categories/open-source">open source</a>, <a class="reference external" href="categories/nodejs">NodeJS</a>, <a class="reference external" href="categories/rust">Rust</a>, <a class="reference external" href="categories/functional-programming">functional programming</a>, and anything else I might get up to.</p>
-</div>
-                    </div>
-                </section>
-                
             </div>
-            
-
             <div class="footer">
     <div class="pure-menu pure-menu-horizontal pure-menu-open">
         <ul>

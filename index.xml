@@ -6,10 +6,157 @@
     <description>Recent content on stuart crust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Sep 2018 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 29 Sep 2018 00:00:00 -0400</lastBuildDate>
     
         <atom:link href="https://stuartcrust.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A Return to Open Source</title>
+      <link>https://stuartcrust.com/2018/09/a-return-to-open-source/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/2018/09/a-return-to-open-source/</guid>
+      <description>&lt;div class=&#34;document&#34;&gt;
+
+
+&lt;p&gt;Today marks the first month of my return to open source. I say &lt;em&gt;return&lt;/em&gt; even though I never really &lt;em&gt;left&lt;/em&gt;, it&#39;s more of a return to active participation in the community. As I &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/09/third-times-the-charm/&#34;&gt;wrote about earlier&lt;/a&gt;, one of my courses right now focuses on open source development, so I have been able to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/0xazure?tab=overview&amp;amp;from=2018-09-01&amp;amp;to=2018-09-30&#34;&gt;contribute much more regularly&lt;/a&gt; and I hope to be able to continue to do so even after the course is over.&lt;/p&gt;
+&lt;p&gt;This past month has been all about getting back into the swing of things by contributing to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer&#34;&gt;filerjs/filer&lt;/a&gt;, a port of NodeJS&#39; &lt;cite&gt;fs&lt;/cite&gt; module to the web using backends like IndexedDB. My first contribution to filer, which I have &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/09/its-dependencies-all-the-way-down/&#34;&gt;already blogged about&lt;/a&gt;, was to update a development dependency to resolve package vulnerabilities as reported by &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt;. This issue was logged as &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/issues/384&#34;&gt;filer#384&lt;/a&gt; and fixed in &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/pull/385&#34;&gt;filer#385&lt;/a&gt; by updating the vulnerable dependency. This issue also spawned some discussion as &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/issues/386&#34;&gt;filer#386&lt;/a&gt; about automating the process of keeping project dependencies up to date so it is much easier to stay on top of new versions of dependencies.&lt;/p&gt;
+&lt;p&gt;Open source isn&#39;t just about contributing code and documentation though. It&#39;s also about the community, interacting with other developers, discussing issues and potential solutions, as well as reviewing and helping out other members of the community. In addition to helping out my classmates over Slack and in-class throughout the month, I also reviewed a few pull requests opened against the filer repository.&lt;/p&gt;
+&lt;p&gt;The first issue I reviewed, &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/pull/478&#34;&gt;filer#478&lt;/a&gt;, is a pull request that adds a test to &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; to verify the event type emitted when renaming an existing file. Other than the boilerplate mocha test code, the test logic itself is fairly straight forward. However, &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; and related watching functions are an interesting set of methods because they are not guaranted to be consistent due to the &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_caveats&#34;&gt;underlying implementation details&lt;/a&gt;. I actually had to go back to this pull request and re-review it because it turns out that filer &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/issues/411#issuecomment-422946490&#34;&gt;doesn&#39;t currently have support&lt;/a&gt; for &lt;tt class=&#34;docutils literal&#34;&gt;rename&lt;/tt&gt; events at all. This issue was also interesting because I picked out a minor style nitpick in the form of a missing semi-colon that the Travis build &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/issues/482&#34;&gt;didn&#39;t seem to pick up&lt;/a&gt; for some reason. Rerunning the build resolved the issue, but it&#39;s always worrying when you run into issues with your build infrastructure and tests because it can shake your faith in them a bit.&lt;/p&gt;
+&lt;p&gt;Another issue that I reviewed was &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/pull/472&#34;&gt;filer#472&lt;/a&gt;. This pull request adds a test to ensure that reading from a nonexistant file results in an error. The submission is well done overall, with one minor nitpick that lead to me filing &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/pull/498&#34;&gt;filer#498&lt;/a&gt; to reduce small nitpick-type comments on reviews. Nitpicks are generally a waste of everyone&#39;s time because style should be automatically enforced by some kind of automated tool before code is pushed; JavaScript doesn&#39;t have anything quite like &lt;a class=&#34;reference external&#34; href=&#34;https://golang.org/cmd/gofmt/&#34;&gt;gofmt&lt;/a&gt; or &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rust-lang-nursery/rustfmt&#34;&gt;rustfmt&lt;/a&gt;, but tools like &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/xojs/xo&#34;&gt;xo&lt;/a&gt; and &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/prettier/prettier&#34;&gt;prettier&lt;/a&gt; can help. In this review I also cautioned the original author of the pull request about changing multiple variables at a time in a test, which we ideally would like to avoid as we can easily end up testing more code paths than we either need or want to, thereby complicating the test or making it fragile against future changes to the code.&lt;/p&gt;
+&lt;p&gt;Looking ahead, October marks the beginning of &lt;a class=&#34;reference external&#34; href=&#34;https://hacktoberfest.digitalocean.com/&#34;&gt;Hacktoberfest&lt;/a&gt;. I&#39;m really excited to be participating this year; I participated once before but I either missed the cutoff or something happened to my package because I never received my t-shirt from DigitalOcean. I&#39;ll be writing a lot more short blog posts throughout October as I chronicle my participation in this event, and I&#39;m hoping to find some interesting projects to contribute to for at least the rest of this year and hopefully well into the next.&lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>It&#39;s Dependencies All the Way Down</title>
+      <link>https://stuartcrust.com/2018/09/its-dependencies-all-the-way-down/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/2018/09/its-dependencies-all-the-way-down/</guid>
+      <description>&lt;div class=&#34;document&#34;&gt;
+
+
+&lt;p&gt;NodeJS has experienced a lot of growth over the years. Like any platform, programming or otherwise, much of that growth and user adoption depends not only on the quality of the platform itself, but also the ecosystem that builds up around it.&lt;/p&gt;
+&lt;p&gt;In this respect, NodeJS has possibly one of the largest ecosystems available. With &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/&#34;&gt;over 700,000 packages&lt;/a&gt; published to npm, the NodeJS platform offers developers a lot of choice when it comes to 3rd-party modules. This choice lets developers choose and compose modules from many different authors when writing software, saving time, consolidating work, and reducing bugs instead of constantly &lt;a class=&#34;reference external&#34; href=&#34;https://en.wikipedia.org/wiki/Not_invented_here&#34;&gt;reinventing the wheel&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The NodeJS ecosystem by and large follows the &lt;a class=&#34;reference external&#34; href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;Unix philosophy&lt;/a&gt;, in particular the primary tenant to&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Write programs [and libraries] that do one thing and do it well&lt;/p&gt;
+&lt;p class=&#34;attribution&#34;&gt;&amp;mdash;Peter H. Salus, &lt;em&gt;A Quarter-Century of Unix (1994)&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Keeping a module&#39;s focus small is an important aspect of many programming design patterns such as the single-responsibility principle, as well as improving code reuse and composability. However, including these modules doesn&#39;t come for free. Every project dependency is an added burden that the maintainers need to keep up to date and have to modify their code as the API of the module changes. Sometimes serious bugs are found in these modules that can expose application secrets, user data, or unauthorized access, among other classes of vulnerabilities, that the module authors need to fix before dependent projects can update to fix the bug.&lt;/p&gt;
+&lt;p&gt;Staying on top of vulnerability disclosures and keeping track of all of the changes from version to version in a project&#39;s dependencies is a challenging and resource-draining task. Even more challenging, authors must not only be concerned with the vulnerabilities in modules they depend on directly, but also those in all of the &lt;a class=&#34;reference external&#34; href=&#34;https://docs.gradle.org/current/userguide/dependency_management_terminology.html#sub:terminology_transitive_dependency&#34;&gt;transitive dependencies&lt;/a&gt; that NodeJS is (in)famous for.&lt;/p&gt;
+&lt;div class=&#34;section&#34; id=&#34;npm-audit&#34;&gt;
+&lt;h2&gt;&lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt;&lt;/h2&gt;
+&lt;p&gt;In the &lt;a class=&#34;reference external&#34; href=&#34;https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905&#34;&gt;April 2018 announcement&lt;/a&gt; of &lt;tt class=&#34;docutils literal&#34;&gt;npm&amp;#64;6&lt;/tt&gt;, the headlining feature the npm team showcased was &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt;, a powerful tool designed to provide automatic security warnings when using code with a known security issue. The &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; tool allows developers to completely analyze a project&#39;s dependency tree - including all transitive dependnecies - to identify known vulnerable versions of dependencies based on data from the Node Security Platform database that npm &lt;a class=&#34;reference external&#34; href=&#34;https://medium.com/npm-inc/npm-acquires-lift-security-258e257ef639&#34;&gt;acquired in April 2018&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The npm team made two really important decisions when designing &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt;. First, all install requests issued through &lt;tt class=&#34;docutils literal&#34;&gt;npm install&lt;/tt&gt; are automatically subjected to the same analysis that the &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; command performs, analyzing the package to be installed as well as any additional dependencies that package would pull into the project. Second, &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; suggests resolutions for vulnerabilities it identifies thereby giving clear actionable feedback to developers on the next steps they can take to resolve issues identified in the audit. These two decisions are critical because not only does npm take a security-conscious approach by default, but it tries to make resolving issues as painless as possible. Developers don&#39;t want to spend hours combing through changelogs or reviewing vulnerability reports just to find the package version that includes the vulnerability fix, they want to resolve the problem and get on with writing code.&lt;/p&gt;
+&lt;p&gt;As of &lt;tt class=&#34;docutils literal&#34;&gt;npm&amp;#64;6.1&lt;/tt&gt;, &lt;tt class=&#34;docutils literal&#34;&gt;npm&lt;/tt&gt; includes the &lt;tt class=&#34;docutils literal&#34;&gt;npm audit fix&lt;/tt&gt; command to &lt;a class=&#34;reference external&#34; href=&#34;https://blog.npmjs.org/post/174001864165/v610-next0&#34;&gt;automatically run all the package installations&lt;/a&gt; recommended by &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt;, lowering the pain of updating vulnerable packages even further.&lt;/p&gt;
+&lt;p&gt;The npm team shares their vision with the inclusion of tools like &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; and a security-conscious approach to ecosystem packages:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;By alerting the entire community to security vulnerabilities within a tool you already use, we can make JavaScript development safer for everyone.&lt;/p&gt;
+&lt;p class=&#34;attribution&#34;&gt;&amp;mdash;&lt;a class=&#34;reference external&#34; href=&#34;https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905&#34;&gt;npm, Inc.&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section&#34; id=&#34;auditing-filer&#34;&gt;
+&lt;h2&gt;Auditing &lt;tt class=&#34;docutils literal&#34;&gt;filer&lt;/tt&gt;&lt;/h2&gt;
+&lt;p&gt;The first thing to do after making a fresh clone of any project is to install its dependencies. After grabbing the &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer&#34;&gt;filer&lt;/a&gt; git url and cloning the repository, a quick &lt;tt class=&#34;docutils literal&#34;&gt;npm install&lt;/tt&gt; pulls in all the dependencies we should need to get started.&lt;/p&gt;
+&lt;pre class=&#34;code shell literal-block&#34;&gt;
+added &lt;span class=&#34;literal number&#34;&gt;1079&lt;/span&gt; packages from &lt;span class=&#34;literal number&#34;&gt;1531&lt;/span&gt; contributors and audited &lt;span class=&#34;literal number&#34;&gt;9518&lt;/span&gt; packages in &lt;span class=&#34;literal number&#34;&gt;36&lt;/span&gt;.358s
+found &lt;span class=&#34;literal number&#34;&gt;6&lt;/span&gt; vulnerabilities &lt;span class=&#34;operator&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;literal number&#34;&gt;1&lt;/span&gt; low, &lt;span class=&#34;literal number&#34;&gt;5&lt;/span&gt; moderate&lt;span class=&#34;operator&#34;&gt;)&lt;/span&gt;
+  run &lt;span class=&#34;literal string backtick&#34;&gt;`&lt;/span&gt;npm audit fix&lt;span class=&#34;literal string backtick&#34;&gt;`&lt;/span&gt; to fix them, or &lt;span class=&#34;literal string backtick&#34;&gt;`&lt;/span&gt;npm audit&lt;span class=&#34;literal string backtick&#34;&gt;`&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; details
+&lt;/pre&gt;
+&lt;p&gt;It looks like &lt;tt class=&#34;docutils literal&#34;&gt;filer&amp;#64;353290a&lt;/tt&gt; has some vulnerable packages, which is a perfect opportunity to dig into the auditing process.&lt;/p&gt;
+&lt;p&gt;&lt;tt class=&#34;docutils literal&#34;&gt;npm&amp;#64;6&lt;/tt&gt; is pretty in-your-face about this information, which is important. It lists the total number of vulnerabilities, as well as breaks down the number of vulnerabilities of varying severity, and provides an actionable next step: running a full audit.&lt;/p&gt;
+&lt;p&gt;Running &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; produces the following report:&lt;/p&gt;
+&lt;pre class=&#34;code shell literal-block&#34;&gt;
+                    &lt;span class=&#34;operator&#34;&gt;===&lt;/span&gt; npm audit security &lt;span class=&#34;name variable&#34;&gt;report&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;===&lt;/span&gt;
+
+&lt;span class=&#34;comment single&#34;&gt;# Run  npm install --save-dev karma&amp;#64;3.0.0  to resolve 6 vulnerabilities
+&lt;/span&gt;SEMVER WARNING: Recommended action is a potentially breaking change
+┌───────────────┬──────────────────────────────────────────────────────────────┐
+│ Moderate      │ Memory Exposure                                              │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Package       │ tunnel-agent                                                 │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; tunnel-agent             │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ More info     │ https://nodesecurity.io/advisories/598                       │
+└───────────────┴──────────────────────────────────────────────────────────────┘
+
+┌───────────────┬──────────────────────────────────────────────────────────────┐
+│ Moderate      │ Prototype pollution                                          │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Package       │ hoek                                                         │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; boom &amp;gt; hoek       │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ More info     │ https://nodesecurity.io/advisories/566                       │
+└───────────────┴──────────────────────────────────────────────────────────────┘
+
+┌───────────────┬──────────────────────────────────────────────────────────────┐
+│ Moderate      │ Prototype pollution                                          │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Package       │ hoek                                                         │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; cryptiles &amp;gt; boom  │
+│               │ &amp;gt; hoek                                                       │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ More info     │ https://nodesecurity.io/advisories/566                       │
+└───────────────┴──────────────────────────────────────────────────────────────┘
+
+┌───────────────┬──────────────────────────────────────────────────────────────┐
+│ Moderate      │ Prototype pollution                                          │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Package       │ hoek                                                         │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; hoek              │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ More info     │ https://nodesecurity.io/advisories/566                       │
+└───────────────┴──────────────────────────────────────────────────────────────┘
+
+┌───────────────┬──────────────────────────────────────────────────────────────┐
+│ Moderate      │ Prototype pollution                                          │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Package       │ hoek                                                         │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; sntp &amp;gt; hoek       │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ More info     │ https://nodesecurity.io/advisories/566                       │
+└───────────────┴──────────────────────────────────────────────────────────────┘
+
+┌───────────────┬──────────────────────────────────────────────────────────────┐
+│ Low           │ Regular Expression Denial of Service                         │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Package       │ timespan                                                     │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; timespan                           │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ More info     │ https://nodesecurity.io/advisories/533                       │
+└───────────────┴──────────────────────────────────────────────────────────────┘
+
+found &lt;span class=&#34;literal number&#34;&gt;6&lt;/span&gt; vulnerabilities &lt;span class=&#34;operator&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;literal number&#34;&gt;1&lt;/span&gt; low, &lt;span class=&#34;literal number&#34;&gt;5&lt;/span&gt; moderate&lt;span class=&#34;operator&#34;&gt;)&lt;/span&gt; in &lt;span class=&#34;literal number&#34;&gt;9518&lt;/span&gt; scanned packages
+&lt;span class=&#34;literal number&#34;&gt;6&lt;/span&gt; vulnerabilities require semver-major dependency updates.
+&lt;/pre&gt;
+&lt;p&gt;The audit provides a lot of information, but it&#39;s all broken down for the devloper in a consistent format so even those who aren&#39;t familiar with vulnerability mitigation or announcement procedures can understand what&#39;s going on.&lt;/p&gt;
+&lt;p&gt;One of the most important parts of the audit output is the path. This shows how the project and the vulnerable package are related, and is a subset of the total dependency graph for the project. This is really useful if there is no clear update path for the package your project depends on directly and you need to report (or ideally, submit a pull request) that a dependency in one of your direct dependencies should update one (or more) of its packages. Without this information clearly displayed, you would spend a lot of time chasing dependencies down by manually reviewing &lt;tt class=&#34;docutils literal&#34;&gt;package.json&lt;/tt&gt; and &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;package-lock.json&lt;/span&gt;&lt;/tt&gt; files trying to figure out who needed to update their dependnecies so you can update yours.&lt;/p&gt;
+&lt;p&gt;In the case of Filer we&#39;re pretty lucky: not only are all of the vulnerable packages related to a single direct dependency, but that dependency is one that is only used during development; resolving the problems is a simple as updating to &lt;tt class=&#34;docutils literal&#34;&gt;karma&amp;#64;3.0.0&lt;/tt&gt;. Since this is a simple resolution, we could either run &lt;tt class=&#34;docutils literal&#34;&gt;npm audit fix&lt;/tt&gt; and have &lt;tt class=&#34;docutils literal&#34;&gt;npm&lt;/tt&gt; take care of the version updates for us, or we can update the &lt;tt class=&#34;docutils literal&#34;&gt;karma&lt;/tt&gt; version in our &lt;tt class=&#34;docutils literal&#34;&gt;package.json&lt;/tt&gt; and install the updated package.&lt;/p&gt;
+&lt;p&gt;After updating &lt;tt class=&#34;docutils literal&#34;&gt;karma&lt;/tt&gt;, re-running &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; to ensure we haven&#39;t introduced any new vulnerabilities, and running the project&#39;s tests to ensure we haven&#39;t accidentally broken any functionality, we should take the time to contribute this fix &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/pull/385&#34;&gt;back to the main project&lt;/a&gt;. The fix was small and simple, but security is everyone&#39;s responsiblity; if you notice a project using outdated or vulnerable packages, take some time to help the maintainers out by submitting a pull request. Also, projects should consider looking into automating the process of keeping project dependencies up to date through various tools like &lt;a class=&#34;reference external&#34; href=&#34;https://greenkeeper.io/&#34;&gt;Greenkeeper&lt;/a&gt; and &lt;a class=&#34;reference external&#34; href=&#34;https://snyk.io/&#34;&gt;Snyk&lt;/a&gt;, which is a conversation &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/issues/386&#34;&gt;you can start&lt;/a&gt; in your project today!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Filesystem Events in NodeJS</title>
