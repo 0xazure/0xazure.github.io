@@ -6,10 +6,41 @@
     <description>Recent content in Posts on stuart crust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 Sep 2018 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 04 Oct 2018 00:00:00 -0400</lastBuildDate>
     
         <atom:link href="https://stuartcrust.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hacktoberfest - Week One</title>
+      <link>https://stuartcrust.com/2018/10/hacktoberfest---week-one/</link>
+      <pubDate>Thu, 04 Oct 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/2018/10/hacktoberfest---week-one/</guid>
+      <description>&lt;div class=&#34;document&#34;&gt;
+
+
+&lt;p&gt;Hacktoberfest, start! In my &lt;a class=&#34;reference external&#34; href=&#34;2018/09/a-return-to-open-source/&#34;&gt;previous post&lt;/a&gt; I mentioned that I was hoping to find some interesting projects to contribute to this month, and so far I&#39;ve come up with a pretty good shortlist of contributions I want to make.&lt;/p&gt;
+&lt;p&gt;To start the month off, I lent a hand to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/lk-geimfari/awesomo&#34;&gt;lk-geimfari/awesomo&lt;/a&gt; to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/lk-geimfari/awesomo/pull/125&#34;&gt;reorganize their list&lt;/a&gt; of Rust projects. They had already reorganized the one for Python and suggested contributors use that as a model for the rest of the reorganizations. There are still a bunch of languages on the list in the &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/lk-geimfari/awesomo/issues/101&#34;&gt;tracking issue&lt;/a&gt;, so head on over and give them a hand!&lt;/p&gt;
+&lt;p&gt;The work itself was straight forward; contributors were asked to alphabetize the projects in the list, and provide a table of contents and headings based on the example. I think this was a great first issue for Hacktoberfest because my goal for this month is to contribute to at least two projects that use &lt;a class=&#34;reference external&#34; href=&#34;https://www.rust-lang.org/en-US/&#34;&gt;Rust&lt;/a&gt;, and what better way to find out about cool projects than working with a list chock full of them?&lt;/p&gt;
+&lt;div class=&#34;section&#34; id=&#34;alacritty&#34;&gt;
+&lt;h2&gt;Alacritty&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/jwilm/alacritty&#34;&gt;Alacritty&lt;/a&gt; was one of the first projects to catch my eye, not just because it was originally at the top of the list, but also because I saw an announcement post that Alacritty &lt;a class=&#34;reference external&#34; href=&#34;https://www.reddit.com/r/rust/comments/9gl75a/alacritty_now_supports_scrollback/&#34;&gt;now supports terminal scrollback&lt;/a&gt; which introduced me to the existance of the project in the first place. Alacritty claims to be &amp;quot;the fastest terminal emulator in existence&amp;quot;, and uses the GPU for rendering to enable optimizations that aren&#39;t possible using other terminal emulators. Alacritty is still very much in its infancy, with &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/jwilm/alacritty/releases/tag/v0.2.1&#34;&gt;version 0.2.1&lt;/a&gt; as the most recent release at the time of writing. Windows support is planned before a 1.0 release, so if this intrigues you and you&#39;re a Windows developer &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/jwilm/alacritty/issues/28&#34;&gt;have a look at the tracking issue&lt;/a&gt; and see if you can help out.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section&#34; id=&#34;diesel&#34;&gt;
+&lt;h2&gt;Diesel&lt;/h2&gt;
+&lt;p&gt;Another project I was aware of before working with this awesome list of Rust projects is &lt;a class=&#34;reference external&#34; href=&#34;http://diesel.rs/&#34;&gt;Diesel&lt;/a&gt;, a safe, extensible object-relational mapper (ORM) for Rust. When deciding on the technology stack for my capstone project this year, I investigated using the &lt;a class=&#34;reference external&#34; href=&#34;https://rocket.rs/overview/&#34;&gt;Rocket&lt;/a&gt; web framework written in Rust, and Diesel is one of the ORMs &lt;a class=&#34;reference external&#34; href=&#34;https://rocket.rs/guide/state/#dependencies&#34;&gt;recommended in the getting started guide&lt;/a&gt;. Diesel provides a comfortable CLI experience for developers familiar with tools like &lt;a class=&#34;reference external&#34; href=&#34;https://guides.rubyonrails.org/active_record_basics.html&#34;&gt;ActiveRecord&lt;/a&gt; from Ruby on Rails and &lt;a class=&#34;reference external&#34; href=&#34;http://docs.sequelizejs.com/&#34;&gt;Sequelize&lt;/a&gt; in NodeJS, but drastically improves on both by leveraging Rust&#39;s type safety and by &amp;quot;eliminat[ing] the possibility of incorrect database interactions at compile time.&amp;quot;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section&#34; id=&#34;exa&#34;&gt;
+&lt;h2&gt;exa&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://the.exa.website/&#34;&gt;exa&lt;/a&gt; is a modern replacement for the built-in unix &lt;tt class=&#34;docutils literal&#34;&gt;ls&lt;/tt&gt; command which aims to have better defaults and more features. I have been using &lt;tt class=&#34;docutils literal&#34;&gt;exa&lt;/tt&gt; myself for a few weeks and I am really enjoying the experience so far. With &lt;tt class=&#34;docutils literal&#34;&gt;ls&lt;/tt&gt; I set up a number of shell aliases and functions to do things like enable human-readable sizes and always show colours; in &lt;tt class=&#34;docutils literal&#34;&gt;exa&lt;/tt&gt; these features are turned on automatically without any setup. I am all for customizability in those cases where it&#39;s absolutely necessary but sane defaults is almost always a better solution, especially with a tool that most of us use hundreds of times a day.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section&#34; id=&#34;to-be-continued&#34;&gt;
+&lt;h2&gt;To be Continued&lt;/h2&gt;
+&lt;p&gt;I definitely have some ideas about more projects that I&#39;d like to contribute to after seeing the &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/lk-geimfari/awesomo&#34;&gt;lk-geimfari/awesomo&lt;/a&gt; list, either this month for Hacktoberfest or on an ongoing basis. If Rust isn&#39;t your language of choice, there are similar lists of projects in pretty much every popular language as well as some more obscure ones, so take a look, be inspired, and happy hacking!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>A Return to Open Source</title>
