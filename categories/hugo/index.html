@@ -7,7 +7,7 @@
 
     <meta name="description" content="a constant work in progress">
 
-    <meta name="generator" content="Hugo 0.49" />
+    <meta name="generator" content="Hugo 0.49.2" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Hugo &middot; stuart crust">
@@ -33,10 +33,10 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
 
-    <link rel="stylesheet" href="https://stuartcrust.com//css/all.min.css">
+    <link rel="stylesheet" href='https://stuartcrust.com/css/all.min.css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link rel="alternate" type="application/rss+xml" title="stuart crust" href="https://stuartcrust.com//index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="stuart crust" href='https://stuartcrust.com/index.xml' />
 </head>
 <body>
 
@@ -68,7 +68,7 @@
                 
                 
                 <li class="nav-item">
-                    <a class="pure-button" href="https://stuartcrust.com//index.xml">
+                    <a class="pure-button" href='https://stuartcrust.com/index.xml'>
                         <i class="fa fa-rss"></i>
                     </a>
                 </li>
@@ -83,6 +83,78 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">15 Oct 2018</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://stuartcrust.com/2018/10/hacktoberfest---week-two/" class="post-title">Hacktoberfest - Week Two</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
+                                
+                                    <a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a>
+                                
+                                    <a class="post-category post-category-go" href='https://stuartcrust.com/categories/go'>go</a>
+                                
+                                    <a class="post-category post-category-hugo" href='https://stuartcrust.com/categories/hugo'>hugo</a>
+                                
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <div class="document">
+
+
+<p>Hacktoberfest week two! <a class="reference external" href="2018/10/hacktoberfest---week-one/">Week one</a> was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and <a class="reference external" href="categories/rust/">my area of interest</a>.</p>
+<p>My contribution for this week had a bit more self-interest involved; I contributed a change to <a class="reference external" href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the <a class="reference external" href="https://gohugo.io">Hugo</a> blog theme I use for this blog, to <a class="reference internal" href="#normalize-urls">normalize URLs</a> that use Hugo's <tt class="docutils literal">.Site.BaseURL</tt> variable.</p>
+<div class="section" id="the-problem">
+<span id="normalize-urls"></span><h2>The Problem</h2>
+<p>Using the <a class="reference external" href="https://github.com/dplesca/purehugo">dplesca/purehugo</a> theme, I was noticing that many links to other parts of the site - that is, links that were not external links to e.g. GitHub or Twitter - contained multiple slashes after the site root. Modern web browsers are really good at dealing with partially-malformed URLs so there was no functional problem with any of the links as the browser's URL parser took over and cleaned them up into a value it could resolve, but it would still be better if the URLs were correctly formatted when Hugo generates the static site content.</p>
+<p>The malformed URLs looked something like this:</p>
+<pre class="code html literal-block">
+<span class="punctuation">&lt;</span><span class="name tag">a</span> <span class="name attribute">class</span><span class="operator">=</span><span class="literal string">&quot;pure-button&quot;</span> <span class="name attribute">href</span><span class="operator">=</span><span class="literal string">&quot;http://localhost:1313//index.xml&quot;</span><span class="punctuation">&gt;</span>[...]<span class="punctuation">&lt;/</span><span class="name tag">a</span><span class="punctuation">&gt;</span>
+<span class="punctuation">&lt;</span><span class="name tag">a</span> <span class="name attribute">class</span><span class="operator">=</span><span class="literal string">&quot;post-category post-category-open source&quot;</span> <span class="name attribute">href</span><span class="operator">=</span><span class="literal string">&quot;http://localhost:1313//categories/open-source&quot;</span><span class="punctuation">&gt;</span>open source<span class="punctuation">&lt;/</span><span class="name tag">a</span><span class="punctuation">&gt;</span>
+</pre>
+<p>Delving into the template code revealed how <tt class="docutils literal">dplesca/purehugo</tt> was generating the URLs:</p>
+<pre class="code html literal-block">
+<span class="punctuation">&lt;</span><span class="name tag">a</span> <span class="name attribute">class</span><span class="operator">=</span><span class="literal string">&quot;pure-button&quot;</span> <span class="name attribute">href</span><span class="operator">=</span><span class="literal string">&quot;{{ .Site.BaseURL }}/index.xml&quot;</span><span class="punctuation">&gt;</span>[...]<span class="punctuation">&lt;/</span><span class="name tag">a</span><span class="punctuation">&gt;</span>
+<span class="punctuation">&lt;</span><span class="name tag">a</span> <span class="name attribute">class</span><span class="operator">=</span><span class="literal string">&quot;post-category post-category-{{ . }}&quot;</span> <span class="name attribute">href</span><span class="operator">=</span><span class="literal string">&quot;{{ $baseUrl }}/categories/{{ . | urlize }}&quot;</span><span class="punctuation">&gt;</span>{{ . }}<span class="punctuation">&lt;/</span><span class="name tag">a</span><span class="punctuation">&gt;</span>
+</pre>
+<p>The template string used <tt class="docutils literal">.Site.BaseURL</tt> and appended a slash before the next URL fragment. Since this results in a double slash in the generated output, I presume but have not confirmed that <tt class="docutils literal">.Site.BaseURL</tt> always ends in a trailing slash that needs to be taken into consideration when generating URLs relative the the site's root.</p>
+</div>
+<div class="section" id="the-solution">
+<h2>The Solution</h2>
+<p>In a similar way to how we join file paths in NodeJS with <a class="reference external" href="https://nodejs.org/api/path.html#path_path_join_paths">path.join()</a>, we almost never want to be responsible for building URL paths ourselves. Luckily, Hugo provides <a class="reference external" href="https://gohugo.io/functions/">many built-in helper functions</a> that cover a whole range of use cases, including the one I decided to use to normalize URL paths throughout <tt class="docutils literal">dplesca/purehugo</tt>: <a class="reference external" href="https://gohugo.io/functions/absurl/.">absURL</a></p>
+<p>From the Hugo documentation, <tt class="docutils literal">absURL</tt></p>
+<blockquote>
+Creates an absolute URL based on the configured <tt class="docutils literal">baseURL</tt>.</blockquote>
+<p>where <tt class="docutils literal">baseURL</tt> is the hostname (and path) to the root of the site which is set as part of Hugo's <a class="reference external" href="https://gohugo.io/getting-started/configuration/#all-configuration-settings">site configuration</a>.</p>
+<p>This function was a perfect solution in most of the places where static files need to be linked and served to the client, such as JavaScript or CSS content. In those cases it was a simple matter of removing <tt class="docutils literal">.Site.BaseURL</tt> and the subsequent concatenation and replace it with a call to the <tt class="docutils literal">absURL</tt> function, like so:</p>
+<pre class="code html literal-block">
+<span class="punctuation">&lt;</span><span class="name tag">a</span> <span class="name attribute">class</span><span class="operator">=</span><span class="literal string">&quot;pure-button&quot;</span> <span class="name attribute">href</span><span class="operator">=</span><span class="literal string">'{{ &quot;index.xml&quot; | absURL }}'</span><span class="punctuation">&gt;</span>[...]<span class="punctuation">&lt;/</span><span class="name tag">a</span><span class="punctuation">&gt;</span>
+</pre>
+<p>Normalizing the post category links turned out to be a bit more complicated than this simple substitution because these links needed to include more URL fragments to create the complete path. In order to correctly concatenate and then normalize these URLs, I turned to another of Hugo's built-in functions: <a class="reference external" href="https://gohugo.io/functions/printf/">printf</a>.</p>
+<p>Hugo's templating system is built almost entirely on top of Go's built-in <a class="reference external" href="https://golang.org/pkg/text/template/">template package</a>, which makes things very familiar if you have worked with Go templates before. It also means that Hugo can expose a lot of Go functions as Hugo functions available inside templates. In this case, Hugo's <tt class="docutils literal">printf</tt> function exposes Go's <tt class="docutils literal">fmt.Sprintf</tt> function which works much like <tt class="docutils literal">printf</tt> in C.</p>
+<p>This is the solution I came up with for building the more complicated post category link URLs while still being able to normalize the resulting URL using <tt class="docutils literal">absURL</tt>:</p>
+<pre class="code html literal-block">
+<span class="punctuation">&lt;</span><span class="name tag">a</span> <span class="name attribute">class</span><span class="operator">=</span><span class="literal string">&quot;post-category post-category-{{ . }}&quot;</span> <span class="name attribute">href</span><span class="operator">=</span><span class="literal string">'{{ ( printf &quot;categories/%s&quot; . ) | absURL }}'</span><span class="punctuation">&gt;</span>{{ . }}<span class="punctuation">&lt;/</span><span class="name tag">a</span><span class="punctuation">&gt;</span>
+</pre>
+<p>Unlike in NodeJS, in this case it's safe to do a simple string concatenation of <tt class="docutils literal"><span class="pre">categories/&lt;category-name&gt;</span></tt> because unlike with file systems, the fragment separator in URLs is always the <tt class="docutils literal">/</tt> character.</p>
+</div>
+<div class="section" id="to-be-continued">
+<h2>To be Continued</h2>
+<p>I am very thankful to <tt class="docutils literal">purehugo</tt>'s author, <a class="reference external" href="https://github.com/dplesca">&#64;dplesca</a>, for responding so quickly to my pull request with this change and for merging the pull request within a few hours of my submission. While working on this change I noticed a few other areas where I think <tt class="docutils literal">dplesca/purehugo</tt> could be improved, and I'm looking forward to working on it more as I continue using it to generate my blog and host my site content.</p>
+<p>Hacktoberfest continues on, and I need to start thinking about my next contribution. My school is on a break starting next week, so I'm hoping to find the time to dig into something a bit larger and more challenging based on the projects I've seen so far or had recommended to me by classmates.</p>
+</div>
+</div>
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">13 Sep 2018</h1>
                 <section class="post">
                     <header class="post-header">
@@ -94,7 +166,10 @@
                             
                                 under 
                                 
-                                <a class="post-category post-category-writing" href="https://stuartcrust.com//categories/writing">writing</a><a class="post-category post-category-hugo" href="https://stuartcrust.com//categories/hugo">hugo</a>
+                                    <a class="post-category post-category-writing" href='https://stuartcrust.com/categories/writing'>writing</a>
+                                
+                                    <a class="post-category post-category-hugo" href='https://stuartcrust.com/categories/hugo'>hugo</a>
+                                
                             
                         </p>
                     </header>
@@ -124,7 +199,7 @@
         </ul>
     </div>
 </div>
-<script src="https://stuartcrust.com//js/all.min.js"></script>
+<script src='https://stuartcrust.com/js/all.min.js'></script>
 
         </div>
     </div>
