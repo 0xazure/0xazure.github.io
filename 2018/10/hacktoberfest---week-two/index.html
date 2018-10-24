@@ -110,9 +110,9 @@
 
 
 <p>Hacktoberfest week two! <a class="reference external" href="2018/10/hacktoberfest---week-one/">Week one</a> was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and <a class="reference external" href="categories/rust/">my area of interest</a>.</p>
-<p>My contribution for this week had a bit more self-interest involved; I contributed a change to <a class="reference external" href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the <a class="reference external" href="https://gohugo.io">Hugo</a> blog theme I use for this blog, to <a class="reference internal" href="#normalize-urls">normalize URLs</a> that use Hugo's <tt class="docutils literal">.Site.BaseURL</tt> variable.</p>
+<p>My contribution for this week had a bit more self-interest involved; I contributed a change to <a class="reference external" href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the <a class="reference external" href="https://gohugo.io">Hugo</a> blog theme I use for this blog, to <a class="reference external" href="https://github.com/dplesca/purehugo/pull/26">normalize URLs</a> that use Hugo's <tt class="docutils literal">.Site.BaseURL</tt> variable.</p>
 <div class="section" id="the-problem">
-<span id="normalize-urls"></span><h2>The Problem</h2>
+<h2>The Problem</h2>
 <p>Using the <a class="reference external" href="https://github.com/dplesca/purehugo">dplesca/purehugo</a> theme, I was noticing that many links to other parts of the site - that is, links that were not external links to e.g. GitHub or Twitter - contained multiple slashes after the site root. Modern web browsers are really good at dealing with partially-malformed URLs so there was no functional problem with any of the links as the browser's URL parser took over and cleaned them up into a value it could resolve, but it would still be better if the URLs were correctly formatted when Hugo generates the static site content.</p>
 <p>The malformed URLs looked something like this:</p>
 <pre class="code html literal-block">

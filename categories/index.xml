@@ -11,6 +11,15 @@
     
     
     <item>
+      <title>Diesel</title>
+      <link>https://stuartcrust.com/categories/diesel/</link>
+      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/diesel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Event Based Programming</title>
       <link>https://stuartcrust.com/categories/event-based-programming/</link>
       <pubDate>Thu, 13 Sep 2018 00:00:00 -0400</pubDate>
@@ -40,7 +49,7 @@
     <item>
       <title>Hacktoberfest</title>
       <link>https://stuartcrust.com/categories/hacktoberfest/</link>
-      <pubDate>Mon, 15 Oct 2018 00:00:00 -0400</pubDate>
+      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/categories/hacktoberfest/</guid>
       <description></description>
@@ -76,18 +85,36 @@
     <item>
       <title>Open Source</title>
       <link>https://stuartcrust.com/categories/open-source/</link>
-      <pubDate>Mon, 15 Oct 2018 00:00:00 -0400</pubDate>
+      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/categories/open-source/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Rocket</title>
+      <link>https://stuartcrust.com/categories/rocket/</link>
+      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/rocket/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Rust</title>
       <link>https://stuartcrust.com/categories/rust/</link>
-      <pubDate>Thu, 04 Oct 2018 00:00:00 -0400</pubDate>
+      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/categories/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rust Wasm</title>
+      <link>https://stuartcrust.com/categories/rust-wasm/</link>
+      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/rust-wasm/</guid>
       <description></description>
     </item>
     
