@@ -13,14 +13,14 @@
     
     <item>
       <title>Hacktoberfest - Week Three</title>
-      <link>https://stuartcrust.com/2018/10/hacktoberfest---week-three/</link>
+      <link>https://stuartcrust.com/2018/10/hacktoberfest-week-three/</link>
       <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
       
-      <guid>https://stuartcrust.com/2018/10/hacktoberfest---week-three/</guid>
+      <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-three/</guid>
       <description>&lt;div class=&#34;document&#34;&gt;
 
 
-&lt;p&gt;As of last week we are just about half way through Hacktoberfest. Time is just flying by, and I can&#39;t believe how quickly it&#39;s passing. In my &lt;a class=&#34;reference external&#34; href=&#34;2018/10/hacktoberfest---week-two/&#34;&gt;previous Hacktoberfest post&lt;/a&gt; I wrote about my slightly self-interested contribution to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the theme I use for this blog, and how I used some of Hugo&#39;s built-in functions to normalize URLs that used the &lt;tt class=&#34;docutils literal&#34;&gt;.Site.BaseURL&lt;/tt&gt; variable.&lt;/p&gt;
+&lt;p&gt;As of last week we are just about half way through Hacktoberfest. Time is just flying by, and I can&#39;t believe how quickly it&#39;s passing. In my &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-two/&#34;&gt;previous Hacktoberfest post&lt;/a&gt; I wrote about my slightly self-interested contribution to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the theme I use for this blog, and how I used some of Hugo&#39;s built-in functions to normalize URLs that used the &lt;tt class=&#34;docutils literal&#34;&gt;.Site.BaseURL&lt;/tt&gt; variable.&lt;/p&gt;
 &lt;p&gt;My contribution this week for Hacktoberfest is minor, but it started me on a path to encounter a number of issues with a common theme that should leave me with plenty of work to do over the next few weeks and possibly past the end of the month.&lt;/p&gt;
 &lt;div class=&#34;section&#34; id=&#34;theme-week-documentation&#34;&gt;
 &lt;h2&gt;Theme Week: Documentation&lt;/h2&gt;

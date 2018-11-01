@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacktoberfest - Week Five &middot; stuart crust</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.50" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="Hacktoberfest - Week Five &middot; stuart crust">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Hacktoberfest - Week Five &middot; stuart crust">
+    <meta property="og:description" content="">
+
+    
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-51701320-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-51701320-1');
+        </script>
+    
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href='https://stuartcrust.com/css/all.min.css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="stuart crust" href='https://stuartcrust.com/index.xml' />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://stuartcrust.com/">stuart crust</a></h1>
+            <h2 class="brand-tagline"> a constant work in progress </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://twitter.com/0xazure">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/0xazure">
+                        <i class="fa fa-github-alt"></i>
+                    </a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href='https://stuartcrust.com/index.xml'>
+                        <i class="fa fa-rss"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">31 Oct 2018</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://stuartcrust.com/2018/10/hacktoberfest-week-five/" class="post-title">Hacktoberfest - Week Five</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
+                                
+                                    <a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a>
+                                
+                                    <a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
+                                
+                                    <a class="post-category post-category-rust-wasm" href='https://stuartcrust.com/categories/rust-wasm'>rust-wasm</a>
+                                
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        <div class="document">
+
+
+<p>With this fifth week, Hacktoberfest 2018 comes to a close. I'll be doing a retrospective on the whole month of contributions soon, but that is not this post. This week, I was able to make one of the contributions I had started back in <a class="reference external" href="/2018/10/hacktoberfest-week-three">week three</a>, a documentation contribution to the <a class="reference external" href="https://rustwasm.github.io/book/">Rust and WebAssembly Book</a>.</p>
+<p>As I mentioned in that post, I had filed <a class="reference external" href="https://github.com/rustwasm/book/issues/127">rustwasm/book#127</a> to suggest some improvements to the explanation of <tt class="docutils literal">src/utils.rs</tt>, a module that the <tt class="docutils literal"><span class="pre">rust-wasm</span></tt> <a class="reference external" href="https://github.com/rustwasm/wasm-pack-template">project template</a> provides to make working with Rust compiled to WebAssembly easier including some debugging helpers in the form of a <a class="reference external" href="https://github.com/rustwasm/console_error_panic_hook">panic hook</a> to print well-formatted and helpful wasm error messages to <tt class="docutils literal">console.error</tt>. <a class="reference external" href="https://github.com/fitzgen">Nick Fitzgerald</a>, a member of the <a class="reference external" href="https://www.rust-lang.org/en-US/team.html#Dev-tools-team">Rust dev tools team</a>, responded to <a class="reference external" href="https://github.com/rustwasm/book/issues/127#issuecomment-433858876">my issue</a> and said that he would be happy to merge a pull request that did the rephrasing I had suggested. Since I had already done the work up-front when I filed my issue, I was able to get a <a class="reference external" href="https://github.com/rustwasm/book/pull/129">pull request with the change</a> up very quickly and it got merged the same day.</p>
+<p>My change is <a class="reference external" href="https://rustwasm.github.io/book/game-of-life/hello-world.html#wasm-game-of-lifesrcutilsrs">live on the Rust and WebAssembly site</a> right now, and it feels really great to see something that I wrote included in a project in which I'm excited to get even more involved. Big thanks to Nick for getting back to me about my proposed change and for the quick merge on <a class="reference external" href="https://github.com/rustwasm/book/pull/129">rustwasm/book#129</a> to get it incorporated.</p>
+<p>With that pull request opened (and merged), I was able to achieve my five pull requests for Hacktoberfest and secure my limited edition T-shirt. The T-shirt is nice, of course, but the real benefit of Hacktoberfest is to all the open source projects that took pull requests this past month, as well as for all the participants who were able to level up their programming skills while contributing to the open source community. More on that in the next post where I'll summarize my experience participating in Hacktoberfest 2018 and talk about what I learned, what went well, what I would do differently next time, and a general reflection on Hacktoberfest itself.</p>
+</div>
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src='https://stuartcrust.com/js/all.min.js'></script>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -3,17 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://stuartcrust.com/2018/10/hacktoberfest---week-three/</loc>
+    <loc>https://stuartcrust.com/2018/10/hacktoberfest-week-five/</loc>
+    <lastmod>2018-10-31T00:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://stuartcrust.com/2018/10/hacktoberfest-week-four/</loc>
+    <lastmod>2018-10-30T00:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://stuartcrust.com/2018/10/hacktoberfest-week-three/</loc>
     <lastmod>2018-10-22T00:00:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://stuartcrust.com/2018/10/hacktoberfest---week-two/</loc>
+    <loc>https://stuartcrust.com/2018/10/hacktoberfest-week-two/</loc>
     <lastmod>2018-10-15T00:00:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://stuartcrust.com/2018/10/hacktoberfest---week-one/</loc>
+    <loc>https://stuartcrust.com/2018/10/hacktoberfest-week-one/</loc>
     <lastmod>2018-10-04T00:00:00-04:00</lastmod>
   </url>
   
@@ -62,19 +72,19 @@
   
   <url>
     <loc>https://stuartcrust.com/categories/go/</loc>
-    <lastmod>2018-10-15T00:00:00-04:00</lastmod>
+    <lastmod>2018-10-30T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://stuartcrust.com/categories/hacktoberfest/</loc>
-    <lastmod>2018-10-22T00:00:00-04:00</lastmod>
+    <lastmod>2018-10-31T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://stuartcrust.com/categories/hugo/</loc>
-    <lastmod>2018-10-15T00:00:00-04:00</lastmod>
+    <lastmod>2018-10-30T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -92,13 +102,13 @@
   
   <url>
     <loc>https://stuartcrust.com/categories/open-source/</loc>
-    <lastmod>2018-10-22T00:00:00-04:00</lastmod>
+    <lastmod>2018-10-31T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://stuartcrust.com/posts/</loc>
-    <lastmod>2018-10-22T00:00:00-04:00</lastmod>
+    <lastmod>2018-10-31T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -110,13 +120,13 @@
   
   <url>
     <loc>https://stuartcrust.com/categories/rust/</loc>
-    <lastmod>2018-10-22T00:00:00-04:00</lastmod>
+    <lastmod>2018-10-31T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://stuartcrust.com/categories/rust-wasm/</loc>
-    <lastmod>2018-10-22T00:00:00-04:00</lastmod>
+    <lastmod>2018-10-31T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -139,7 +149,7 @@
   
   <url>
     <loc>https://stuartcrust.com/</loc>
-    <lastmod>2018-10-22T00:00:00-04:00</lastmod>
+    <lastmod>2018-10-31T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   

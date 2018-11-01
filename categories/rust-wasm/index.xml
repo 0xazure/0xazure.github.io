@@ -6,21 +6,37 @@
     <description>Recent content in Rust Wasm on stuart crust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Oct 2018 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 31 Oct 2018 00:00:00 -0400</lastBuildDate>
     
         <atom:link href="https://stuartcrust.com/categories/rust-wasm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Hacktoberfest - Week Three</title>
-      <link>https://stuartcrust.com/2018/10/hacktoberfest---week-three/</link>
-      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
+      <title>Hacktoberfest - Week Five</title>
+      <link>https://stuartcrust.com/2018/10/hacktoberfest-week-five/</link>
+      <pubDate>Wed, 31 Oct 2018 00:00:00 -0400</pubDate>
       
-      <guid>https://stuartcrust.com/2018/10/hacktoberfest---week-three/</guid>
+      <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-five/</guid>
       <description>&lt;div class=&#34;document&#34;&gt;
 
 
-&lt;p&gt;As of last week we are just about half way through Hacktoberfest. Time is just flying by, and I can&#39;t believe how quickly it&#39;s passing. In my &lt;a class=&#34;reference external&#34; href=&#34;2018/10/hacktoberfest---week-two/&#34;&gt;previous Hacktoberfest post&lt;/a&gt; I wrote about my slightly self-interested contribution to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the theme I use for this blog, and how I used some of Hugo&#39;s built-in functions to normalize URLs that used the &lt;tt class=&#34;docutils literal&#34;&gt;.Site.BaseURL&lt;/tt&gt; variable.&lt;/p&gt;
+&lt;p&gt;With this fifth week, Hacktoberfest 2018 comes to a close. I&#39;ll be doing a retrospective on the whole month of contributions soon, but that is not this post. This week, I was able to make one of the contributions I had started back in &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;week three&lt;/a&gt;, a documentation contribution to the &lt;a class=&#34;reference external&#34; href=&#34;https://rustwasm.github.io/book/&#34;&gt;Rust and WebAssembly Book&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As I mentioned in that post, I had filed &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/issues/127&#34;&gt;rustwasm/book#127&lt;/a&gt; to suggest some improvements to the explanation of &lt;tt class=&#34;docutils literal&#34;&gt;src/utils.rs&lt;/tt&gt;, a module that the &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;rust-wasm&lt;/span&gt;&lt;/tt&gt; &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/wasm-pack-template&#34;&gt;project template&lt;/a&gt; provides to make working with Rust compiled to WebAssembly easier including some debugging helpers in the form of a &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/console_error_panic_hook&#34;&gt;panic hook&lt;/a&gt; to print well-formatted and helpful wasm error messages to &lt;tt class=&#34;docutils literal&#34;&gt;console.error&lt;/tt&gt;. &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/fitzgen&#34;&gt;Nick Fitzgerald&lt;/a&gt;, a member of the &lt;a class=&#34;reference external&#34; href=&#34;https://www.rust-lang.org/en-US/team.html#Dev-tools-team&#34;&gt;Rust dev tools team&lt;/a&gt;, responded to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/issues/127#issuecomment-433858876&#34;&gt;my issue&lt;/a&gt; and said that he would be happy to merge a pull request that did the rephrasing I had suggested. Since I had already done the work up-front when I filed my issue, I was able to get a &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/129&#34;&gt;pull request with the change&lt;/a&gt; up very quickly and it got merged the same day.&lt;/p&gt;
+&lt;p&gt;My change is &lt;a class=&#34;reference external&#34; href=&#34;https://rustwasm.github.io/book/game-of-life/hello-world.html#wasm-game-of-lifesrcutilsrs&#34;&gt;live on the Rust and WebAssembly site&lt;/a&gt; right now, and it feels really great to see something that I wrote included in a project in which I&#39;m excited to get even more involved. Big thanks to Nick for getting back to me about my proposed change and for the quick merge on &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/129&#34;&gt;rustwasm/book#129&lt;/a&gt; to get it incorporated.&lt;/p&gt;
+&lt;p&gt;With that pull request opened (and merged), I was able to achieve my five pull requests for Hacktoberfest and secure my limited edition T-shirt. The T-shirt is nice, of course, but the real benefit of Hacktoberfest is to all the open source projects that took pull requests this past month, as well as for all the participants who were able to level up their programming skills while contributing to the open source community. More on that in the next post where I&#39;ll summarize my experience participating in Hacktoberfest 2018 and talk about what I learned, what went well, what I would do differently next time, and a general reflection on Hacktoberfest itself.&lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hacktoberfest - Week Three</title>
+      <link>https://stuartcrust.com/2018/10/hacktoberfest-week-three/</link>
+      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-three/</guid>
+      <description>&lt;div class=&#34;document&#34;&gt;
+
+
+&lt;p&gt;As of last week we are just about half way through Hacktoberfest. Time is just flying by, and I can&#39;t believe how quickly it&#39;s passing. In my &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-two/&#34;&gt;previous Hacktoberfest post&lt;/a&gt; I wrote about my slightly self-interested contribution to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the theme I use for this blog, and how I used some of Hugo&#39;s built-in functions to normalize URLs that used the &lt;tt class=&#34;docutils literal&#34;&gt;.Site.BaseURL&lt;/tt&gt; variable.&lt;/p&gt;
 &lt;p&gt;My contribution this week for Hacktoberfest is minor, but it started me on a path to encounter a number of issues with a common theme that should leave me with plenty of work to do over the next few weeks and possibly past the end of the month.&lt;/p&gt;
 &lt;div class=&#34;section&#34; id=&#34;theme-week-documentation&#34;&gt;
 &lt;h2&gt;Theme Week: Documentation&lt;/h2&gt;

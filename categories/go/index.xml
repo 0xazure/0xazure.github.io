@@ -6,21 +6,43 @@
     <description>Recent content in Go on stuart crust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Oct 2018 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 30 Oct 2018 00:00:00 -0400</lastBuildDate>
     
         <atom:link href="https://stuartcrust.com/categories/go/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Hacktoberfest - Week Two</title>
-      <link>https://stuartcrust.com/2018/10/hacktoberfest---week-two/</link>
-      <pubDate>Mon, 15 Oct 2018 00:00:00 -0400</pubDate>
+      <title>Hacktoberfest - Week Four</title>
+      <link>https://stuartcrust.com/2018/10/hacktoberfest-week-four/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 -0400</pubDate>
       
-      <guid>https://stuartcrust.com/2018/10/hacktoberfest---week-two/</guid>
+      <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-four/</guid>
       <description>&lt;div class=&#34;document&#34;&gt;
 
 
-&lt;p&gt;Hacktoberfest week two! &lt;a class=&#34;reference external&#34; href=&#34;2018/10/hacktoberfest---week-one/&#34;&gt;Week one&lt;/a&gt; was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and &lt;a class=&#34;reference external&#34; href=&#34;categories/rust/&#34;&gt;my area of interest&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hacktoberfest week four! In keeping with the theme I &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;set last week&lt;/a&gt; I continued to improve open source project documentation as part of Hacktoberfest. This week I returned to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the theme I use for this blog, to help out with improving some areas of the documentation I noticed could use a bit of polish during my first contribution to the project during Hacktoberfest &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-two&#34;&gt;week two&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/28&#34;&gt;dplesca/purehugo#28&lt;/a&gt; I rephrased the section of the &lt;tt class=&#34;docutils literal&#34;&gt;README.md&lt;/tt&gt; that deals with code syntax highlighting on generated blogs. As I mention in the issue, it seems as though the original author simply missed a word when writing the section:&lt;/p&gt;
+&lt;blockquote&gt;
+All you need to do is to let rainbow.js the language of the highlighted code [...]&lt;/blockquote&gt;
+&lt;p&gt;which should instead read:&lt;/p&gt;
+&lt;blockquote&gt;
+All you need to do is to let rainbow.js &lt;strong&gt;know&lt;/strong&gt; the language of the highlighted code [...]&lt;/blockquote&gt;
+&lt;p&gt;The simple fix in this case would be to add the missing word. However, since I knew I would be editing this part of the document anyways, I decided to take a bit more time and rephrase the existing wording to simplify the instructions and use more specific language to instruct new users what they need to do to get the highlighting library to pick up the desired language. I also added a full example of how to apply &lt;a class=&#34;reference external&#34; href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; syntax to a code block using Markdown, as I find seeing complete code samples or full examples in documentation to be very helpful when I&#39;m learning a new tool or framework, and serve as quick reminders if I&#39;m returning to a tool or framework I haven&#39;t used recently to get me back on track.&lt;/p&gt;
+&lt;p&gt;This week turned into a twofer because while I was working on &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/28&#34;&gt;dplesca/purehugo#28&lt;/a&gt; I noticed a small spelling error elsewhere in the &lt;tt class=&#34;docutils literal&#34;&gt;README.md&lt;/tt&gt; file and submitted &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/27&#34;&gt;dplesca/purehugo#27&lt;/a&gt; to correct a word in one of the document headings. I only noticed the spelling mistake as I had just set up proper spell checking in Visual Studio Code using &lt;a class=&#34;reference external&#34; href=&#34;https://marketplace.visualstudio.com/items?itemName=ban.spellright&#34;&gt;Spell Right by Bartosz Antosik&lt;/a&gt; to warn me about typos and other spelling errors. I had been under the impression that VS Code shipped with spell checking by default but this does not seem to be the case. Further, the VS Code spellchecking addon I found &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/microsoft/vscode-spell-check&#34;&gt;published by Microsoft&lt;/a&gt; is marked as deprecated and suggests finding an alternate addon. Correcting minor typos in documentation is small potatoes compared to some other Hacktoberfest contributions, but they are important changes that affect readability, comprehension, and the flow of the document(s) in which they occur.&lt;/p&gt;
+&lt;p&gt;The end of Hacktoberfest is almost upon us, and I have one last post to share about my final contribution this month. Look forward to a piece about my first major contribution to a Rust project!&lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hacktoberfest - Week Two</title>
+      <link>https://stuartcrust.com/2018/10/hacktoberfest-week-two/</link>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-two/</guid>
+      <description>&lt;div class=&#34;document&#34;&gt;
+
+
+&lt;p&gt;Hacktoberfest week two! &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one/&#34;&gt;Week one&lt;/a&gt; was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/categories/rust/&#34;&gt;my area of interest&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;My contribution for this week had a bit more self-interest involved; I contributed a change to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the &lt;a class=&#34;reference external&#34; href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; blog theme I use for this blog, to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/26&#34;&gt;normalize URLs&lt;/a&gt; that use Hugo&#39;s &lt;tt class=&#34;docutils literal&#34;&gt;.Site.BaseURL&lt;/tt&gt; variable.&lt;/p&gt;
 &lt;div class=&#34;section&#34; id=&#34;the-problem&#34;&gt;
 &lt;h2&gt;The Problem&lt;/h2&gt;

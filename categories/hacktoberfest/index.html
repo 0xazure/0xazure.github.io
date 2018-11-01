@@ -7,7 +7,7 @@
 
     <meta name="description" content="a constant work in progress">
 
-    <meta name="generator" content="Hugo 0.49.2" />
+    <meta name="generator" content="Hugo 0.50" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Hacktoberfest &middot; stuart crust">
@@ -83,11 +83,87 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">31 Oct 2018</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://stuartcrust.com/2018/10/hacktoberfest-week-five/" class="post-title">Hacktoberfest - Week Five</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
+                                
+                                    <a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a>
+                                
+                                    <a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
+                                
+                                    <a class="post-category post-category-rust-wasm" href='https://stuartcrust.com/categories/rust-wasm'>rust-wasm</a>
+                                
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <div class="document">
+
+
+<p>With this fifth week, Hacktoberfest 2018 comes to a close. I'll be doing a retrospective on the whole month of contributions soon, but that is not this post. This week, I was able to make one of the contributions I had started back in <a class="reference external" href="/2018/10/hacktoberfest-week-three">week three</a>, a documentation contribution to the <a class="reference external" href="https://rustwasm.github.io/book/">Rust and WebAssembly Book</a>.</p>
+<p>As I mentioned in that post, I had filed <a class="reference external" href="https://github.com/rustwasm/book/issues/127">rustwasm/book#127</a> to suggest some improvements to the explanation of <tt class="docutils literal">src/utils.rs</tt>, a module that the <tt class="docutils literal"><span class="pre">rust-wasm</span></tt> <a class="reference external" href="https://github.com/rustwasm/wasm-pack-template">project template</a> provides to make working with Rust compiled to WebAssembly easier including some debugging helpers in the form of a <a class="reference external" href="https://github.com/rustwasm/console_error_panic_hook">panic hook</a> to print well-formatted and helpful wasm error messages to <tt class="docutils literal">console.error</tt>. <a class="reference external" href="https://github.com/fitzgen">Nick Fitzgerald</a>, a member of the <a class="reference external" href="https://www.rust-lang.org/en-US/team.html#Dev-tools-team">Rust dev tools team</a>, responded to <a class="reference external" href="https://github.com/rustwasm/book/issues/127#issuecomment-433858876">my issue</a> and said that he would be happy to merge a pull request that did the rephrasing I had suggested. Since I had already done the work up-front when I filed my issue, I was able to get a <a class="reference external" href="https://github.com/rustwasm/book/pull/129">pull request with the change</a> up very quickly and it got merged the same day.</p>
+<p>My change is <a class="reference external" href="https://rustwasm.github.io/book/game-of-life/hello-world.html#wasm-game-of-lifesrcutilsrs">live on the Rust and WebAssembly site</a> right now, and it feels really great to see something that I wrote included in a project in which I'm excited to get even more involved. Big thanks to Nick for getting back to me about my proposed change and for the quick merge on <a class="reference external" href="https://github.com/rustwasm/book/pull/129">rustwasm/book#129</a> to get it incorporated.</p>
+<p>With that pull request opened (and merged), I was able to achieve my five pull requests for Hacktoberfest and secure my limited edition T-shirt. The T-shirt is nice, of course, but the real benefit of Hacktoberfest is to all the open source projects that took pull requests this past month, as well as for all the participants who were able to level up their programming skills while contributing to the open source community. More on that in the next post where I'll summarize my experience participating in Hacktoberfest 2018 and talk about what I learned, what went well, what I would do differently next time, and a general reflection on Hacktoberfest itself.</p>
+</div>
+                    </div>
+                </section>
+                
+                <h1 class="content-subhead">30 Oct 2018</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://stuartcrust.com/2018/10/hacktoberfest-week-four/" class="post-title">Hacktoberfest - Week Four</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
+                                
+                                    <a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a>
+                                
+                                    <a class="post-category post-category-go" href='https://stuartcrust.com/categories/go'>go</a>
+                                
+                                    <a class="post-category post-category-hugo" href='https://stuartcrust.com/categories/hugo'>hugo</a>
+                                
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <div class="document">
+
+
+<p>Hacktoberfest week four! In keeping with the theme I <a class="reference external" href="/2018/10/hacktoberfest-week-three">set last week</a> I continued to improve open source project documentation as part of Hacktoberfest. This week I returned to <a class="reference external" href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the theme I use for this blog, to help out with improving some areas of the documentation I noticed could use a bit of polish during my first contribution to the project during Hacktoberfest <a class="reference external" href="/2018/10/hacktoberfest-week-two">week two</a>.</p>
+<p>In <a class="reference external" href="https://github.com/dplesca/purehugo/pull/28">dplesca/purehugo#28</a> I rephrased the section of the <tt class="docutils literal">README.md</tt> that deals with code syntax highlighting on generated blogs. As I mention in the issue, it seems as though the original author simply missed a word when writing the section:</p>
+<blockquote>
+All you need to do is to let rainbow.js the language of the highlighted code [...]</blockquote>
+<p>which should instead read:</p>
+<blockquote>
+All you need to do is to let rainbow.js <strong>know</strong> the language of the highlighted code [...]</blockquote>
+<p>The simple fix in this case would be to add the missing word. However, since I knew I would be editing this part of the document anyways, I decided to take a bit more time and rephrase the existing wording to simplify the instructions and use more specific language to instruct new users what they need to do to get the highlighting library to pick up the desired language. I also added a full example of how to apply <a class="reference external" href="https://golang.org/">Go</a> syntax to a code block using Markdown, as I find seeing complete code samples or full examples in documentation to be very helpful when I'm learning a new tool or framework, and serve as quick reminders if I'm returning to a tool or framework I haven't used recently to get me back on track.</p>
+<p>This week turned into a twofer because while I was working on <a class="reference external" href="https://github.com/dplesca/purehugo/pull/28">dplesca/purehugo#28</a> I noticed a small spelling error elsewhere in the <tt class="docutils literal">README.md</tt> file and submitted <a class="reference external" href="https://github.com/dplesca/purehugo/pull/27">dplesca/purehugo#27</a> to correct a word in one of the document headings. I only noticed the spelling mistake as I had just set up proper spell checking in Visual Studio Code using <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ban.spellright">Spell Right by Bartosz Antosik</a> to warn me about typos and other spelling errors. I had been under the impression that VS Code shipped with spell checking by default but this does not seem to be the case. Further, the VS Code spellchecking addon I found <a class="reference external" href="https://github.com/microsoft/vscode-spell-check">published by Microsoft</a> is marked as deprecated and suggests finding an alternate addon. Correcting minor typos in documentation is small potatoes compared to some other Hacktoberfest contributions, but they are important changes that affect readability, comprehension, and the flow of the document(s) in which they occur.</p>
+<p>The end of Hacktoberfest is almost upon us, and I have one last post to share about my final contribution this month. Look forward to a piece about my first major contribution to a Rust project!</p>
+</div>
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">22 Oct 2018</h1>
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="https://stuartcrust.com/2018/10/hacktoberfest---week-three/" class="post-title">Hacktoberfest - Week Three</a>
+                        <a href="https://stuartcrust.com/2018/10/hacktoberfest-week-three/" class="post-title">Hacktoberfest - Week Three</a>
 
                         <p class="post-meta">
                             
@@ -114,7 +190,7 @@
                         <div class="document">
 
 
-<p>As of last week we are just about half way through Hacktoberfest. Time is just flying by, and I can't believe how quickly it's passing. In my <a class="reference external" href="2018/10/hacktoberfest---week-two/">previous Hacktoberfest post</a> I wrote about my slightly self-interested contribution to <a class="reference external" href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the theme I use for this blog, and how I used some of Hugo's built-in functions to normalize URLs that used the <tt class="docutils literal">.Site.BaseURL</tt> variable.</p>
+<p>As of last week we are just about half way through Hacktoberfest. Time is just flying by, and I can't believe how quickly it's passing. In my <a class="reference external" href="/2018/10/hacktoberfest-week-two/">previous Hacktoberfest post</a> I wrote about my slightly self-interested contribution to <a class="reference external" href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the theme I use for this blog, and how I used some of Hugo's built-in functions to normalize URLs that used the <tt class="docutils literal">.Site.BaseURL</tt> variable.</p>
 <p>My contribution this week for Hacktoberfest is minor, but it started me on a path to encounter a number of issues with a common theme that should leave me with plenty of work to do over the next few weeks and possibly past the end of the month.</p>
 <div class="section" id="theme-week-documentation">
 <h2>Theme Week: Documentation</h2>
@@ -158,7 +234,7 @@
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="https://stuartcrust.com/2018/10/hacktoberfest---week-two/" class="post-title">Hacktoberfest - Week Two</a>
+                        <a href="https://stuartcrust.com/2018/10/hacktoberfest-week-two/" class="post-title">Hacktoberfest - Week Two</a>
 
                         <p class="post-meta">
                             
@@ -181,7 +257,7 @@
                         <div class="document">
 
 
-<p>Hacktoberfest week two! <a class="reference external" href="2018/10/hacktoberfest---week-one/">Week one</a> was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and <a class="reference external" href="categories/rust/">my area of interest</a>.</p>
+<p>Hacktoberfest week two! <a class="reference external" href="/2018/10/hacktoberfest-week-one/">Week one</a> was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and <a class="reference external" href="/categories/rust/">my area of interest</a>.</p>
 <p>My contribution for this week had a bit more self-interest involved; I contributed a change to <a class="reference external" href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the <a class="reference external" href="https://gohugo.io">Hugo</a> blog theme I use for this blog, to <a class="reference external" href="https://github.com/dplesca/purehugo/pull/26">normalize URLs</a> that use Hugo's <tt class="docutils literal">.Site.BaseURL</tt> variable.</p>
 <div class="section" id="the-problem">
 <h2>The Problem</h2>
@@ -230,7 +306,7 @@ Creates an absolute URL based on the configured <tt class="docutils literal">bas
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="https://stuartcrust.com/2018/10/hacktoberfest---week-one/" class="post-title">Hacktoberfest - Week One</a>
+                        <a href="https://stuartcrust.com/2018/10/hacktoberfest-week-one/" class="post-title">Hacktoberfest - Week One</a>
 
                         <p class="post-meta">
                             
