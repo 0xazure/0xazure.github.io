@@ -6,10 +6,123 @@
     <description>Recent content on stuart crust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 31 Oct 2018 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 01 Nov 2018 00:00:00 -0400</lastBuildDate>
     
         <atom:link href="https://stuartcrust.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hacktoberfest - A Month of Open Source</title>
+      <link>https://stuartcrust.com/2018/11/hacktoberfest-a-month-of-open-source/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/2018/11/hacktoberfest-a-month-of-open-source/</guid>
+      <description>&lt;div class=&#34;document&#34;&gt;
+
+
+&lt;div class=&#34;line-block&#34;&gt;
+&lt;div class=&#34;line&#34;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;img src=&#34;https://assets.digitalocean.com/ghost/2018/09/Hacktoberfest_2018_twitter_facebook1_2134x1068.png&#34; alt=&#34;&#34; class=&#34;pure-img&#34; &gt;
+&lt;p&gt;The past month has flown by so quickly. After a full month dedicated to contributing to the open source community, I want to reflect on my experiences with Hacktoberfest 2018 and write a bit about things I learned over the past month, what went well, what I would do differently next time, and a general reflection on the Hacktoberfest event itself.&lt;/p&gt;
+&lt;p&gt;First, a reflection on my goals. For the month of Hacktoberfest I wanted to make contributions to a number of different projects, and I specifically wanted to &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one&#34;&gt;contribute to at least two projects that use Rust&lt;/a&gt;. How did I do?&lt;/p&gt;
+&lt;table border=&#34;1&#34; class=&#34;docutils&#34;&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;14%&#34; /&gt;
+&lt;col width=&#34;59%&#34; /&gt;
+&lt;col width=&#34;14%&#34; /&gt;
+&lt;col width=&#34;13%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign=&#34;bottom&#34;&gt;
+&lt;tr&gt;&lt;th class=&#34;head&#34;&gt;Week&lt;/th&gt;
+&lt;th class=&#34;head&#34;&gt;Issues / Pull Requests&lt;/th&gt;
+&lt;th class=&#34;head&#34;&gt;Uses Rust?&lt;/th&gt;
+&lt;th class=&#34;head&#34;&gt;Blog Post&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign=&#34;top&#34;&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;ul class=&#34;first last simple&#34;&gt;
+&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/lk-geimfari/awesomo/pull/125&#34;&gt;https://github.com/lk-geimfari/awesomo/pull/125&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;✘&lt;/td&gt;
+&lt;td&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one&#34;&gt;Week 1&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;&lt;ul class=&#34;first last simple&#34;&gt;
+&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/26&#34;&gt;https://github.com/dplesca/purehugo/pull/26&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;✘&lt;/td&gt;
+&lt;td&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-two&#34;&gt;Week 2&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;ul class=&#34;first last simple&#34;&gt;
+&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/issues/127&#34;&gt;https://github.com/rustwasm/book/issues/127&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/128&#34;&gt;https://github.com/rustwasm/book/pull/128&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/diesel-rs/diesel/issues/1891&#34;&gt;https://github.com/diesel-rs/diesel/issues/1891&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;td&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;Week 3&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;&lt;ul class=&#34;first last simple&#34;&gt;
+&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/28&#34;&gt;https://github.com/dplesca/purehugo/pull/28&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;✘&lt;/td&gt;
+&lt;td&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-four&#34;&gt;Week 4&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;ul class=&#34;first last simple&#34;&gt;
+&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/129&#34;&gt;https://github.com/rustwasm/book/pull/129&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;td&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-five&#34;&gt;Week 5&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Total&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;2 ✔&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;In the past month, I made 4 contributions (issues or pull requests) to 2 different projects that use Rust. Ironically, I did not have the opportunity to &lt;em&gt;use&lt;/em&gt; Rust or write any code as part of those contributions as all of those contributions were in the form of documentation. However, I did still achieve the goal I had set for myself for Hacktoberfest!&lt;/p&gt;
+&lt;p&gt;I also ran some quick stats on my blog posts for this past month, as shown below:&lt;/p&gt;
+&lt;pre class=&#34;code text literal-block&#34;&gt;
+wc -w content/posts/2018/hacktoberfest-week-*.rst
+     673 content/posts/2018/hacktoberfest-week-one.rst
+     822 content/posts/2018/hacktoberfest-week-two.rst
+    1579 content/posts/2018/hacktoberfest-week-three.rst
+     514 content/posts/2018/hacktoberfest-week-four.rst
+     425 content/posts/2018/hacktoberfest-week-five.rst
+    4013 total
+&lt;/pre&gt;
+&lt;p&gt;For the month of October, I wrote a total of &lt;tt class=&#34;docutils literal&#34;&gt;4013&lt;/tt&gt; words about my contributions to open source, writing a one-time maximum of &lt;tt class=&#34;docutils literal&#34;&gt;1579&lt;/tt&gt; words during Week 3 about &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;documentation and different ways to contribute&lt;/a&gt; to open source projects.&lt;/p&gt;
+&lt;div class=&#34;section&#34; id=&#34;what-went-well&#34;&gt;
+&lt;h2&gt;What Went Well&lt;/h2&gt;
+&lt;p&gt;Overall, I think Hacktoberfest was a positive experience. I had some really great interactions with the open source community on GitHub, and all of the project maintainers were very encouraging and helpful. Special shout-out to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/sendilkumarn&#34;&gt;Sendil Kumar N&lt;/a&gt;, a member of the &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm&#34;&gt;rust-wasm&lt;/a&gt; team, for an &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/128#pullrequestreview-167612434&#34;&gt;especially warm welcome&lt;/a&gt; to the Rust and WebAssembly Book repository.&lt;/p&gt;
+&lt;p&gt;I am also happy to share that all of my pull requests were merged within the month. Hacktoberfest does not require pull requests to be merged as part of participating, only that they are created, but it was very validating that I did not have to go back to the drawing board or make many changes to my contributions for them to be accepted by the project maintainers. Hacktoberfest is definitely geared more towards small fixes and improvements, and while it is less likely to happen during an even like this I have made other contributions in the past that got tied up in &lt;a class=&#34;reference external&#34; href=&#34;https://en.wiktionary.org/wiki/bikeshedding&#34;&gt;bikeshedding&lt;/a&gt; and nitpicking such that no progress was made for weeks or months at a time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section&#34; id=&#34;what-to-do-differently&#34;&gt;
+&lt;h2&gt;What to do Differently&lt;/h2&gt;
+&lt;p&gt;Now that Hacktoberfest is over, I definitely think it was a mistake to jump around from project to project. Every time I went to make a contribution to a new project I would have to ramp up again, learning how the project is organized, where I can find existing documentation, how to successfully contribute to the project, etc. I also didn&#39;t feel like I was immersing myself in a community the way I had hoped to while participating in Hacktoberfest this year. As I have written about before, I am &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/09/a-return-to-open-source&#34;&gt;not a stranger to open source&lt;/a&gt;, so I definitely felt there was something missing this month, and I think the project-hopping contributed to this feeling.&lt;/p&gt;
+&lt;p&gt;The next time I participate in Hacktoberfest, I will be trying to focus a lot more on contributing code rather than documentation or other forms of contribution. I &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;wrote at length&lt;/a&gt; about different forms open source contributions can take during week three of Hacktoberfest and while I do not want to deemphasize the importance of things like documentation I am a programmer at heart, I genuinely enjoy writing code, and I&#39;d like to do more of that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section&#34; id=&#34;reflecting-on-hacktoberfest&#34;&gt;
+&lt;h2&gt;Reflecting on Hacktoberfest&lt;/h2&gt;
+&lt;p&gt;Hacktoberfest is a great outreach event to get more people participating in open source. There is definitely more awareness in the community the past few years about the new contributor experience, and GitHub tags like &amp;quot;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/search?q=label%3A%22help+wanted%22&#34;&gt;help wanted&lt;/a&gt;&amp;quot; and &amp;quot;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/search?q=label%3A%22hacktoberfest%22&#34;&gt;hacktoberfest&lt;/a&gt;&amp;quot; make it a lot easier for people to find projects and get involved. One of the downsides to this is sifting through all of the results to find a project of interest or an issue that details a fix or feature a new contributor might actually be able to tackle.&lt;/p&gt;
+&lt;p&gt;Which brings us to: time constraints. Hacktoberfest is a month-long event, which seems like an excessive amount of time on October 1st, but once the event moves into its last week everyone realizes how little time a month turns out to be. The Hacktoberfest &lt;a class=&#34;reference external&#34; href=&#34;https://hacktoberfest.digitalocean.com/#stats--global&#34;&gt;global stats&lt;/a&gt; bear this out: there was a pretty healthy uptick in contributions during the last few days of the event as more contributors worked towards completing their five pull requests.&lt;/p&gt;
+&lt;p&gt;These time constraints can also make people feel like they need to contribute as much as possible as quickly as possible, leading to contributions that focus on quantity over quality. Or interactions like the one I had on one of the first projects I was going to contribute to for Hacktoberfest: I indicated my interest in attempting to fix an issue, and someone else - who did not participate in the discussion on the issue or check if an issue had already been claimed - submitted a pull request ahead of me. &lt;em&gt;Twice&lt;/em&gt;. Thankfully I had not started on an implementation at that point, so I simply moved on to another project and a different contribution.&lt;/p&gt;
+&lt;p&gt;Part of the solution to this problem definitely falls to project maintainers. Creating separate issues for each contribution and assigning those issues to the claimant can resolve the ambiguity of who has priority to submit a pull request for a given issue. Also, not merging pull requests from anyone other than the claimant would go a long way to encouraging potential contributors to get involved and make sure they are taking unclaimed issues, rather than dropping off a pull request and moving on to the next contribution.&lt;/p&gt;
+&lt;p&gt;In the projects I &lt;em&gt;did&lt;/em&gt; contribute to, I had a really pleasant experience. The Rust projects in particular are very welcoming; the Rust community is well known for being friendly and inclusive and it was a pleasure to contribute to making these projects even better.&lt;/p&gt;
+&lt;p&gt;All in all, I learned a lot this Hacktoberfest, particularly about myself, the kinds of projects I&#39;m interested in, and how I personally like to contribute to open source. I&#39;m looking forward to putting those lessons into practice during next year&#39;s Hacktoberfest, as well as in the rest of my open source contributions going forward.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Hacktoberfest - Week Five</title>
