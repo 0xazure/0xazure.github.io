@@ -6,10 +6,53 @@
     <description>Recent content on stuart crust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Nov 2018 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 04 Nov 2018 00:00:00 -0400</lastBuildDate>
     
         <atom:link href="https://stuartcrust.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Open Source Level Up: Becoming a Maintainer</title>
+      <link>https://stuartcrust.com/2018/11/open-source-level-up-becoming-a-maintainer/</link>
+      <pubDate>Sun, 04 Nov 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/2018/11/open-source-level-up-becoming-a-maintainer/</guid>
+      <description>
+
+&lt;p&gt;After a &lt;a href=&#34;https://stuartcrust.com/2018/11/hacktoberfest-a-month-of-open-source&#34;&gt;month of open source&lt;/a&gt; following my &lt;a href=&#34;https://stuartcrust.com/2018/09/a-return-to-open-source&#34;&gt;return to open source&lt;/a&gt;, the next step in my journey is to really immerse myself in one or two projects and start making larger contributions. The open source course I&amp;rsquo;m taking is encouraging us to complete contributions to three &amp;ldquo;external&amp;rdquo; open source projects over the next 5 weeks, as well as make three contributions to &amp;ldquo;internal&amp;rdquo; projects during the same period. In this case, &amp;ldquo;external&amp;rdquo; refers to established projects in the open source community and &amp;ldquo;internal&amp;rdquo; refers to projects we as a class are starting ourselves to get a feel for being core maintainers of a project so we can gain experience on both sides of the process. As a class we had a brainstorming session to come up with ideas for internal projects we could start, and I donated one of my existing side-projects to the list, which has lead to&amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;level-up&#34;&gt;Level Up!&lt;/h2&gt;
+
+&lt;p&gt;With absolutely zero fanfare, hoops to jump through, or documents to sign, I suddenly became the initial maintainer of one of our course&amp;rsquo;s internal projects. I was able to generate enough interest in my side-project that members of my class wanted to contribute, and the project was added to the official list of internal projects. The amazing thing about open source development is you don&amp;rsquo;t need anyone&amp;rsquo;s permission or to be told to create something; if you have an idea and enough people are interested in using and/or growing that idea, you have an open source project. The project itself grows in a very organic way as people find out about the project and drop in to see what&amp;rsquo;s going on. Some people just drop in and perhaps contribute a little bit or share their use-case for the project, while others get started and then decide to stick around for a long time; that is the nature of open source.&lt;/p&gt;
+
+&lt;h2 id=&#34;supernova&#34;&gt;supernova&lt;/h2&gt;
+
+&lt;p&gt;The project I am maintaining is &lt;a href=&#34;https://github.com/0xazure/supernova&#34;&gt;&lt;code&gt;0xazure/supernova&lt;/code&gt;&lt;/a&gt;, and I would really encourage you to come check us out! We&amp;rsquo;re still in the early stages, but we would encourage any and all to take a look at what we&amp;rsquo;re building, make comments and submit issues or pull requests, and give us feedback. Even though it has been deemed an &amp;ldquo;internal&amp;rdquo; project for the course, we still welcome contributions from anyone who wants to get involved so stop by and &lt;a href=&#34;https://github.com/0xazure/supernova/issues/new&#34;&gt;file an issue&lt;/a&gt; if you have any questions.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;supernova&lt;/code&gt; started out as a learning project for me to improve my understanding of the &lt;a href=&#34;https://www.rust-lang.org&#34;&gt;Rust&lt;/a&gt; programming language, a {,de}serializing library written in Rust called &lt;a href=&#34;https://serde.rs/&#34;&gt;Serde&lt;/a&gt;, and the &lt;a href=&#34;https://developer.github.com/v3/&#34;&gt;GitHub API&lt;/a&gt;. I am a project-oriented learner, so whenever I have some tools and techniques I&amp;rsquo;d like to learn or improve, I start a project that tries to use them so I can have a better understanding of their strengths and weaknesses. The initial implementation as a CLI tool was designed to pull &lt;a href=&#34;https://developer.github.com/v3/activity/starring/#list-repositories-being-starred&#34;&gt;stars data&lt;/a&gt; from the GitHub API and display it in a formatted list. I have a tendency to use stars like I would bookmarks so I have accumulated a lot of stars since I joined GitHub, but I have no great way to view all of my stars in one place (GitHub insists on paginating the list) or export them in various formats. &lt;code&gt;supernova&lt;/code&gt; was only added to the internal projects list a week ago, but we already have &lt;a href=&#34;https://github.com/0xazure/supernova/issues?utf8=✓&amp;amp;q=is%3Aissue+is%3Aopen+created%3A&amp;lt;2018-11-04&#34;&gt;a number of open issues&lt;/a&gt; to start growing &lt;code&gt;supernova&lt;/code&gt;&amp;rsquo;s feature set.&lt;/p&gt;
+
+&lt;h2 id=&#34;first-week&#34;&gt;First Week&lt;/h2&gt;
+
+&lt;p&gt;In the first week we&amp;rsquo;ve been focusing on a lot of the low-hanging fruit for a new open source project: setting up the project infrastructure and documenting what we already have.&lt;/p&gt;
+
+&lt;p&gt;There are currently a few open issues for writing docs:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/0xazure/supernova/issues/4&#34;&gt;0xazure/supernova#4&lt;/a&gt; - Update the Readme&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/0xazure/supernova/issues/7&#34;&gt;0xazure/supernova#7&lt;/a&gt; - Create contributing guidelines&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;as well as the ever-present need to &lt;a href=&#34;https://doc.rust-lang.org/book/second-edition/ch14-02-publishing-to-crates-io.html#making-useful-documentation-comments&#34;&gt;document existing code&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Within the first week we&amp;rsquo;ve also &lt;a href=&#34;https://github.com/0xazure/supernova/pull/9&#34;&gt;set up and enabled&lt;/a&gt; TravisCI for testing and &lt;a href=&#34;https://github.com/rust-lang-nursery/rust-clippy&#34;&gt;linting&lt;/a&gt; our codebase thanks to &lt;a href=&#34;https://github.com/SeanPrashad&#34;&gt;Sean Prashad&lt;/a&gt; and made &lt;code&gt;supernova&lt;/code&gt; more accessible to new contributors by &lt;a href=&#34;https://github.com/0xazure/supernova/pull/15&#34;&gt;converting existing documentation to Markdown&lt;/a&gt; thanks to &lt;a href=&#34;https://github.com/Mordax&#34;&gt;Mordax&lt;/a&gt;. I really enjoyed landing these contributions; it&amp;rsquo;s really exciting to see something I started as a side-project to get better at writing &lt;a href=&#34;https://www.rust-lang.org&#34;&gt;Rust&lt;/a&gt; grow and take on a life of its own.&lt;/p&gt;
+
+&lt;h2 id=&#34;next-week&#34;&gt;Next Week&lt;/h2&gt;
+
+&lt;p&gt;In the next week or so we hope to have a lot of the initial set up completed so that we can move on to adding functionality. My personal goal for next week is to submit a pull request for &lt;a href=&#34;https://github.com/0xazure/supernova/issues/16&#34;&gt;improving the usability of &lt;code&gt;supernova&lt;/code&gt;&lt;/a&gt; by following Guideline #2 of &lt;a href=&#34;https://medium.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46&#34;&gt;12 Factor CLI Apps&lt;/a&gt; to &amp;ldquo;prefer flags to args&amp;rdquo; to make input to the CLI more explicit and clear, as well as many other usability benefits.&lt;/p&gt;
+
+&lt;p&gt;I also need to start thinking about what external project(s) I want to contribute to over the next few weeks; I have some ideas from my contributions during Hackoberfest, but I&amp;rsquo;ll need to make a decision soon so I can get set up to contribute.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hacktoberfest - A Month of Open Source</title>

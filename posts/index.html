@@ -83,6 +83,66 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">04 Nov 2018</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://stuartcrust.com/2018/11/open-source-level-up-becoming-a-maintainer/" class="post-title">Open Source Level Up: Becoming a Maintainer</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
+                                
+                                    <a class="post-category post-category-supernova" href='https://stuartcrust.com/categories/supernova'>supernova</a>
+                                
+                                    <a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
+                                
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>After a <a href="/2018/11/hacktoberfest-a-month-of-open-source">month of open source</a> following my <a href="/2018/09/a-return-to-open-source">return to open source</a>, the next step in my journey is to really immerse myself in one or two projects and start making larger contributions. The open source course I&rsquo;m taking is encouraging us to complete contributions to three &ldquo;external&rdquo; open source projects over the next 5 weeks, as well as make three contributions to &ldquo;internal&rdquo; projects during the same period. In this case, &ldquo;external&rdquo; refers to established projects in the open source community and &ldquo;internal&rdquo; refers to projects we as a class are starting ourselves to get a feel for being core maintainers of a project so we can gain experience on both sides of the process. As a class we had a brainstorming session to come up with ideas for internal projects we could start, and I donated one of my existing side-projects to the list, which has lead to&hellip;</p>
+
+<h2 id="level-up">Level Up!</h2>
+
+<p>With absolutely zero fanfare, hoops to jump through, or documents to sign, I suddenly became the initial maintainer of one of our course&rsquo;s internal projects. I was able to generate enough interest in my side-project that members of my class wanted to contribute, and the project was added to the official list of internal projects. The amazing thing about open source development is you don&rsquo;t need anyone&rsquo;s permission or to be told to create something; if you have an idea and enough people are interested in using and/or growing that idea, you have an open source project. The project itself grows in a very organic way as people find out about the project and drop in to see what&rsquo;s going on. Some people just drop in and perhaps contribute a little bit or share their use-case for the project, while others get started and then decide to stick around for a long time; that is the nature of open source.</p>
+
+<h2 id="supernova">supernova</h2>
+
+<p>The project I am maintaining is <a href="https://github.com/0xazure/supernova"><code>0xazure/supernova</code></a>, and I would really encourage you to come check us out! We&rsquo;re still in the early stages, but we would encourage any and all to take a look at what we&rsquo;re building, make comments and submit issues or pull requests, and give us feedback. Even though it has been deemed an &ldquo;internal&rdquo; project for the course, we still welcome contributions from anyone who wants to get involved so stop by and <a href="https://github.com/0xazure/supernova/issues/new">file an issue</a> if you have any questions.</p>
+
+<p><code>supernova</code> started out as a learning project for me to improve my understanding of the <a href="https://www.rust-lang.org">Rust</a> programming language, a {,de}serializing library written in Rust called <a href="https://serde.rs/">Serde</a>, and the <a href="https://developer.github.com/v3/">GitHub API</a>. I am a project-oriented learner, so whenever I have some tools and techniques I&rsquo;d like to learn or improve, I start a project that tries to use them so I can have a better understanding of their strengths and weaknesses. The initial implementation as a CLI tool was designed to pull <a href="https://developer.github.com/v3/activity/starring/#list-repositories-being-starred">stars data</a> from the GitHub API and display it in a formatted list. I have a tendency to use stars like I would bookmarks so I have accumulated a lot of stars since I joined GitHub, but I have no great way to view all of my stars in one place (GitHub insists on paginating the list) or export them in various formats. <code>supernova</code> was only added to the internal projects list a week ago, but we already have <a href="https://github.com/0xazure/supernova/issues?utf8=✓&amp;q=is%3Aissue+is%3Aopen+created%3A&lt;2018-11-04">a number of open issues</a> to start growing <code>supernova</code>&rsquo;s feature set.</p>
+
+<h2 id="first-week">First Week</h2>
+
+<p>In the first week we&rsquo;ve been focusing on a lot of the low-hanging fruit for a new open source project: setting up the project infrastructure and documenting what we already have.</p>
+
+<p>There are currently a few open issues for writing docs:</p>
+
+<ul>
+<li><a href="https://github.com/0xazure/supernova/issues/4">0xazure/supernova#4</a> - Update the Readme</li>
+<li><a href="https://github.com/0xazure/supernova/issues/7">0xazure/supernova#7</a> - Create contributing guidelines</li>
+</ul>
+
+<p>as well as the ever-present need to <a href="https://doc.rust-lang.org/book/second-edition/ch14-02-publishing-to-crates-io.html#making-useful-documentation-comments">document existing code</a>.</p>
+
+<p>Within the first week we&rsquo;ve also <a href="https://github.com/0xazure/supernova/pull/9">set up and enabled</a> TravisCI for testing and <a href="https://github.com/rust-lang-nursery/rust-clippy">linting</a> our codebase thanks to <a href="https://github.com/SeanPrashad">Sean Prashad</a> and made <code>supernova</code> more accessible to new contributors by <a href="https://github.com/0xazure/supernova/pull/15">converting existing documentation to Markdown</a> thanks to <a href="https://github.com/Mordax">Mordax</a>. I really enjoyed landing these contributions; it&rsquo;s really exciting to see something I started as a side-project to get better at writing <a href="https://www.rust-lang.org">Rust</a> grow and take on a life of its own.</p>
+
+<h2 id="next-week">Next Week</h2>
+
+<p>In the next week or so we hope to have a lot of the initial set up completed so that we can move on to adding functionality. My personal goal for next week is to submit a pull request for <a href="https://github.com/0xazure/supernova/issues/16">improving the usability of <code>supernova</code></a> by following Guideline #2 of <a href="https://medium.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46">12 Factor CLI Apps</a> to &ldquo;prefer flags to args&rdquo; to make input to the CLI more explicit and clear, as well as many other usability benefits.</p>
+
+<p>I also need to start thinking about what external project(s) I want to contribute to over the next few weeks; I have some ideas from my contributions during Hackoberfest, but I&rsquo;ll need to make a decision soon so I can get set up to contribute.</p>
+
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">01 Nov 2018</h1>
                 <section class="post">
                     <header class="post-header">
@@ -768,42 +828,20 @@ Good programmers, coders, and software engineers (depending on how you identify)
                     </div>
                 </section>
                 
-                <h1 class="content-subhead">13 Sep 2018</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://stuartcrust.com/2018/09/third-times-the-charm/" class="post-title">Third Time&#39;s The Charm</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                
-                                    <a class="post-category post-category-writing" href='https://stuartcrust.com/categories/writing'>writing</a>
-                                
-                                    <a class="post-category post-category-hugo" href='https://stuartcrust.com/categories/hugo'>hugo</a>
-                                
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <div class="document">
-
-
-<p>I've been meaning to start blogging for a while. Not even blogging <em>consistently</em>, just writing some long-form-ish pieces on projects that I've been working on, things I've learned, or things that I might want for my own reference. I've tried at least twice before - once when I purchased this domain back in December of <em>2013</em> and again at the end of 2016 - and as evidenced by the utter lack of content it's pretty clear I haven't been successful.</p>
-<p>I made a real attempt to begin publishing at the end of 2016 with the release of that year's <a class="reference external" href="http://adventofcode.com/2016/">Advent of Code</a>, but coursework kept me pretty busy and I never managed to finish and publish any of the posts I was working on at the time. I'll probably revisit some of them, clean them up, and post them - if I still remember what I was writing about - and the rest I may throw into a backlog so that if I ever run into a similar topic again I can incorporate my draft.</p>
-<p>The reason I'm giving it another try now is I'm taking a course that specifically focuses on open source and includes a requirement that the students blog about their work and experiences as they gain exposure to the open source community. I'm <a class="reference external" href="https://github.com/0xazure">not exactly a stranger</a> to open source work, but I haven't had time to be as active as I would like to be so this course is giving me a good excuse to commit more time to getting involved and getting my hands dirty with some contributions.</p>
-<p>On the technical side, this site is built using the static site generator <a class="reference external" href="https://gohugo.io/">Hugo</a>. I've been learning a lot about the ins and outs of Hugo's project structure as I set this blog up, but so far I'm pretty happy with the results. Hugo is written in <a class="reference external" href="https://golang.org/">Go</a>, the Google-sponsored C/++ replacement, and Hugo has a very active community that keeps improving the project.</p>
-<p>One issue that I did run into was some confusion over themes in Hugo. Each Hugo site has a <tt class="docutils literal">config.toml</tt> that sets parameters for how the static site content should be generated. Those parameters also include information like social media links that get embedded in certain parts of the Hugo theme that structures the site content and controls the look and feel. Unfortunately, there don't seem to be standard keys for many of these parameters, so the key name for your GitHub or StackOverflow account information needs to be updated if you decide to change your site theme. You can see some of the work I had to do <a class="reference external" href="https://github.com/0xazure/0xazure/commit/ed9a74d58acbcd49f0be613cfd14dbefb725a842">in this commit</a> to update these values when I changed my theme from <a class="reference external" href="https://github.com/zyro/hyde-x">hyde-x</a> to <a class="reference external" href="https://github.com/dplesca/purehugo">purehugo</a>.</p>
-<p>I've been keeping my eye on other static site generators as well, but Hugo is very popular and has a lot of great community contributions and support so I'll be using it for a while yet. Now that things are up and running I might take a stab at customizing my theme a little bit more, an opportunity I wouldn't have if Hugo and its public themes weren't open source. Where many static site generators use things like <a class="reference external" href="http://handlebarsjs.com/">Handlebars</a> or <a class="reference external" href="https://shopify.github.io/liquid/">Liquid</a> for templating, Hugo actually delegates straight to the built-in <a class="reference external" href="https://golang.org/pkg/text/template/">text.template</a> package in Go. This makes it immediately familiar to most Go developers, but I haven't had the opportunity to use Go much - especially recently - so I'll likely be spending a lot of time reading the documentation.</p>
-<p>Hopefully this third attempt will be the one that sticks. Stay tuned for more posts on topics including <a class="reference external" href="/categories/open-source">open source</a>, <a class="reference external" href="/categories/nodejs">NodeJS</a>, <a class="reference external" href="/categories/rust">Rust</a>, <a class="reference external" href="/categories/functional-programming">functional programming</a>, and anything else I might get up to.</p>
-</div>
-                    </div>
-                </section>
-                
             </div>
             
+<div class="pagination">
+  <nav role="pagination" class="post-list-pagination">
+      
+    <span class="post-list-pagination-item post-list-pagination-item-current">Page 1 of 2</span>
+    
+      <a href="/posts/page/2/" class="post-list-pagination-item pure-button post-list-pagination-item-next">
+        Older&nbsp;<i class="fa fa-angle-double-right"></i>
+      </a>
+    
+  </nav>
+</div>
+
 
             <div class="footer">
     <div class="pure-menu pure-menu-horizontal pure-menu-open">
