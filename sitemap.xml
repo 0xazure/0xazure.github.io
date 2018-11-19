@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://stuartcrust.com/2018/11/improving-cli-ergonomics/</loc>
+    <lastmod>2018-11-11T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://stuartcrust.com/2018/11/open-source-level-up-becoming-a-maintainer/</loc>
     <lastmod>2018-11-04T00:00:00-04:00</lastmod>
   </url>
@@ -112,13 +117,13 @@
   
   <url>
     <loc>https://stuartcrust.com/categories/open-source/</loc>
-    <lastmod>2018-11-04T00:00:00-04:00</lastmod>
+    <lastmod>2018-11-11T00:00:00-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://stuartcrust.com/posts/</loc>
-    <lastmod>2018-11-04T00:00:00-04:00</lastmod>
+    <lastmod>2018-11-11T00:00:00-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -130,7 +135,7 @@
   
   <url>
     <loc>https://stuartcrust.com/categories/rust/</loc>
-    <lastmod>2018-11-04T00:00:00-04:00</lastmod>
+    <lastmod>2018-11-11T00:00:00-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -148,7 +153,7 @@
   
   <url>
     <loc>https://stuartcrust.com/categories/supernova/</loc>
-    <lastmod>2018-11-04T00:00:00-04:00</lastmod>
+    <lastmod>2018-11-11T00:00:00-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -165,7 +170,7 @@
   
   <url>
     <loc>https://stuartcrust.com/</loc>
-    <lastmod>2018-11-04T00:00:00-04:00</lastmod>
+    <lastmod>2018-11-11T00:00:00-05:00</lastmod>
     <priority>0</priority>
   </url>
   

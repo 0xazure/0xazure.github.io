@@ -7,7 +7,7 @@
 
     <meta name="description" content="a constant work in progress">
 
-    <meta name="generator" content="Hugo 0.50" />
+    <meta name="generator" content="Hugo 0.51" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="stuart crust &middot; stuart crust">
@@ -82,6 +82,127 @@
         <div>
             
             <div class="posts">
+                
+                <h1 class="content-subhead">11 Nov 2018</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://stuartcrust.com/2018/11/improving-cli-ergonomics/" class="post-title">Improving CLI Ergonomics</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a><a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a><a class="post-category post-category-supernova" href='https://stuartcrust.com/categories/supernova'>supernova</a>
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>In my day-to-day, I use <em>a lot</em> of command-line tools.
+I generally find myself to be much more productive working in a non-GUI environment, mostly down to the fact that I can type much faster than I can move and aim a mouse and the less time I spend switching between keyboard and mouse the more time I can spend typing.
+Unfortunately, command-line tools have one major drawback: discoverability.
+If I am given a GUI application, I can click around, hover over different UI elements, and generally get a feel for how the interface is laid out.
+In a command-line tool, I don&rsquo;t have any of these visual cues to help me learn the functionality; I have to start typing and see what happens.
+To supplement this lack of visual cues, good command-line tools generally have autocomplete snippets for your shell so you can type the command name and start hitting <code>TAB</code> to see what options are available at a particular time, as well as extensive <code>man</code> pages that describe all the various options, commands, and any sub-commands (though these <code>man</code> pages are often extraordinarily verbose and rarely provide useful examples of how the tool is commonly used, so <a href="https://tldr.sh/">alternatives such as <code>tldr</code></a> fill this gap).</p>
+
+<p>I want <a href="https://github.com/0xazure/supernova"><code>supernova</code></a> to be a good command-line tool, so I have been thinking about ways to improve discoverability and make the tool easier to use.
+A really interesting post by <a href="https://twitter.com/jdxcode">Jeff Dickey</a>, an engineer at Heroku, crossed my timeline recently titled <a href="https://medium.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46">12 Factor CLI Apps</a>
+In his post, Jeff provides twelve principles to guide CLI design in a similar fashion to Heroku&rsquo;s original <a href="https://12factor.net/">Twelve-Factor App</a> methodology.
+Out of the twelve principles, Principle 2 stood out to me, particularly in the context of <code>supernova</code>; Jeff suggests to &ldquo;prefer flags to args&rdquo; when designing a CLI.
+He says:</p>
+
+<blockquote>
+<p>Sometimes args are just fine though when the argument is obvious such as <code>$rm file_to_remove</code>. A good rule of thumb is 1 type of argument is fine, 2 types are very suspect, and 3 are never good.</p>
+</blockquote>
+
+<p>This rule of thumb got me thinking about <code>supernova</code>&rsquo;s current calling convention.
+Currently, you would use <code>supernova</code> like this:</p>
+
+<pre><code class="language-sh">$ supernova &lt;username&gt; [&lt;auth-token&gt;]
+</code></pre>
+
+<p>This violates Jeff&rsquo;s rule of thumb because <code>&lt;username&gt;</code> and <code>&lt;auth-token&gt;</code> are not the same type of argument, and it&rsquo;s arguably even worse because the <code>&lt;auth-token&gt;</code> is optional here.</p>
+
+<p>I opened <a href="https://github.com/0xazure/supernova/issues/16"><code>0xazure/supernova#16</code></a> to track this problem with our current calling convention.
+In it, I suggest using the <a href="https://crates.io/crates/clap">clap</a> crate to improve our CLI and provide the facilities to do command-line argument parsing.</p>
+
+<h2 id="introducing-clap">Introducing Clap</h2>
+
+<p>Clap is a great crate that makes it super easy to add all kinds of CLI goodies to your command-line tool including auto-generated help, version, and usage information which are all, as Jeff highlights in Principle 1: Great help is essential, important to good CLIs.</p>
+
+<p>Adding clap to the project would check off Principles 1 &amp; 2, so I went ahead and <a href="https://github.com/0xazure/supernova/pull/19">created a pull request</a> to add clap and improve <code>supernova</code>&rsquo;s calling convention. All that was necessary was to create a new clap-based <code>App</code> with the desired arguments and flags, provide good help messages, and set <code>&lt;auth-token&gt;</code> to be an optional argument.
+Having done all that, this is what clap generates, all for 13 lines of code:</p>
+
+<pre><code class="language-text">$ supernova --help
+supernova 0.1.0
+
+USAGE:
+    supernova [OPTIONS] &lt;USERNAME&gt;
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -t, --token &lt;TOKEN&gt;    Sets the authentication token for requests to GitHub
+
+ARGS:
+    &lt;USERNAME&gt;    The user whose stars to collect
+</code></pre>
+
+<p>Clap will print the name as well as the version with every <code>--help</code> request.
+I was a little wary of this at first, because while I definitely want to include this information in my CLI, I also don&rsquo;t want the maintenance burden of having to remember to update the version string in <code>main.rs</code> every time a new version is published.
+However, clap exposes some <a href="https://docs.rs/clap/2.32.0/clap/#macros">very handy macros</a> that make use of environment variables <a href="https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates">exported by <code>cargo</code></a> at build time to pull this information out of <code>Cargo.toml</code>, so these values will always be up to date with the crate&rsquo;s metadata and don&rsquo;t require setting the values in code.</p>
+
+<p>To actually extract all of the parsed arguments from clap, we call <a href="https://docs.rs/clap/2.32.0/clap/struct.App.html#method.get_matches"><code>App::get_matches()</code></a> which produces an <a href="https://docs.rs/clap/2.32.0/clap/struct.ArgMatches.html"><code>ArgMatches</code></a> struct we can query for specific arguments by name. Instead of parsing out each argument, I decided to try my hand at implementing the <code>From</code> trait to convert <code>ArgMatches</code> into <code>supernova</code>&rsquo;s <code>Config</code> type so it can be passed directly to the next function call.</p>
+
+<h2 id="traits-in-rust">Traits in Rust</h2>
+
+<p>Before I talk about implementing the <code>From</code> trait, I want to quickly talk about what traits actually are, as well as why I chose to implement <code>From</code> instead of one of the other conversion traits.</p>
+
+<p>The Rust Book <a href="https://doc.rust-lang.org/book/second-edition/ch10-02-traits.html#traits-defining-shared-behavior">explains traits like this</a>:</p>
+
+<blockquote>
+<p>A <em>trait</em> tells the Rust compiler about functionality a particular type has and can share with other types. We can use traits to define shared behavior in an abstract way.</p>
+</blockquote>
+
+<p>If you are familiar with the idea of <em>interfaces</em> in other languages such as Java or Go, traits are a very similar idea.</p>
+
+<p>There is an important caveat with traits.
+Again, from the Rust Book, <a href="https://doc.rust-lang.org/book/second-edition/ch10-02-traits.html#implementing-a-trait-on-a-type">Chapter 10.2, <em>Implementing a Trait on a Type</em></a>:</p>
+
+<blockquote>
+<p>One restriction to note with trait implementations is that we can implement a trait on a type only if either the trait or the type is local to our crate.</p>
+</blockquote>
+
+<p>This means that I will need to implement my conversion on a type that I control, <code>Config</code>, to convert between <code>ArgMatches</code> and <code>Config</code>.</p>
+
+<p>The restriction on traits is very interesting, because while it is not necessary in my case it raises the question of how to convert from types that I do control into types defined in the standard library or in other crates.
+If I wanted to convert a <code>Config</code> object into a <code>String</code> for example, it might make sense to use the conveniently named <a href="https://doc.rust-lang.org/std/convert/trait.Into.html"><code>Into</code> trait</a>.
+However, the documentation for <code>Into</code> states:</p>
+
+<blockquote>
+<p>Library authors should not directly implement this trait, but should prefer implementing the <code>From</code> trait, which offers greater flexibility and provides an equivalent <code>Into</code> implementation for free, thanks to a blanket implementation in the standard library.</p>
+</blockquote>
+
+<p>So, instead of implementing <code>Into</code>, I should implement the conversion of <code>Config</code> <strong>from</strong> <code>String</code>, and I get the equivalent <code>Into</code> implementation for free?
+It seems a bit backwards since we are defining a trait that converts in the <em>opposite</em> direction of our needs, but because of this blanket implementation in the standard library we get symmetric conversions between types for free as long as we implement <code>From</code> on the type.
+That means we only have to write the conversion function once instead of needing to write it once in each direction, and I&rsquo;m definitely in favour of anything that reduces the amount of code I need to write.</p>
+
+<h2 id="the-from-trait">The <code>From</code> Trait</h2>
+
+<p>Actually implementing the <code>From</code> trait was straight-forward, other than the <a href="https://github.com/0xazure/supernova/pull/19/files#diff-b4aea3e418ccdb71239b96952d9cddb6R27">necessary addition of a lifetime annotation</a> because of how <code>ArgMatches</code> is implemented on clap&rsquo;s side.
+Implementing <code>From</code> also let me replace another method in <code>Config</code> which reduces the surface area of <code>Config</code>&rsquo;s implementation.</p>
+
+<p>I&rsquo;m not totally happy with implementing <code>From</code> on <code>Config</code> because I had to pull clap into the library side of <code>supernova</code> instead of leaving arguments parsing completely in <code>main</code>, so I may go back and change this implementation to provide better separation between data and arguments parsing.
+Or I may decide to move <code>Config</code> out to its own module which would also increase separation of concerns.
+Either way, I was very happy to get my hands back on the keyboard writing Rust code this week, and I hope to be writing more in the near future!</p>
+
+                    </div>
+                </section>
                 
                 <h1 class="content-subhead">04 Nov 2018</h1>
                 <section class="post">
@@ -650,105 +771,6 @@ found <span class="literal number">6</span> vulnerabilities <span class="operato
 <p>One of the most important parts of the audit output is the path. This shows how the project and the vulnerable package are related, and is a subset of the total dependency graph for the project. This is really useful if there is no clear update path for the package your project depends on directly and you need to report (or ideally, submit a pull request) that a dependency in one of your direct dependencies should update one (or more) of its packages. Without this information clearly displayed, you would spend a lot of time chasing dependencies down by manually reviewing <tt class="docutils literal">package.json</tt> and <tt class="docutils literal"><span class="pre">package-lock.json</span></tt> files trying to figure out who needed to update their dependencies so you can update yours.</p>
 <p>In the case of Filer we're pretty lucky: not only are all of the vulnerable packages related to a single direct dependency, but that dependency is one that is only used during development; resolving the problems is a simple as updating to <tt class="docutils literal">karma&#64;3.0.0</tt>. Since this is a simple resolution, we could either run <tt class="docutils literal">npm audit fix</tt> and have <tt class="docutils literal">npm</tt> take care of the version updates for us, or we can update the <tt class="docutils literal">karma</tt> version in our <tt class="docutils literal">package.json</tt> and install the updated package.</p>
 <p>After updating <tt class="docutils literal">karma</tt>, re-running <tt class="docutils literal">npm audit</tt> to ensure we haven't introduced any new vulnerabilities, and running the project's tests to ensure we haven't accidentally broken any functionality, we should take the time to contribute this fix <a class="reference external" href="https://github.com/filerjs/filer/pull/385">back to the main project</a>. The fix was small and simple, but security is everyone's responsiblity; if you notice a project using outdated or vulnerable packages, take some time to help the maintainers out by submitting a pull request. Also, projects should consider looking into automating the process of keeping project dependencies up to date through various tools like <a class="reference external" href="https://greenkeeper.io/">Greenkeeper</a> and <a class="reference external" href="https://snyk.io/">Snyk</a>, which is a conversation <a class="reference external" href="https://github.com/filerjs/filer/issues/386">you can start</a> in your project today!</p>
-</div>
-</div>
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">13 Sep 2018</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://stuartcrust.com/2018/09/filesystem-events-in-nodejs/" class="post-title">Filesystem Events in NodeJS</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a><a class="post-category post-category-nodejs" href='https://stuartcrust.com/categories/nodejs'>nodejs</a><a class="post-category post-category-event-based programming" href='https://stuartcrust.com/categories/event-based%20programming'>event-based programming</a>
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <div class="document">
-
-
-<p>I have a personal interest in <a class="reference external" href="https://en.wikipedia.org/wiki/Automation">automation</a>, mostly because I believe that we should be trying to offload everything we possibly can onto computing systems so that we can spend our time thinking about interesting problems rather than manually repeating the same tasks over and over again.
-Good programmers, coders, and software engineers (depending on how you identify) should be trying to automate as much of their jobs as possible for all kinds of reasons: to help mitigate the <a class="reference external" href="https://en.wikipedia.org/wiki/Bus_factor">bus factor</a>, to get rid of boring and repetitive parts of their jobs, and even to better document internal and external processes (if the process has been put into code - especially well-commented code - that is a form of documentation about the process!) that can then be tracked and versioned in a version control system.</p>
-<div class="section" id="the-programming-loop">
-<h2>The Programming Loop</h2>
-<p>Why am I talking about automation when the title of this post is about filesystem events? Before we talk about those kinds of events, we need to take a look at a simplified but typical example of the programming loop when writing code. Such a loop might look something like the following:</p>
-<ol class="arabic simple">
-<li>Make a change to some code</li>
-<li>Check the editor or IDE for feedback about the code you just wrote</li>
-<li>Run tools that check for programming errors, outright bugs, and stylistic errors</li>
-<li>Run the project's tests (the project <em>has</em> tests, right?)</li>
-<li>Review tool and test feedback, and resolve issues</li>
-<li>Return to Step 1 and repeat</li>
-</ol>
-<p>That's a lot to do every time the code changes, but the tools are there to help write better code and catch a lot of little or subtle issues that people aren't as good at noticing as computers can be. To take advantage of all of these tools and their output, we want to make this loop from writing some code to reviewing feedback as quick as possible so the programmer isn't waiting around for feedback, gets annoyed at how long the process takes, and stops using the tools. Some projects also use a lot of different tools, and it can be a lot to remember how to run each tool individually and what command line arguments are required for the current project.</p>
-<p>Instead of having to remember all this information, it would be great to have to remember fewer commands to get feedback from all the tools. Automation to the rescue! Instead of running each tool separately ourselves, we can use a tool that runs other tools; in this case we want to use a task runner. <tt class="docutils literal">make</tt> is a well-known tool for automating this process, and can be used for many different kinds of projects:</p>
-<blockquote>
-<p>C programs [...] are most common, but you can use <em>make</em> with any programming language whose compiler can be run with a shell command. In fact, <em>make</em> is not limited to programs. You can use it to describe any task where some files must be updated automatically from others whenever the others change.</p>
-<p class="attribution">&mdash;<a class="reference external" href="https://linux.die.net/man/1/make">make manpage</a></p>
-</blockquote>
-<p>Using a tool like <tt class="docutils literal">make</tt> can simplify the loop to something like the following:</p>
-<ol class="arabic simple">
-<li>Make a change to some code</li>
-<li>Run <tt class="docutils literal">make</tt></li>
-<li>Review tool and test feedback from each tool that <tt class="docutils literal">make</tt> runs, and resolve issues</li>
-<li>Return to Step 1 and repeat</li>
-</ol>
-<p>This significantly reduces the steps the programmer has to take every time they make a change as well as the number of commands they need to remember: all they have to do is run <tt class="docutils literal">make</tt>! But do we really need to remember to run a command? Is there some way that we can have <tt class="docutils literal">make</tt> or something like it run whenever we make a change to the code?</p>
-</div>
-<div class="section" id="enter-filesystem-events">
-<h2>Enter: Filesystem Events</h2>
-<p>Filesystem events are a great way to trigger other tasks. Other kinds of task runners such as <a class="reference external" href="https://gruntjs.com/">grunt</a> and <a class="reference external" href="https://gulpjs.com/">gulp</a> in NodeJS, as well as <a class="reference external" href="https://guardgem.org/">guard</a> in Ruby, let the programmer set up a process to &quot;watch&quot; individual files or entire directories for changes. When a file changes, these task runners pick up the change and perform whatever tasks the programmer has specified.</p>
-<p>NodeJS core exposes this functionality to the JavaScript runtime through functions in the <a class="reference external" href="https://nodejs.org/api/fs.html">fs module</a>. These functions include:</p>
-<ul class="simple">
-<li><a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener">fs.watch()</a></li>
-<li><a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener">fs.watchFile()</a></li>
-<li><a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_unwatchfile_filename_listener">fs.unwatchFile()</a></li>
-</ul>
-<p>These functions respond to changes in the filesystem and communicate data about the detected changed file back to their listener functions.</p>
-</div>
-<div class="section" id="a-simple-example">
-<h2>A Simple Example</h2>
-<p>The following is an example of how to use the <tt class="docutils literal">fs.watch()</tt> function in NodeJS. This is the recommended function to use because it supports single files as well as directories where <tt class="docutils literal">fs.watchFile()</tt> only watches individual files, and it is <a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener">more efficient</a> than both <tt class="docutils literal">fs.watchFile()</tt> and <tt class="docutils literal">fs.unwatchFile()</tt>.</p>
-<pre class="code js literal-block">
-<span class="literal string single">'use strict'</span> <span class="comment single">// enforce JavaScript strict mode
-</span>
-<span class="keyword reserved">const</span> <span class="name other">fs</span> <span class="operator">=</span> <span class="name other">require</span><span class="punctuation">(</span><span class="literal string single">'fs'</span><span class="punctuation">);</span> <span class="comment single">// import the core module
-</span>
-<span class="keyword reserved">const</span> <span class="name other">path</span> <span class="operator">=</span> <span class="literal string single">'.'</span> <span class="comment single">// start watching in the current directory
-</span>
-<span class="name other">fs</span><span class="punctuation">.</span><span class="name other">watch</span><span class="punctuation">(</span><span class="name other">path</span><span class="punctuation">,</span> <span class="punctuation">(</span><span class="name other">eventType</span><span class="punctuation">,</span> <span class="name other">filename</span><span class="punctuation">)</span> <span class="punctuation">=&gt;</span> <span class="punctuation">{</span>
-    <span class="keyword">if</span> <span class="punctuation">(</span><span class="name other">eventType</span> <span class="operator">===</span> <span class="literal string single">'change'</span><span class="punctuation">)</span> <span class="punctuation">{</span>
-        <span class="name other">console</span><span class="punctuation">.</span><span class="name other">log</span><span class="punctuation">(</span><span class="literal string backtick">`</span><span class="literal string interpol">${</span><span class="name other">filename</span><span class="literal string interpol">}</span><span class="literal string backtick"> changed!`</span><span class="punctuation">)</span>
-    <span class="punctuation">}</span>
-<span class="punctuation">})</span>
-</pre>
-</div>
-<div class="section" id="some-caveats">
-<h2>Some Caveats</h2>
-<p>The <tt class="docutils literal">fs.watch()</tt> function does <a class="reference external" href="https://nodejs.org/api/fs.html#fs_caveats">come with some caveats</a> due to the state of this kind of filesystem event handling on various platforms; specifically, the API is not 100% consistent across platforms and some options are not universally available due to the underlying implementations.</p>
-<p>Also, because <tt class="docutils literal">fs.watch()</tt> is event-driven, there is no matching set of functions in the experimental <tt class="docutils literal">fs</tt> Promise API <a class="reference external" href="https://nodejs.org/en/blog/release/v10.0.0/">introduced in Node 10.0.0</a> and there is no synchronous equivalent like there are for many other functions in the <tt class="docutils literal">fs</tt> module because the task is inherently asynchronous.</p>
-<p>However, this is still really useful functionality when working with files and filesystems, and is of particular interest in our pursuit of efficient automation.</p>
-</div>
-<div class="section" id="one-last-twist">
-<h2>One Last Twist</h2>
-<p>After looking a bit more into how <a class="reference external" href="https://gruntjs.com/">grunt</a> and <a class="reference external" href="https://gulpjs.com/">gulp</a> actually implement their file-watching functionality, it turns out that neither one of these popular test runners uses any of the <tt class="docutils literal">fs.watch()</tt> functions directly and don't even use the same dependency to provide watching functionality!</p>
-<p>Grunt's file-watching functionality is provided in a Grunt plugin called <a class="reference external" href="https://www.npmjs.com/package/grunt-contrib-watch">grunt-contrib-watch</a>, which uses the <a class="reference external" href="https://www.npmjs.com/package/gaze">gaze</a> package to interact with filesystem events.</p>
-<p>Gulp, on the other hand, relies on <a class="reference external" href="https://www.npmjs.com/pakage/gulp-watch">gulp-watch</a> for watching files, which uses a package called <a class="reference external" href="https://www.npmjs.com/package/chokidar">chokidar</a>.</p>
-<p>Chokidar goes <a class="reference external" href="https://www.npmjs.com/package/chokidar#why">into some detail</a> as to why <tt class="docutils literal">fs.watch()</tt> is insufficient, and gaze lists a <a class="reference external" href="https://www.npmjs.com/package/gaze#similar-projects">number of alternative projects</a>, so there are clearly some community opinions on the quality of the built-in functions.</p>
-<p>Some notable functionality <tt class="docutils literal">fs.watch()</tt> lacks:</p>
-<ul class="simple">
-<li>no wildcard support (e.g. cannot watch only for files that end with a particular extension, like <tt class="docutils literal">*.js</tt>)</li>
-<li>does not support recursive watching on platforms other than Windows or macOS (see <a class="reference external" href="https://nodejs.org/api/fs.html#fs_caveats">the fs watch caveats</a>)</li>
-<li><tt class="docutils literal">eventType</tt> is only one of <tt class="docutils literal">'rename'</tt> or <tt class="docutils literal">'change'</tt>, no support for other file events such as <tt class="docutils literal">'removed'</tt></li>
-</ul>
-<p>As in everything, there are trade-offs when implementing functionality. For simple use cases, <tt class="docutils literal">fs.watch()</tt> may be sufficient and will not require including additional project dependencies. However, if file watching is a core piece of functionality, it might be worth evaluating some of the other options available on npm to find one with the necessary functionality for the project at hand, while also keeping you from tearing your hair out tracking down odd edgecases.</p>
 </div>
 </div>
                     </div>

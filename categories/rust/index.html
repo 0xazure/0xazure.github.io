@@ -7,7 +7,7 @@
 
     <meta name="description" content="a constant work in progress">
 
-    <meta name="generator" content="Hugo 0.50" />
+    <meta name="generator" content="Hugo 0.51" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Rust &middot; stuart crust">
@@ -82,6 +82,133 @@
         <div>
             
             <div class="posts">
+                
+                <h1 class="content-subhead">11 Nov 2018</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://stuartcrust.com/2018/11/improving-cli-ergonomics/" class="post-title">Improving CLI Ergonomics</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
+                                
+                                    <a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
+                                
+                                    <a class="post-category post-category-supernova" href='https://stuartcrust.com/categories/supernova'>supernova</a>
+                                
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>In my day-to-day, I use <em>a lot</em> of command-line tools.
+I generally find myself to be much more productive working in a non-GUI environment, mostly down to the fact that I can type much faster than I can move and aim a mouse and the less time I spend switching between keyboard and mouse the more time I can spend typing.
+Unfortunately, command-line tools have one major drawback: discoverability.
+If I am given a GUI application, I can click around, hover over different UI elements, and generally get a feel for how the interface is laid out.
+In a command-line tool, I don&rsquo;t have any of these visual cues to help me learn the functionality; I have to start typing and see what happens.
+To supplement this lack of visual cues, good command-line tools generally have autocomplete snippets for your shell so you can type the command name and start hitting <code>TAB</code> to see what options are available at a particular time, as well as extensive <code>man</code> pages that describe all the various options, commands, and any sub-commands (though these <code>man</code> pages are often extraordinarily verbose and rarely provide useful examples of how the tool is commonly used, so <a href="https://tldr.sh/">alternatives such as <code>tldr</code></a> fill this gap).</p>
+
+<p>I want <a href="https://github.com/0xazure/supernova"><code>supernova</code></a> to be a good command-line tool, so I have been thinking about ways to improve discoverability and make the tool easier to use.
+A really interesting post by <a href="https://twitter.com/jdxcode">Jeff Dickey</a>, an engineer at Heroku, crossed my timeline recently titled <a href="https://medium.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46">12 Factor CLI Apps</a>
+In his post, Jeff provides twelve principles to guide CLI design in a similar fashion to Heroku&rsquo;s original <a href="https://12factor.net/">Twelve-Factor App</a> methodology.
+Out of the twelve principles, Principle 2 stood out to me, particularly in the context of <code>supernova</code>; Jeff suggests to &ldquo;prefer flags to args&rdquo; when designing a CLI.
+He says:</p>
+
+<blockquote>
+<p>Sometimes args are just fine though when the argument is obvious such as <code>$rm file_to_remove</code>. A good rule of thumb is 1 type of argument is fine, 2 types are very suspect, and 3 are never good.</p>
+</blockquote>
+
+<p>This rule of thumb got me thinking about <code>supernova</code>&rsquo;s current calling convention.
+Currently, you would use <code>supernova</code> like this:</p>
+
+<pre><code class="language-sh">$ supernova &lt;username&gt; [&lt;auth-token&gt;]
+</code></pre>
+
+<p>This violates Jeff&rsquo;s rule of thumb because <code>&lt;username&gt;</code> and <code>&lt;auth-token&gt;</code> are not the same type of argument, and it&rsquo;s arguably even worse because the <code>&lt;auth-token&gt;</code> is optional here.</p>
+
+<p>I opened <a href="https://github.com/0xazure/supernova/issues/16"><code>0xazure/supernova#16</code></a> to track this problem with our current calling convention.
+In it, I suggest using the <a href="https://crates.io/crates/clap">clap</a> crate to improve our CLI and provide the facilities to do command-line argument parsing.</p>
+
+<h2 id="introducing-clap">Introducing Clap</h2>
+
+<p>Clap is a great crate that makes it super easy to add all kinds of CLI goodies to your command-line tool including auto-generated help, version, and usage information which are all, as Jeff highlights in Principle 1: Great help is essential, important to good CLIs.</p>
+
+<p>Adding clap to the project would check off Principles 1 &amp; 2, so I went ahead and <a href="https://github.com/0xazure/supernova/pull/19">created a pull request</a> to add clap and improve <code>supernova</code>&rsquo;s calling convention. All that was necessary was to create a new clap-based <code>App</code> with the desired arguments and flags, provide good help messages, and set <code>&lt;auth-token&gt;</code> to be an optional argument.
+Having done all that, this is what clap generates, all for 13 lines of code:</p>
+
+<pre><code class="language-text">$ supernova --help
+supernova 0.1.0
+
+USAGE:
+    supernova [OPTIONS] &lt;USERNAME&gt;
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -t, --token &lt;TOKEN&gt;    Sets the authentication token for requests to GitHub
+
+ARGS:
+    &lt;USERNAME&gt;    The user whose stars to collect
+</code></pre>
+
+<p>Clap will print the name as well as the version with every <code>--help</code> request.
+I was a little wary of this at first, because while I definitely want to include this information in my CLI, I also don&rsquo;t want the maintenance burden of having to remember to update the version string in <code>main.rs</code> every time a new version is published.
+However, clap exposes some <a href="https://docs.rs/clap/2.32.0/clap/#macros">very handy macros</a> that make use of environment variables <a href="https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates">exported by <code>cargo</code></a> at build time to pull this information out of <code>Cargo.toml</code>, so these values will always be up to date with the crate&rsquo;s metadata and don&rsquo;t require setting the values in code.</p>
+
+<p>To actually extract all of the parsed arguments from clap, we call <a href="https://docs.rs/clap/2.32.0/clap/struct.App.html#method.get_matches"><code>App::get_matches()</code></a> which produces an <a href="https://docs.rs/clap/2.32.0/clap/struct.ArgMatches.html"><code>ArgMatches</code></a> struct we can query for specific arguments by name. Instead of parsing out each argument, I decided to try my hand at implementing the <code>From</code> trait to convert <code>ArgMatches</code> into <code>supernova</code>&rsquo;s <code>Config</code> type so it can be passed directly to the next function call.</p>
+
+<h2 id="traits-in-rust">Traits in Rust</h2>
+
+<p>Before I talk about implementing the <code>From</code> trait, I want to quickly talk about what traits actually are, as well as why I chose to implement <code>From</code> instead of one of the other conversion traits.</p>
+
+<p>The Rust Book <a href="https://doc.rust-lang.org/book/second-edition/ch10-02-traits.html#traits-defining-shared-behavior">explains traits like this</a>:</p>
+
+<blockquote>
+<p>A <em>trait</em> tells the Rust compiler about functionality a particular type has and can share with other types. We can use traits to define shared behavior in an abstract way.</p>
+</blockquote>
+
+<p>If you are familiar with the idea of <em>interfaces</em> in other languages such as Java or Go, traits are a very similar idea.</p>
+
+<p>There is an important caveat with traits.
+Again, from the Rust Book, <a href="https://doc.rust-lang.org/book/second-edition/ch10-02-traits.html#implementing-a-trait-on-a-type">Chapter 10.2, <em>Implementing a Trait on a Type</em></a>:</p>
+
+<blockquote>
+<p>One restriction to note with trait implementations is that we can implement a trait on a type only if either the trait or the type is local to our crate.</p>
+</blockquote>
+
+<p>This means that I will need to implement my conversion on a type that I control, <code>Config</code>, to convert between <code>ArgMatches</code> and <code>Config</code>.</p>
+
+<p>The restriction on traits is very interesting, because while it is not necessary in my case it raises the question of how to convert from types that I do control into types defined in the standard library or in other crates.
+If I wanted to convert a <code>Config</code> object into a <code>String</code> for example, it might make sense to use the conveniently named <a href="https://doc.rust-lang.org/std/convert/trait.Into.html"><code>Into</code> trait</a>.
+However, the documentation for <code>Into</code> states:</p>
+
+<blockquote>
+<p>Library authors should not directly implement this trait, but should prefer implementing the <code>From</code> trait, which offers greater flexibility and provides an equivalent <code>Into</code> implementation for free, thanks to a blanket implementation in the standard library.</p>
+</blockquote>
+
+<p>So, instead of implementing <code>Into</code>, I should implement the conversion of <code>Config</code> <strong>from</strong> <code>String</code>, and I get the equivalent <code>Into</code> implementation for free?
+It seems a bit backwards since we are defining a trait that converts in the <em>opposite</em> direction of our needs, but because of this blanket implementation in the standard library we get symmetric conversions between types for free as long as we implement <code>From</code> on the type.
+That means we only have to write the conversion function once instead of needing to write it once in each direction, and I&rsquo;m definitely in favour of anything that reduces the amount of code I need to write.</p>
+
+<h2 id="the-from-trait">The <code>From</code> Trait</h2>
+
+<p>Actually implementing the <code>From</code> trait was straight-forward, other than the <a href="https://github.com/0xazure/supernova/pull/19/files#diff-b4aea3e418ccdb71239b96952d9cddb6R27">necessary addition of a lifetime annotation</a> because of how <code>ArgMatches</code> is implemented on clap&rsquo;s side.
+Implementing <code>From</code> also let me replace another method in <code>Config</code> which reduces the surface area of <code>Config</code>&rsquo;s implementation.</p>
+
+<p>I&rsquo;m not totally happy with implementing <code>From</code> on <code>Config</code> because I had to pull clap into the library side of <code>supernova</code> instead of leaving arguments parsing completely in <code>main</code>, so I may go back and change this implementation to provide better separation between data and arguments parsing.
+Or I may decide to move <code>Config</code> out to its own module which would also increase separation of concerns.
+Either way, I was very happy to get my hands back on the keyboard writing Rust code this week, and I hope to be writing more in the near future!</p>
+
+                    </div>
+                </section>
                 
                 <h1 class="content-subhead">04 Nov 2018</h1>
                 <section class="post">
