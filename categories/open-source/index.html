@@ -83,6 +83,142 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">18 Nov 2018</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://stuartcrust.com/2018/11/opinionated-formatting/" class="post-title">Opinionated Formatting</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
+                                
+                                    <a class="post-category post-category-code linting" href='https://stuartcrust.com/categories/code%20linting'>code linting</a>
+                                
+                                    <a class="post-category post-category-code formatting" href='https://stuartcrust.com/categories/code%20formatting'>code formatting</a>
+                                
+                                    <a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
+                                
+                                    <a class="post-category post-category-clippy" href='https://stuartcrust.com/categories/clippy'>clippy</a>
+                                
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>This week in class we talked about code linting and code formatting using <a href="https://eslint.org/">ESLint</a> and <a href="https://prettier.io/">Prettier</a>.
+These kinds of tools automate a lot of the otherwise labour-intensive and easy-to-miss nitpicks reviewers often leave on pull requests, freeing up time to review much more important elements such as design and code structure.
+Many tech companies - <a href="https://google.github.io/styleguide/">Google</a>, <a href="http://airbnb.io/javascript/">AirBnB</a>, <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions">Microsoft</a> to name a few - have their own code style guides, much in the same way that writing organizations (<a href="https://www.bbc.co.uk/academy/en/collections/news-style-guide">news organizations</a> and <a href="https://www.apastyle.org/">scientific publishing</a>, for example) have documents that outline how to maintain consistency in publications across many hundreds of outlets and thousands of writers, and the idea of a style guide is not new.
+However, the idea of automating this style checking to help developers maintain a consistent style has gained a lot more traction in recent years thanks in part to style and formatting tools coming standard and enabled by default in many modern programming languages.</p>
+
+<h2 id="formatting-as-a-first-class-tool">Formatting as a First-Class Tool</h2>
+
+<p>I was first exposed to this idea of a universal formatter as part of a language&rsquo;s toolchain when I started experimenting with <a href="https://golang.org/">Go</a>.
+Go&rsquo;s <a href="https://golang.org/cmd/gofmt/"><code>gofmt</code></a> enforces a consistent style not just within one project, but across the <em>entire</em> ecosystem of Go code, making even foreign codebases more accessible because of their consistent style.
+This consistency helps to reduce visual noise, making it easier to focus on what the code says rather than how it&rsquo;s formatted.
+This idea of a universal formatter appears in other languages like <a href="https://www.rust-lang.org">Rust</a>&rsquo;s own <a href="https://github.com/rust-lang-nursery/rustfmt"><code>rustfmt</code></a>, though there are many other tools for enforcing style that predate these tools, such as <a href="https://www.rubocop.org/en/latest/">rubocop</a> for Ruby and <a href="http://astyle.sourceforge.net/">astyle</a> for C and C++.</p>
+
+<p>In Go and Rust, these formatters increase productivity dramatically because as long as you write syntactically correct code, it can be the ugliest code you have ever written and by passing it through the formatter (and many editors and IDEs will even format the source for you when you save!) you can leave it up to the formatter to make the code pretty and readable.
+This means less time fiddling with alignment, worrying about indentation, and dithering over where to break your function call chain to best communicate your intent.
+It also means that wars over format like <a href="https://www.businessinsider.com/tabs-vs-spaces-from-silicon-valley-2016-5">tabs versus spaces</a> are dead; the formatter is the absolute arbitrator of the correct style, and because the formatter is consistent across the entire ecosystem there is a lot of pressure for users to conform instead of trying to tweak the formatter to their own personal preferences.</p>
+
+<p>We still have an <a href="https://github.com/0xazure/supernova/issues/21">open issue</a> on <code>supernova</code> for implementing <code>rustfmt</code> as part of our continuous integration process that we hope to close out with a pull request relatively soon so we can be sure all the code contributed to <code>supernova</code> follows the same format as other projects.</p>
+
+<h2 id="build-infrastructure-weirdness">Build Infrastructure Weirdness</h2>
+
+<p>Speaking of our continuous integration process, we ran into a very curious issue with <a href="https://github.com/0xazure/supernova/pull/24"><code>0xazure/supernova#24</code></a> this week where our builds started failing on the <code>beta</code> release channel.
+The build failure is caused by <code>clippy</code>&rsquo;s <a href="https://rust-lang-nursery.github.io/rust-clippy/current/index.html#new_ret_no_self"><code>new_ret_no_self</code> lint</a> which checks to ensure that, as a convention, <code>new</code> methods are used to make a new instance of a type and return that instance as the return value.
+In the issue, the build is only failing on the <code>beta</code> release channel which was surprising because I was expecting this lint to have failed the build on the <code>stable</code> release channel as well if it failed on <code>beta</code>.
+To further confuse the issue the build on <code>nightly</code>, which per our configuration for <code>supernova</code> is allowed to fail, was successful.</p>
+
+<p>Digging into the problem some more, it looks like we are running into <a href="https://github.com/rust-lang-nursery/rust-clippy/issues/3313"><code>rust-lang-nursery/rust-clippy#3313</code></a> where the <code>new_ret_no_self</code> lint is incorrectly triggering on a <code>new</code> function that <em>does</em> return <code>Self</code>, it&rsquo;s just wrapped by a container type or tuple.</p>
+
+<p>Indeed, we can see this from our implementation of <code>Config::new</code></p>
+
+<pre><code class="language-rust">pub fn new(mut args: env::Args) -&gt; Result&lt;Config, &amp;'static str&gt; {
+    args.next();
+
+    let username = match args.next() {
+        None =&gt; return Err(&quot;No username provided&quot;),
+        Some(arg) =&gt; arg,
+    };
+
+    let token = args.next();
+
+    Ok(Config { username, token })
+}
+</code></pre>
+
+<p>which triggers the resulting lint failure</p>
+
+<pre><code class="language-text">error: methods called `new` usually return `Self`
+  --&gt; src/lib.rs:18:5
+   |
+18 | /     pub fn new(mut args: env::Args) -&gt; Result&lt;Config, &amp;'static str&gt; {
+19 | |         args.next();
+20 | |
+21 | |         let username = match args.next() {
+...  |
+28 | |         Ok(Config { username, token })
+29 | |     }
+   | |_____^
+   |
+   = note: `-D clippy::new-ret-no-self` implied by `-D warnings`
+   = help: for further information visit https://rust-lang-nursery.github.io/rust-clippy/v0.0.212/index.html#new_ret_no_self
+</code></pre>
+
+<p>even though our return type is <code>Result&lt;Config, &amp;'static str&gt;</code> which unwraps to <code>Config</code> on success and a <code>static str</code> when there is an error in creating a new instance.</p>
+
+<h2 id="investigating-the-root-cause">Investigating the Root Cause</h2>
+
+<p>An important part of build infrastructure is reproducibility: the ability to run a build with the same inputs and get the same outputs.
+Without reproducibility we have flaky tests that no one wants to run and worse, no one trusts.
+In the case of <code>supernova</code> we have a build matrix to test on all three release channels: <code>stable</code>, <code>beta</code>, and <code>nightly</code>, and we need to make sure testing on these channels happens in a predictable way.</p>
+
+<p>It turns out the issue results from how <code>clippy</code> is installed in each environment.
+The recommended way to install <code>clippy</code> is as a <code>rustup</code> component using <code>rustup component add clippy-preview</code>.
+However, because <code>clippy</code> is published as a component for <code>rustup</code> rather than as some kind of version-pinned project dependency, this command does not install the same version of <code>clippy</code> across all release channels.
+This can be verified as follows:</p>
+
+<pre><code class="language-text">$ cargo +stable clippy --version
+clippy 0.0.212 (125907ad 2018-09-17)
+
+$ cargo +beta clippy --version
+clippy 0.0.212 (b1d03437 2018-10-19)
+
+$ cargo +nightly clippy --version
+clippy 0.0.212 (d8b42690 2018-11-04)
+</code></pre>
+
+<p>Note that while all of the build numbers are the same (<code>v0.0.212</code>), the commit hashes and dates are all different.</p>
+
+<p>It is important to verify that the tool(s) you&rsquo;re using to test or lint your project are the same version in <strong>all</strong> of your environments, otherwise you&rsquo;ll end up with confusing build failures like the one we did here.
+In our case we are testing against <code>beta</code> and <code>nightly</code> to have an idea of future changes to the Rust compiler and any new lints that may get added in the future, so failures on anything but <code>stable</code> are nice-to-have information rather than complete show-stoppers.
+In other cases, or in different matrices, it&rsquo;s even more important that the test environment is as consistent as possible and that the number of variables that <em>are</em> being changed are as small as possible to make tracing failures relatively simple.</p>
+
+<p>Lint tools are great for catching low-hanging fruit in code review, but you can&rsquo;t blindly trust them.
+When there <em>is</em> a failure, it takes a person&rsquo;s knowledge of the project to determine if the failure is legitimate or if there&rsquo;s a problem in the tool or lint rule and to determine if it&rsquo;s a problem with the submitted code, a problem with the tool configuration, or a false positive in the tool as in this case with <code>clippy</code>&rsquo;s <code>new_ret_no_self</code> lint.</p>
+
+<h2 id="fixing-the-problem">Fixing the Problem</h2>
+
+<p>After <a href="https://github.com/0xazure/supernova/pull/24#issuecomment-437530272">reaching out to some friends</a> in the <code>#rust</code> IRC channel, we decided to <a href="https://github.com/0xazure/supernova/pull/27">not run <code>clippy</code> on the <code>beta</code> toolchain</a> to avoid more false positives like this in the future.
+We are keeping <code>clippy</code> enabled for the <code>nightly</code> release channel because we are allowing <code>nightly</code> to fail on Travis so while we will investigate those failures it will not block landing any pull requests if for some reason <code>nightly</code> or <code>clippy</code> on <code>nightly</code> finds fault with our code.</p>
+
+<p>I also recently filed <a href="https://github.com/0xazure/supernova/issues/32"><code>0xazure/supernova#32</code></a> to provide better visibility into the versions of tools we install to match how Travis prints out tooling versions for tools that come automatically installed with the Rust build environment.
+This should help us track down version discrepancies and make trouble-shooting failures much quicker.</p>
+
+<p>After landing the above fix (and <a href="https://github.com/0xazure/supernova/pull/30">an extra tweak</a> so we only run Travis against the <code>master</code> branch), our builds went fully green <a href="https://travis-ci.org/0xazure/supernova/builds/455179153">for the first time</a> since we enabled Travis on the project!
+Setting up automated builds can take a lot of up-front effort, but it pays big dividends as the project grows to ensure the quality of the software being written.
+Now we just <a href="https://github.com/0xazure/supernova/issues/8">need some tests</a> so we can verify our code is actually correct&hellip;</p>
+
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">11 Nov 2018</h1>
                 <section class="post">
                     <header class="post-header">
@@ -698,154 +834,6 @@ Creates an absolute URL based on the configured <tt class="docutils literal">bas
 <p>The first issue I reviewed, <a class="reference external" href="https://github.com/filerjs/filer/pull/478">filer#478</a>, is a pull request that adds a test to <tt class="docutils literal">fs.watch()</tt> to verify the event type emitted when renaming an existing file. Other than the boilerplate mocha test code, the test logic itself is fairly straight forward. However, <tt class="docutils literal">fs.watch()</tt> and related watching functions are an interesting set of methods because they are not guaranted to be consistent due to the <a class="reference external" href="https://nodejs.org/api/fs.html#fs_caveats">underlying implementation details</a>. I actually had to go back to this pull request and re-review it because it turns out that filer <a class="reference external" href="https://github.com/filerjs/filer/issues/411#issuecomment-422946490">doesn't currently have support</a> for <tt class="docutils literal">rename</tt> events at all. This issue was also interesting because I picked out a minor style nitpick in the form of a missing semi-colon that the Travis build <a class="reference external" href="https://github.com/filerjs/filer/issues/482">didn't seem to pick up</a> for some reason. Rerunning the build resolved the issue, but it's always worrying when you run into issues with your build infrastructure and tests because it can shake your faith in them a bit.</p>
 <p>Another issue that I reviewed was <a class="reference external" href="https://github.com/filerjs/filer/pull/472">filer#472</a>. This pull request adds a test to ensure that reading from a nonexistant file results in an error. The submission is well done overall, with one minor nitpick that lead to me filing <a class="reference external" href="https://github.com/filerjs/filer/pull/498">filer#498</a> to reduce small nitpick-type comments on reviews. Nitpicks are generally a waste of everyone's time because style should be automatically enforced by some kind of automated tool before code is pushed; JavaScript doesn't have anything quite like <a class="reference external" href="https://golang.org/cmd/gofmt/">gofmt</a> or <a class="reference external" href="https://github.com/rust-lang-nursery/rustfmt">rustfmt</a>, but tools like <a class="reference external" href="https://github.com/xojs/xo">xo</a> and <a class="reference external" href="https://github.com/prettier/prettier">prettier</a> can help. In this review I also cautioned the original author of the pull request about changing multiple variables at a time in a test, which we ideally would like to avoid as we can easily end up testing more code paths than we either need or want to, thereby complicating the test or making it fragile against future changes to the code.</p>
 <p>Looking ahead, October marks the beginning of <a class="reference external" href="https://hacktoberfest.digitalocean.com/">Hacktoberfest</a>. I'm really excited to be participating this year; I participated once before but I either missed the cutoff or something happened to my package because I never received my t-shirt from DigitalOcean. I'll be writing a lot more short blog posts throughout October as I chronicle my participation in this event, and I'm hoping to find some interesting projects to contribute to for at least the rest of this year and hopefully well into the next.</p>
-</div>
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">29 Sep 2018</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://stuartcrust.com/2018/09/its-dependencies-all-the-way-down/" class="post-title">It&#39;s Dependencies All the Way Down</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                
-                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
-                                
-                                    <a class="post-category post-category-nodejs" href='https://stuartcrust.com/categories/nodejs'>nodejs</a>
-                                
-                                    <a class="post-category post-category-npm" href='https://stuartcrust.com/categories/npm'>npm</a>
-                                
-                                    <a class="post-category post-category-security" href='https://stuartcrust.com/categories/security'>security</a>
-                                
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <div class="document">
-
-
-<p>NodeJS has experienced a lot of growth over the years. Like any platform, programming or otherwise, much of that growth and user adoption depends not only on the quality of the platform itself, but also the ecosystem that builds up around it.</p>
-<p>In this respect, NodeJS has possibly one of the largest ecosystems available. With <a class="reference external" href="https://www.npmjs.com/">over 700,000 packages</a> published to npm, the NodeJS platform offers developers a lot of choice when it comes to 3rd-party modules. This choice lets developers choose and compose modules from many different authors when writing software, saving time, consolidating work, and reducing bugs instead of constantly <a class="reference external" href="https://en.wikipedia.org/wiki/Not_invented_here">reinventing the wheel</a>.</p>
-<p>The NodeJS ecosystem by and large follows the <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix philosophy</a>, in particular the primary tenant to</p>
-<blockquote>
-<p>Write programs [and libraries] that do one thing and do it well</p>
-<p class="attribution">&mdash;Peter H. Salus, <em>A Quarter-Century of Unix (1994)</em></p>
-</blockquote>
-<p>Keeping a module's focus small is an important aspect of many programming design patterns such as the single-responsibility principle, as well as improving code reuse and composability. However, including these modules doesn't come for free. Every project dependency is an added burden that the maintainers need to keep up to date and have to modify their code as the API of the module changes. Sometimes serious bugs are found in these modules that can expose application secrets, user data, or unauthorized access, among other classes of vulnerabilities, that the module authors need to fix before dependent projects can update to fix the bug.</p>
-<p>Staying on top of vulnerability disclosures and keeping track of all of the changes from version to version in a project's dependencies is a challenging and resource-draining task. Even more challenging, authors must not only be concerned with the vulnerabilities in modules they depend on directly, but also those in all of the <a class="reference external" href="https://docs.gradle.org/current/userguide/dependency_management_terminology.html#sub:terminology_transitive_dependency">transitive dependencies</a> that NodeJS is (in)famous for.</p>
-<div class="section" id="npm-audit">
-<h2><tt class="docutils literal">npm audit</tt></h2>
-<p>In the <a class="reference external" href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">April 2018 announcement</a> of <tt class="docutils literal">npm&#64;6</tt>, the headlining feature the npm team showcased was <tt class="docutils literal">npm audit</tt>, a powerful tool designed to provide automatic security warnings when using code with a known security issue. The <tt class="docutils literal">npm audit</tt> tool allows developers to completely analyze a project's dependency tree - including all transitive dependnecies - to identify known vulnerable versions of dependencies based on data from the Node Security Platform database that npm <a class="reference external" href="https://medium.com/npm-inc/npm-acquires-lift-security-258e257ef639">acquired in April 2018</a>.</p>
-<p>The npm team made two really important decisions when designing <tt class="docutils literal">npm audit</tt>. First, all install requests issued through <tt class="docutils literal">npm install</tt> are automatically subjected to the same analysis that the <tt class="docutils literal">npm audit</tt> command performs, analyzing the package to be installed as well as any additional dependencies that package would pull into the project. Second, <tt class="docutils literal">npm audit</tt> suggests resolutions for vulnerabilities it identifies thereby giving clear actionable feedback to developers on the next steps they can take to resolve issues identified in the audit. These two decisions are critical because not only does npm take a security-conscious approach by default, but it tries to make resolving issues as painless as possible. Developers don't want to spend hours combing through changelogs or reviewing vulnerability reports just to find the package version that includes the vulnerability fix, they want to resolve the problem and get on with writing code.</p>
-<p>As of <tt class="docutils literal">npm&#64;6.1</tt>, <tt class="docutils literal">npm</tt> includes the <tt class="docutils literal">npm audit fix</tt> command to <a class="reference external" href="https://blog.npmjs.org/post/174001864165/v610-next0">automatically run all the package installations</a> recommended by <tt class="docutils literal">npm audit</tt>, lowering the pain of updating vulnerable packages even further.</p>
-<p>The npm team shares their vision with the inclusion of tools like <tt class="docutils literal">npm audit</tt> and a security-conscious approach to ecosystem packages:</p>
-<blockquote>
-<p>By alerting the entire community to security vulnerabilities within a tool you already use, we can make JavaScript development safer for everyone.</p>
-<p class="attribution">&mdash;<a class="reference external" href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">npm, Inc.</a></p>
-</blockquote>
-</div>
-<div class="section" id="auditing-filer">
-<h2>Auditing <tt class="docutils literal">filer</tt></h2>
-<p>The first thing to do after making a fresh clone of any project is to install its dependencies. After grabbing the <a class="reference external" href="https://github.com/filerjs/filer">filer</a> git url and cloning the repository, a quick <tt class="docutils literal">npm install</tt> pulls in all the dependencies we should need to get started.</p>
-<pre class="code shell literal-block">
-added <span class="literal number">1079</span> packages from <span class="literal number">1531</span> contributors and audited <span class="literal number">9518</span> packages in <span class="literal number">36</span>.358s
-found <span class="literal number">6</span> vulnerabilities <span class="operator">(</span><span class="literal number">1</span> low, <span class="literal number">5</span> moderate<span class="operator">)</span>
-  run <span class="literal string backtick">`</span>npm audit fix<span class="literal string backtick">`</span> to fix them, or <span class="literal string backtick">`</span>npm audit<span class="literal string backtick">`</span> <span class="keyword">for</span> details
-</pre>
-<p>It looks like <tt class="docutils literal">filer&#64;353290a</tt> has some vulnerable packages, which is a perfect opportunity to dig into the auditing process.</p>
-<p><tt class="docutils literal">npm&#64;6</tt> is pretty in-your-face about this information, which is important. It lists the total number of vulnerabilities, as well as breaks down the number of vulnerabilities of varying severity, and provides an actionable next step: running a full audit.</p>
-<p>Running <tt class="docutils literal">npm audit</tt> produces the following report:</p>
-<pre class="code shell literal-block">
-                    <span class="operator">===</span> npm audit security <span class="name variable">report</span> <span class="operator">===</span>
-
-<span class="comment single"># Run  npm install --save-dev karma&#64;3.0.0  to resolve 6 vulnerabilities
-</span>SEMVER WARNING: Recommended action is a potentially breaking change
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Memory Exposure                                              │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ tunnel-agent                                                 │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; tunnel-agent             │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/598                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
-
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; boom &gt; hoek       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
-
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; cryptiles &gt; boom  │
-│               │ &gt; hoek                                                       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
-
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; hoek              │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
-
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; sntp &gt; hoek       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
-
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Low           │ Regular Expression Denial of Service                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ timespan                                                     │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; timespan                           │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/533                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
-
-found <span class="literal number">6</span> vulnerabilities <span class="operator">(</span><span class="literal number">1</span> low, <span class="literal number">5</span> moderate<span class="operator">)</span> in <span class="literal number">9518</span> scanned packages
-<span class="literal number">6</span> vulnerabilities require semver-major dependency updates.
-</pre>
-<p>The audit provides a lot of information, but it's all broken down for the developer in a consistent format so even those who aren't familiar with vulnerability mitigation or announcement procedures can understand what's going on.</p>
-<p>One of the most important parts of the audit output is the path. This shows how the project and the vulnerable package are related, and is a subset of the total dependency graph for the project. This is really useful if there is no clear update path for the package your project depends on directly and you need to report (or ideally, submit a pull request) that a dependency in one of your direct dependencies should update one (or more) of its packages. Without this information clearly displayed, you would spend a lot of time chasing dependencies down by manually reviewing <tt class="docutils literal">package.json</tt> and <tt class="docutils literal"><span class="pre">package-lock.json</span></tt> files trying to figure out who needed to update their dependencies so you can update yours.</p>
-<p>In the case of Filer we're pretty lucky: not only are all of the vulnerable packages related to a single direct dependency, but that dependency is one that is only used during development; resolving the problems is a simple as updating to <tt class="docutils literal">karma&#64;3.0.0</tt>. Since this is a simple resolution, we could either run <tt class="docutils literal">npm audit fix</tt> and have <tt class="docutils literal">npm</tt> take care of the version updates for us, or we can update the <tt class="docutils literal">karma</tt> version in our <tt class="docutils literal">package.json</tt> and install the updated package.</p>
-<p>After updating <tt class="docutils literal">karma</tt>, re-running <tt class="docutils literal">npm audit</tt> to ensure we haven't introduced any new vulnerabilities, and running the project's tests to ensure we haven't accidentally broken any functionality, we should take the time to contribute this fix <a class="reference external" href="https://github.com/filerjs/filer/pull/385">back to the main project</a>. The fix was small and simple, but security is everyone's responsiblity; if you notice a project using outdated or vulnerable packages, take some time to help the maintainers out by submitting a pull request. Also, projects should consider looking into automating the process of keeping project dependencies up to date through various tools like <a class="reference external" href="https://greenkeeper.io/">Greenkeeper</a> and <a class="reference external" href="https://snyk.io/">Snyk</a>, which is a conversation <a class="reference external" href="https://github.com/filerjs/filer/issues/386">you can start</a> in your project today!</p>
-</div>
 </div>
                     </div>
                 </section>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code Formatting on stuart crust</title>
+    <link>https://stuartcrust.com/categories/code-formatting/</link>
+    <description>Recent content in Code Formatting on stuart crust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Nov 2018 00:00:00 -0500</lastBuildDate>
+    
+        <atom:link href="https://stuartcrust.com/categories/code-formatting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Opinionated Formatting</title>
+      <link>https://stuartcrust.com/2018/11/opinionated-formatting/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 -0500</pubDate>
+      
+      <guid>https://stuartcrust.com/2018/11/opinionated-formatting/</guid>
+      <description>
+
+&lt;p&gt;This week in class we talked about code linting and code formatting using &lt;a href=&#34;https://eslint.org/&#34;&gt;ESLint&lt;/a&gt; and &lt;a href=&#34;https://prettier.io/&#34;&gt;Prettier&lt;/a&gt;.
+These kinds of tools automate a lot of the otherwise labour-intensive and easy-to-miss nitpicks reviewers often leave on pull requests, freeing up time to review much more important elements such as design and code structure.
+Many tech companies - &lt;a href=&#34;https://google.github.io/styleguide/&#34;&gt;Google&lt;/a&gt;, &lt;a href=&#34;http://airbnb.io/javascript/&#34;&gt;AirBnB&lt;/a&gt;, &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions&#34;&gt;Microsoft&lt;/a&gt; to name a few - have their own code style guides, much in the same way that writing organizations (&lt;a href=&#34;https://www.bbc.co.uk/academy/en/collections/news-style-guide&#34;&gt;news organizations&lt;/a&gt; and &lt;a href=&#34;https://www.apastyle.org/&#34;&gt;scientific publishing&lt;/a&gt;, for example) have documents that outline how to maintain consistency in publications across many hundreds of outlets and thousands of writers, and the idea of a style guide is not new.
+However, the idea of automating this style checking to help developers maintain a consistent style has gained a lot more traction in recent years thanks in part to style and formatting tools coming standard and enabled by default in many modern programming languages.&lt;/p&gt;
+
+&lt;h2 id=&#34;formatting-as-a-first-class-tool&#34;&gt;Formatting as a First-Class Tool&lt;/h2&gt;
+
+&lt;p&gt;I was first exposed to this idea of a universal formatter as part of a language&amp;rsquo;s toolchain when I started experimenting with &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt;.
+Go&amp;rsquo;s &lt;a href=&#34;https://golang.org/cmd/gofmt/&#34;&gt;&lt;code&gt;gofmt&lt;/code&gt;&lt;/a&gt; enforces a consistent style not just within one project, but across the &lt;em&gt;entire&lt;/em&gt; ecosystem of Go code, making even foreign codebases more accessible because of their consistent style.
+This consistency helps to reduce visual noise, making it easier to focus on what the code says rather than how it&amp;rsquo;s formatted.
+This idea of a universal formatter appears in other languages like &lt;a href=&#34;https://www.rust-lang.org&#34;&gt;Rust&lt;/a&gt;&amp;rsquo;s own &lt;a href=&#34;https://github.com/rust-lang-nursery/rustfmt&#34;&gt;&lt;code&gt;rustfmt&lt;/code&gt;&lt;/a&gt;, though there are many other tools for enforcing style that predate these tools, such as &lt;a href=&#34;https://www.rubocop.org/en/latest/&#34;&gt;rubocop&lt;/a&gt; for Ruby and &lt;a href=&#34;http://astyle.sourceforge.net/&#34;&gt;astyle&lt;/a&gt; for C and C++.&lt;/p&gt;
+
+&lt;p&gt;In Go and Rust, these formatters increase productivity dramatically because as long as you write syntactically correct code, it can be the ugliest code you have ever written and by passing it through the formatter (and many editors and IDEs will even format the source for you when you save!) you can leave it up to the formatter to make the code pretty and readable.
+This means less time fiddling with alignment, worrying about indentation, and dithering over where to break your function call chain to best communicate your intent.
+It also means that wars over format like &lt;a href=&#34;https://www.businessinsider.com/tabs-vs-spaces-from-silicon-valley-2016-5&#34;&gt;tabs versus spaces&lt;/a&gt; are dead; the formatter is the absolute arbitrator of the correct style, and because the formatter is consistent across the entire ecosystem there is a lot of pressure for users to conform instead of trying to tweak the formatter to their own personal preferences.&lt;/p&gt;
+
+&lt;p&gt;We still have an &lt;a href=&#34;https://github.com/0xazure/supernova/issues/21&#34;&gt;open issue&lt;/a&gt; on &lt;code&gt;supernova&lt;/code&gt; for implementing &lt;code&gt;rustfmt&lt;/code&gt; as part of our continuous integration process that we hope to close out with a pull request relatively soon so we can be sure all the code contributed to &lt;code&gt;supernova&lt;/code&gt; follows the same format as other projects.&lt;/p&gt;
+
+&lt;h2 id=&#34;build-infrastructure-weirdness&#34;&gt;Build Infrastructure Weirdness&lt;/h2&gt;
+
+&lt;p&gt;Speaking of our continuous integration process, we ran into a very curious issue with &lt;a href=&#34;https://github.com/0xazure/supernova/pull/24&#34;&gt;&lt;code&gt;0xazure/supernova#24&lt;/code&gt;&lt;/a&gt; this week where our builds started failing on the &lt;code&gt;beta&lt;/code&gt; release channel.
+The build failure is caused by &lt;code&gt;clippy&lt;/code&gt;&amp;rsquo;s &lt;a href=&#34;https://rust-lang-nursery.github.io/rust-clippy/current/index.html#new_ret_no_self&#34;&gt;&lt;code&gt;new_ret_no_self&lt;/code&gt; lint&lt;/a&gt; which checks to ensure that, as a convention, &lt;code&gt;new&lt;/code&gt; methods are used to make a new instance of a type and return that instance as the return value.
+In the issue, the build is only failing on the &lt;code&gt;beta&lt;/code&gt; release channel which was surprising because I was expecting this lint to have failed the build on the &lt;code&gt;stable&lt;/code&gt; release channel as well if it failed on &lt;code&gt;beta&lt;/code&gt;.
+To further confuse the issue the build on &lt;code&gt;nightly&lt;/code&gt;, which per our configuration for &lt;code&gt;supernova&lt;/code&gt; is allowed to fail, was successful.&lt;/p&gt;
+
+&lt;p&gt;Digging into the problem some more, it looks like we are running into &lt;a href=&#34;https://github.com/rust-lang-nursery/rust-clippy/issues/3313&#34;&gt;&lt;code&gt;rust-lang-nursery/rust-clippy#3313&lt;/code&gt;&lt;/a&gt; where the &lt;code&gt;new_ret_no_self&lt;/code&gt; lint is incorrectly triggering on a &lt;code&gt;new&lt;/code&gt; function that &lt;em&gt;does&lt;/em&gt; return &lt;code&gt;Self&lt;/code&gt;, it&amp;rsquo;s just wrapped by a container type or tuple.&lt;/p&gt;
+
+&lt;p&gt;Indeed, we can see this from our implementation of &lt;code&gt;Config::new&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-rust&#34;&gt;pub fn new(mut args: env::Args) -&amp;gt; Result&amp;lt;Config, &amp;amp;&#39;static str&amp;gt; {
+    args.next();
+
+    let username = match args.next() {
+        None =&amp;gt; return Err(&amp;quot;No username provided&amp;quot;),
+        Some(arg) =&amp;gt; arg,
+    };
+
+    let token = args.next();
+
+    Ok(Config { username, token })
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;which triggers the resulting lint failure&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;error: methods called `new` usually return `Self`
+  --&amp;gt; src/lib.rs:18:5
+   |
+18 | /     pub fn new(mut args: env::Args) -&amp;gt; Result&amp;lt;Config, &amp;amp;&#39;static str&amp;gt; {
+19 | |         args.next();
+20 | |
+21 | |         let username = match args.next() {
+...  |
+28 | |         Ok(Config { username, token })
+29 | |     }
+   | |_____^
+   |
+   = note: `-D clippy::new-ret-no-self` implied by `-D warnings`
+   = help: for further information visit https://rust-lang-nursery.github.io/rust-clippy/v0.0.212/index.html#new_ret_no_self
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;even though our return type is &lt;code&gt;Result&amp;lt;Config, &amp;amp;&#39;static str&amp;gt;&lt;/code&gt; which unwraps to &lt;code&gt;Config&lt;/code&gt; on success and a &lt;code&gt;static str&lt;/code&gt; when there is an error in creating a new instance.&lt;/p&gt;
+
+&lt;h2 id=&#34;investigating-the-root-cause&#34;&gt;Investigating the Root Cause&lt;/h2&gt;
+
+&lt;p&gt;An important part of build infrastructure is reproducibility: the ability to run a build with the same inputs and get the same outputs.
+Without reproducibility we have flaky tests that no one wants to run and worse, no one trusts.
+In the case of &lt;code&gt;supernova&lt;/code&gt; we have a build matrix to test on all three release channels: &lt;code&gt;stable&lt;/code&gt;, &lt;code&gt;beta&lt;/code&gt;, and &lt;code&gt;nightly&lt;/code&gt;, and we need to make sure testing on these channels happens in a predictable way.&lt;/p&gt;
+
+&lt;p&gt;It turns out the issue results from how &lt;code&gt;clippy&lt;/code&gt; is installed in each environment.
+The recommended way to install &lt;code&gt;clippy&lt;/code&gt; is as a &lt;code&gt;rustup&lt;/code&gt; component using &lt;code&gt;rustup component add clippy-preview&lt;/code&gt;.
+However, because &lt;code&gt;clippy&lt;/code&gt; is published as a component for &lt;code&gt;rustup&lt;/code&gt; rather than as some kind of version-pinned project dependency, this command does not install the same version of &lt;code&gt;clippy&lt;/code&gt; across all release channels.
+This can be verified as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;$ cargo +stable clippy --version
+clippy 0.0.212 (125907ad 2018-09-17)
+
+$ cargo +beta clippy --version
+clippy 0.0.212 (b1d03437 2018-10-19)
+
+$ cargo +nightly clippy --version
+clippy 0.0.212 (d8b42690 2018-11-04)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that while all of the build numbers are the same (&lt;code&gt;v0.0.212&lt;/code&gt;), the commit hashes and dates are all different.&lt;/p&gt;
+
+&lt;p&gt;It is important to verify that the tool(s) you&amp;rsquo;re using to test or lint your project are the same version in &lt;strong&gt;all&lt;/strong&gt; of your environments, otherwise you&amp;rsquo;ll end up with confusing build failures like the one we did here.
+In our case we are testing against &lt;code&gt;beta&lt;/code&gt; and &lt;code&gt;nightly&lt;/code&gt; to have an idea of future changes to the Rust compiler and any new lints that may get added in the future, so failures on anything but &lt;code&gt;stable&lt;/code&gt; are nice-to-have information rather than complete show-stoppers.
+In other cases, or in different matrices, it&amp;rsquo;s even more important that the test environment is as consistent as possible and that the number of variables that &lt;em&gt;are&lt;/em&gt; being changed are as small as possible to make tracing failures relatively simple.&lt;/p&gt;
+
+&lt;p&gt;Lint tools are great for catching low-hanging fruit in code review, but you can&amp;rsquo;t blindly trust them.
+When there &lt;em&gt;is&lt;/em&gt; a failure, it takes a person&amp;rsquo;s knowledge of the project to determine if the failure is legitimate or if there&amp;rsquo;s a problem in the tool or lint rule and to determine if it&amp;rsquo;s a problem with the submitted code, a problem with the tool configuration, or a false positive in the tool as in this case with &lt;code&gt;clippy&lt;/code&gt;&amp;rsquo;s &lt;code&gt;new_ret_no_self&lt;/code&gt; lint.&lt;/p&gt;
+
+&lt;h2 id=&#34;fixing-the-problem&#34;&gt;Fixing the Problem&lt;/h2&gt;
+
+&lt;p&gt;After &lt;a href=&#34;https://github.com/0xazure/supernova/pull/24#issuecomment-437530272&#34;&gt;reaching out to some friends&lt;/a&gt; in the &lt;code&gt;#rust&lt;/code&gt; IRC channel, we decided to &lt;a href=&#34;https://github.com/0xazure/supernova/pull/27&#34;&gt;not run &lt;code&gt;clippy&lt;/code&gt; on the &lt;code&gt;beta&lt;/code&gt; toolchain&lt;/a&gt; to avoid more false positives like this in the future.
+We are keeping &lt;code&gt;clippy&lt;/code&gt; enabled for the &lt;code&gt;nightly&lt;/code&gt; release channel because we are allowing &lt;code&gt;nightly&lt;/code&gt; to fail on Travis so while we will investigate those failures it will not block landing any pull requests if for some reason &lt;code&gt;nightly&lt;/code&gt; or &lt;code&gt;clippy&lt;/code&gt; on &lt;code&gt;nightly&lt;/code&gt; finds fault with our code.&lt;/p&gt;
+
+&lt;p&gt;I also recently filed &lt;a href=&#34;https://github.com/0xazure/supernova/issues/32&#34;&gt;&lt;code&gt;0xazure/supernova#32&lt;/code&gt;&lt;/a&gt; to provide better visibility into the versions of tools we install to match how Travis prints out tooling versions for tools that come automatically installed with the Rust build environment.
+This should help us track down version discrepancies and make trouble-shooting failures much quicker.&lt;/p&gt;
+
+&lt;p&gt;After landing the above fix (and &lt;a href=&#34;https://github.com/0xazure/supernova/pull/30&#34;&gt;an extra tweak&lt;/a&gt; so we only run Travis against the &lt;code&gt;master&lt;/code&gt; branch), our builds went fully green &lt;a href=&#34;https://travis-ci.org/0xazure/supernova/builds/455179153&#34;&gt;for the first time&lt;/a&gt; since we enabled Travis on the project!
+Setting up automated builds can take a lot of up-front effort, but it pays big dividends as the project grows to ensure the quality of the software being written.
+Now we just &lt;a href=&#34;https://github.com/0xazure/supernova/issues/8&#34;&gt;need some tests&lt;/a&gt; so we can verify our code is actually correct&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

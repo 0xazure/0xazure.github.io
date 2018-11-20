@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clippy &middot; stuart crust</title>
+
+    <meta name="description" content="a constant work in progress">
+
+    <meta name="generator" content="Hugo 0.51" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="Clippy &middot; stuart crust">
+    <meta name="twitter:description" content="a constant work in progress">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Clippy &middot; stuart crust">
+    <meta property="og:description" content="a constant work in progress">
+
+    
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-51701320-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-51701320-1');
+        </script>
+    
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href='https://stuartcrust.com/css/all.min.css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="stuart crust" href='https://stuartcrust.com/index.xml' />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://stuartcrust.com/">stuart crust</a></h1>
+            <h2 class="brand-tagline"> a constant work in progress </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://twitter.com/0xazure">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/0xazure">
+                        <i class="fa fa-github-alt"></i>
+                    </a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href='https://stuartcrust.com/index.xml'>
+                        <i class="fa fa-rss"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                
+                <h1 class="content-subhead">18 Nov 2018</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://stuartcrust.com/2018/11/opinionated-formatting/" class="post-title">Opinionated Formatting</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
+                                
+                                    <a class="post-category post-category-code linting" href='https://stuartcrust.com/categories/code%20linting'>code linting</a>
+                                
+                                    <a class="post-category post-category-code formatting" href='https://stuartcrust.com/categories/code%20formatting'>code formatting</a>
+                                
+                                    <a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
+                                
+                                    <a class="post-category post-category-clippy" href='https://stuartcrust.com/categories/clippy'>clippy</a>
+                                
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>This week in class we talked about code linting and code formatting using <a href="https://eslint.org/">ESLint</a> and <a href="https://prettier.io/">Prettier</a>.
+These kinds of tools automate a lot of the otherwise labour-intensive and easy-to-miss nitpicks reviewers often leave on pull requests, freeing up time to review much more important elements such as design and code structure.
+Many tech companies - <a href="https://google.github.io/styleguide/">Google</a>, <a href="http://airbnb.io/javascript/">AirBnB</a>, <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions">Microsoft</a> to name a few - have their own code style guides, much in the same way that writing organizations (<a href="https://www.bbc.co.uk/academy/en/collections/news-style-guide">news organizations</a> and <a href="https://www.apastyle.org/">scientific publishing</a>, for example) have documents that outline how to maintain consistency in publications across many hundreds of outlets and thousands of writers, and the idea of a style guide is not new.
+However, the idea of automating this style checking to help developers maintain a consistent style has gained a lot more traction in recent years thanks in part to style and formatting tools coming standard and enabled by default in many modern programming languages.</p>
+
+<h2 id="formatting-as-a-first-class-tool">Formatting as a First-Class Tool</h2>
+
+<p>I was first exposed to this idea of a universal formatter as part of a language&rsquo;s toolchain when I started experimenting with <a href="https://golang.org/">Go</a>.
+Go&rsquo;s <a href="https://golang.org/cmd/gofmt/"><code>gofmt</code></a> enforces a consistent style not just within one project, but across the <em>entire</em> ecosystem of Go code, making even foreign codebases more accessible because of their consistent style.
+This consistency helps to reduce visual noise, making it easier to focus on what the code says rather than how it&rsquo;s formatted.
+This idea of a universal formatter appears in other languages like <a href="https://www.rust-lang.org">Rust</a>&rsquo;s own <a href="https://github.com/rust-lang-nursery/rustfmt"><code>rustfmt</code></a>, though there are many other tools for enforcing style that predate these tools, such as <a href="https://www.rubocop.org/en/latest/">rubocop</a> for Ruby and <a href="http://astyle.sourceforge.net/">astyle</a> for C and C++.</p>
+
+<p>In Go and Rust, these formatters increase productivity dramatically because as long as you write syntactically correct code, it can be the ugliest code you have ever written and by passing it through the formatter (and many editors and IDEs will even format the source for you when you save!) you can leave it up to the formatter to make the code pretty and readable.
+This means less time fiddling with alignment, worrying about indentation, and dithering over where to break your function call chain to best communicate your intent.
+It also means that wars over format like <a href="https://www.businessinsider.com/tabs-vs-spaces-from-silicon-valley-2016-5">tabs versus spaces</a> are dead; the formatter is the absolute arbitrator of the correct style, and because the formatter is consistent across the entire ecosystem there is a lot of pressure for users to conform instead of trying to tweak the formatter to their own personal preferences.</p>
+
+<p>We still have an <a href="https://github.com/0xazure/supernova/issues/21">open issue</a> on <code>supernova</code> for implementing <code>rustfmt</code> as part of our continuous integration process that we hope to close out with a pull request relatively soon so we can be sure all the code contributed to <code>supernova</code> follows the same format as other projects.</p>
+
+<h2 id="build-infrastructure-weirdness">Build Infrastructure Weirdness</h2>
+
+<p>Speaking of our continuous integration process, we ran into a very curious issue with <a href="https://github.com/0xazure/supernova/pull/24"><code>0xazure/supernova#24</code></a> this week where our builds started failing on the <code>beta</code> release channel.
+The build failure is caused by <code>clippy</code>&rsquo;s <a href="https://rust-lang-nursery.github.io/rust-clippy/current/index.html#new_ret_no_self"><code>new_ret_no_self</code> lint</a> which checks to ensure that, as a convention, <code>new</code> methods are used to make a new instance of a type and return that instance as the return value.
+In the issue, the build is only failing on the <code>beta</code> release channel which was surprising because I was expecting this lint to have failed the build on the <code>stable</code> release channel as well if it failed on <code>beta</code>.
+To further confuse the issue the build on <code>nightly</code>, which per our configuration for <code>supernova</code> is allowed to fail, was successful.</p>
+
+<p>Digging into the problem some more, it looks like we are running into <a href="https://github.com/rust-lang-nursery/rust-clippy/issues/3313"><code>rust-lang-nursery/rust-clippy#3313</code></a> where the <code>new_ret_no_self</code> lint is incorrectly triggering on a <code>new</code> function that <em>does</em> return <code>Self</code>, it&rsquo;s just wrapped by a container type or tuple.</p>
+
+<p>Indeed, we can see this from our implementation of <code>Config::new</code></p>
+
+<pre><code class="language-rust">pub fn new(mut args: env::Args) -&gt; Result&lt;Config, &amp;'static str&gt; {
+    args.next();
+
+    let username = match args.next() {
+        None =&gt; return Err(&quot;No username provided&quot;),
+        Some(arg) =&gt; arg,
+    };
+
+    let token = args.next();
+
+    Ok(Config { username, token })
+}
+</code></pre>
+
+<p>which triggers the resulting lint failure</p>
+
+<pre><code class="language-text">error: methods called `new` usually return `Self`
+  --&gt; src/lib.rs:18:5
+   |
+18 | /     pub fn new(mut args: env::Args) -&gt; Result&lt;Config, &amp;'static str&gt; {
+19 | |         args.next();
+20 | |
+21 | |         let username = match args.next() {
+...  |
+28 | |         Ok(Config { username, token })
+29 | |     }
+   | |_____^
+   |
+   = note: `-D clippy::new-ret-no-self` implied by `-D warnings`
+   = help: for further information visit https://rust-lang-nursery.github.io/rust-clippy/v0.0.212/index.html#new_ret_no_self
+</code></pre>
+
+<p>even though our return type is <code>Result&lt;Config, &amp;'static str&gt;</code> which unwraps to <code>Config</code> on success and a <code>static str</code> when there is an error in creating a new instance.</p>
+
+<h2 id="investigating-the-root-cause">Investigating the Root Cause</h2>
+
+<p>An important part of build infrastructure is reproducibility: the ability to run a build with the same inputs and get the same outputs.
+Without reproducibility we have flaky tests that no one wants to run and worse, no one trusts.
+In the case of <code>supernova</code> we have a build matrix to test on all three release channels: <code>stable</code>, <code>beta</code>, and <code>nightly</code>, and we need to make sure testing on these channels happens in a predictable way.</p>
+
+<p>It turns out the issue results from how <code>clippy</code> is installed in each environment.
+The recommended way to install <code>clippy</code> is as a <code>rustup</code> component using <code>rustup component add clippy-preview</code>.
+However, because <code>clippy</code> is published as a component for <code>rustup</code> rather than as some kind of version-pinned project dependency, this command does not install the same version of <code>clippy</code> across all release channels.
+This can be verified as follows:</p>
+
+<pre><code class="language-text">$ cargo +stable clippy --version
+clippy 0.0.212 (125907ad 2018-09-17)
+
+$ cargo +beta clippy --version
+clippy 0.0.212 (b1d03437 2018-10-19)
+
+$ cargo +nightly clippy --version
+clippy 0.0.212 (d8b42690 2018-11-04)
+</code></pre>
+
+<p>Note that while all of the build numbers are the same (<code>v0.0.212</code>), the commit hashes and dates are all different.</p>
+
+<p>It is important to verify that the tool(s) you&rsquo;re using to test or lint your project are the same version in <strong>all</strong> of your environments, otherwise you&rsquo;ll end up with confusing build failures like the one we did here.
+In our case we are testing against <code>beta</code> and <code>nightly</code> to have an idea of future changes to the Rust compiler and any new lints that may get added in the future, so failures on anything but <code>stable</code> are nice-to-have information rather than complete show-stoppers.
+In other cases, or in different matrices, it&rsquo;s even more important that the test environment is as consistent as possible and that the number of variables that <em>are</em> being changed are as small as possible to make tracing failures relatively simple.</p>
+
+<p>Lint tools are great for catching low-hanging fruit in code review, but you can&rsquo;t blindly trust them.
+When there <em>is</em> a failure, it takes a person&rsquo;s knowledge of the project to determine if the failure is legitimate or if there&rsquo;s a problem in the tool or lint rule and to determine if it&rsquo;s a problem with the submitted code, a problem with the tool configuration, or a false positive in the tool as in this case with <code>clippy</code>&rsquo;s <code>new_ret_no_self</code> lint.</p>
+
+<h2 id="fixing-the-problem">Fixing the Problem</h2>
+
+<p>After <a href="https://github.com/0xazure/supernova/pull/24#issuecomment-437530272">reaching out to some friends</a> in the <code>#rust</code> IRC channel, we decided to <a href="https://github.com/0xazure/supernova/pull/27">not run <code>clippy</code> on the <code>beta</code> toolchain</a> to avoid more false positives like this in the future.
+We are keeping <code>clippy</code> enabled for the <code>nightly</code> release channel because we are allowing <code>nightly</code> to fail on Travis so while we will investigate those failures it will not block landing any pull requests if for some reason <code>nightly</code> or <code>clippy</code> on <code>nightly</code> finds fault with our code.</p>
+
+<p>I also recently filed <a href="https://github.com/0xazure/supernova/issues/32"><code>0xazure/supernova#32</code></a> to provide better visibility into the versions of tools we install to match how Travis prints out tooling versions for tools that come automatically installed with the Rust build environment.
+This should help us track down version discrepancies and make trouble-shooting failures much quicker.</p>
+
+<p>After landing the above fix (and <a href="https://github.com/0xazure/supernova/pull/30">an extra tweak</a> so we only run Travis against the <code>master</code> branch), our builds went fully green <a href="https://travis-ci.org/0xazure/supernova/builds/455179153">for the first time</a> since we enabled Travis on the project!
+Setting up automated builds can take a lot of up-front effort, but it pays big dividends as the project grows to ensure the quality of the software being written.
+Now we just <a href="https://github.com/0xazure/supernova/issues/8">need some tests</a> so we can verify our code is actually correct&hellip;</p>
+
+                    </div>
+                </section>
+                
+            </div>
+            
+
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src='https://stuartcrust.com/js/all.min.js'></script>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
