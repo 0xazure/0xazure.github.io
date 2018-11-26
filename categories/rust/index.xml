@@ -6,10 +6,229 @@
     <description>Recent content in Rust on stuart crust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Nov 2018 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 25 Nov 2018 00:00:00 -0500</lastBuildDate>
     
         <atom:link href="https://stuartcrust.com/categories/rust/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>I See You Are Writing Some Rust</title>
+      <link>https://stuartcrust.com/2018/11/i-see-you-are-writing-some-rust/</link>
+      <pubDate>Sun, 25 Nov 2018 00:00:00 -0500</pubDate>
+      
+      <guid>https://stuartcrust.com/2018/11/i-see-you-are-writing-some-rust/</guid>
+      <description>
+
+&lt;h1 id=&#34;would-you-like-some-help-with-that&#34;&gt;Would You Like Some Help With That?&lt;/h1&gt;
+
+&lt;p&gt;In my &lt;a href=&#34;https://stuartcrust.com/2018/11/opinionated-formatting&#34;&gt;last post&lt;/a&gt; I wrote a bit about code linting and code formatting, particularly in more modern programming languages like Rust and Go where such tools come first-class as part of the language&amp;rsquo;s toolchain.
+In addition to Rust&amp;rsquo;s &lt;code&gt;rustfmt&lt;/code&gt; tool which formats Rust code according to style guidelines, Rust&amp;rsquo;s ecosystem also has a tool called &lt;code&gt;clippy&lt;/code&gt; which is a much more opinionated tool &amp;ldquo;to catch common mistakes and improve your Rust code.&amp;rdquo;&lt;/p&gt;
+
+&lt;h2 id=&#34;introducing-clippy&#34;&gt;Introducing &lt;code&gt;clippy&lt;/code&gt;&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt; _____________________________________
+/ I see you are writing some Rust.    \
+\ Would you like some help with that? /
+ -------------------------------------
+ \
+  \
+    /  \
+    |  |
+    @  @
+    |  |
+    || |/
+    || ||
+    |\_/|
+    \___/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;clippy&lt;/code&gt; currently has &lt;a href=&#34;https://rust-lang.github.io/rust-clippy/master/index.html&#34;&gt;288 lints&lt;/a&gt; to help developers write better Rust code.
+The lints are broken down into various categories such as:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;style: code that should be written in a more idiomatic way (e.g. &lt;code&gt;if x.len() == 0 {...}&lt;/code&gt; could be re-written as &lt;code&gt;if x.is_empty() {...}&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;correctness: code that it outright wrong of very useless (e.g. ensuring syntax when creating regexes)&lt;/li&gt;
+&lt;li&gt;complexity: code that is more complex than necessary (e.g. &lt;code&gt;if x == true {...}&lt;/code&gt; could be re-written as &lt;code&gt;if x {...}&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;as well as &lt;a href=&#34;https://github.com/rust-lang/rust-clippy#clippy&#34;&gt;many others&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been interested in contributing to a Rust tooling project since I did my &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one/&#34;&gt;initial Rust project overview&lt;/a&gt; as part of &lt;a href=&#34;https://stuartcrust.com/categories/hacktoberfest/&#34;&gt;Hacktoberfest 2018&lt;/a&gt;.
+Good tooling is a &lt;a href=&#34;https://en.wikipedia.org/wiki/Force_multiplication&#34;&gt;force multiplier&lt;/a&gt; in software development, and improving tooling - especially tooling that is &amp;ldquo;blessed&amp;rdquo; and supported by the core language team - can reach so many more people than small purpose-built tools set up for individual projects.&lt;/p&gt;
+
+&lt;p&gt;During Hacktoberfest, I ran across &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/issues/1673&#34;&gt;&lt;code&gt;rust-lang/rust-clippy#1673&lt;/code&gt;&lt;/a&gt; but because of the time constraints on Hacktoberfest contributions along with my other coursework I didn&amp;rsquo;t have time to claim the issue.&lt;/p&gt;
+
+&lt;p&gt;The full issue is as follows:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;It is not idiomatic in Rust to have setters and getters. Make the field public instead.
+If the type only has a &lt;code&gt;get_foo&lt;/code&gt; method but not a &lt;code&gt;set_foo&lt;/code&gt; method, suggest naming it &lt;code&gt;foo&lt;/code&gt; instead.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This seemed like a relatively simple lint to implement which would hopefully introduce me to a number of features &lt;code&gt;clippy&lt;/code&gt; uses when analyzing Rust code and inspecting the representation that the &lt;code&gt;rustc&lt;/code&gt; compiler sees before it generates build artifacts.
+Once Hacktoberfest was over and I cleared some work off my plate, I went back and asked if the lint &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/issues/1673#issuecomment-440137309&#34;&gt;was still up for grabs&lt;/a&gt; before I invested the time to attempt an implementation.
+&lt;a href=&#34;https://twitter.com/Manishearth&#34;&gt;Manish Goregaokar&lt;/a&gt; of the &lt;a href=&#34;https://www.rust-lang.org/en-US/team.html#Dev-tools-team&#34;&gt;Rust dev tools team&lt;/a&gt; got back to me almost immediately:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Actually, I&amp;rsquo;m not sure if this really is valid rust style &amp;ndash; setters and getters may be added to future proof an API, for example.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Manish raised the excellent point that getters and setters are in fact valid Rust style and I agreed, so I thought I was going to have to find another issue to work on and moved to &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/issues/1673#issuecomment-440436914&#34;&gt;close the issue&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I was worried that I would run into a similar situation with other issues I was interested in working on, so I reached out to Manish directly on the &lt;code&gt;wg-clippy&lt;/code&gt; Discord channel and asked about another issue I was interested in working on:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;@manishearth i was interested in picking up &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/issues/1673&#34;&gt;https://github.com/rust-lang/rust-clippy/issues/1673&lt;/a&gt; but i agree with your comment that it may not be a desirable lint to have&lt;/p&gt;
+
+&lt;p&gt;i&amp;rsquo;m looking at &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/issues/2144&#34;&gt;https://github.com/rust-lang/rust-clippy/issues/2144&lt;/a&gt; now, or if there&amp;rsquo;s another &lt;code&gt;good first issue&lt;/code&gt; that&amp;rsquo;s up for grabs i&amp;rsquo;d definitely be interested in taking a look!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I got a response pretty quickly:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;that seems fine!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;However, activity on the original issue I was interested in had clearly caught some attention, and I got into a discussion with user &lt;a href=&#34;https://github.com/hcpl&#34;&gt;hcpl&lt;/a&gt; about other use cases for the lint, specifically:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If the type only has a &lt;code&gt;get_foo&lt;/code&gt; method but not a &lt;code&gt;set_foo&lt;/code&gt; method, suggest naming it &lt;code&gt;foo&lt;/code&gt; instead.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/issues/1673#issuecomment-440460968&#34;&gt;turned out&lt;/a&gt; that there was already some precedence for this style in the Rust standard library, and the Rust API Guidelines has an &lt;a href=&#34;https://rust-lang-nursery.github.io/api-guidelines/naming.html#c-getter&#34;&gt;entire section&lt;/a&gt; about Rust conventions for getter names. Except for the cases of:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;get&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_mut&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_unchecked&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_unchecked_mut&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_ref&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;which have some special meanings in Rust related to &lt;a href=&#34;https://doc.rust-lang.org/book/second-edition/ch03-01-variables-and-mutability.html&#34;&gt;data mutability&lt;/a&gt;, references, or &lt;a href=&#34;https://doc.rust-lang.org/book/second-edition/ch19-01-unsafe-rust.html&#34;&gt;unsafe code&lt;/a&gt;, the &lt;code&gt;get_&lt;/code&gt; prefix is not generally used in Rust.
+Searching for these exceptions also turned up an &lt;a href=&#34;https://github.com/rust-lang/rust/issues/27745&#34;&gt;unstable feature relating to &lt;code&gt;TypeId&lt;/code&gt;&lt;/a&gt; to support &lt;a href=&#34;https://en.wikipedia.org/wiki/Reflection_%28computer_programming%29&#34;&gt;reflection&lt;/a&gt; that &lt;em&gt;does&lt;/em&gt; include the &lt;code&gt;get_&lt;/code&gt; prefix even though it&amp;rsquo;s &lt;a href=&#34;https://github.com/rust-lang/rust/issues/27745#issuecomment-138511187&#34;&gt;not supposed to&lt;/a&gt;, which goes to show that implementing this lint could be very valuable to help maintain style even in core Rust projects and the compiler.&lt;/p&gt;
+
+&lt;p&gt;After some good back-and-forth discussion with &lt;a href=&#34;https://github.com/hcpl&#34;&gt;hcpl&lt;/a&gt; and &lt;a href=&#34;https://github.com/flip1995&#34;&gt;Philipp Krones&lt;/a&gt;, I &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/issues/1673#issuecomment-441304062&#34;&gt;summarized the proposed refinements&lt;/a&gt; to the filed issue:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;To summarize, if the type has a &lt;code&gt;get_foo&lt;/code&gt; method we should suggest naming it &lt;code&gt;foo&lt;/code&gt; instead to follow the API Guidelines for &lt;a href=&#34;https://rust-lang-nursery.github.io/api-guidelines/naming.html#c-getter&#34;&gt;Rust getter name conventions&lt;/a&gt; &lt;em&gt;except&lt;/em&gt; for cases of:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;get&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_mut&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_unchecked&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_unchecked_mut&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_ref&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This should be enough to get me started on a style lint for this convention, I should have some time over the next couple days to start digging into this.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;With better clarity on what the lint should implement as well as some known exceptions, I was in a position to start getting the project set up and go through all the steps of onboarding onto a new project.&lt;/p&gt;
+
+&lt;h2 id=&#34;working-on-clippy&#34;&gt;Working on &lt;code&gt;clippy&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;To start implementing the lint, I had to go through all the usual steps of forking and cloning &lt;code&gt;clippy&lt;/code&gt; and making sure I could build the project locally before I could start digging into code.
+After cloning the project, I went ahead and tried to build &lt;code&gt;clippy&lt;/code&gt; locally:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;$ cargo --version
+cargo 1.32.0-nightly (1fa308820 2018-10-31)
+
+$ cargo build
+
+[snip]
+
+error[E0050]: method `check_pat` has 4 parameters but the declaration in trait `rustc::lint::EarlyLintPass::check_pat` has 3
+   --&amp;gt; clippy_lints/src/misc_early.rs:244:66
+    |
+244 |     fn check_pat(&amp;amp;mut self, cx: &amp;amp;EarlyContext&amp;lt;&#39;_&amp;gt;, pat: &amp;amp;Pat, _: &amp;amp;mut bool) {
+    |                                                                  ^^^^^^^^^ expected 3 parameters, found 4
+    |
+    = note: `check_pat` from trait: `fn(&amp;amp;mut Self, &amp;amp;rustc::lint::EarlyContext&amp;lt;&#39;_&amp;gt;, &amp;amp;syntax::ast::Pat)`
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0050`.
+error: Could not compile `clippy_lints`.
+warning: build failed, waiting for other jobs to finish...
+error: build failed
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Oops, that&amp;rsquo;s not good.
+I knew &lt;code&gt;clippy&lt;/code&gt; relied heavily on features from the &lt;code&gt;nightly&lt;/code&gt; release channel, and, as the name implies, the &lt;code&gt;nightly&lt;/code&gt; channel is released every night with new changes and improvements.
+&lt;code&gt;clippy&lt;/code&gt; must be making use of some new feature here and my &lt;code&gt;nightly&lt;/code&gt; Rust is out of date.
+I updated Rust with &lt;code&gt;rustup&lt;/code&gt; and then tried again to build &lt;code&gt;clippy&lt;/code&gt; locally:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;$ rustup update
+
+[snip]
+
+nightly-x86_64-apple-darwin updated - rustc 1.32.0-nightly (5aff30734 2018-11-19)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;$ cargo --version
+cargo 1.32.0-nightly (b3d0b2e54 2018-11-15)
+
+$ cargo build
+
+[snip]
+
+Finished dev [unoptimized + debuginfo] target(s) in 2m 03s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now that I knew I really had to watch the versions and make sure everything was up to date, I was ready to start thinking about implementing the lint.&lt;/p&gt;
+
+&lt;h3 id=&#34;a-few-days-later&#34;&gt;A Few Days Later&amp;hellip;&lt;/h3&gt;
+
+&lt;p&gt;A challenge that I&amp;rsquo;ve been running into working on &lt;code&gt;clippy&lt;/code&gt; is that because it relies so heavily on &lt;code&gt;nightly&lt;/code&gt; compiler features, and both &lt;code&gt;clippy&lt;/code&gt; and &lt;code&gt;nightly&lt;/code&gt; are moving targets, my local &lt;code&gt;clippy&lt;/code&gt; checkout can very quickly get out of date not only from upstream but also from the &lt;code&gt;nightly&lt;/code&gt; release channel.&lt;/p&gt;
+
+&lt;p&gt;For example, I updated everything recently and got:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;$ cargo build
+
+   Compiling clippy_lints v0.0.212 (/Users/azure/devel/rust-clippy/clippy_lints)
+error[E0615]: attempted to take value of method `abi` on type `rustc_target::abi::Align`
+    --&amp;gt; clippy_lints/src/types.rs:1067:93
+     |
+1067 |                 if let Some(from_align) = cx.layout_of(from_ptr_ty.ty).ok().map(|a| a.align.abi);
+     |                                                                                             ^^^
+     |
+     = help: maybe a `()` to call it is missing?
+
+error[E0615]: attempted to take value of method `abi` on type `rustc_target::abi::Align`
+    --&amp;gt; clippy_lints/src/types.rs:1068:89
+     |
+1068 |                 if let Some(to_align) = cx.layout_of(to_ptr_ty.ty).ok().map(|a| a.align.abi);
+     |                                                                                         ^^^
+     |
+     = help: maybe a `()` to call it is missing?
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0615`.
+error: Could not compile `clippy_lints`.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;which is the change introduced in &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/pull/3452&#34;&gt;rust-lang/rust-clippy#3452&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For whatever reason, even after updating Rust and using the same tool versions as in &lt;a href=&#34;https://travis-ci.org/rust-lang/rust-clippy/builds/458715770&#34;&gt;this passing test&lt;/a&gt; for the above pull request the project does not build locally.
+Luckily reverting back to &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/pull/3449&#34;&gt;&lt;code&gt;61501b2810d887367d360025398dd9280c4bcd8b&lt;/code&gt;&lt;/a&gt; lets me compile the project so I can continue working without getting &lt;em&gt;too&lt;/em&gt; out of date with upstream, but there&amp;rsquo;s a lot of churn and things often break for unexplained reasons.&lt;/p&gt;
+
+&lt;p&gt;I reached out to &lt;a href=&#34;https://github.com/matthiaskrgr&#34;&gt;Matthias Krüger&lt;/a&gt;, the original author of &lt;code&gt;#3453&lt;/code&gt;, on the &lt;code&gt;wg-rust&lt;/code&gt; Discord channel to find out what was going on.
+It turns out that sometimes even the &lt;code&gt;nightly&lt;/code&gt; release channel isn&amp;rsquo;t &lt;a href=&#34;https://en.wikipedia.org/wiki/Bleeding_edge_technology&#34;&gt;bleeding-edge&lt;/a&gt; enough to work on &lt;code&gt;clippy&lt;/code&gt; lints and a tool called &lt;a href=&#34;https://github.com/kennytm/rustup-toolchain-install-master&#34;&gt;&lt;code&gt;rustup-toolchain-install-master&lt;/code&gt;&lt;/a&gt; is necessary to install compiler artifacts directly from Rust&amp;rsquo;s continuous integration pipeline that haven&amp;rsquo;t even been published to the &lt;code&gt;nightly&lt;/code&gt; channel yet.
+This information is also documented in &lt;code&gt;clippy&lt;/code&gt;&amp;rsquo;s &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/blob/master/CONTRIBUTING.md#fixing-build-failures-caused-by-rust&#34;&gt;&lt;code&gt;CONTRIBUTING.MD&lt;/code&gt; file&lt;/a&gt;, but it&amp;rsquo;s located at almost the bottom of the document which is why I hadn&amp;rsquo;t run across the information earlier.
+It is very true that it pays to read the documentation, and in many other projects asking a question about why my local build was failing in this way would receive comments to &amp;ldquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/RTFM&#34;&gt;RTFM&lt;/a&gt;&amp;rdquo;.
+However, my experiences in the Rust community have been nothing but positive, everyone I have interacted with has been very helpful, and even &amp;ldquo;big names&amp;rdquo; in the community are accessible and directly engaged in projects and contributor mentorship.&lt;/p&gt;
+
+&lt;h2 id=&#34;to-be-continued&#34;&gt;To Be Continued&amp;hellip;&lt;/h2&gt;
+
+&lt;p&gt;This week was all about finding my footing and getting my local environment set up to actually do development work on &lt;code&gt;clippy&lt;/code&gt;.
+In the coming weeks I&amp;rsquo;ll tackle actually implementing the lint now that the requirements and goals have been fleshed out, and I hope to have something up for code review soon to get community feedback on improving the lint and catching anything I&amp;rsquo;ve missed.&lt;/p&gt;
+
+&lt;p&gt;First up: reading &lt;a href=&#34;https://twitter.com/llogiq&#34;&gt;llogiq&lt;/a&gt;&amp;rsquo;s blogpost on &lt;a href=&#34;https://llogiq.github.io/2015/06/04/workflows.html&#34;&gt;writing &lt;code&gt;clippy&lt;/code&gt; lints&lt;/a&gt;.
+Then I&amp;rsquo;ll create a starting point for my lint with &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/blob/master/CONTRIBUTING.md#author-lint&#34;&gt;&lt;code&gt;clippy&lt;/code&gt;&amp;rsquo;s internal &lt;code&gt;author&lt;/code&gt; lint&lt;/a&gt; as well as reading some &lt;a href=&#34;https://github.com/rust-lang/rust-clippy/tree/master/clippy_lints/src&#34;&gt;existing lints&lt;/a&gt; to get a general idea of lint structure.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Opinionated Formatting</title>

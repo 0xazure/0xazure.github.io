@@ -83,6 +83,242 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">25 Nov 2018</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://stuartcrust.com/2018/11/i-see-you-are-writing-some-rust/" class="post-title">I See You Are Writing Some Rust</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
+                                
+                                    <a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
+                                
+                                    <a class="post-category post-category-clippy" href='https://stuartcrust.com/categories/clippy'>clippy</a>
+                                
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<h1 id="would-you-like-some-help-with-that">Would You Like Some Help With That?</h1>
+
+<p>In my <a href="/2018/11/opinionated-formatting">last post</a> I wrote a bit about code linting and code formatting, particularly in more modern programming languages like Rust and Go where such tools come first-class as part of the language&rsquo;s toolchain.
+In addition to Rust&rsquo;s <code>rustfmt</code> tool which formats Rust code according to style guidelines, Rust&rsquo;s ecosystem also has a tool called <code>clippy</code> which is a much more opinionated tool &ldquo;to catch common mistakes and improve your Rust code.&rdquo;</p>
+
+<h2 id="introducing-clippy">Introducing <code>clippy</code></h2>
+
+<pre><code class="language-text"> _____________________________________
+/ I see you are writing some Rust.    \
+\ Would you like some help with that? /
+ -------------------------------------
+ \
+  \
+    /  \
+    |  |
+    @  @
+    |  |
+    || |/
+    || ||
+    |\_/|
+    \___/
+</code></pre>
+
+<p><code>clippy</code> currently has <a href="https://rust-lang.github.io/rust-clippy/master/index.html">288 lints</a> to help developers write better Rust code.
+The lints are broken down into various categories such as:</p>
+
+<ul>
+<li>style: code that should be written in a more idiomatic way (e.g. <code>if x.len() == 0 {...}</code> could be re-written as <code>if x.is_empty() {...}</code>)</li>
+<li>correctness: code that it outright wrong of very useless (e.g. ensuring syntax when creating regexes)</li>
+<li>complexity: code that is more complex than necessary (e.g. <code>if x == true {...}</code> could be re-written as <code>if x {...}</code>)</li>
+</ul>
+
+<p>as well as <a href="https://github.com/rust-lang/rust-clippy#clippy">many others</a>.</p>
+
+<p>I&rsquo;ve been interested in contributing to a Rust tooling project since I did my <a href="/2018/10/hacktoberfest-week-one/">initial Rust project overview</a> as part of <a href="/categories/hacktoberfest/">Hacktoberfest 2018</a>.
+Good tooling is a <a href="https://en.wikipedia.org/wiki/Force_multiplication">force multiplier</a> in software development, and improving tooling - especially tooling that is &ldquo;blessed&rdquo; and supported by the core language team - can reach so many more people than small purpose-built tools set up for individual projects.</p>
+
+<p>During Hacktoberfest, I ran across <a href="https://github.com/rust-lang/rust-clippy/issues/1673"><code>rust-lang/rust-clippy#1673</code></a> but because of the time constraints on Hacktoberfest contributions along with my other coursework I didn&rsquo;t have time to claim the issue.</p>
+
+<p>The full issue is as follows:</p>
+
+<blockquote>
+<p>It is not idiomatic in Rust to have setters and getters. Make the field public instead.
+If the type only has a <code>get_foo</code> method but not a <code>set_foo</code> method, suggest naming it <code>foo</code> instead.</p>
+</blockquote>
+
+<p>This seemed like a relatively simple lint to implement which would hopefully introduce me to a number of features <code>clippy</code> uses when analyzing Rust code and inspecting the representation that the <code>rustc</code> compiler sees before it generates build artifacts.
+Once Hacktoberfest was over and I cleared some work off my plate, I went back and asked if the lint <a href="https://github.com/rust-lang/rust-clippy/issues/1673#issuecomment-440137309">was still up for grabs</a> before I invested the time to attempt an implementation.
+<a href="https://twitter.com/Manishearth">Manish Goregaokar</a> of the <a href="https://www.rust-lang.org/en-US/team.html#Dev-tools-team">Rust dev tools team</a> got back to me almost immediately:</p>
+
+<blockquote>
+<p>Actually, I&rsquo;m not sure if this really is valid rust style &ndash; setters and getters may be added to future proof an API, for example.</p>
+</blockquote>
+
+<p>Manish raised the excellent point that getters and setters are in fact valid Rust style and I agreed, so I thought I was going to have to find another issue to work on and moved to <a href="https://github.com/rust-lang/rust-clippy/issues/1673#issuecomment-440436914">close the issue</a>.</p>
+
+<p>I was worried that I would run into a similar situation with other issues I was interested in working on, so I reached out to Manish directly on the <code>wg-clippy</code> Discord channel and asked about another issue I was interested in working on:</p>
+
+<blockquote>
+<p>@manishearth i was interested in picking up <a href="https://github.com/rust-lang/rust-clippy/issues/1673">https://github.com/rust-lang/rust-clippy/issues/1673</a> but i agree with your comment that it may not be a desirable lint to have</p>
+
+<p>i&rsquo;m looking at <a href="https://github.com/rust-lang/rust-clippy/issues/2144">https://github.com/rust-lang/rust-clippy/issues/2144</a> now, or if there&rsquo;s another <code>good first issue</code> that&rsquo;s up for grabs i&rsquo;d definitely be interested in taking a look!</p>
+</blockquote>
+
+<p>I got a response pretty quickly:</p>
+
+<blockquote>
+<p>that seems fine!</p>
+</blockquote>
+
+<p>However, activity on the original issue I was interested in had clearly caught some attention, and I got into a discussion with user <a href="https://github.com/hcpl">hcpl</a> about other use cases for the lint, specifically:</p>
+
+<blockquote>
+<p>If the type only has a <code>get_foo</code> method but not a <code>set_foo</code> method, suggest naming it <code>foo</code> instead.</p>
+</blockquote>
+
+<p>It <a href="https://github.com/rust-lang/rust-clippy/issues/1673#issuecomment-440460968">turned out</a> that there was already some precedence for this style in the Rust standard library, and the Rust API Guidelines has an <a href="https://rust-lang-nursery.github.io/api-guidelines/naming.html#c-getter">entire section</a> about Rust conventions for getter names. Except for the cases of:</p>
+
+<ul>
+<li><code>get</code></li>
+<li><code>get_mut</code></li>
+<li><code>get_unchecked</code></li>
+<li><code>get_unchecked_mut</code></li>
+<li><code>get_ref</code></li>
+</ul>
+
+<p>which have some special meanings in Rust related to <a href="https://doc.rust-lang.org/book/second-edition/ch03-01-variables-and-mutability.html">data mutability</a>, references, or <a href="https://doc.rust-lang.org/book/second-edition/ch19-01-unsafe-rust.html">unsafe code</a>, the <code>get_</code> prefix is not generally used in Rust.
+Searching for these exceptions also turned up an <a href="https://github.com/rust-lang/rust/issues/27745">unstable feature relating to <code>TypeId</code></a> to support <a href="https://en.wikipedia.org/wiki/Reflection_%28computer_programming%29">reflection</a> that <em>does</em> include the <code>get_</code> prefix even though it&rsquo;s <a href="https://github.com/rust-lang/rust/issues/27745#issuecomment-138511187">not supposed to</a>, which goes to show that implementing this lint could be very valuable to help maintain style even in core Rust projects and the compiler.</p>
+
+<p>After some good back-and-forth discussion with <a href="https://github.com/hcpl">hcpl</a> and <a href="https://github.com/flip1995">Philipp Krones</a>, I <a href="https://github.com/rust-lang/rust-clippy/issues/1673#issuecomment-441304062">summarized the proposed refinements</a> to the filed issue:</p>
+
+<blockquote>
+<p>To summarize, if the type has a <code>get_foo</code> method we should suggest naming it <code>foo</code> instead to follow the API Guidelines for <a href="https://rust-lang-nursery.github.io/api-guidelines/naming.html#c-getter">Rust getter name conventions</a> <em>except</em> for cases of:</p>
+
+<ul>
+<li><code>get</code></li>
+<li><code>get_mut</code></li>
+<li><code>get_unchecked</code></li>
+<li><code>get_unchecked_mut</code></li>
+<li><code>get_ref</code></li>
+</ul>
+
+<p>This should be enough to get me started on a style lint for this convention, I should have some time over the next couple days to start digging into this.</p>
+</blockquote>
+
+<p>With better clarity on what the lint should implement as well as some known exceptions, I was in a position to start getting the project set up and go through all the steps of onboarding onto a new project.</p>
+
+<h2 id="working-on-clippy">Working on <code>clippy</code></h2>
+
+<p>To start implementing the lint, I had to go through all the usual steps of forking and cloning <code>clippy</code> and making sure I could build the project locally before I could start digging into code.
+After cloning the project, I went ahead and tried to build <code>clippy</code> locally:</p>
+
+<pre><code class="language-text">$ cargo --version
+cargo 1.32.0-nightly (1fa308820 2018-10-31)
+
+$ cargo build
+
+[snip]
+
+error[E0050]: method `check_pat` has 4 parameters but the declaration in trait `rustc::lint::EarlyLintPass::check_pat` has 3
+   --&gt; clippy_lints/src/misc_early.rs:244:66
+    |
+244 |     fn check_pat(&amp;mut self, cx: &amp;EarlyContext&lt;'_&gt;, pat: &amp;Pat, _: &amp;mut bool) {
+    |                                                                  ^^^^^^^^^ expected 3 parameters, found 4
+    |
+    = note: `check_pat` from trait: `fn(&amp;mut Self, &amp;rustc::lint::EarlyContext&lt;'_&gt;, &amp;syntax::ast::Pat)`
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0050`.
+error: Could not compile `clippy_lints`.
+warning: build failed, waiting for other jobs to finish...
+error: build failed
+</code></pre>
+
+<p>Oops, that&rsquo;s not good.
+I knew <code>clippy</code> relied heavily on features from the <code>nightly</code> release channel, and, as the name implies, the <code>nightly</code> channel is released every night with new changes and improvements.
+<code>clippy</code> must be making use of some new feature here and my <code>nightly</code> Rust is out of date.
+I updated Rust with <code>rustup</code> and then tried again to build <code>clippy</code> locally:</p>
+
+<pre><code class="language-text">$ rustup update
+
+[snip]
+
+nightly-x86_64-apple-darwin updated - rustc 1.32.0-nightly (5aff30734 2018-11-19)
+</code></pre>
+
+<pre><code class="language-text">$ cargo --version
+cargo 1.32.0-nightly (b3d0b2e54 2018-11-15)
+
+$ cargo build
+
+[snip]
+
+Finished dev [unoptimized + debuginfo] target(s) in 2m 03s
+</code></pre>
+
+<p>Now that I knew I really had to watch the versions and make sure everything was up to date, I was ready to start thinking about implementing the lint.</p>
+
+<h3 id="a-few-days-later">A Few Days Later&hellip;</h3>
+
+<p>A challenge that I&rsquo;ve been running into working on <code>clippy</code> is that because it relies so heavily on <code>nightly</code> compiler features, and both <code>clippy</code> and <code>nightly</code> are moving targets, my local <code>clippy</code> checkout can very quickly get out of date not only from upstream but also from the <code>nightly</code> release channel.</p>
+
+<p>For example, I updated everything recently and got:</p>
+
+<pre><code class="language-text">$ cargo build
+
+   Compiling clippy_lints v0.0.212 (/Users/azure/devel/rust-clippy/clippy_lints)
+error[E0615]: attempted to take value of method `abi` on type `rustc_target::abi::Align`
+    --&gt; clippy_lints/src/types.rs:1067:93
+     |
+1067 |                 if let Some(from_align) = cx.layout_of(from_ptr_ty.ty).ok().map(|a| a.align.abi);
+     |                                                                                             ^^^
+     |
+     = help: maybe a `()` to call it is missing?
+
+error[E0615]: attempted to take value of method `abi` on type `rustc_target::abi::Align`
+    --&gt; clippy_lints/src/types.rs:1068:89
+     |
+1068 |                 if let Some(to_align) = cx.layout_of(to_ptr_ty.ty).ok().map(|a| a.align.abi);
+     |                                                                                         ^^^
+     |
+     = help: maybe a `()` to call it is missing?
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0615`.
+error: Could not compile `clippy_lints`.
+</code></pre>
+
+<p>which is the change introduced in <a href="https://github.com/rust-lang/rust-clippy/pull/3452">rust-lang/rust-clippy#3452</a>.</p>
+
+<p>For whatever reason, even after updating Rust and using the same tool versions as in <a href="https://travis-ci.org/rust-lang/rust-clippy/builds/458715770">this passing test</a> for the above pull request the project does not build locally.
+Luckily reverting back to <a href="https://github.com/rust-lang/rust-clippy/pull/3449"><code>61501b2810d887367d360025398dd9280c4bcd8b</code></a> lets me compile the project so I can continue working without getting <em>too</em> out of date with upstream, but there&rsquo;s a lot of churn and things often break for unexplained reasons.</p>
+
+<p>I reached out to <a href="https://github.com/matthiaskrgr">Matthias Krüger</a>, the original author of <code>#3453</code>, on the <code>wg-rust</code> Discord channel to find out what was going on.
+It turns out that sometimes even the <code>nightly</code> release channel isn&rsquo;t <a href="https://en.wikipedia.org/wiki/Bleeding_edge_technology">bleeding-edge</a> enough to work on <code>clippy</code> lints and a tool called <a href="https://github.com/kennytm/rustup-toolchain-install-master"><code>rustup-toolchain-install-master</code></a> is necessary to install compiler artifacts directly from Rust&rsquo;s continuous integration pipeline that haven&rsquo;t even been published to the <code>nightly</code> channel yet.
+This information is also documented in <code>clippy</code>&rsquo;s <a href="https://github.com/rust-lang/rust-clippy/blob/master/CONTRIBUTING.md#fixing-build-failures-caused-by-rust"><code>CONTRIBUTING.MD</code> file</a>, but it&rsquo;s located at almost the bottom of the document which is why I hadn&rsquo;t run across the information earlier.
+It is very true that it pays to read the documentation, and in many other projects asking a question about why my local build was failing in this way would receive comments to &ldquo;<a href="https://en.wikipedia.org/wiki/RTFM">RTFM</a>&rdquo;.
+However, my experiences in the Rust community have been nothing but positive, everyone I have interacted with has been very helpful, and even &ldquo;big names&rdquo; in the community are accessible and directly engaged in projects and contributor mentorship.</p>
+
+<h2 id="to-be-continued">To Be Continued&hellip;</h2>
+
+<p>This week was all about finding my footing and getting my local environment set up to actually do development work on <code>clippy</code>.
+In the coming weeks I&rsquo;ll tackle actually implementing the lint now that the requirements and goals have been fleshed out, and I hope to have something up for code review soon to get community feedback on improving the lint and catching anything I&rsquo;ve missed.</p>
+
+<p>First up: reading <a href="https://twitter.com/llogiq">llogiq</a>&rsquo;s blogpost on <a href="https://llogiq.github.io/2015/06/04/workflows.html">writing <code>clippy</code> lints</a>.
+Then I&rsquo;ll create a starting point for my lint with <a href="https://github.com/rust-lang/rust-clippy/blob/master/CONTRIBUTING.md#author-lint"><code>clippy</code>&rsquo;s internal <code>author</code> lint</a> as well as reading some <a href="https://github.com/rust-lang/rust-clippy/tree/master/clippy_lints/src">existing lints</a> to get a general idea of lint structure.</p>
+
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">18 Nov 2018</h1>
                 <section class="post">
                     <header class="post-header">
@@ -797,43 +1033,6 @@ Creates an absolute URL based on the configured <tt class="docutils literal">bas
 <h2>To be Continued</h2>
 <p>I definitely have some ideas about more projects that I'd like to contribute to after seeing the <a class="reference external" href="https://github.com/lk-geimfari/awesomo">lk-geimfari/awesomo</a> list, either this month for Hacktoberfest or on an ongoing basis. If Rust isn't your language of choice, there are similar lists of projects in pretty much every popular language as well as some more obscure ones, so take a look, be inspired, and happy hacking!</p>
 </div>
-</div>
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">29 Sep 2018</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://stuartcrust.com/2018/09/a-return-to-open-source/" class="post-title">A Return to Open Source</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                
-                                    <a class="post-category post-category-writing" href='https://stuartcrust.com/categories/writing'>writing</a>
-                                
-                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
-                                
-                                    <a class="post-category post-category-nodejs" href='https://stuartcrust.com/categories/nodejs'>nodejs</a>
-                                
-                                    <a class="post-category post-category-filer" href='https://stuartcrust.com/categories/filer'>filer</a>
-                                
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <div class="document">
-
-
-<p>Today marks the first month of my return to open source. I say <em>return</em> even though I never really <em>left</em>, it's more of a return to active participation in the community. As I <a class="reference external" href="/2018/09/third-times-the-charm/">wrote about earlier</a>, one of my courses right now focuses on open source development, so I have been able to <a class="reference external" href="https://github.com/0xazure?tab=overview&amp;from=2018-09-01&amp;to=2018-09-30">contribute much more regularly</a> and I hope to be able to continue to do so even after the course is over.</p>
-<p>This past month has been all about getting back into the swing of things by contributing to <a class="reference external" href="https://github.com/filerjs/filer">filerjs/filer</a>, a port of NodeJS' <tt class="docutils literal">fs</tt> module to the web using backends like IndexedDB. My first contribution to filer, which I have <a class="reference external" href="/2018/09/its-dependencies-all-the-way-down/">already blogged about</a>, was to update a development dependency to resolve package vulnerabilities as reported by <tt class="docutils literal">npm audit</tt>. This issue was logged as <a class="reference external" href="https://github.com/filerjs/filer/issues/384">filer#384</a> and fixed in <a class="reference external" href="https://github.com/filerjs/filer/pull/385">filer#385</a> by updating the vulnerable dependency. This issue also spawned some discussion as <a class="reference external" href="https://github.com/filerjs/filer/issues/386">filer#386</a> about automating the process of keeping project dependencies up to date so it is much easier to stay on top of new versions of dependencies.</p>
-<p>Open source isn't just about contributing code and documentation though. It's also about the community, interacting with other developers, discussing issues and potential solutions, as well as reviewing and helping out other members of the community. In addition to helping out my classmates over Slack and in-class throughout the month, I also reviewed a few pull requests opened against the filer repository.</p>
-<p>The first issue I reviewed, <a class="reference external" href="https://github.com/filerjs/filer/pull/478">filer#478</a>, is a pull request that adds a test to <tt class="docutils literal">fs.watch()</tt> to verify the event type emitted when renaming an existing file. Other than the boilerplate mocha test code, the test logic itself is fairly straight forward. However, <tt class="docutils literal">fs.watch()</tt> and related watching functions are an interesting set of methods because they are not guaranted to be consistent due to the <a class="reference external" href="https://nodejs.org/api/fs.html#fs_caveats">underlying implementation details</a>. I actually had to go back to this pull request and re-review it because it turns out that filer <a class="reference external" href="https://github.com/filerjs/filer/issues/411#issuecomment-422946490">doesn't currently have support</a> for <tt class="docutils literal">rename</tt> events at all. This issue was also interesting because I picked out a minor style nitpick in the form of a missing semi-colon that the Travis build <a class="reference external" href="https://github.com/filerjs/filer/issues/482">didn't seem to pick up</a> for some reason. Rerunning the build resolved the issue, but it's always worrying when you run into issues with your build infrastructure and tests because it can shake your faith in them a bit.</p>
-<p>Another issue that I reviewed was <a class="reference external" href="https://github.com/filerjs/filer/pull/472">filer#472</a>. This pull request adds a test to ensure that reading from a nonexistant file results in an error. The submission is well done overall, with one minor nitpick that lead to me filing <a class="reference external" href="https://github.com/filerjs/filer/pull/498">filer#498</a> to reduce small nitpick-type comments on reviews. Nitpicks are generally a waste of everyone's time because style should be automatically enforced by some kind of automated tool before code is pushed; JavaScript doesn't have anything quite like <a class="reference external" href="https://golang.org/cmd/gofmt/">gofmt</a> or <a class="reference external" href="https://github.com/rust-lang-nursery/rustfmt">rustfmt</a>, but tools like <a class="reference external" href="https://github.com/xojs/xo">xo</a> and <a class="reference external" href="https://github.com/prettier/prettier">prettier</a> can help. In this review I also cautioned the original author of the pull request about changing multiple variables at a time in a test, which we ideally would like to avoid as we can easily end up testing more code paths than we either need or want to, thereby complicating the test or making it fragile against future changes to the code.</p>
-<p>Looking ahead, October marks the beginning of <a class="reference external" href="https://hacktoberfest.digitalocean.com/">Hacktoberfest</a>. I'm really excited to be participating this year; I participated once before but I either missed the cutoff or something happened to my package because I never received my t-shirt from DigitalOcean. I'll be writing a lot more short blog posts throughout October as I chronicle my participation in this event, and I'm hoping to find some interesting projects to contribute to for at least the rest of this year and hopefully well into the next.</p>
 </div>
                     </div>
                 </section>
