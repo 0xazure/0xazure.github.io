@@ -838,111 +838,110 @@ Either way, I was very happy to get my hands back on the keyboard writing Rust c
       <pubDate>Thu, 01 Nov 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/11/hacktoberfest-a-month-of-open-source/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
+      <description>
 
-
-&lt;div class=&#34;line-block&#34;&gt;
-&lt;div class=&#34;line&#34;&gt;&lt;br /&gt;&lt;/div&gt;
-&lt;/div&gt;
 &lt;img src=&#34;https://assets.digitalocean.com/ghost/2018/09/Hacktoberfest_2018_twitter_facebook1_2134x1068.png&#34; alt=&#34;&#34; class=&#34;pure-img&#34; &gt;
+
 &lt;p&gt;The past month has flown by so quickly. After a full month dedicated to contributing to the open source community, I want to reflect on my experiences with Hacktoberfest 2018 and write a bit about things I learned over the past month, what went well, what I would do differently next time, and a general reflection on the Hacktoberfest event itself.&lt;/p&gt;
-&lt;p&gt;First, a reflection on my goals. For the month of Hacktoberfest I wanted to make contributions to a number of different projects, and I specifically wanted to &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one&#34;&gt;contribute to at least two projects that use Rust&lt;/a&gt;. How did I do?&lt;/p&gt;
-&lt;table border=&#34;1&#34; class=&#34;docutils&#34;&gt;
-&lt;colgroup&gt;
-&lt;col width=&#34;14%&#34; /&gt;
-&lt;col width=&#34;59%&#34; /&gt;
-&lt;col width=&#34;14%&#34; /&gt;
-&lt;col width=&#34;13%&#34; /&gt;
-&lt;/colgroup&gt;
-&lt;thead valign=&#34;bottom&#34;&gt;
-&lt;tr&gt;&lt;th class=&#34;head&#34;&gt;Week&lt;/th&gt;
-&lt;th class=&#34;head&#34;&gt;Issues / Pull Requests&lt;/th&gt;
-&lt;th class=&#34;head&#34;&gt;Uses Rust?&lt;/th&gt;
-&lt;th class=&#34;head&#34;&gt;Blog Post&lt;/th&gt;
+
+&lt;p&gt;First, a reflection on my goals. For the month of Hacktoberfest I wanted to make contributions to a number of different projects, and I specifically wanted to &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one&#34;&gt;contribute to at least two projects that use Rust&lt;/a&gt;. How did I do?&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Week&lt;/th&gt;
+&lt;th&gt;Issues / Pull Requests&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Uses Rust?&lt;/th&gt;
+&lt;th&gt;Blog Post&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
-&lt;tbody valign=&#34;top&#34;&gt;
-&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;&lt;ul class=&#34;first last simple&#34;&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/lk-geimfari/awesomo/pull/125&#34;&gt;https://github.com/lk-geimfari/awesomo/pull/125&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/td&gt;
-&lt;td&gt;✘&lt;/td&gt;
-&lt;td&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one&#34;&gt;Week 1&lt;/a&gt;&lt;/td&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/lk-geimfari/awesomo/pull/125&#34;&gt;https://github.com/lk-geimfari/awesomo/pull/125&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✘&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one&#34;&gt;Week 1&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;
-&lt;td&gt;&lt;ul class=&#34;first last simple&#34;&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/26&#34;&gt;https://github.com/dplesca/purehugo/pull/26&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/td&gt;
-&lt;td&gt;✘&lt;/td&gt;
-&lt;td&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-two&#34;&gt;Week 2&lt;/a&gt;&lt;/td&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/dplesca/purehugo/pull/26&#34;&gt;https://github.com/dplesca/purehugo/pull/26&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✘&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-two&#34;&gt;Week 2&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;3&lt;/td&gt;
-&lt;td&gt;&lt;ul class=&#34;first last simple&#34;&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/issues/127&#34;&gt;https://github.com/rustwasm/book/issues/127&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/128&#34;&gt;https://github.com/rustwasm/book/pull/128&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/diesel-rs/diesel/issues/1891&#34;&gt;https://github.com/diesel-rs/diesel/issues/1891&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/td&gt;
-&lt;td&gt;✔&lt;/td&gt;
-&lt;td&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;Week 3&lt;/a&gt;&lt;/td&gt;
+
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/rustwasm/book/issues/127&#34;&gt;https://github.com/rustwasm/book/issues/127&lt;/a&gt; &lt;br/&gt;  &lt;a href=&#34;https://github.com/rustwasm/book/pull/128&#34;&gt;https://github.com/rustwasm/book/pull/128&lt;/a&gt; &lt;br/&gt;  &lt;a href=&#34;https://github.com/diesel-rs/diesel/issues/1891&#34;&gt;https://github.com/diesel-rs/diesel/issues/1891&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;Week 3&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;4&lt;/td&gt;
-&lt;td&gt;&lt;ul class=&#34;first last simple&#34;&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/28&#34;&gt;https://github.com/dplesca/purehugo/pull/28&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/td&gt;
-&lt;td&gt;✘&lt;/td&gt;
-&lt;td&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-four&#34;&gt;Week 4&lt;/a&gt;&lt;/td&gt;
+
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/dplesca/purehugo/pull/28&#34;&gt;https://github.com/dplesca/purehugo/pull/28&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✘&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-four&#34;&gt;Week 4&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;&lt;ul class=&#34;first last simple&#34;&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/129&#34;&gt;https://github.com/rustwasm/book/pull/129&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/td&gt;
-&lt;td&gt;✔&lt;/td&gt;
-&lt;td&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-five&#34;&gt;Week 5&lt;/a&gt;&lt;/td&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/rustwasm/book/pull/129&#34;&gt;https://github.com/rustwasm/book/pull/129&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-five&#34;&gt;Week 5&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Total&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td&gt;2 ✔&lt;/td&gt;
-&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Total&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;2 ✔&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
 &lt;p&gt;In the past month, I made 4 contributions (issues or pull requests) to 2 different projects that use Rust. Ironically, I did not have the opportunity to &lt;em&gt;use&lt;/em&gt; Rust or write any code as part of those contributions as all of those contributions were in the form of documentation. However, I did still achieve the goal I had set for myself for Hacktoberfest!&lt;/p&gt;
+
 &lt;p&gt;I also ran some quick stats on my blog posts for this past month, as shown below:&lt;/p&gt;
-&lt;pre class=&#34;code text literal-block&#34;&gt;
-wc -w content/posts/2018/hacktoberfest-week-*.rst
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;wc -w content/posts/2018/hacktoberfest-week-*.rst
      673 content/posts/2018/hacktoberfest-week-one.rst
      822 content/posts/2018/hacktoberfest-week-two.rst
     1579 content/posts/2018/hacktoberfest-week-three.rst
      514 content/posts/2018/hacktoberfest-week-four.rst
      425 content/posts/2018/hacktoberfest-week-five.rst
     4013 total
-&lt;/pre&gt;
-&lt;p&gt;For the month of October, I wrote a total of &lt;tt class=&#34;docutils literal&#34;&gt;4013&lt;/tt&gt; words about my contributions to open source, writing a one-time maximum of &lt;tt class=&#34;docutils literal&#34;&gt;1579&lt;/tt&gt; words during Week 3 about &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;documentation and different ways to contribute&lt;/a&gt; to open source projects.&lt;/p&gt;
-&lt;div class=&#34;section&#34; id=&#34;what-went-well&#34;&gt;
-&lt;h2&gt;What Went Well&lt;/h2&gt;
-&lt;p&gt;Overall, I think Hacktoberfest was a positive experience. I had some really great interactions with the open source community on GitHub, and all of the project maintainers were very encouraging and helpful. Special shout-out to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/sendilkumarn&#34;&gt;Sendil Kumar N&lt;/a&gt;, a member of the &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm&#34;&gt;rust-wasm&lt;/a&gt; team, for an &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/128#pullrequestreview-167612434&#34;&gt;especially warm welcome&lt;/a&gt; to the Rust and WebAssembly Book repository.&lt;/p&gt;
-&lt;p&gt;I am also happy to share that all of my pull requests were merged within the month. Hacktoberfest does not require pull requests to be merged as part of participating, only that they are created, but it was very validating that I did not have to go back to the drawing board or make many changes to my contributions for them to be accepted by the project maintainers. Hacktoberfest is definitely geared more towards small fixes and improvements, and while it is less likely to happen during an even like this I have made other contributions in the past that got tied up in &lt;a class=&#34;reference external&#34; href=&#34;https://en.wiktionary.org/wiki/bikeshedding&#34;&gt;bikeshedding&lt;/a&gt; and nitpicking such that no progress was made for weeks or months at a time.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;what-to-do-differently&#34;&gt;
-&lt;h2&gt;What to do Differently&lt;/h2&gt;
-&lt;p&gt;Now that Hacktoberfest is over, I definitely think it was a mistake to jump around from project to project. Every time I went to make a contribution to a new project I would have to ramp up again, learning how the project is organized, where I can find existing documentation, how to successfully contribute to the project, etc. I also didn&#39;t feel like I was immersing myself in a community the way I had hoped to while participating in Hacktoberfest this year. As I have written about before, I am &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/09/a-return-to-open-source&#34;&gt;not a stranger to open source&lt;/a&gt;, so I definitely felt there was something missing this month, and I think the project-hopping contributed to this feeling.&lt;/p&gt;
-&lt;p&gt;The next time I participate in Hacktoberfest, I will be trying to focus a lot more on contributing code rather than documentation or other forms of contribution. I &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;wrote at length&lt;/a&gt; about different forms open source contributions can take during week three of Hacktoberfest and while I do not want to deemphasize the importance of things like documentation I am a programmer at heart, I genuinely enjoy writing code, and I&#39;d like to do more of that.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;reflecting-on-hacktoberfest&#34;&gt;
-&lt;h2&gt;Reflecting on Hacktoberfest&lt;/h2&gt;
-&lt;p&gt;Hacktoberfest is a great outreach event to get more people participating in open source. There is definitely more awareness in the community the past few years about the new contributor experience, and GitHub tags like &amp;quot;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/search?q=label%3A%22help+wanted%22&#34;&gt;help wanted&lt;/a&gt;&amp;quot; and &amp;quot;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/search?q=label%3A%22hacktoberfest%22&#34;&gt;hacktoberfest&lt;/a&gt;&amp;quot; make it a lot easier for people to find projects and get involved. One of the downsides to this is sifting through all of the results to find a project of interest or an issue that details a fix or feature a new contributor might actually be able to tackle.&lt;/p&gt;
-&lt;p&gt;Which brings us to: time constraints. Hacktoberfest is a month-long event, which seems like an excessive amount of time on October 1st, but once the event moves into its last week everyone realizes how little time a month turns out to be. The Hacktoberfest &lt;a class=&#34;reference external&#34; href=&#34;https://hacktoberfest.digitalocean.com/#stats--global&#34;&gt;global stats&lt;/a&gt; bear this out: there was a pretty healthy uptick in contributions during the last few days of the event as more contributors worked towards completing their five pull requests.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For the month of October, I wrote a total of &lt;code&gt;4013&lt;/code&gt; words about my contributions to open source, writing a one-time maximum of &lt;code&gt;1579&lt;/code&gt; words during Week 3 about &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;documentation and different ways to contribute&lt;/a&gt; to open source projects.&lt;/p&gt;
+
+&lt;h1 id=&#34;what-went-well&#34;&gt;What Went Well&lt;/h1&gt;
+
+&lt;p&gt;Overall, I think Hacktoberfest was a positive experience. I had some really great interactions with the open source community on GitHub, and all of the project maintainers were very encouraging and helpful. Special shout-out to &lt;a href=&#34;https://github.com/sendilkumarn&#34;&gt;Sendil Kumar N&lt;/a&gt;, a member of the &lt;a href=&#34;https://github.com/rustwasm&#34;&gt;rust-wasm&lt;/a&gt; team, for an &lt;a href=&#34;https://github.com/rustwasm/book/pull/128#pullrequestreview-167612434&#34;&gt;especially warm welcome&lt;/a&gt; to the Rust and WebAssembly Book repository.&lt;/p&gt;
+
+&lt;p&gt;I am also happy to share that all of my pull requests were merged within the month. Hacktoberfest does not require pull requests to be merged as part of participating, only that they are created, but it was very validating that I did not have to go back to the drawing board or make many changes to my contributions for them to be accepted by the project maintainers. Hacktoberfest is definitely geared more towards small fixes and improvements, and while it is less likely to happen during an even like this I have made other contributions in the past that got tied up in &lt;a href=&#34;https://en.wiktionary.org/wiki/bikeshedding&#34;&gt;bikeshedding&lt;/a&gt; and nitpicking such that no progress was made for weeks or months at a time.&lt;/p&gt;
+
+&lt;h1 id=&#34;what-to-do-differently&#34;&gt;What to do Differently&lt;/h1&gt;
+
+&lt;p&gt;Now that Hacktoberfest is over, I definitely think it was a mistake to jump around from project to project. Every time I went to make a contribution to a new project I would have to ramp up again, learning how the project is organized, where I can find existing documentation, how to successfully contribute to the project, etc. I also didn&amp;rsquo;t feel like I was immersing myself in a community the way I had hoped to while participating in Hacktoberfest this year. As I have written about before, I am &lt;a href=&#34;https://stuartcrust.com/2018/09/a-return-to-open-source&#34;&gt;not a stranger to open source&lt;/a&gt;, so I definitely felt there was something missing this month, and I think the project-hopping contributed to this feeling.&lt;/p&gt;
+
+&lt;p&gt;The next time I participate in Hacktoberfest, I will be trying to focus a lot more on contributing code rather than documentation or other forms of contribution. I &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;wrote at length&lt;/a&gt; about different forms open source contributions can take during week three of Hacktoberfest and while I do not want to deemphasize the importance of things like documentation I am a programmer at heart, I genuinely enjoy writing code, and I&amp;rsquo;d like to do more of that.&lt;/p&gt;
+
+&lt;h1 id=&#34;reflecting-on-hacktoberfest&#34;&gt;Reflecting on Hacktoberfest&lt;/h1&gt;
+
+&lt;p&gt;Hacktoberfest is a great outreach event to get more people participating in open source. There is definitely more awareness in the community the past few years about the new contributor experience, and GitHub tags like &amp;ldquo;&lt;a href=&#34;https://github.com/search?q=label%3A%22help+wanted%22&#34;&gt;help wanted&lt;/a&gt;&amp;rdquo; and &amp;ldquo;&lt;a href=&#34;https://github.com/search?q=label%3A%22hacktoberfest%22&#34;&gt;hacktoberfest&lt;/a&gt;&amp;rdquo; make it a lot easier for people to find projects and get involved. One of the downsides to this is sifting through all of the results to find a project of interest or an issue that details a fix or feature a new contributor might actually be able to tackle.&lt;/p&gt;
+
+&lt;p&gt;Which brings us to: time constraints. Hacktoberfest is a month-long event, which seems like an excessive amount of time on October 1st, but once the event moves into its last week everyone realizes how little time a month turns out to be. The Hacktoberfest &lt;a href=&#34;https://hacktoberfest.digitalocean.com/#stats--global&#34;&gt;global stats&lt;/a&gt; bear this out: there was a pretty healthy uptick in contributions during the last few days of the event as more contributors worked towards completing their five pull requests.&lt;/p&gt;
+
 &lt;p&gt;These time constraints can also make people feel like they need to contribute as much as possible as quickly as possible, leading to contributions that focus on quantity over quality. Or interactions like the one I had on one of the first projects I was going to contribute to for Hacktoberfest: I indicated my interest in attempting to fix an issue, and someone else - who did not participate in the discussion on the issue or check if an issue had already been claimed - submitted a pull request ahead of me. &lt;em&gt;Twice&lt;/em&gt;. Thankfully I had not started on an implementation at that point, so I simply moved on to another project and a different contribution.&lt;/p&gt;
+
 &lt;p&gt;Part of the solution to this problem definitely falls to project maintainers. Creating separate issues for each contribution and assigning those issues to the claimant can resolve the ambiguity of who has priority to submit a pull request for a given issue. Also, not merging pull requests from anyone other than the claimant would go a long way to encouraging potential contributors to get involved and make sure they are taking unclaimed issues, rather than dropping off a pull request and moving on to the next contribution.&lt;/p&gt;
+
 &lt;p&gt;In the projects I &lt;em&gt;did&lt;/em&gt; contribute to, I had a really pleasant experience. The Rust projects in particular are very welcoming; the Rust community is well known for being friendly and inclusive and it was a pleasure to contribute to making these projects even better.&lt;/p&gt;
-&lt;p&gt;All in all, I learned a lot this Hacktoberfest, particularly about myself, the kinds of projects I&#39;m interested in, and how I personally like to contribute to open source. I&#39;m looking forward to putting those lessons into practice during next year&#39;s Hacktoberfest, as well as in the rest of my open source contributions going forward.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
+
+&lt;p&gt;All in all, I learned a lot this Hacktoberfest, particularly about myself, the kinds of projects I&amp;rsquo;m interested in, and how I personally like to contribute to open source. I&amp;rsquo;m looking forward to putting those lessons into practice during next year&amp;rsquo;s Hacktoberfest, as well as in the rest of my open source contributions going forward.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -951,14 +950,14 @@ wc -w content/posts/2018/hacktoberfest-week-*.rst
       <pubDate>Wed, 31 Oct 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-five/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
+      <description>&lt;p&gt;With this fifth week, Hacktoberfest 2018 comes to a close. I&amp;rsquo;ll be doing a retrospective on the whole month of contributions soon, but that is not this post. This week, I was able to make one of the contributions I had started back in &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;week three&lt;/a&gt;, a documentation contribution to the &lt;a href=&#34;https://rustwasm.github.io/book/&#34;&gt;Rust and WebAssembly Book&lt;/a&gt;.&lt;/p&gt;
 
+&lt;p&gt;As I mentioned in that post, I had filed &lt;a href=&#34;https://github.com/rustwasm/book/issues/127&#34;&gt;rustwasm/book#127&lt;/a&gt; to suggest some improvements to the explanation of &lt;code&gt;src/utils.rs&lt;/code&gt;, a module that the &lt;code&gt;rust-wasm&lt;/code&gt; &lt;a href=&#34;https://github.com/rustwasm/wasm-pack-template&#34;&gt;project template&lt;/a&gt; provides to make working with Rust compiled to WebAssembly easier including some debugging helpers in the form of a &lt;a href=&#34;https://github.com/rustwasm/console_error_panic_hook&#34;&gt;panic hook&lt;/a&gt; to print well-formatted and helpful wasm error messages to &lt;code&gt;console.error&lt;/code&gt;. &lt;a href=&#34;https://github.com/fitzgen&#34;&gt;Nick Fitzgerald&lt;/a&gt;, a member of the &lt;a href=&#34;https://www.rust-lang.org/en-US/team.html#Dev-tools-team&#34;&gt;Rust dev tools team&lt;/a&gt;, responded to &lt;a href=&#34;https://github.com/rustwasm/book/issues/127#issuecomment-433858876&#34;&gt;my issue&lt;/a&gt; and said that he would be happy to merge a pull request that did the rephrasing I had suggested. Since I had already done the work up-front when I filed my issue, I was able to get a &lt;a href=&#34;https://github.com/rustwasm/book/pull/129&#34;&gt;pull request with the change&lt;/a&gt; up very quickly and it got merged the same day.&lt;/p&gt;
 
-&lt;p&gt;With this fifth week, Hacktoberfest 2018 comes to a close. I&#39;ll be doing a retrospective on the whole month of contributions soon, but that is not this post. This week, I was able to make one of the contributions I had started back in &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;week three&lt;/a&gt;, a documentation contribution to the &lt;a class=&#34;reference external&#34; href=&#34;https://rustwasm.github.io/book/&#34;&gt;Rust and WebAssembly Book&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;As I mentioned in that post, I had filed &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/issues/127&#34;&gt;rustwasm/book#127&lt;/a&gt; to suggest some improvements to the explanation of &lt;tt class=&#34;docutils literal&#34;&gt;src/utils.rs&lt;/tt&gt;, a module that the &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;rust-wasm&lt;/span&gt;&lt;/tt&gt; &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/wasm-pack-template&#34;&gt;project template&lt;/a&gt; provides to make working with Rust compiled to WebAssembly easier including some debugging helpers in the form of a &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/console_error_panic_hook&#34;&gt;panic hook&lt;/a&gt; to print well-formatted and helpful wasm error messages to &lt;tt class=&#34;docutils literal&#34;&gt;console.error&lt;/tt&gt;. &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/fitzgen&#34;&gt;Nick Fitzgerald&lt;/a&gt;, a member of the &lt;a class=&#34;reference external&#34; href=&#34;https://www.rust-lang.org/en-US/team.html#Dev-tools-team&#34;&gt;Rust dev tools team&lt;/a&gt;, responded to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/issues/127#issuecomment-433858876&#34;&gt;my issue&lt;/a&gt; and said that he would be happy to merge a pull request that did the rephrasing I had suggested. Since I had already done the work up-front when I filed my issue, I was able to get a &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/129&#34;&gt;pull request with the change&lt;/a&gt; up very quickly and it got merged the same day.&lt;/p&gt;
-&lt;p&gt;My change is &lt;a class=&#34;reference external&#34; href=&#34;https://rustwasm.github.io/book/game-of-life/hello-world.html#wasm-game-of-lifesrcutilsrs&#34;&gt;live on the Rust and WebAssembly site&lt;/a&gt; right now, and it feels really great to see something that I wrote included in a project in which I&#39;m excited to get even more involved. Big thanks to Nick for getting back to me about my proposed change and for the quick merge on &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/129&#34;&gt;rustwasm/book#129&lt;/a&gt; to get it incorporated.&lt;/p&gt;
-&lt;p&gt;With that pull request opened (and merged), I was able to achieve my five pull requests for Hacktoberfest and secure my limited edition T-shirt. The T-shirt is nice, of course, but the real benefit of Hacktoberfest is to all the open source projects that took pull requests this past month, as well as for all the participants who were able to level up their programming skills while contributing to the open source community. More on that in the next post where I&#39;ll summarize my experience participating in Hacktoberfest 2018 and talk about what I learned, what went well, what I would do differently next time, and a general reflection on Hacktoberfest itself.&lt;/p&gt;
-&lt;/div&gt;</description>
+&lt;p&gt;My change is &lt;a href=&#34;https://rustwasm.github.io/book/game-of-life/hello-world.html#wasm-game-of-lifesrcutilsrs&#34;&gt;live on the Rust and WebAssembly site&lt;/a&gt; right now, and it feels really great to see something that I wrote included in a project in which I&amp;rsquo;m excited to get even more involved. Big thanks to Nick for getting back to me about my proposed change and for the quick merge on &lt;a href=&#34;https://github.com/rustwasm/book/pull/129&#34;&gt;rustwasm/book#129&lt;/a&gt; to get it incorporated.&lt;/p&gt;
+
+&lt;p&gt;With that pull request opened (and merged), I was able to achieve my five pull requests for Hacktoberfest and secure my limited edition T-shirt. The T-shirt is nice, of course, but the real benefit of Hacktoberfest is to all the open source projects that took pull requests this past month, as well as for all the participants who were able to level up their programming skills while contributing to the open source community. More on that in the next post where I&amp;rsquo;ll summarize my experience participating in Hacktoberfest 2018 and talk about what I learned, what went well, what I would do differently next time, and a general reflection on Hacktoberfest itself.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -967,20 +966,26 @@ wc -w content/posts/2018/hacktoberfest-week-*.rst
       <pubDate>Tue, 30 Oct 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-four/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
+      <description>&lt;p&gt;Hacktoberfest week four! In keeping with the theme I &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;set last week&lt;/a&gt; I continued to improve open source project documentation as part of Hacktoberfest. This week I returned to &lt;a href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the theme I use for this blog, to help out with improving some areas of the documentation I noticed could use a bit of polish during my first contribution to the project during Hacktoberfest &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-two&#34;&gt;week two&lt;/a&gt;.&lt;/p&gt;
 
+&lt;p&gt;In &lt;a href=&#34;https://github.com/dplesca/purehugo/pull/28&#34;&gt;dplesca/purehugo#28&lt;/a&gt; I rephrased the section of the &lt;code&gt;README.md&lt;/code&gt; that deals with code syntax highlighting on generated blogs. As I mention in the issue, it seems as though the original author simply missed a word when writing the section:&lt;/p&gt;
 
-&lt;p&gt;Hacktoberfest week four! In keeping with the theme I &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;set last week&lt;/a&gt; I continued to improve open source project documentation as part of Hacktoberfest. This week I returned to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the theme I use for this blog, to help out with improving some areas of the documentation I noticed could use a bit of polish during my first contribution to the project during Hacktoberfest &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-two&#34;&gt;week two&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/28&#34;&gt;dplesca/purehugo#28&lt;/a&gt; I rephrased the section of the &lt;tt class=&#34;docutils literal&#34;&gt;README.md&lt;/tt&gt; that deals with code syntax highlighting on generated blogs. As I mention in the issue, it seems as though the original author simply missed a word when writing the section:&lt;/p&gt;
 &lt;blockquote&gt;
-All you need to do is to let rainbow.js the language of the highlighted code [...]&lt;/blockquote&gt;
+&lt;p&gt;All you need to do is to let rainbow.js the language of the highlighted code [&amp;hellip;]&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;p&gt;which should instead read:&lt;/p&gt;
+
 &lt;blockquote&gt;
-All you need to do is to let rainbow.js &lt;strong&gt;know&lt;/strong&gt; the language of the highlighted code [...]&lt;/blockquote&gt;
-&lt;p&gt;The simple fix in this case would be to add the missing word. However, since I knew I would be editing this part of the document anyways, I decided to take a bit more time and rephrase the existing wording to simplify the instructions and use more specific language to instruct new users what they need to do to get the highlighting library to pick up the desired language. I also added a full example of how to apply &lt;a class=&#34;reference external&#34; href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; syntax to a code block using Markdown, as I find seeing complete code samples or full examples in documentation to be very helpful when I&#39;m learning a new tool or framework, and serve as quick reminders if I&#39;m returning to a tool or framework I haven&#39;t used recently to get me back on track.&lt;/p&gt;
-&lt;p&gt;This week turned into a twofer because while I was working on &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/28&#34;&gt;dplesca/purehugo#28&lt;/a&gt; I noticed a small spelling error elsewhere in the &lt;tt class=&#34;docutils literal&#34;&gt;README.md&lt;/tt&gt; file and submitted &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/27&#34;&gt;dplesca/purehugo#27&lt;/a&gt; to correct a word in one of the document headings. I only noticed the spelling mistake as I had just set up proper spell checking in Visual Studio Code using &lt;a class=&#34;reference external&#34; href=&#34;https://marketplace.visualstudio.com/items?itemName=ban.spellright&#34;&gt;Spell Right by Bartosz Antosik&lt;/a&gt; to warn me about typos and other spelling errors. I had been under the impression that VS Code shipped with spell checking by default but this does not seem to be the case. Further, the VS Code spellchecking addon I found &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/microsoft/vscode-spell-check&#34;&gt;published by Microsoft&lt;/a&gt; is marked as deprecated and suggests finding an alternate addon. Correcting minor typos in documentation is small potatoes compared to some other Hacktoberfest contributions, but they are important changes that affect readability, comprehension, and the flow of the document(s) in which they occur.&lt;/p&gt;
+&lt;p&gt;All you need to do is to let rainbow.js &lt;strong&gt;know&lt;/strong&gt; the language of the highlighted code [&amp;hellip;]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The simple fix in this case would be to add the missing word. However, since I knew I would be editing this part of the document anyways, I decided to take a bit more time and rephrase the existing wording to simplify the instructions and use more specific language to instruct new users what they need to do to get the highlighting library to pick up the desired language. I also added a full example of how to apply &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; syntax to a code block using Markdown, as I find seeing complete code samples or full examples in documentation to be very helpful when I&amp;rsquo;m learning a new tool or framework, and serve as quick reminders if I&amp;rsquo;m returning to a tool or framework I haven&amp;rsquo;t used recently to get me back on track.&lt;/p&gt;
+
+&lt;p&gt;This week turned into a twofer because while I was working on &lt;a href=&#34;https://github.com/dplesca/purehugo/pull/28&#34;&gt;dplesca/purehugo#28&lt;/a&gt; I noticed a small spelling error elsewhere in the &lt;code&gt;README.md&lt;/code&gt; file and submitted &lt;a href=&#34;https://github.com/dplesca/purehugo/pull/27&#34;&gt;dplesca/purehugo#27&lt;/a&gt; to correct a word in one of the document headings. I only noticed the spelling mistake as I had just set up proper spell checking in Visual Studio Code using &lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=ban.spellright&#34;&gt;Spell Right by Bartosz Antosik&lt;/a&gt; to warn me about typos and other spelling errors. I had been under the impression that VS Code shipped with spell checking by default but this does not seem to be the case. Further, the VS Code spellchecking addon I found &lt;a href=&#34;https://github.com/microsoft/vscode-spell-check&#34;&gt;published by Microsoft&lt;/a&gt; is marked as deprecated and suggests finding an alternate addon. Correcting minor typos in documentation is small potatoes compared to some other Hacktoberfest contributions, but they are important changes that affect readability, comprehension, and the flow of the document(s) in which they occur.&lt;/p&gt;
+
 &lt;p&gt;The end of Hacktoberfest is almost upon us, and I have one last post to share about my final contribution this month. Look forward to a piece about my first major contribution to a Rust project!&lt;/p&gt;
-&lt;/div&gt;</description>
+</description>
     </item>
     
     <item>
@@ -989,46 +994,54 @@ All you need to do is to let rainbow.js &lt;strong&gt;know&lt;/strong&gt; the la
       <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-three/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
+      <description>
 
+&lt;p&gt;As of last week we are just about half way through Hacktoberfest. Time is just flying by, and I can&amp;rsquo;t believe how quickly it&amp;rsquo;s passing. In my &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-two/&#34;&gt;previous Hacktoberfest post&lt;/a&gt; I wrote about my slightly self-interested contribution to &lt;a href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the theme I use for this blog, and how I used some of Hugo&amp;rsquo;s built-in functions to normalize URLs that used the &lt;code&gt;.Site.BaseURL&lt;/code&gt; variable.&lt;/p&gt;
 
-&lt;p&gt;As of last week we are just about half way through Hacktoberfest. Time is just flying by, and I can&#39;t believe how quickly it&#39;s passing. In my &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-two/&#34;&gt;previous Hacktoberfest post&lt;/a&gt; I wrote about my slightly self-interested contribution to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the theme I use for this blog, and how I used some of Hugo&#39;s built-in functions to normalize URLs that used the &lt;tt class=&#34;docutils literal&#34;&gt;.Site.BaseURL&lt;/tt&gt; variable.&lt;/p&gt;
 &lt;p&gt;My contribution this week for Hacktoberfest is minor, but it started me on a path to encounter a number of issues with a common theme that should leave me with plenty of work to do over the next few weeks and possibly past the end of the month.&lt;/p&gt;
-&lt;div class=&#34;section&#34; id=&#34;theme-week-documentation&#34;&gt;
-&lt;h2&gt;Theme Week: Documentation&lt;/h2&gt;
+
+&lt;h1 id=&#34;theme-week-documentation&#34;&gt;Theme Week: Documentation&lt;/h1&gt;
+
 &lt;p&gt;There has been a trend over the last number of years for contributors to open source to diversify how they contribute to open source. Code is not the only kind of contribution maintainers hope to receive, and they are happy to receive contributions in the form of documentation, code examples, sample projects, and feedback from first-time users, among others.&lt;/p&gt;
-&lt;p&gt;For Hacktoberfest week three, I focused my efforts on project documentation, or a lack thereof, specifically from the perspective of a new user. So far during Hacktoberfest I haven&#39;t made more than one contribution to the same project; instead I&#39;ve jumped around quite a bit to different projects that use many different languages and project structures. This project hopping has given me some perspective on the onboarding and getting started instructions of a number of projects, which are critical for encouraging adoption and helping new users get up to speed on how to use or contribute to a project, application, or service. Documentation can also be tricky to get right the first, second, or even fifth time because it is hard to write a document that is useful for every audience, especially if the topic is technical in nature and the author(s) can&#39;t make many assumptions about the audience&#39;s technical background or ability. Many projects deal with this by dividing the documentation in two: one set of high-level documentation on getting the project up and running aimed at users, and another set of documentation that augments and extends this high-level documentation aimed at contributors and developers that provides much more technical detail.&lt;/p&gt;
-&lt;p&gt;This past week also reiterates the importance of contributing to projects in ways other than implementing new features, writing test cases, or fixing bugs in code. There are so many ways to contribute to open source projects, and one of the best ways new contributors can help a project is to verify the project&#39;s onboarding flow by following basic steps like the project setup information and getting their development environment up and running. These are tasks that established contributors and maintainers do not have to do very often and documentation can get out of date; new contributors are great at spotting problem areas in guides, tutorials, and example code that can improve the onboarding experience and identify areas where further explanation may be necessary that established contributors may not be able to see.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;project-one-rust-wasm&#34;&gt;
-&lt;h2&gt;Project One: &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;rust-wasm&lt;/span&gt;&lt;/tt&gt;&lt;/h2&gt;
-&lt;p&gt;I have been excited about &lt;a class=&#34;reference external&#34; href=&#34;https://webassembly.org/&#34;&gt;WebAssembly&lt;/a&gt; since I first heard about the work being done to support it in multiple browser engines. WebAssembly is a binary instruction format predominantly designed for the web (though its success on the web will surely spur adoption in other areas just as NodeJS forced us to rethink possible applications for JavaScript) that can be targeted by many other languages like C++, Rust, Go, and Java, among others. &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;rust-wasm&lt;/span&gt;&lt;/tt&gt; is the Rust initiative to provide compilation for the wasm target as well as support interoperation with existing JavaScript code both shipped in browsers and provided as libraries through tools like &lt;tt class=&#34;docutils literal&#34;&gt;npm&lt;/tt&gt;.&lt;/p&gt;
-&lt;p&gt;I wanted to get up and running with WebAssembly as a compilation target for Rust, so I decided to read some of the core documentation provided by the &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;rust-wasm&lt;/span&gt;&lt;/tt&gt; team: the &lt;a class=&#34;reference external&#34; href=&#34;https://rustwasm.github.io/book/&#34;&gt;Rust and WebAssembly Book&lt;/a&gt;. After taking a brief detour to set up a &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/0xazure/homebrew-tap/blob/master/Formula/wasm-pack.rb&#34;&gt;personal Homebrew tap&lt;/a&gt; for the &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;wasm-pack&lt;/span&gt;&lt;/tt&gt; tool (which I hope, once the prerequisite Rust version lands on the stable channel, I will be able to contribute back to &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;homebrew/hombrew-core&lt;/span&gt;&lt;/tt&gt; and &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;rust-wasm&lt;/span&gt;&lt;/tt&gt;), I was able to set up all of the necessary project dependencies to start working through &lt;a class=&#34;reference external&#34; href=&#34;https://rustwasm.github.io/book/game-of-life/introduction.html&#34;&gt;the tutorial&lt;/a&gt;.&lt;/p&gt;
-&lt;div class=&#34;section&#34; id=&#34;hello-world&#34;&gt;
-&lt;h3&gt;Hello, World!&lt;/h3&gt;
-&lt;p&gt;The Rust and WebAssembly Book bases the tutorial off a project template to get new users up and running more quickly. It spends a portion of &lt;a class=&#34;reference external&#34; href=&#34;https://rustwasm.github.io/book/game-of-life/hello-world.html&#34;&gt;the introductory section&lt;/a&gt; talking about each file in the template and its purpose in the larger project. When I got to the section describing &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;wasm-game-of-life/src/utils.rs&lt;/span&gt;&lt;/tt&gt;, I was given this explanation:&lt;/p&gt;
+
+&lt;p&gt;For Hacktoberfest week three, I focused my efforts on project documentation, or a lack thereof, specifically from the perspective of a new user. So far during Hacktoberfest I haven&amp;rsquo;t made more than one contribution to the same project; instead I&amp;rsquo;ve jumped around quite a bit to different projects that use many different languages and project structures. This project hopping has given me some perspective on the onboarding and getting started instructions of a number of projects, which are critical for encouraging adoption and helping new users get up to speed on how to use or contribute to a project, application, or service. Documentation can also be tricky to get right the first, second, or even fifth time because it is hard to write a document that is useful for every audience, especially if the topic is technical in nature and the author(s) can&amp;rsquo;t make many assumptions about the audience&amp;rsquo;s technical background or ability. Many projects deal with this by dividing the documentation in two: one set of high-level documentation on getting the project up and running aimed at users, and another set of documentation that augments and extends this high-level documentation aimed at contributors and developers that provides much more technical detail.&lt;/p&gt;
+
+&lt;p&gt;This past week also reiterates the importance of contributing to projects in ways other than implementing new features, writing test cases, or fixing bugs in code. There are so many ways to contribute to open source projects, and one of the best ways new contributors can help a project is to verify the project&amp;rsquo;s onboarding flow by following basic steps like the project setup information and getting their development environment up and running. These are tasks that established contributors and maintainers do not have to do very often and documentation can get out of date; new contributors are great at spotting problem areas in guides, tutorials, and example code that can improve the onboarding experience and identify areas where further explanation may be necessary that established contributors may not be able to see.&lt;/p&gt;
+
+&lt;h1 id=&#34;project-one-rust-wasm&#34;&gt;Project One: &lt;code&gt;rust-wasm&lt;/code&gt;&lt;/h1&gt;
+
+&lt;p&gt;I have been excited about &lt;a href=&#34;https://webassembly.org/&#34;&gt;WebAssembly&lt;/a&gt; since I first heard about the work being done to support it in multiple browser engines. WebAssembly is a binary instruction format predominantly designed for the web (though its success on the web will surely spur adoption in other areas just as NodeJS forced us to rethink possible applications for JavaScript) that can be targeted by many other languages like C++, Rust, Go, and Java, among others. &lt;code&gt;rust-wasm&lt;/code&gt; is the Rust initiative to provide compilation for the wasm target as well as support interoperation with existing JavaScript code both shipped in browsers and provided as libraries through tools like &lt;code&gt;npm&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I wanted to get up and running with WebAssembly as a compilation target for Rust, so I decided to read some of the core documentation provided by the &lt;code&gt;rust-wasm&lt;/code&gt; team: the &lt;a href=&#34;https://rustwasm.github.io/book/&#34;&gt;Rust and WebAssembly Book&lt;/a&gt;. After taking a brief detour to set up a &lt;a href=&#34;https://github.com/0xazure/homebrew-tap/blob/master/Formula/wasm-pack.rb&#34;&gt;personal Homebrew tap&lt;/a&gt; for the &lt;code&gt;wasm-pack&lt;/code&gt; tool (which I hope, once the prerequisite Rust version lands on the stable channel, I will be able to contribute back to &lt;code&gt;homebrew/hombrew-core&lt;/code&gt; and &lt;code&gt;rust-wasm&lt;/code&gt;), I was able to set up all of the necessary project dependencies to start working through &lt;a href=&#34;https://rustwasm.github.io/book/game-of-life/introduction.html&#34;&gt;the tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;hello-world&#34;&gt;Hello, World!&lt;/h2&gt;
+
+&lt;p&gt;The Rust and WebAssembly Book bases the tutorial off a project template to get new users up and running more quickly. It spends a portion of &lt;a href=&#34;https://rustwasm.github.io/book/game-of-life/hello-world.html&#34;&gt;the introductory section&lt;/a&gt; talking about each file in the template and its purpose in the larger project. When I got to the section describing &lt;code&gt;wasm-game-of-life/src/utils.rs&lt;/code&gt;, I was given this explanation:&lt;/p&gt;
+
 &lt;blockquote&gt;
-&lt;p&gt;The &lt;tt class=&#34;docutils literal&#34;&gt;src/utils.rs&lt;/tt&gt; module provides a couple included batteries that we will use later in the tutorial. We can ignore it for now.&lt;/p&gt;
-&lt;p class=&#34;attribution&#34;&gt;&amp;mdash;Rust and WebAssembly, &lt;em&gt;5.2 - Hello, World!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;src/utils.rs&lt;/code&gt; module provides a couple included batteries that we will use later in the tutorial. We can ignore it for now.&lt;/p&gt;
+
+&lt;p&gt;— Rust and WebAssembly, &lt;em&gt;5.2 - Hello, World!&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;After the reasonably detailed explanations of other files in the project, this section stood out to me as one that could be improved. This section also makes reference to a philosophy of &amp;quot;batteries included&amp;quot;, which I had only ever been exposed to before &lt;a class=&#34;reference external&#34; href=&#34;https://docs.python.org/2/tutorial/stdlib.html#batteries-included&#34;&gt;in Python jargon&lt;/a&gt; and that may not be familiar to everyone who has not had a similar exposure, or for whom English is not their primary language and the idiom is lost in translation.&lt;/p&gt;
-&lt;p&gt;Being a fresh set of eyes on the Rust and WebAssembly Book, I filed &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/issues/127&#34;&gt;rustwasm/book#127&lt;/a&gt; to discuss some suggestions for how this section could be improved without the need for jargon-heavy idioms and to provide more details about the particular module in question. At the time of publishing I have not heard back from anyone on the &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;rust-wasm&lt;/span&gt;&lt;/tt&gt; team, but I am hopeful that I will be able to submit a pull request before the end of the month to improve this part of the tutorial.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;typos-and-transcription-errors&#34;&gt;
-&lt;h3&gt;Typos and Transcription Errors&lt;/h3&gt;
-&lt;p&gt;Reading through the rest of the page, I ran across the simple error of a duplicated word in the explanation of &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;wasm-game-of-life/www/index.js&lt;/span&gt;&lt;/tt&gt;. I submitted my correction as &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/128&#34;&gt;rustwasm/book#128&lt;/a&gt; and it was accepted the same day. I even received a &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rustwasm/book/pull/128#pullrequestreview-167612434&#34;&gt;congratulatory message&lt;/a&gt; from one of the maintainers on my first contribution to the project which, as my first interaction with any of the project maintainers, is a nice personal touch that definitely makes me wanto to continue to contribute to &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;rust-wasm&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;project-two-diesel&#34;&gt;
-&lt;h2&gt;Project Two: Diesel&lt;/h2&gt;
-&lt;p&gt;I have been playing around with reimplementing a currently active Postgresql-backed project using Rust, and discovered &lt;a class=&#34;reference external&#34; href=&#34;http://diesel.rs/&#34;&gt;Diesel&lt;/a&gt; as one of the ORM tools at the forefront of Rust development stacks. As with &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;rust-wasm&lt;/span&gt;&lt;/tt&gt;, I have not used Diesel in any of my projects, so I turned to the &lt;a class=&#34;reference external&#34; href=&#34;http://diesel.rs/guides/getting-started/&#34;&gt;getting started guide&lt;/a&gt; Diesel provides. It wasn&#39;t long after I got the &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;diesel-cli&lt;/span&gt;&lt;/tt&gt; tool installed that I ran into a discrepancy between the guide and the behaviour of the CLI tool, so I filed &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/diesel-rs/diesel/issues/1891&#34;&gt;diesel-rs/diesel#1891&lt;/a&gt; to detail my expectations along with the actual output the tool was producing, as well as some suggestions for improving the clarity of documentation in a few disparate but related areas of the codebase and guide.&lt;/p&gt;
-&lt;p&gt;I am of course very grateful for the guide because it is much more approachable - with many code samples and examples - than reading highly technical API documentation or &lt;tt class=&#34;docutils literal&#34;&gt;man&lt;/tt&gt; pages. However, it can be intimidating for a new user if they are following along with the steps in the guide and something unexpected happens; often the new user doesn&#39;t know if they did something in the wrong order or missed an important step, or if the guide is simply out of date and they are not sure how to get around the outdated part to continue their progress. It is also common for code and documentation to get out of sync, resulting in confused and annoyed users. Unfortunately there isn&#39;t a great technical solution to this issue and authors need to always take care to not only update code but also documentation, though Rust&#39;s &lt;a class=&#34;reference external&#34; href=&#34;https://doc.rust-lang.org/rustdoc/documentation-tests.html&#34;&gt;documentation tests&lt;/a&gt; are one example of a tool that can help by ensuring that example code included in comments is up to date and working.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;project-next&#34;&gt;
-&lt;h2&gt;Project: Next&lt;/h2&gt;
-&lt;p&gt;As I am still a new user of &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;rust-wasm&lt;/span&gt;&lt;/tt&gt; and &lt;a class=&#34;reference external&#34; href=&#34;http://diesel.rs/&#34;&gt;Diesel&lt;/a&gt;, I am sure there are still many things I can contribute to these projects, both in terms of improving the onboarding experience for new users as well as other non-code contributions. I also have my eye on a few areas of the guide for &lt;a class=&#34;reference external&#34; href=&#34;https://rocket.rs/guide&#34;&gt;Rocket&lt;/a&gt;, a web framework written in Rust that was the reason I started using Diesel. I&#39;m hoping to hear back soon about the two issues I filed to improve documentation, and I&#39;d like to take the time this month to shepherd them through to getting pull requests opened and merged. As for this week, I&#39;ll be picking out my next few contributions for Hacktoberfest and might also start thinking about picking a project to stick with for a while now that I&#39;ve worked on a number of projects so far this term.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
+
+&lt;p&gt;After the reasonably detailed explanations of other files in the project, this section stood out to me as one that could be improved. This section also makes reference to a philosophy of &amp;ldquo;batteries included&amp;rdquo;, which I had only ever been exposed to before &lt;a href=&#34;https://docs.python.org/2/tutorial/stdlib.html#batteries-included&#34;&gt;in Python jargon&lt;/a&gt; and that may not be familiar to everyone who has not had a similar exposure, or for whom English is not their primary language and the idiom is lost in translation.&lt;/p&gt;
+
+&lt;p&gt;Being a fresh set of eyes on the Rust and WebAssembly Book, I filed &lt;a href=&#34;https://github.com/rustwasm/book/issues/127&#34;&gt;rustwasm/book#127&lt;/a&gt; to discuss some suggestions for how this section could be improved without the need for jargon-heavy idioms and to provide more details about the particular module in question. At the time of publishing I have not heard back from anyone on the &lt;code&gt;rust-wasm&lt;/code&gt; team, but I am hopeful that I will be able to submit a pull request before the end of the month to improve this part of the tutorial.&lt;/p&gt;
+
+&lt;h2 id=&#34;typos-and-transcription-errors&#34;&gt;Typos and Transcription Errors&lt;/h2&gt;
+
+&lt;p&gt;Reading through the rest of the page, I ran across the simple error of a duplicated word in the explanation of &lt;code&gt;wasm-game-of-life/www/index.js&lt;/code&gt;. I submitted my correction as &lt;a href=&#34;https://github.com/rustwasm/book/pull/128&#34;&gt;rustwasm/book#128&lt;/a&gt; and it was accepted the same day. I even received a &lt;a href=&#34;https://github.com/rustwasm/book/pull/128#pullrequestreview-167612434&#34;&gt;congratulatory message&lt;/a&gt; from one of the maintainers on my first contribution to the project which, as my first interaction with any of the project maintainers, is a nice personal touch that definitely makes me want to to continue to contribute to &lt;code&gt;rust-wasm&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;project-two-diesel&#34;&gt;Project Two: Diesel&lt;/h1&gt;
+
+&lt;p&gt;I have been playing around with reimplementing a currently active Postgresql-backed project using Rust, and discovered &lt;a href=&#34;http://diesel.rs/&#34;&gt;Diesel&lt;/a&gt; as one of the ORM tools at the forefront of Rust development stacks. As with &lt;code&gt;rust-wasm&lt;/code&gt;, I have not used Diesel in any of my projects, so I turned to the &lt;a href=&#34;http://diesel.rs/guides/getting-started/&#34;&gt;getting started guide&lt;/a&gt; Diesel provides. It wasn&amp;rsquo;t long after I got the &lt;code&gt;diesel-cli&lt;/code&gt; tool installed that I ran into a discrepancy between the guide and the behaviour of the CLI tool, so I filed &lt;a href=&#34;https://github.com/diesel-rs/diesel/issues/1891&#34;&gt;diesel-rs/diesel#1891&lt;/a&gt; to detail my expectations along with the actual output the tool was producing, as well as some suggestions for improving the clarity of documentation in a few disparate but related areas of the codebase and guide.&lt;/p&gt;
+
+&lt;p&gt;I am of course very grateful for the guide because it is much more approachable - with many code samples and examples - than reading highly technical API documentation or &lt;code&gt;man&lt;/code&gt; pages. However, it can be intimidating for a new user if they are following along with the steps in the guide and something unexpected happens; often the new user doesn&amp;rsquo;t know if they did something in the wrong order or missed an important step, or if the guide is simply out of date and they are not sure how to get around the outdated part to continue their progress. It is also common for code and documentation to get out of sync, resulting in confused and annoyed users. Unfortunately there isn&amp;rsquo;t a great technical solution to this issue and authors need to always take care to not only update code but also documentation, though Rust&amp;rsquo;s &lt;a href=&#34;https://doc.rust-lang.org/rustdoc/documentation-tests.html&#34;&gt;documentation tests&lt;/a&gt; are one example of a tool that can help by ensuring that example code included in comments is up to date and working.&lt;/p&gt;
+
+&lt;h1 id=&#34;project-next&#34;&gt;Project: Next&lt;/h1&gt;
+
+&lt;p&gt;As I am still a new user of &lt;code&gt;rust-wasm&lt;/code&gt; and &lt;a href=&#34;http://diesel.rs/&#34;&gt;Diesel&lt;/a&gt;, I am sure there are still many things I can contribute to these projects, both in terms of improving the onboarding experience for new users as well as other non-code contributions. I also have my eye on a few areas of the guide for &lt;a href=&#34;https://rocket.rs/guide&#34;&gt;Rocket&lt;/a&gt;, a web framework written in Rust that was the reason I started using Diesel. I&amp;rsquo;m hoping to hear back soon about the two issues I filed to improve documentation, and I&amp;rsquo;d like to take the time this month to shepherd them through to getting pull requests opened and merged. As for this week, I&amp;rsquo;ll be picking out my next few contributions for Hacktoberfest and might also start thinking about picking a project to stick with for a while now that I&amp;rsquo;ve worked on a number of projects so far this term.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1037,51 +1050,64 @@ All you need to do is to let rainbow.js &lt;strong&gt;know&lt;/strong&gt; the la
       <pubDate>Mon, 15 Oct 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-two/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
+      <description>
 
+&lt;p&gt;Hacktoberfest week two! &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one/&#34;&gt;Week one&lt;/a&gt; was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and &lt;a href=&#34;https://stuartcrust.com/categories/rust/&#34;&gt;my area of interest&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Hacktoberfest week two! &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one/&#34;&gt;Week one&lt;/a&gt; was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/categories/rust/&#34;&gt;my area of interest&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;My contribution for this week had a bit more self-interest involved; I contributed a change to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the &lt;a class=&#34;reference external&#34; href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; blog theme I use for this blog, to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo/pull/26&#34;&gt;normalize URLs&lt;/a&gt; that use Hugo&#39;s &lt;tt class=&#34;docutils literal&#34;&gt;.Site.BaseURL&lt;/tt&gt; variable.&lt;/p&gt;
-&lt;div class=&#34;section&#34; id=&#34;the-problem&#34;&gt;
-&lt;h2&gt;The Problem&lt;/h2&gt;
-&lt;p&gt;Using the &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt; theme, I was noticing that many links to other parts of the site - that is, links that were not external links to e.g. GitHub or Twitter - contained multiple slashes after the site root. Modern web browsers are really good at dealing with partially-malformed URLs so there was no functional problem with any of the links as the browser&#39;s URL parser took over and cleaned them up into a value it could resolve, but it would still be better if the URLs were correctly formatted when Hugo generates the static site content.&lt;/p&gt;
+&lt;p&gt;My contribution for this week had a bit more self-interest involved; I contributed a change to &lt;a href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; blog theme I use for this blog, to &lt;a href=&#34;https://github.com/dplesca/purehugo/pull/26&#34;&gt;normalize URLs&lt;/a&gt; that use Hugo&amp;rsquo;s &lt;code&gt;.Site.BaseURL&lt;/code&gt; variable.&lt;/p&gt;
+
+&lt;h1 id=&#34;the-problem&#34;&gt;The Problem&lt;/h1&gt;
+
+&lt;p&gt;Using the &lt;a href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt; theme, I was noticing that many links to other parts of the site - that is, links that were not external links to e.g. GitHub or Twitter - contained multiple slashes after the site root. Modern web browsers are really good at dealing with partially-malformed URLs so there was no functional problem with any of the links as the browser&amp;rsquo;s URL parser took over and cleaned them up into a value it could resolve, but it would still be better if the URLs were correctly formatted when Hugo generates the static site content.&lt;/p&gt;
+
 &lt;p&gt;The malformed URLs looked something like this:&lt;/p&gt;
-&lt;pre class=&#34;code html literal-block&#34;&gt;
-&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&amp;quot;pure-button&amp;quot;&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&amp;quot;http://localhost:1313//index.xml&amp;quot;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;[...]&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&amp;quot;post-category post-category-open source&amp;quot;&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&amp;quot;http://localhost:1313//categories/open-source&amp;quot;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;open source&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;
-&lt;p&gt;Delving into the template code revealed how &lt;tt class=&#34;docutils literal&#34;&gt;dplesca/purehugo&lt;/tt&gt; was generating the URLs:&lt;/p&gt;
-&lt;pre class=&#34;code html literal-block&#34;&gt;
-&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&amp;quot;pure-button&amp;quot;&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&amp;quot;{{ .Site.BaseURL }}/index.xml&amp;quot;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;[...]&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&amp;quot;post-category post-category-{{ . }}&amp;quot;&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&amp;quot;{{ $baseUrl }}/categories/{{ . | urlize }}&amp;quot;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;{{ . }}&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;
-&lt;p&gt;The template string used &lt;tt class=&#34;docutils literal&#34;&gt;.Site.BaseURL&lt;/tt&gt; and appended a slash before the next URL fragment. Since this results in a double slash in the generated output, I presume but have not confirmed that &lt;tt class=&#34;docutils literal&#34;&gt;.Site.BaseURL&lt;/tt&gt; always ends in a trailing slash that needs to be taken into consideration when generating URLs relative the the site&#39;s root.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;the-solution&#34;&gt;
-&lt;h2&gt;The Solution&lt;/h2&gt;
-&lt;p&gt;In a similar way to how we join file paths in NodeJS with &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/path.html#path_path_join_paths&#34;&gt;path.join()&lt;/a&gt;, we almost never want to be responsible for building URL paths ourselves. Luckily, Hugo provides &lt;a class=&#34;reference external&#34; href=&#34;https://gohugo.io/functions/&#34;&gt;many built-in helper functions&lt;/a&gt; that cover a whole range of use cases, including the one I decided to use to normalize URL paths throughout &lt;tt class=&#34;docutils literal&#34;&gt;dplesca/purehugo&lt;/tt&gt;: &lt;a class=&#34;reference external&#34; href=&#34;https://gohugo.io/functions/absurl/.&#34;&gt;absURL&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;From the Hugo documentation, &lt;tt class=&#34;docutils literal&#34;&gt;absURL&lt;/tt&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;a class=&amp;quot;pure-button&amp;quot; href=&amp;quot;http://localhost:1313//index.xml&amp;quot;&amp;gt;[...]&amp;lt;/a&amp;gt;
+&amp;lt;a class=&amp;quot;post-category post-category-open source&amp;quot; href=&amp;quot;http://localhost:1313//categories/open-source&amp;quot;&amp;gt;open source&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Delving into the template code revealed how &lt;code&gt;dplesca/purehugo&lt;/code&gt; was generating the URLs:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sourceCode&#34;&gt;&amp;lt;a class=&amp;quot;pure-button&amp;quot; href=&amp;quot;{{ .Site.BaseURL }}/index.xml&amp;quot;&amp;gt;[...]&amp;lt;/a&amp;gt;
+&amp;lt;a class=&amp;quot;post-category post-category-{{ . }}&amp;quot; href=&amp;quot;{{ $baseUrl }}/categories/{{ . | urlize }}&amp;quot;&amp;gt;{{ . }}&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The template string used &lt;code&gt;.Site.BaseURL&lt;/code&gt; and appended a slash before the next URL fragment. Since this results in a double slash in the generated output, I presume but have not confirmed that &lt;code&gt;.Site.BaseURL&lt;/code&gt; always ends in a trailing slash that needs to be taken into consideration when generating URLs relative the the site&amp;rsquo;s root.&lt;/p&gt;
+
+&lt;h1 id=&#34;the-solution&#34;&gt;The Solution&lt;/h1&gt;
+
+&lt;p&gt;In a similar way to how we join file paths in NodeJS with &lt;a href=&#34;https://nodejs.org/api/path.html#path_path_join_paths&#34;&gt;path.join()&lt;/a&gt;, we almost never want to be responsible for building URL paths ourselves. Luckily, Hugo provides &lt;a href=&#34;https://gohugo.io/functions/&#34;&gt;many built-in helper functions&lt;/a&gt; that cover a whole range of use cases, including the one I decided to use to normalize URL paths throughout &lt;code&gt;dplesca/purehugo&lt;/code&gt;: &lt;a href=&#34;https://gohugo.io/functions/absurl/.&#34;&gt;absURL&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;From the Hugo documentation, &lt;code&gt;absURL&lt;/code&gt;&lt;/p&gt;
+
 &lt;blockquote&gt;
-Creates an absolute URL based on the configured &lt;tt class=&#34;docutils literal&#34;&gt;baseURL&lt;/tt&gt;.&lt;/blockquote&gt;
-&lt;p&gt;where &lt;tt class=&#34;docutils literal&#34;&gt;baseURL&lt;/tt&gt; is the hostname (and path) to the root of the site which is set as part of Hugo&#39;s &lt;a class=&#34;reference external&#34; href=&#34;https://gohugo.io/getting-started/configuration/#all-configuration-settings&#34;&gt;site configuration&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This function was a perfect solution in most of the places where static files need to be linked and served to the client, such as JavaScript or CSS content. In those cases it was a simple matter of removing &lt;tt class=&#34;docutils literal&#34;&gt;.Site.BaseURL&lt;/tt&gt; and the subsequent concatenation and replace it with a call to the &lt;tt class=&#34;docutils literal&#34;&gt;absURL&lt;/tt&gt; function, like so:&lt;/p&gt;
-&lt;pre class=&#34;code html literal-block&#34;&gt;
-&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&amp;quot;pure-button&amp;quot;&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&#39;{{ &amp;quot;index.xml&amp;quot; | absURL }}&#39;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;[...]&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;
-&lt;p&gt;Normalizing the post category links turned out to be a bit more complicated than this simple substitution because these links needed to include more URL fragments to create the complete path. In order to correctly concatenate and then normalize these URLs, I turned to another of Hugo&#39;s built-in functions: &lt;a class=&#34;reference external&#34; href=&#34;https://gohugo.io/functions/printf/&#34;&gt;printf&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Hugo&#39;s templating system is built almost entirely on top of Go&#39;s built-in &lt;a class=&#34;reference external&#34; href=&#34;https://golang.org/pkg/text/template/&#34;&gt;template package&lt;/a&gt;, which makes things very familiar if you have worked with Go templates before. It also means that Hugo can expose a lot of Go functions as Hugo functions available inside templates. In this case, Hugo&#39;s &lt;tt class=&#34;docutils literal&#34;&gt;printf&lt;/tt&gt; function exposes Go&#39;s &lt;tt class=&#34;docutils literal&#34;&gt;fmt.Sprintf&lt;/tt&gt; function which works much like &lt;tt class=&#34;docutils literal&#34;&gt;printf&lt;/tt&gt; in C.&lt;/p&gt;
-&lt;p&gt;This is the solution I came up with for building the more complicated post category link URLs while still being able to normalize the resulting URL using &lt;tt class=&#34;docutils literal&#34;&gt;absURL&lt;/tt&gt;:&lt;/p&gt;
-&lt;pre class=&#34;code html literal-block&#34;&gt;
-&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&amp;quot;post-category post-category-{{ . }}&amp;quot;&lt;/span&gt; &lt;span class=&#34;name attribute&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;literal string&#34;&gt;&#39;{{ ( printf &amp;quot;categories/%s&amp;quot; . ) | absURL }}&#39;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;{{ . }}&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;
-&lt;p&gt;Unlike in NodeJS, in this case it&#39;s safe to do a simple string concatenation of &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;categories/&amp;lt;category-name&amp;gt;&lt;/span&gt;&lt;/tt&gt; because unlike with file systems, the fragment separator in URLs is always the &lt;tt class=&#34;docutils literal&#34;&gt;/&lt;/tt&gt; character.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;to-be-continued&#34;&gt;
-&lt;h2&gt;To be Continued&lt;/h2&gt;
-&lt;p&gt;I am very thankful to &lt;tt class=&#34;docutils literal&#34;&gt;purehugo&lt;/tt&gt;&#39;s author, &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca&#34;&gt;&amp;#64;dplesca&lt;/a&gt;, for responding so quickly to my pull request with this change and for merging the pull request within a few hours of my submission. While working on this change I noticed a few other areas where I think &lt;tt class=&#34;docutils literal&#34;&gt;dplesca/purehugo&lt;/tt&gt; could be improved, and I&#39;m looking forward to working on it more as I continue using it to generate my blog and host my site content.&lt;/p&gt;
-&lt;p&gt;Hacktoberfest continues on, and I need to start thinking about my next contribution. My school is on a break starting next week, so I&#39;m hoping to find the time to dig into something a bit larger and more challenging based on the projects I&#39;ve seen so far or had recommended to me by classmates.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;p&gt;Creates an absolute URL based on the configured &lt;code&gt;baseURL&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;where &lt;code&gt;baseURL&lt;/code&gt; is the hostname (and path) to the root of the site which is set as part of Hugo&amp;rsquo;s &lt;a href=&#34;https://gohugo.io/getting-started/configuration/#all-configuration-settings&#34;&gt;site configuration&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This function was a perfect solution in most of the places where static files need to be linked and served to the client, such as JavaScript or CSS content. In those cases it was a simple matter of removing &lt;code&gt;.Site.BaseURL&lt;/code&gt; and the subsequent concatenation and replace it with a call to the &lt;code&gt;absURL&lt;/code&gt; function, like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;a class=&amp;quot;pure-button&amp;quot; href=&#39;{{ &amp;quot;index.xml&amp;quot; | absURL }}&#39;&amp;gt;[...]&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Normalizing the post category links turned out to be a bit more complicated than this simple substitution because these links needed to include more URL fragments to create the complete path. In order to correctly concatenate and then normalize these URLs, I turned to another of Hugo&amp;rsquo;s built-in functions: &lt;a href=&#34;https://gohugo.io/functions/printf/&#34;&gt;printf&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Hugo&amp;rsquo;s templating system is built almost entirely on top of Go&amp;rsquo;s built-in &lt;a href=&#34;https://golang.org/pkg/text/template/&#34;&gt;template package&lt;/a&gt;, which makes things very familiar if you have worked with Go templates before. It also means that Hugo can expose a lot of Go functions as Hugo functions available inside templates. In this case, Hugo&amp;rsquo;s &lt;code&gt;printf&lt;/code&gt; function exposes Go&amp;rsquo;s &lt;code&gt;fmt.Sprintf&lt;/code&gt; function which works much like &lt;code&gt;printf&lt;/code&gt; in C.&lt;/p&gt;
+
+&lt;p&gt;This is the solution I came up with for building the more complicated post category link URLs while still being able to normalize the resulting URL using &lt;code&gt;absURL&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;a class=&amp;quot;post-category post-category-{{ . }}&amp;quot; href=&#39;{{ ( printf &amp;quot;categories/%s&amp;quot; . ) | absURL }}&#39;&amp;gt;{{ . }}&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Unlike in NodeJS, in this case it&amp;rsquo;s safe to do a simple string concatenation of &lt;code&gt;categories/&amp;lt;category-name&amp;gt;&lt;/code&gt; because unlike with file systems, the fragment separator in URLs is always the &lt;code&gt;/&lt;/code&gt; character.&lt;/p&gt;
+
+&lt;h1 id=&#34;to-be-continued&#34;&gt;To be Continued&lt;/h1&gt;
+
+&lt;p&gt;I am very thankful to &lt;code&gt;purehugo&lt;/code&gt;&amp;rsquo;s author, &lt;a href=&#34;https://github.com/dplesca&#34;&gt;@dplesca&lt;/a&gt;, for responding so quickly to my pull request with this change and for merging the pull request within a few hours of my submission. While working on this change I noticed a few other areas where I think &lt;code&gt;dplesca/purehugo&lt;/code&gt; could be improved, and I&amp;rsquo;m looking forward to working on it more as I continue using it to generate my blog and host my site content.&lt;/p&gt;
+
+&lt;p&gt;Hacktoberfest continues on, and I need to start thinking about my next contribution. My school is on a break starting next week, so I&amp;rsquo;m hoping to find the time to dig into something a bit larger and more challenging based on the projects I&amp;rsquo;ve seen so far or had recommended to me by classmates.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1090,29 +1116,30 @@ Creates an absolute URL based on the configured &lt;tt class=&#34;docutils liter
       <pubDate>Thu, 04 Oct 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-one/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
+      <description>
 
+&lt;p&gt;Hacktoberfest, start! In my &lt;a href=&#34;2018/09/a-return-to-open-source/&#34;&gt;previous post&lt;/a&gt; I mentioned that I was hoping to find some interesting projects to contribute to this month, and so far I&amp;rsquo;ve come up with a pretty good shortlist of contributions I want to make.&lt;/p&gt;
 
-&lt;p&gt;Hacktoberfest, start! In my &lt;a class=&#34;reference external&#34; href=&#34;2018/09/a-return-to-open-source/&#34;&gt;previous post&lt;/a&gt; I mentioned that I was hoping to find some interesting projects to contribute to this month, and so far I&#39;ve come up with a pretty good shortlist of contributions I want to make.&lt;/p&gt;
-&lt;p&gt;To start the month off, I lent a hand to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/lk-geimfari/awesomo&#34;&gt;lk-geimfari/awesomo&lt;/a&gt; to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/lk-geimfari/awesomo/pull/125&#34;&gt;reorganize their list&lt;/a&gt; of Rust projects. They had already reorganized the one for Python and suggested contributors use that as a model for the rest of the reorganizations. There are still a bunch of languages on the list in the &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/lk-geimfari/awesomo/issues/101&#34;&gt;tracking issue&lt;/a&gt;, so head on over and give them a hand!&lt;/p&gt;
-&lt;p&gt;The work itself was straight forward; contributors were asked to alphabetize the projects in the list, and provide a table of contents and headings based on the example. I think this was a great first issue for Hacktoberfest because my goal for this month is to contribute to at least two projects that use &lt;a class=&#34;reference external&#34; href=&#34;https://www.rust-lang.org/en-US/&#34;&gt;Rust&lt;/a&gt;, and what better way to find out about cool projects than working with a list chock full of them?&lt;/p&gt;
-&lt;div class=&#34;section&#34; id=&#34;alacritty&#34;&gt;
-&lt;h2&gt;Alacritty&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://github.com/jwilm/alacritty&#34;&gt;Alacritty&lt;/a&gt; was one of the first projects to catch my eye, not just because it was originally at the top of the list, but also because I saw an announcement post that Alacritty &lt;a class=&#34;reference external&#34; href=&#34;https://www.reddit.com/r/rust/comments/9gl75a/alacritty_now_supports_scrollback/&#34;&gt;now supports terminal scrollback&lt;/a&gt; which introduced me to the existence of the project in the first place. Alacritty claims to be &amp;quot;the fastest terminal emulator in existence&amp;quot;, and uses the GPU for rendering to enable optimizations that aren&#39;t possible using other terminal emulators. Alacritty is still very much in its infancy, with &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/jwilm/alacritty/releases/tag/v0.2.1&#34;&gt;version 0.2.1&lt;/a&gt; as the most recent release at the time of writing. Windows support is planned before a 1.0 release, so if this intrigues you and you&#39;re a Windows developer &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/jwilm/alacritty/issues/28&#34;&gt;have a look at the tracking issue&lt;/a&gt; and see if you can help out.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;diesel&#34;&gt;
-&lt;h2&gt;Diesel&lt;/h2&gt;
-&lt;p&gt;Another project I was aware of before working with this awesome list of Rust projects is &lt;a class=&#34;reference external&#34; href=&#34;http://diesel.rs/&#34;&gt;Diesel&lt;/a&gt;, a safe, extensible object-relational mapper (ORM) for Rust. When deciding on the technology stack for my capstone project this year, I investigated using the &lt;a class=&#34;reference external&#34; href=&#34;https://rocket.rs/overview/&#34;&gt;Rocket&lt;/a&gt; web framework written in Rust, and Diesel is one of the ORMs &lt;a class=&#34;reference external&#34; href=&#34;https://rocket.rs/guide/state/#dependencies&#34;&gt;recommended in the getting started guide&lt;/a&gt;. Diesel provides a comfortable CLI experience for developers familiar with tools like &lt;a class=&#34;reference external&#34; href=&#34;https://guides.rubyonrails.org/active_record_basics.html&#34;&gt;ActiveRecord&lt;/a&gt; from Ruby on Rails and &lt;a class=&#34;reference external&#34; href=&#34;http://docs.sequelizejs.com/&#34;&gt;Sequelize&lt;/a&gt; in NodeJS, but drastically improves on both by leveraging Rust&#39;s type safety and by &amp;quot;eliminat[ing] the possibility of incorrect database interactions at compile time.&amp;quot;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;exa&#34;&gt;
-&lt;h2&gt;exa&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://the.exa.website/&#34;&gt;exa&lt;/a&gt; is a modern replacement for the built-in unix &lt;tt class=&#34;docutils literal&#34;&gt;ls&lt;/tt&gt; command which aims to have better defaults and more features. I have been using &lt;tt class=&#34;docutils literal&#34;&gt;exa&lt;/tt&gt; myself for a few weeks and I am really enjoying the experience so far. With &lt;tt class=&#34;docutils literal&#34;&gt;ls&lt;/tt&gt; I set up a number of shell aliases and functions to do things like enable human-readable sizes and always show colours; in &lt;tt class=&#34;docutils literal&#34;&gt;exa&lt;/tt&gt; these features are turned on automatically without any setup. I am all for customizability in those cases where it&#39;s absolutely necessary but sane defaults is almost always a better solution, especially with a tool that most of us use hundreds of times a day.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;to-be-continued&#34;&gt;
-&lt;h2&gt;To be Continued&lt;/h2&gt;
-&lt;p&gt;I definitely have some ideas about more projects that I&#39;d like to contribute to after seeing the &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/lk-geimfari/awesomo&#34;&gt;lk-geimfari/awesomo&lt;/a&gt; list, either this month for Hacktoberfest or on an ongoing basis. If Rust isn&#39;t your language of choice, there are similar lists of projects in pretty much every popular language as well as some more obscure ones, so take a look, be inspired, and happy hacking!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;p&gt;To start the month off, I lent a hand to &lt;a href=&#34;https://github.com/lk-geimfari/awesomo&#34;&gt;lk-geimfari/awesomo&lt;/a&gt; to &lt;a href=&#34;https://github.com/lk-geimfari/awesomo/pull/125&#34;&gt;reorganize their list&lt;/a&gt; of Rust projects. They had already reorganized the one for Python and suggested contributors use that as a model for the rest of the reorganizations. There are still a bunch of languages on the list in the &lt;a href=&#34;https://github.com/lk-geimfari/awesomo/issues/101&#34;&gt;tracking issue&lt;/a&gt;, so head on over and give them a hand!&lt;/p&gt;
+
+&lt;p&gt;The work itself was straight forward; contributors were asked to alphabetize the projects in the list, and provide a table of contents and headings based on the example. I think this was a great first issue for Hacktoberfest because my goal for this month is to contribute to at least two projects that use &lt;a href=&#34;https://www.rust-lang.org/en-US/&#34;&gt;Rust&lt;/a&gt;, and what better way to find out about cool projects than working with a list chock full of them?&lt;/p&gt;
+
+&lt;h1 id=&#34;alacritty&#34;&gt;Alacritty&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jwilm/alacritty&#34;&gt;Alacritty&lt;/a&gt; was one of the first projects to catch my eye, not just because it was originally at the top of the list, but also because I saw an announcement post that Alacritty &lt;a href=&#34;https://www.reddit.com/r/rust/comments/9gl75a/alacritty_now_supports_scrollback/&#34;&gt;now supports terminal scrollback&lt;/a&gt; which introduced me to the existence of the project in the first place. Alacritty claims to be &amp;ldquo;the fastest terminal emulator in existence&amp;rdquo;, and uses the GPU for rendering to enable optimizations that aren&amp;rsquo;t possible using other terminal emulators. Alacritty is still very much in its infancy, with &lt;a href=&#34;https://github.com/jwilm/alacritty/releases/tag/v0.2.1&#34;&gt;version 0.2.1&lt;/a&gt; as the most recent release at the time of writing. Windows support is planned before a 1.0 release, so if this intrigues you and you&amp;rsquo;re a Windows developer &lt;a href=&#34;https://github.com/jwilm/alacritty/issues/28&#34;&gt;have a look at the tracking issue&lt;/a&gt; and see if you can help out.&lt;/p&gt;
+
+&lt;h1 id=&#34;diesel&#34;&gt;Diesel&lt;/h1&gt;
+
+&lt;p&gt;Another project I was aware of before working with this awesome list of Rust projects is &lt;a href=&#34;http://diesel.rs/&#34;&gt;Diesel&lt;/a&gt;, a safe, extensible object-relational mapper (ORM) for Rust. When deciding on the technology stack for my capstone project this year, I investigated using the &lt;a href=&#34;https://rocket.rs/overview/&#34;&gt;Rocket&lt;/a&gt; web framework written in Rust, and Diesel is one of the ORMs &lt;a href=&#34;https://rocket.rs/guide/state/#dependencies&#34;&gt;recommended in the getting started guide&lt;/a&gt;. Diesel provides a comfortable CLI experience for developers familiar with tools like &lt;a href=&#34;https://guides.rubyonrails.org/active_record_basics.html&#34;&gt;ActiveRecord&lt;/a&gt; from Ruby on Rails and &lt;a href=&#34;http://docs.sequelizejs.com/&#34;&gt;Sequelize&lt;/a&gt; in NodeJS, but drastically improves on both by leveraging Rust&amp;rsquo;s type safety and by &amp;ldquo;eliminat[ing] the possibility of incorrect database interactions at compile time.&amp;rdquo;&lt;/p&gt;
+
+&lt;h1 id=&#34;exa&#34;&gt;exa&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://the.exa.website/&#34;&gt;exa&lt;/a&gt; is a modern replacement for the built-in unix &lt;code&gt;ls&lt;/code&gt; command which aims to have better defaults and more features. I have been using &lt;code&gt;exa&lt;/code&gt; myself for a few weeks and I am really enjoying the experience so far. With &lt;code&gt;ls&lt;/code&gt; I set up a number of shell aliases and functions to do things like enable human-readable sizes and always show colours; in &lt;code&gt;exa&lt;/code&gt; these features are turned on automatically without any setup. I am all for customizability in those cases where it&amp;rsquo;s absolutely necessary but sane defaults is almost always a better solution, especially with a tool that most of us use hundreds of times a day.&lt;/p&gt;
+
+&lt;h1 id=&#34;to-be-continued&#34;&gt;To be Continued&lt;/h1&gt;
+
+&lt;p&gt;I definitely have some ideas about more projects that I&amp;rsquo;d like to contribute to after seeing the &lt;a href=&#34;https://github.com/lk-geimfari/awesomo&#34;&gt;lk-geimfari/awesomo&lt;/a&gt; list, either this month for Hacktoberfest or on an ongoing basis. If Rust isn&amp;rsquo;t your language of choice, there are similar lists of projects in pretty much every popular language as well as some more obscure ones, so take a look, be inspired, and happy hacking!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1121,16 +1148,18 @@ Creates an absolute URL based on the configured &lt;tt class=&#34;docutils liter
       <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/09/a-return-to-open-source/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
+      <description>&lt;p&gt;Today marks the first month of my return to open source. I say &lt;em&gt;return&lt;/em&gt; even though I never really &lt;em&gt;left&lt;/em&gt;, it&amp;rsquo;s more of a return to active participation in the community. As I &lt;a href=&#34;https://stuartcrust.com/2018/09/third-times-the-charm/&#34;&gt;wrote about earlier&lt;/a&gt;, one of my courses right now focuses on open source development, so I have been able to &lt;a href=&#34;https://github.com/0xazure?tab=overview&amp;amp;from=2018-09-01&amp;amp;to=2018-09-30&#34;&gt;contribute much more regularly&lt;/a&gt; and I hope to be able to continue to do so even after the course is over.&lt;/p&gt;
 
+&lt;p&gt;This past month has been all about getting back into the swing of things by contributing to &lt;a href=&#34;https://github.com/filerjs/filer&#34;&gt;filerjs/filer&lt;/a&gt;, a port of NodeJS&amp;rsquo; &lt;code&gt;fs&lt;/code&gt; module to the web using backends like IndexedDB. My first contribution to filer, which I have &lt;a href=&#34;https://stuartcrust.com/2018/09/its-dependencies-all-the-way-down/&#34;&gt;already blogged about&lt;/a&gt;, was to update a development dependency to resolve package vulnerabilities as reported by &lt;code&gt;npm audit&lt;/code&gt;. This issue was logged as &lt;a href=&#34;https://github.com/filerjs/filer/issues/384&#34;&gt;filer#384&lt;/a&gt; and fixed in &lt;a href=&#34;https://github.com/filerjs/filer/pull/385&#34;&gt;filer#385&lt;/a&gt; by updating the vulnerable dependency. This issue also spawned some discussion as &lt;a href=&#34;https://github.com/filerjs/filer/issues/386&#34;&gt;filer#386&lt;/a&gt; about automating the process of keeping project dependencies up to date so it is much easier to stay on top of new versions of dependencies.&lt;/p&gt;
 
-&lt;p&gt;Today marks the first month of my return to open source. I say &lt;em&gt;return&lt;/em&gt; even though I never really &lt;em&gt;left&lt;/em&gt;, it&#39;s more of a return to active participation in the community. As I &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/09/third-times-the-charm/&#34;&gt;wrote about earlier&lt;/a&gt;, one of my courses right now focuses on open source development, so I have been able to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/0xazure?tab=overview&amp;amp;from=2018-09-01&amp;amp;to=2018-09-30&#34;&gt;contribute much more regularly&lt;/a&gt; and I hope to be able to continue to do so even after the course is over.&lt;/p&gt;
-&lt;p&gt;This past month has been all about getting back into the swing of things by contributing to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer&#34;&gt;filerjs/filer&lt;/a&gt;, a port of NodeJS&#39; &lt;tt class=&#34;docutils literal&#34;&gt;fs&lt;/tt&gt; module to the web using backends like IndexedDB. My first contribution to filer, which I have &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/2018/09/its-dependencies-all-the-way-down/&#34;&gt;already blogged about&lt;/a&gt;, was to update a development dependency to resolve package vulnerabilities as reported by &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt;. This issue was logged as &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/issues/384&#34;&gt;filer#384&lt;/a&gt; and fixed in &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/pull/385&#34;&gt;filer#385&lt;/a&gt; by updating the vulnerable dependency. This issue also spawned some discussion as &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/issues/386&#34;&gt;filer#386&lt;/a&gt; about automating the process of keeping project dependencies up to date so it is much easier to stay on top of new versions of dependencies.&lt;/p&gt;
-&lt;p&gt;Open source isn&#39;t just about contributing code and documentation though. It&#39;s also about the community, interacting with other developers, discussing issues and potential solutions, as well as reviewing and helping out other members of the community. In addition to helping out my classmates over Slack and in-class throughout the month, I also reviewed a few pull requests opened against the filer repository.&lt;/p&gt;
-&lt;p&gt;The first issue I reviewed, &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/pull/478&#34;&gt;filer#478&lt;/a&gt;, is a pull request that adds a test to &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; to verify the event type emitted when renaming an existing file. Other than the boilerplate mocha test code, the test logic itself is fairly straight forward. However, &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; and related watching functions are an interesting set of methods because they are not guaranted to be consistent due to the &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_caveats&#34;&gt;underlying implementation details&lt;/a&gt;. I actually had to go back to this pull request and re-review it because it turns out that filer &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/issues/411#issuecomment-422946490&#34;&gt;doesn&#39;t currently have support&lt;/a&gt; for &lt;tt class=&#34;docutils literal&#34;&gt;rename&lt;/tt&gt; events at all. This issue was also interesting because I picked out a minor style nitpick in the form of a missing semi-colon that the Travis build &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/issues/482&#34;&gt;didn&#39;t seem to pick up&lt;/a&gt; for some reason. Rerunning the build resolved the issue, but it&#39;s always worrying when you run into issues with your build infrastructure and tests because it can shake your faith in them a bit.&lt;/p&gt;
-&lt;p&gt;Another issue that I reviewed was &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/pull/472&#34;&gt;filer#472&lt;/a&gt;. This pull request adds a test to ensure that reading from a nonexistant file results in an error. The submission is well done overall, with one minor nitpick that lead to me filing &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/pull/498&#34;&gt;filer#498&lt;/a&gt; to reduce small nitpick-type comments on reviews. Nitpicks are generally a waste of everyone&#39;s time because style should be automatically enforced by some kind of automated tool before code is pushed; JavaScript doesn&#39;t have anything quite like &lt;a class=&#34;reference external&#34; href=&#34;https://golang.org/cmd/gofmt/&#34;&gt;gofmt&lt;/a&gt; or &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/rust-lang-nursery/rustfmt&#34;&gt;rustfmt&lt;/a&gt;, but tools like &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/xojs/xo&#34;&gt;xo&lt;/a&gt; and &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/prettier/prettier&#34;&gt;prettier&lt;/a&gt; can help. In this review I also cautioned the original author of the pull request about changing multiple variables at a time in a test, which we ideally would like to avoid as we can easily end up testing more code paths than we either need or want to, thereby complicating the test or making it fragile against future changes to the code.&lt;/p&gt;
-&lt;p&gt;Looking ahead, October marks the beginning of &lt;a class=&#34;reference external&#34; href=&#34;https://hacktoberfest.digitalocean.com/&#34;&gt;Hacktoberfest&lt;/a&gt;. I&#39;m really excited to be participating this year; I participated once before but I either missed the cutoff or something happened to my package because I never received my t-shirt from DigitalOcean. I&#39;ll be writing a lot more short blog posts throughout October as I chronicle my participation in this event, and I&#39;m hoping to find some interesting projects to contribute to for at least the rest of this year and hopefully well into the next.&lt;/p&gt;
-&lt;/div&gt;</description>
+&lt;p&gt;Open source isn&amp;rsquo;t just about contributing code and documentation though. It&amp;rsquo;s also about the community, interacting with other developers, discussing issues and potential solutions, as well as reviewing and helping out other members of the community. In addition to helping out my classmates over Slack and in-class throughout the month, I also reviewed a few pull requests opened against the filer repository.&lt;/p&gt;
+
+&lt;p&gt;The first issue I reviewed, &lt;a href=&#34;https://github.com/filerjs/filer/pull/478&#34;&gt;filer#478&lt;/a&gt;, is a pull request that adds a test to &lt;code&gt;fs.watch()&lt;/code&gt; to verify the event type emitted when renaming an existing file. Other than the boilerplate mocha test code, the test logic itself is fairly straight forward. However, &lt;code&gt;fs.watch()&lt;/code&gt; and related watching functions are an interesting set of methods because they are not guaranteed to be consistent due to the &lt;a href=&#34;https://nodejs.org/api/fs.html#fs_caveats&#34;&gt;underlying implementation details&lt;/a&gt;. I actually had to go back to this pull request and re-review it because it turns out that filer &lt;a href=&#34;https://github.com/filerjs/filer/issues/411#issuecomment-422946490&#34;&gt;doesn&amp;rsquo;t currently have support&lt;/a&gt; for &lt;code&gt;rename&lt;/code&gt; events at all. This issue was also interesting because I picked out a minor style nitpick in the form of a missing semi-colon that the Travis build &lt;a href=&#34;https://github.com/filerjs/filer/issues/482&#34;&gt;didn&amp;rsquo;t seem to pick up&lt;/a&gt; for some reason. Rerunning the build resolved the issue, but it&amp;rsquo;s always worrying when you run into issues with your build infrastructure and tests because it can shake your faith in them a bit.&lt;/p&gt;
+
+&lt;p&gt;Another issue that I reviewed was &lt;a href=&#34;https://github.com/filerjs/filer/pull/472&#34;&gt;filer#472&lt;/a&gt;. This pull request adds a test to ensure that reading from a nonexistent file results in an error. The submission is well done overall, with one minor nitpick that lead to me filing &lt;a href=&#34;https://github.com/filerjs/filer/pull/498&#34;&gt;filer#498&lt;/a&gt; to reduce small nitpick-type comments on reviews. Nitpicks are generally a waste of everyone&amp;rsquo;s time because style should be automatically enforced by some kind of automated tool before code is pushed; JavaScript doesn&amp;rsquo;t have anything quite like &lt;a href=&#34;https://golang.org/cmd/gofmt/&#34;&gt;gofmt&lt;/a&gt; or &lt;a href=&#34;https://github.com/rust-lang-nursery/rustfmt&#34;&gt;rustfmt&lt;/a&gt;, but tools like &lt;a href=&#34;https://github.com/xojs/xo&#34;&gt;xo&lt;/a&gt; and &lt;a href=&#34;https://github.com/prettier/prettier&#34;&gt;prettier&lt;/a&gt; can help. In this review I also cautioned the original author of the pull request about changing multiple variables at a time in a test, which we ideally would like to avoid as we can easily end up testing more code paths than we either need or want to, thereby complicating the test or making it fragile against future changes to the code.&lt;/p&gt;
+
+&lt;p&gt;Looking ahead, October marks the beginning of &lt;a href=&#34;https://hacktoberfest.digitalocean.com/&#34;&gt;Hacktoberfest&lt;/a&gt;. I&amp;rsquo;m really excited to be participating this year; I participated once before but I either missed the cutoff or something happened to my package because I never received my t-shirt from DigitalOcean. I&amp;rsquo;ll be writing a lot more short blog posts throughout October as I chronicle my participation in this event, and I&amp;rsquo;m hoping to find some interesting projects to contribute to for at least the rest of this year and hopefully well into the next.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1139,127 +1168,144 @@ Creates an absolute URL based on the configured &lt;tt class=&#34;docutils liter
       <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/09/its-dependencies-all-the-way-down/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
-
+      <description>
 
 &lt;p&gt;NodeJS has experienced a lot of growth over the years. Like any platform, programming or otherwise, much of that growth and user adoption depends not only on the quality of the platform itself, but also the ecosystem that builds up around it.&lt;/p&gt;
-&lt;p&gt;In this respect, NodeJS has possibly one of the largest ecosystems available. With &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/&#34;&gt;over 700,000 packages&lt;/a&gt; published to npm, the NodeJS platform offers developers a lot of choice when it comes to 3rd-party modules. This choice lets developers choose and compose modules from many different authors when writing software, saving time, consolidating work, and reducing bugs instead of constantly &lt;a class=&#34;reference external&#34; href=&#34;https://en.wikipedia.org/wiki/Not_invented_here&#34;&gt;reinventing the wheel&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The NodeJS ecosystem by and large follows the &lt;a class=&#34;reference external&#34; href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;Unix philosophy&lt;/a&gt;, in particular the primary tenant to&lt;/p&gt;
+
+&lt;p&gt;In this respect, NodeJS has possibly one of the largest ecosystems available. With &lt;a href=&#34;https://www.npmjs.com/&#34;&gt;over 700,000 packages&lt;/a&gt; published to npm, the NodeJS platform offers developers a lot of choice when it comes to 3rd-party modules. This choice lets developers choose and compose modules from many different authors when writing software, saving time, consolidating work, and reducing bugs instead of constantly &lt;a href=&#34;https://en.wikipedia.org/wiki/Not_invented_here&#34;&gt;reinventing the wheel&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The NodeJS ecosystem by and large follows the &lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;Unix philosophy&lt;/a&gt;, in particular the primary tenant to&lt;/p&gt;
+
 &lt;blockquote&gt;
 &lt;p&gt;Write programs [and libraries] that do one thing and do it well&lt;/p&gt;
-&lt;p class=&#34;attribution&#34;&gt;&amp;mdash;Peter H. Salus, &lt;em&gt;A Quarter-Century of Unix (1994)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;— Peter H. Salus, &lt;em&gt;A Quarter-Century of Unix (1994)&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Keeping a module&#39;s focus small is an important aspect of many programming design patterns such as the single-responsibility principle, as well as improving code reuse and composability. However, including these modules doesn&#39;t come for free. Every project dependency is an added burden that the maintainers need to keep up to date and have to modify their code as the API of the module changes. Sometimes serious bugs are found in these modules that can expose application secrets, user data, or unauthorized access, among other classes of vulnerabilities, that the module authors need to fix before dependent projects can update to fix the bug.&lt;/p&gt;
-&lt;p&gt;Staying on top of vulnerability disclosures and keeping track of all of the changes from version to version in a project&#39;s dependencies is a challenging and resource-draining task. Even more challenging, authors must not only be concerned with the vulnerabilities in modules they depend on directly, but also those in all of the &lt;a class=&#34;reference external&#34; href=&#34;https://docs.gradle.org/current/userguide/dependency_management_terminology.html#sub:terminology_transitive_dependency&#34;&gt;transitive dependencies&lt;/a&gt; that NodeJS is (in)famous for.&lt;/p&gt;
-&lt;div class=&#34;section&#34; id=&#34;npm-audit&#34;&gt;
-&lt;h2&gt;&lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt;&lt;/h2&gt;
-&lt;p&gt;In the &lt;a class=&#34;reference external&#34; href=&#34;https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905&#34;&gt;April 2018 announcement&lt;/a&gt; of &lt;tt class=&#34;docutils literal&#34;&gt;npm&amp;#64;6&lt;/tt&gt;, the headlining feature the npm team showcased was &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt;, a powerful tool designed to provide automatic security warnings when using code with a known security issue. The &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; tool allows developers to completely analyze a project&#39;s dependency tree - including all transitive dependnecies - to identify known vulnerable versions of dependencies based on data from the Node Security Platform database that npm &lt;a class=&#34;reference external&#34; href=&#34;https://medium.com/npm-inc/npm-acquires-lift-security-258e257ef639&#34;&gt;acquired in April 2018&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The npm team made two really important decisions when designing &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt;. First, all install requests issued through &lt;tt class=&#34;docutils literal&#34;&gt;npm install&lt;/tt&gt; are automatically subjected to the same analysis that the &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; command performs, analyzing the package to be installed as well as any additional dependencies that package would pull into the project. Second, &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; suggests resolutions for vulnerabilities it identifies thereby giving clear actionable feedback to developers on the next steps they can take to resolve issues identified in the audit. These two decisions are critical because not only does npm take a security-conscious approach by default, but it tries to make resolving issues as painless as possible. Developers don&#39;t want to spend hours combing through changelogs or reviewing vulnerability reports just to find the package version that includes the vulnerability fix, they want to resolve the problem and get on with writing code.&lt;/p&gt;
-&lt;p&gt;As of &lt;tt class=&#34;docutils literal&#34;&gt;npm&amp;#64;6.1&lt;/tt&gt;, &lt;tt class=&#34;docutils literal&#34;&gt;npm&lt;/tt&gt; includes the &lt;tt class=&#34;docutils literal&#34;&gt;npm audit fix&lt;/tt&gt; command to &lt;a class=&#34;reference external&#34; href=&#34;https://blog.npmjs.org/post/174001864165/v610-next0&#34;&gt;automatically run all the package installations&lt;/a&gt; recommended by &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt;, lowering the pain of updating vulnerable packages even further.&lt;/p&gt;
-&lt;p&gt;The npm team shares their vision with the inclusion of tools like &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; and a security-conscious approach to ecosystem packages:&lt;/p&gt;
+
+&lt;p&gt;Keeping a module&amp;rsquo;s focus small is an important aspect of many programming design patterns such as the single-responsibility principle, as well as improving code reuse and composability. However, including these modules doesn&amp;rsquo;t come for free. Every project dependency is an added burden that the maintainers need to keep up to date and have to modify their code as the API of the module changes. Sometimes serious bugs are found in these modules that can expose application secrets, user data, or unauthorized access, among other classes of vulnerabilities, that the module authors need to fix before dependent projects can update to fix the bug.&lt;/p&gt;
+
+&lt;p&gt;Staying on top of vulnerability disclosures and keeping track of all of the changes from version to version in a project&amp;rsquo;s dependencies is a challenging and resource-draining task. Even more challenging, authors must not only be concerned with the vulnerabilities in modules they depend on directly, but also those in all of the &lt;a href=&#34;https://docs.gradle.org/current/userguide/dependency_management_terminology.html#sub:terminology_transitive_dependency&#34;&gt;transitive dependencies&lt;/a&gt; that NodeJS is (in)famous for.&lt;/p&gt;
+
+&lt;h1 id=&#34;npm-audit&#34;&gt;npm audit&lt;/h1&gt;
+
+&lt;p&gt;In the &lt;a href=&#34;https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905&#34;&gt;April 2018 announcement&lt;/a&gt; of &lt;code&gt;npm@6&lt;/code&gt;, the headlining feature the npm team showcased was &lt;code&gt;npm audit&lt;/code&gt;, a powerful tool designed to provide automatic security warnings when using code with a known security issue. The &lt;code&gt;npm audit&lt;/code&gt; tool allows developers to completely analyze a project&amp;rsquo;s dependency tree - including all transitive dependencies - to identify known vulnerable versions of dependencies based on data from the Node Security Platform database that npm &lt;a href=&#34;https://medium.com/npm-inc/npm-acquires-lift-security-258e257ef639&#34;&gt;acquired in April 2018&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The npm team made two really important decisions when designing &lt;code&gt;npm audit&lt;/code&gt;. First, all install requests issued through &lt;code&gt;npm install&lt;/code&gt; are automatically subjected to the same analysis that the &lt;code&gt;npm audit&lt;/code&gt; command performs, analyzing the package to be installed as well as any additional dependencies that package would pull into the project. Second, &lt;code&gt;npm audit&lt;/code&gt; suggests resolutions for vulnerabilities it identifies thereby giving clear actionable feedback to developers on the next steps they can take to resolve issues identified in the audit. These two decisions are critical because not only does npm take a security-conscious approach by default, but it tries to make resolving issues as painless as possible. Developers don&amp;rsquo;t want to spend hours combing through changelogs or reviewing vulnerability reports just to find the package version that includes the vulnerability fix, they want to resolve the problem and get on with writing code.&lt;/p&gt;
+
+&lt;p&gt;As of &lt;code&gt;npm@6.1&lt;/code&gt;, &lt;code&gt;npm&lt;/code&gt; includes the &lt;code&gt;npm audit fix&lt;/code&gt; command to &lt;a href=&#34;https://blog.npmjs.org/post/174001864165/v610-next0&#34;&gt;automatically run all the package installations&lt;/a&gt; recommended by &lt;code&gt;npm audit&lt;/code&gt;, lowering the pain of updating vulnerable packages even further.&lt;/p&gt;
+
+&lt;p&gt;The npm team shares their vision with the inclusion of tools like &lt;code&gt;npm audit&lt;/code&gt; and a security-conscious approach to ecosystem packages:&lt;/p&gt;
+
 &lt;blockquote&gt;
 &lt;p&gt;By alerting the entire community to security vulnerabilities within a tool you already use, we can make JavaScript development safer for everyone.&lt;/p&gt;
-&lt;p class=&#34;attribution&#34;&gt;&amp;mdash;&lt;a class=&#34;reference external&#34; href=&#34;https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905&#34;&gt;npm, Inc.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;— &lt;a href=&#34;https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905&#34;&gt;npm, Inc.&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;auditing-filer&#34;&gt;
-&lt;h2&gt;Auditing &lt;tt class=&#34;docutils literal&#34;&gt;filer&lt;/tt&gt;&lt;/h2&gt;
-&lt;p&gt;The first thing to do after making a fresh clone of any project is to install its dependencies. After grabbing the &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer&#34;&gt;filer&lt;/a&gt; git url and cloning the repository, a quick &lt;tt class=&#34;docutils literal&#34;&gt;npm install&lt;/tt&gt; pulls in all the dependencies we should need to get started.&lt;/p&gt;
-&lt;pre class=&#34;code shell literal-block&#34;&gt;
-added &lt;span class=&#34;literal number&#34;&gt;1079&lt;/span&gt; packages from &lt;span class=&#34;literal number&#34;&gt;1531&lt;/span&gt; contributors and audited &lt;span class=&#34;literal number&#34;&gt;9518&lt;/span&gt; packages in &lt;span class=&#34;literal number&#34;&gt;36&lt;/span&gt;.358s
-found &lt;span class=&#34;literal number&#34;&gt;6&lt;/span&gt; vulnerabilities &lt;span class=&#34;operator&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;literal number&#34;&gt;1&lt;/span&gt; low, &lt;span class=&#34;literal number&#34;&gt;5&lt;/span&gt; moderate&lt;span class=&#34;operator&#34;&gt;)&lt;/span&gt;
-  run &lt;span class=&#34;literal string backtick&#34;&gt;`&lt;/span&gt;npm audit fix&lt;span class=&#34;literal string backtick&#34;&gt;`&lt;/span&gt; to fix them, or &lt;span class=&#34;literal string backtick&#34;&gt;`&lt;/span&gt;npm audit&lt;span class=&#34;literal string backtick&#34;&gt;`&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; details
-&lt;/pre&gt;
-&lt;p&gt;It looks like &lt;tt class=&#34;docutils literal&#34;&gt;filer&amp;#64;353290a&lt;/tt&gt; has some vulnerable packages, which is a perfect opportunity to dig into the auditing process.&lt;/p&gt;
-&lt;p&gt;&lt;tt class=&#34;docutils literal&#34;&gt;npm&amp;#64;6&lt;/tt&gt; is pretty in-your-face about this information, which is important. It lists the total number of vulnerabilities, as well as breaks down the number of vulnerabilities of varying severity, and provides an actionable next step: running a full audit.&lt;/p&gt;
-&lt;p&gt;Running &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; produces the following report:&lt;/p&gt;
-&lt;pre class=&#34;code shell literal-block&#34;&gt;
-                    &lt;span class=&#34;operator&#34;&gt;===&lt;/span&gt; npm audit security &lt;span class=&#34;name variable&#34;&gt;report&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;===&lt;/span&gt;
 
-&lt;span class=&#34;comment single&#34;&gt;# Run  npm install --save-dev karma&amp;#64;3.0.0  to resolve 6 vulnerabilities
-&lt;/span&gt;SEMVER WARNING: Recommended action is a potentially breaking change
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Memory Exposure                                              │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ tunnel-agent                                                 │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; tunnel-agent             │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/598                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+&lt;h1 id=&#34;auditing-filer&#34;&gt;Auditing filer&lt;/h1&gt;
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; boom &amp;gt; hoek       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+&lt;p&gt;The first thing to do after making a fresh clone of any project is to install its dependencies. After grabbing the &lt;a href=&#34;https://github.com/filerjs/filer&#34;&gt;filer&lt;/a&gt; git url and cloning the repository, a quick &lt;code&gt;npm install&lt;/code&gt; pulls in all the dependencies we should need to get started.&lt;/p&gt;
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; cryptiles &amp;gt; boom  │
-│               │ &amp;gt; hoek                                                       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;added 1079 packages from 1531 contributors and audited 9518 packages in 36.358s
+found 6 vulnerabilities (1 low, 5 moderate)
+  run `npm audit fix` to fix them, or `npm audit` for details
+&lt;/code&gt;&lt;/pre&gt;
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; hoek              │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+&lt;p&gt;It looks like &lt;code&gt;filer@353290a&lt;/code&gt; has some vulnerable packages, which is a perfect opportunity to dig into the auditing process.&lt;/p&gt;
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; sntp &amp;gt; hoek       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+&lt;p&gt;&lt;code&gt;npm@6&lt;/code&gt; is pretty in-your-face about this information, which is important. It lists the total number of vulnerabilities, as well as breaks down the number of vulnerabilities of varying severity, and provides an actionable next step: running a full audit.&lt;/p&gt;
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Low           │ Regular Expression Denial of Service                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ timespan                                                     │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma &lt;span class=&#34;operator&#34;&gt;[&lt;/span&gt;dev&lt;span class=&#34;operator&#34;&gt;]&lt;/span&gt;                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; timespan                           │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/533                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+&lt;p&gt;Running &lt;code&gt;npm audit&lt;/code&gt; produces the following report:&lt;/p&gt;
 
-found &lt;span class=&#34;literal number&#34;&gt;6&lt;/span&gt; vulnerabilities &lt;span class=&#34;operator&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;literal number&#34;&gt;1&lt;/span&gt; low, &lt;span class=&#34;literal number&#34;&gt;5&lt;/span&gt; moderate&lt;span class=&#34;operator&#34;&gt;)&lt;/span&gt; in &lt;span class=&#34;literal number&#34;&gt;9518&lt;/span&gt; scanned packages
-&lt;span class=&#34;literal number&#34;&gt;6&lt;/span&gt; vulnerabilities require semver-major dependency updates.
-&lt;/pre&gt;
-&lt;p&gt;The audit provides a lot of information, but it&#39;s all broken down for the developer in a consistent format so even those who aren&#39;t familiar with vulnerability mitigation or announcement procedures can understand what&#39;s going on.&lt;/p&gt;
-&lt;p&gt;One of the most important parts of the audit output is the path. This shows how the project and the vulnerable package are related, and is a subset of the total dependency graph for the project. This is really useful if there is no clear update path for the package your project depends on directly and you need to report (or ideally, submit a pull request) that a dependency in one of your direct dependencies should update one (or more) of its packages. Without this information clearly displayed, you would spend a lot of time chasing dependencies down by manually reviewing &lt;tt class=&#34;docutils literal&#34;&gt;package.json&lt;/tt&gt; and &lt;tt class=&#34;docutils literal&#34;&gt;&lt;span class=&#34;pre&#34;&gt;package-lock.json&lt;/span&gt;&lt;/tt&gt; files trying to figure out who needed to update their dependencies so you can update yours.&lt;/p&gt;
-&lt;p&gt;In the case of Filer we&#39;re pretty lucky: not only are all of the vulnerable packages related to a single direct dependency, but that dependency is one that is only used during development; resolving the problems is a simple as updating to &lt;tt class=&#34;docutils literal&#34;&gt;karma&amp;#64;3.0.0&lt;/tt&gt;. Since this is a simple resolution, we could either run &lt;tt class=&#34;docutils literal&#34;&gt;npm audit fix&lt;/tt&gt; and have &lt;tt class=&#34;docutils literal&#34;&gt;npm&lt;/tt&gt; take care of the version updates for us, or we can update the &lt;tt class=&#34;docutils literal&#34;&gt;karma&lt;/tt&gt; version in our &lt;tt class=&#34;docutils literal&#34;&gt;package.json&lt;/tt&gt; and install the updated package.&lt;/p&gt;
-&lt;p&gt;After updating &lt;tt class=&#34;docutils literal&#34;&gt;karma&lt;/tt&gt;, re-running &lt;tt class=&#34;docutils literal&#34;&gt;npm audit&lt;/tt&gt; to ensure we haven&#39;t introduced any new vulnerabilities, and running the project&#39;s tests to ensure we haven&#39;t accidentally broken any functionality, we should take the time to contribute this fix &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/pull/385&#34;&gt;back to the main project&lt;/a&gt;. The fix was small and simple, but security is everyone&#39;s responsiblity; if you notice a project using outdated or vulnerable packages, take some time to help the maintainers out by submitting a pull request. Also, projects should consider looking into automating the process of keeping project dependencies up to date through various tools like &lt;a class=&#34;reference external&#34; href=&#34;https://greenkeeper.io/&#34;&gt;Greenkeeper&lt;/a&gt; and &lt;a class=&#34;reference external&#34; href=&#34;https://snyk.io/&#34;&gt;Snyk&lt;/a&gt;, which is a conversation &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/filerjs/filer/issues/386&#34;&gt;you can start&lt;/a&gt; in your project today!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;                        === npm audit security report ===
+
+    # Run  npm install --save-dev karma@3.0.0  to resolve 6 vulnerabilities
+    SEMVER WARNING: Recommended action is a potentially breaking change
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Memory Exposure                                              │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ tunnel-agent                                                 │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; tunnel-agent             │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/598                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; boom &amp;gt; hoek       │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; cryptiles &amp;gt; boom  │
+    │               │ &amp;gt; hoek                                                       │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; hoek              │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; request &amp;gt; hawk &amp;gt; sntp &amp;gt; hoek       │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Low           │ Regular Expression Denial of Service                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ timespan                                                     │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &amp;gt; log4js &amp;gt; loggly &amp;gt; timespan                           │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/533                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    found 6 vulnerabilities (1 low, 5 moderate) in 9518 scanned packages
+    6 vulnerabilities require semver-major dependency updates.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The audit provides a lot of information, but it&amp;rsquo;s all broken down for the developer in a consistent format so even those who aren&amp;rsquo;t familiar with vulnerability mitigation or announcement procedures can understand what&amp;rsquo;s going on.&lt;/p&gt;
+
+&lt;p&gt;One of the most important parts of the audit output is the path. This shows how the project and the vulnerable package are related, and is a subset of the total dependency graph for the project. This is really useful if there is no clear update path for the package your project depends on directly and you need to report (or ideally, submit a pull request) that a dependency in one of your direct dependencies should update one (or more) of its packages. Without this information clearly displayed, you would spend a lot of time chasing dependencies down by manually reviewing &lt;code&gt;package.json&lt;/code&gt; and &lt;code&gt;package-lock.json&lt;/code&gt; files trying to figure out who needed to update their dependencies so you can update yours.&lt;/p&gt;
+
+&lt;p&gt;In the case of Filer we&amp;rsquo;re pretty lucky: not only are all of the vulnerable packages related to a single direct dependency, but that dependency is one that is only used during development; resolving the problems is a simple as updating to &lt;code&gt;karma@3.0.0&lt;/code&gt;. Since this is a simple resolution, we could either run &lt;code&gt;npm audit fix&lt;/code&gt; and have &lt;code&gt;npm&lt;/code&gt; take care of the version updates for us, or we can update the &lt;code&gt;karma&lt;/code&gt; version in our &lt;code&gt;package.json&lt;/code&gt; and install the updated package.&lt;/p&gt;
+
+&lt;p&gt;After updating &lt;code&gt;karma&lt;/code&gt;, re-running &lt;code&gt;npm audit&lt;/code&gt; to ensure we haven&amp;rsquo;t introduced any new vulnerabilities, and running the project&amp;rsquo;s tests to ensure we haven&amp;rsquo;t accidentally broken any functionality, we should take the time to contribute this fix &lt;a href=&#34;https://github.com/filerjs/filer/pull/385&#34;&gt;back to the main project&lt;/a&gt;. The fix was small and simple, but security is everyone&amp;rsquo;s responsibility; if you notice a project using outdated or vulnerable packages, take some time to help the maintainers out by submitting a pull request. Also, projects should consider looking into automating the process of keeping project dependencies up to date through various tools like &lt;a href=&#34;https://greenkeeper.io/&#34;&gt;Greenkeeper&lt;/a&gt; and &lt;a href=&#34;https://snyk.io/&#34;&gt;Snyk&lt;/a&gt;, which is a conversation &lt;a href=&#34;https://github.com/filerjs/filer/issues/386&#34;&gt;you can start&lt;/a&gt; in your project today!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1268,86 +1314,104 @@ found &lt;span class=&#34;literal number&#34;&gt;6&lt;/span&gt; vulnerabilities 
       <pubDate>Thu, 13 Sep 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/09/filesystem-events-in-nodejs/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
+      <description>
 
+&lt;p&gt;I have a personal interest in &lt;a href=&#34;https://en.wikipedia.org/wiki/Automation&#34;&gt;automation&lt;/a&gt;, mostly because I believe that we should be trying to offload everything we possibly can onto computing systems so that we can spend our time thinking about interesting problems rather than manually repeating the same tasks over and over again.
+Good programmers, coders, and software engineers (depending on how you identify) should be trying to automate as much of their jobs as possible for all kinds of reasons: to help mitigate the &lt;a href=&#34;https://en.wikipedia.org/wiki/Bus_factor&#34;&gt;bus factor&lt;/a&gt;, to get rid of boring and repetitive parts of their jobs, and even to better document internal and external processes (if the process has been put into code - especially well-commented code - that is a form of documentation about the process!) that can then be tracked and versioned in a version control system.&lt;/p&gt;
 
-&lt;p&gt;I have a personal interest in &lt;a class=&#34;reference external&#34; href=&#34;https://en.wikipedia.org/wiki/Automation&#34;&gt;automation&lt;/a&gt;, mostly because I believe that we should be trying to offload everything we possibly can onto computing systems so that we can spend our time thinking about interesting problems rather than manually repeating the same tasks over and over again.
-Good programmers, coders, and software engineers (depending on how you identify) should be trying to automate as much of their jobs as possible for all kinds of reasons: to help mitigate the &lt;a class=&#34;reference external&#34; href=&#34;https://en.wikipedia.org/wiki/Bus_factor&#34;&gt;bus factor&lt;/a&gt;, to get rid of boring and repetitive parts of their jobs, and even to better document internal and external processes (if the process has been put into code - especially well-commented code - that is a form of documentation about the process!) that can then be tracked and versioned in a version control system.&lt;/p&gt;
-&lt;div class=&#34;section&#34; id=&#34;the-programming-loop&#34;&gt;
-&lt;h2&gt;The Programming Loop&lt;/h2&gt;
+&lt;h1 id=&#34;the-programming-loop&#34;&gt;The Programming Loop&lt;/h1&gt;
+
 &lt;p&gt;Why am I talking about automation when the title of this post is about filesystem events? Before we talk about those kinds of events, we need to take a look at a simplified but typical example of the programming loop when writing code. Such a loop might look something like the following:&lt;/p&gt;
-&lt;ol class=&#34;arabic simple&#34;&gt;
+
+&lt;ol&gt;
 &lt;li&gt;Make a change to some code&lt;/li&gt;
 &lt;li&gt;Check the editor or IDE for feedback about the code you just wrote&lt;/li&gt;
 &lt;li&gt;Run tools that check for programming errors, outright bugs, and stylistic errors&lt;/li&gt;
-&lt;li&gt;Run the project&#39;s tests (the project &lt;em&gt;has&lt;/em&gt; tests, right?)&lt;/li&gt;
+&lt;li&gt;Run the project&amp;rsquo;s tests (the project &lt;em&gt;has&lt;/em&gt; tests, right?)&lt;/li&gt;
 &lt;li&gt;Review tool and test feedback, and resolve issues&lt;/li&gt;
 &lt;li&gt;Return to Step 1 and repeat&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;That&#39;s a lot to do every time the code changes, but the tools are there to help write better code and catch a lot of little or subtle issues that people aren&#39;t as good at noticing as computers can be. To take advantage of all of these tools and their output, we want to make this loop from writing some code to reviewing feedback as quick as possible so the programmer isn&#39;t waiting around for feedback, gets annoyed at how long the process takes, and stops using the tools. Some projects also use a lot of different tools, and it can be a lot to remember how to run each tool individually and what command line arguments are required for the current project.&lt;/p&gt;
-&lt;p&gt;Instead of having to remember all this information, it would be great to have to remember fewer commands to get feedback from all the tools. Automation to the rescue! Instead of running each tool separately ourselves, we can use a tool that runs other tools; in this case we want to use a task runner. &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt; is a well-known tool for automating this process, and can be used for many different kinds of projects:&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s a lot to do every time the code changes, but the tools are there to help write better code and catch a lot of little or subtle issues that people aren&amp;rsquo;t as good at noticing as computers can be. To take advantage of all of these tools and their output, we want to make this loop from writing some code to reviewing feedback as quick as possible so the programmer isn&amp;rsquo;t waiting around for feedback, gets annoyed at how long the process takes, and stops using the tools. Some projects also use a lot of different tools, and it can be a lot to remember how to run each tool individually and what command line arguments are required for the current project.&lt;/p&gt;
+
+&lt;p&gt;Instead of having to remember all this information, it would be great to have to remember fewer commands to get feedback from all the tools. Automation to the rescue! Instead of running each tool separately ourselves, we can use a tool that runs other tools; in this case we want to use a task runner. &lt;code&gt;make&lt;/code&gt; is a well-known tool for automating this process, and can be used for many different kinds of projects:&lt;/p&gt;
+
 &lt;blockquote&gt;
-&lt;p&gt;C programs [...] are most common, but you can use &lt;em&gt;make&lt;/em&gt; with any programming language whose compiler can be run with a shell command. In fact, &lt;em&gt;make&lt;/em&gt; is not limited to programs. You can use it to describe any task where some files must be updated automatically from others whenever the others change.&lt;/p&gt;
-&lt;p class=&#34;attribution&#34;&gt;&amp;mdash;&lt;a class=&#34;reference external&#34; href=&#34;https://linux.die.net/man/1/make&#34;&gt;make manpage&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;C programs [&amp;hellip;] are most common, but you can use &lt;em&gt;make&lt;/em&gt; with any programming language whose compiler can be run with a shell command. In fact, &lt;em&gt;make&lt;/em&gt; is not limited to programs. You can use it to describe any task where some files must be updated automatically from others whenever the others change.&lt;/p&gt;
+
+&lt;p&gt;— &lt;a href=&#34;https://linux.die.net/man/1/make&#34;&gt;make manpage&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Using a tool like &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt; can simplify the loop to something like the following:&lt;/p&gt;
-&lt;ol class=&#34;arabic simple&#34;&gt;
+
+&lt;p&gt;Using a tool like &lt;code&gt;make&lt;/code&gt; can simplify the loop to something like the following:&lt;/p&gt;
+
+&lt;ol&gt;
 &lt;li&gt;Make a change to some code&lt;/li&gt;
-&lt;li&gt;Run &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Review tool and test feedback from each tool that &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt; runs, and resolve issues&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;make&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Review tool and test feedback from each tool that &lt;code&gt;make&lt;/code&gt; runs, and resolve issues&lt;/li&gt;
 &lt;li&gt;Return to Step 1 and repeat&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;This significantly reduces the steps the programmer has to take every time they make a change as well as the number of commands they need to remember: all they have to do is run &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt;! But do we really need to remember to run a command? Is there some way that we can have &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt; or something like it run whenever we make a change to the code?&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;enter-filesystem-events&#34;&gt;
-&lt;h2&gt;Enter: Filesystem Events&lt;/h2&gt;
-&lt;p&gt;Filesystem events are a great way to trigger other tasks. Other kinds of task runners such as &lt;a class=&#34;reference external&#34; href=&#34;https://gruntjs.com/&#34;&gt;grunt&lt;/a&gt; and &lt;a class=&#34;reference external&#34; href=&#34;https://gulpjs.com/&#34;&gt;gulp&lt;/a&gt; in NodeJS, as well as &lt;a class=&#34;reference external&#34; href=&#34;https://guardgem.org/&#34;&gt;guard&lt;/a&gt; in Ruby, let the programmer set up a process to &amp;quot;watch&amp;quot; individual files or entire directories for changes. When a file changes, these task runners pick up the change and perform whatever tasks the programmer has specified.&lt;/p&gt;
-&lt;p&gt;NodeJS core exposes this functionality to the JavaScript runtime through functions in the &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html&#34;&gt;fs module&lt;/a&gt;. These functions include:&lt;/p&gt;
-&lt;ul class=&#34;simple&#34;&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener&#34;&gt;fs.watch()&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener&#34;&gt;fs.watchFile()&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_fs_unwatchfile_filename_listener&#34;&gt;fs.unwatchFile()&lt;/a&gt;&lt;/li&gt;
+
+&lt;p&gt;This significantly reduces the steps the programmer has to take every time they make a change as well as the number of commands they need to remember: all they have to do is run &lt;code&gt;make&lt;/code&gt;! But do we really need to remember to run a command? Is there some way that we can have &lt;code&gt;make&lt;/code&gt; or something like it run whenever we make a change to the code?&lt;/p&gt;
+
+&lt;h1 id=&#34;enter-filesystem-events&#34;&gt;Enter: Filesystem Events&lt;/h1&gt;
+
+&lt;p&gt;Filesystem events are a great way to trigger other tasks. Other kinds of task runners such as &lt;a href=&#34;https://gruntjs.com/&#34;&gt;grunt&lt;/a&gt; and &lt;a href=&#34;https://gulpjs.com/&#34;&gt;gulp&lt;/a&gt; in NodeJS, as well as &lt;a href=&#34;https://guardgem.org/&#34;&gt;guard&lt;/a&gt; in Ruby, let the programmer set up a process to &amp;ldquo;watch&amp;rdquo; individual files or entire directories for changes. When a file changes, these task runners pick up the change and perform whatever tasks the programmer has specified.&lt;/p&gt;
+
+&lt;p&gt;NodeJS core exposes this functionality to the JavaScript runtime through functions in the &lt;a href=&#34;https://nodejs.org/api/fs.html&#34;&gt;fs module&lt;/a&gt;. These functions include:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener&#34;&gt;fs.watch()&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener&#34;&gt;fs.watchFile()&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodejs.org/api/fs.html#fs_fs_unwatchfile_filename_listener&#34;&gt;fs.unwatchFile()&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;These functions respond to changes in the filesystem and communicate data about the detected changed file back to their listener functions.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;a-simple-example&#34;&gt;
-&lt;h2&gt;A Simple Example&lt;/h2&gt;
-&lt;p&gt;The following is an example of how to use the &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; function in NodeJS. This is the recommended function to use because it supports single files as well as directories where &lt;tt class=&#34;docutils literal&#34;&gt;fs.watchFile()&lt;/tt&gt; only watches individual files, and it is &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener&#34;&gt;more efficient&lt;/a&gt; than both &lt;tt class=&#34;docutils literal&#34;&gt;fs.watchFile()&lt;/tt&gt; and &lt;tt class=&#34;docutils literal&#34;&gt;fs.unwatchFile()&lt;/tt&gt;.&lt;/p&gt;
-&lt;pre class=&#34;code js literal-block&#34;&gt;
-&lt;span class=&#34;literal string single&#34;&gt;&#39;use strict&#39;&lt;/span&gt; &lt;span class=&#34;comment single&#34;&gt;// enforce JavaScript strict mode
-&lt;/span&gt;
-&lt;span class=&#34;keyword reserved&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;name other&#34;&gt;fs&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;name other&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;literal string single&#34;&gt;&#39;fs&#39;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;comment single&#34;&gt;// import the core module
-&lt;/span&gt;
-&lt;span class=&#34;keyword reserved&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;name other&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;literal string single&#34;&gt;&#39;.&#39;&lt;/span&gt; &lt;span class=&#34;comment single&#34;&gt;// start watching in the current directory
-&lt;/span&gt;
-&lt;span class=&#34;name other&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;watch&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;eventType&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;name other&#34;&gt;filename&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;eventType&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;===&lt;/span&gt; &lt;span class=&#34;literal string single&#34;&gt;&#39;change&#39;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;name other&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;literal string backtick&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;literal string interpol&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;filename&lt;/span&gt;&lt;span class=&#34;literal string interpol&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;literal string backtick&#34;&gt; changed!`&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;punctuation&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;punctuation&#34;&gt;})&lt;/span&gt;
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;some-caveats&#34;&gt;
-&lt;h2&gt;Some Caveats&lt;/h2&gt;
-&lt;p&gt;The &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; function does &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_caveats&#34;&gt;come with some caveats&lt;/a&gt; due to the state of this kind of filesystem event handling on various platforms; specifically, the API is not 100% consistent across platforms and some options are not universally available due to the underlying implementations.&lt;/p&gt;
-&lt;p&gt;Also, because &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; is event-driven, there is no matching set of functions in the experimental &lt;tt class=&#34;docutils literal&#34;&gt;fs&lt;/tt&gt; Promise API &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/en/blog/release/v10.0.0/&#34;&gt;introduced in Node 10.0.0&lt;/a&gt; and there is no synchronous equivalent like there are for many other functions in the &lt;tt class=&#34;docutils literal&#34;&gt;fs&lt;/tt&gt; module because the task is inherently asynchronous.&lt;/p&gt;
+
+&lt;h1 id=&#34;a-simple-example&#34;&gt;A Simple Example&lt;/h1&gt;
+
+&lt;p&gt;The following is an example of how to use the &lt;code&gt;fs.watch()&lt;/code&gt; function in NodeJS. This is the recommended function to use because it supports single files as well as directories where &lt;code&gt;fs.watchFile()&lt;/code&gt; only watches individual files, and it is &lt;a href=&#34;https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener&#34;&gt;more efficient&lt;/a&gt; than both &lt;code&gt;fs.watchFile()&lt;/code&gt; and &lt;code&gt;fs.unwatchFile()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;&#39;use strict&#39; // enforce JavaScript strict mode
+
+const fs = require(&#39;fs&#39;); // import the core module
+
+const path = &#39;.&#39; // start watching in the current directory
+
+fs.watch(path, (eventType, filename) =&amp;gt; {
+    if (eventType === &#39;change&#39;) {
+        console.log(`${filename} changed!`)
+    }
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;some-caveats&#34;&gt;Some Caveats&lt;/h1&gt;
+
+&lt;p&gt;The &lt;code&gt;fs.watch()&lt;/code&gt; function does &lt;a href=&#34;https://nodejs.org/api/fs.html#fs_caveats&#34;&gt;come with some caveats&lt;/a&gt; due to the state of this kind of filesystem event handling on various platforms; specifically, the API is not 100% consistent across platforms and some options are not universally available due to the underlying implementations.&lt;/p&gt;
+
+&lt;p&gt;Also, because &lt;code&gt;fs.watch()&lt;/code&gt; is event-driven, there is no matching set of functions in the experimental &lt;code&gt;fs&lt;/code&gt; Promise API &lt;a href=&#34;https://nodejs.org/en/blog/release/v10.0.0/&#34;&gt;introduced in Node 10.0.0&lt;/a&gt; and there is no synchronous equivalent like there are for many other functions in the &lt;code&gt;fs&lt;/code&gt; module because the task is inherently asynchronous.&lt;/p&gt;
+
 &lt;p&gt;However, this is still really useful functionality when working with files and filesystems, and is of particular interest in our pursuit of efficient automation.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;one-last-twist&#34;&gt;
-&lt;h2&gt;One Last Twist&lt;/h2&gt;
-&lt;p&gt;After looking a bit more into how &lt;a class=&#34;reference external&#34; href=&#34;https://gruntjs.com/&#34;&gt;grunt&lt;/a&gt; and &lt;a class=&#34;reference external&#34; href=&#34;https://gulpjs.com/&#34;&gt;gulp&lt;/a&gt; actually implement their file-watching functionality, it turns out that neither one of these popular test runners uses any of the &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; functions directly and don&#39;t even use the same dependency to provide watching functionality!&lt;/p&gt;
-&lt;p&gt;Grunt&#39;s file-watching functionality is provided in a Grunt plugin called &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/package/grunt-contrib-watch&#34;&gt;grunt-contrib-watch&lt;/a&gt;, which uses the &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/package/gaze&#34;&gt;gaze&lt;/a&gt; package to interact with filesystem events.&lt;/p&gt;
-&lt;p&gt;Gulp, on the other hand, relies on &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/pakage/gulp-watch&#34;&gt;gulp-watch&lt;/a&gt; for watching files, which uses a package called &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/package/chokidar&#34;&gt;chokidar&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Chokidar goes &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/package/chokidar#why&#34;&gt;into some detail&lt;/a&gt; as to why &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; is insufficient, and gaze lists a &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/package/gaze#similar-projects&#34;&gt;number of alternative projects&lt;/a&gt;, so there are clearly some community opinions on the quality of the built-in functions.&lt;/p&gt;
-&lt;p&gt;Some notable functionality &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; lacks:&lt;/p&gt;
-&lt;ul class=&#34;simple&#34;&gt;
-&lt;li&gt;no wildcard support (e.g. cannot watch only for files that end with a particular extension, like &lt;tt class=&#34;docutils literal&#34;&gt;*.js&lt;/tt&gt;)&lt;/li&gt;
-&lt;li&gt;does not support recursive watching on platforms other than Windows or macOS (see &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_caveats&#34;&gt;the fs watch caveats&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;tt class=&#34;docutils literal&#34;&gt;eventType&lt;/tt&gt; is only one of &lt;tt class=&#34;docutils literal&#34;&gt;&#39;rename&#39;&lt;/tt&gt; or &lt;tt class=&#34;docutils literal&#34;&gt;&#39;change&#39;&lt;/tt&gt;, no support for other file events such as &lt;tt class=&#34;docutils literal&#34;&gt;&#39;removed&#39;&lt;/tt&gt;&lt;/li&gt;
+
+&lt;h1 id=&#34;one-last-twist&#34;&gt;One Last Twist&lt;/h1&gt;
+
+&lt;p&gt;After looking a bit more into how &lt;a href=&#34;https://gruntjs.com/&#34;&gt;grunt&lt;/a&gt; and &lt;a href=&#34;https://gulpjs.com/&#34;&gt;gulp&lt;/a&gt; actually implement their file-watching functionality, it turns out that neither one of these popular test runners uses any of the &lt;code&gt;fs.watch()&lt;/code&gt; functions directly and don&amp;rsquo;t even use the same dependency to provide watching functionality!&lt;/p&gt;
+
+&lt;p&gt;Grunt&amp;rsquo;s file-watching functionality is provided in a Grunt plugin called &lt;a href=&#34;https://www.npmjs.com/package/grunt-contrib-watch&#34;&gt;grunt-contrib-watch&lt;/a&gt;, which uses the &lt;a href=&#34;https://www.npmjs.com/package/gaze&#34;&gt;gaze&lt;/a&gt; package to interact with filesystem events.&lt;/p&gt;
+
+&lt;p&gt;Gulp, on the other hand, relies on &lt;a href=&#34;https://www.npmjs.com/pakage/gulp-watch&#34;&gt;gulp-watch&lt;/a&gt; for watching files, which uses a package called &lt;a href=&#34;https://www.npmjs.com/package/chokidar&#34;&gt;chokidar&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Chokidar goes &lt;a href=&#34;https://www.npmjs.com/package/chokidar#why&#34;&gt;into some detail&lt;/a&gt; as to why &lt;code&gt;fs.watch()&lt;/code&gt; is insufficient, and gaze lists a &lt;a href=&#34;https://www.npmjs.com/package/gaze#similar-projects&#34;&gt;number of alternative projects&lt;/a&gt;, so there are clearly some community opinions on the quality of the built-in functions.&lt;/p&gt;
+
+&lt;p&gt;Some notable functionality &lt;code&gt;fs.watch()&lt;/code&gt; lacks:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;no wildcard support (e.g. cannot watch only for files that end with a particular extension, like &lt;code&gt;*.js&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;does not support recursive watching on platforms other than Windows or macOS (see &lt;a href=&#34;https://nodejs.org/api/fs.html#fs_caveats&#34;&gt;the fs watch caveats&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;eventType&lt;/code&gt; is only one of &lt;code&gt;&#39;rename&#39;&lt;/code&gt; or &lt;code&gt;&#39;change&#39;&lt;/code&gt;, no support for other file events such as &lt;code&gt;&#39;removed&#39;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;As in everything, there are trade-offs when implementing functionality. For simple use cases, &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; may be sufficient and will not require including additional project dependencies. However, if file watching is a core piece of functionality, it might be worth evaluating some of the other options available on npm to find one with the necessary functionality for the project at hand, while also keeping you from tearing your hair out tracking down odd edgecases.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
+
+&lt;p&gt;As in everything, there are trade-offs when implementing functionality. For simple use cases, &lt;code&gt;fs.watch()&lt;/code&gt; may be sufficient and will not require including additional project dependencies. However, if file watching is a core piece of functionality, it might be worth evaluating some of the other options available on npm to find one with the necessary functionality for the project at hand, while also keeping you from tearing your hair out tracking down odd edge cases.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1356,17 +1420,20 @@ Good programmers, coders, and software engineers (depending on how you identify)
       <pubDate>Thu, 13 Sep 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/09/third-times-the-charm/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
+      <description>&lt;p&gt;I&amp;rsquo;ve been meaning to start blogging for a while. Not even blogging &lt;em&gt;consistently&lt;/em&gt;, just writing some long-form-ish pieces on projects that I&amp;rsquo;ve been working on, things I&amp;rsquo;ve learned, or things that I might want for my own reference. I&amp;rsquo;ve tried at least twice before - once when I purchased this domain back in December of &lt;em&gt;2013&lt;/em&gt; and again at the end of 2016 - and as evidenced by the utter lack of content it&amp;rsquo;s pretty clear I haven&amp;rsquo;t been successful.&lt;/p&gt;
 
+&lt;p&gt;I made a real attempt to begin publishing at the end of 2016 with the release of that year&amp;rsquo;s &lt;a href=&#34;http://adventofcode.com/2016/&#34;&gt;Advent of Code&lt;/a&gt;, but coursework kept me pretty busy and I never managed to finish and publish any of the posts I was working on at the time. I&amp;rsquo;ll probably revisit some of them, clean them up, and post them - if I still remember what I was writing about - and the rest I may throw into a backlog so that if I ever run into a similar topic again I can incorporate my draft.&lt;/p&gt;
 
-&lt;p&gt;I&#39;ve been meaning to start blogging for a while. Not even blogging &lt;em&gt;consistently&lt;/em&gt;, just writing some long-form-ish pieces on projects that I&#39;ve been working on, things I&#39;ve learned, or things that I might want for my own reference. I&#39;ve tried at least twice before - once when I purchased this domain back in December of &lt;em&gt;2013&lt;/em&gt; and again at the end of 2016 - and as evidenced by the utter lack of content it&#39;s pretty clear I haven&#39;t been successful.&lt;/p&gt;
-&lt;p&gt;I made a real attempt to begin publishing at the end of 2016 with the release of that year&#39;s &lt;a class=&#34;reference external&#34; href=&#34;http://adventofcode.com/2016/&#34;&gt;Advent of Code&lt;/a&gt;, but coursework kept me pretty busy and I never managed to finish and publish any of the posts I was working on at the time. I&#39;ll probably revisit some of them, clean them up, and post them - if I still remember what I was writing about - and the rest I may throw into a backlog so that if I ever run into a similar topic again I can incorporate my draft.&lt;/p&gt;
-&lt;p&gt;The reason I&#39;m giving it another try now is I&#39;m taking a course that specifically focuses on open source and includes a requirement that the students blog about their work and experiences as they gain exposure to the open source community. I&#39;m &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/0xazure&#34;&gt;not exactly a stranger&lt;/a&gt; to open source work, but I haven&#39;t had time to be as active as I would like to be so this course is giving me a good excuse to commit more time to getting involved and getting my hands dirty with some contributions.&lt;/p&gt;
-&lt;p&gt;On the technical side, this site is built using the static site generator &lt;a class=&#34;reference external&#34; href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. I&#39;ve been learning a lot about the ins and outs of Hugo&#39;s project structure as I set this blog up, but so far I&#39;m pretty happy with the results. Hugo is written in &lt;a class=&#34;reference external&#34; href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt;, the Google-sponsored C/++ replacement, and Hugo has a very active community that keeps improving the project.&lt;/p&gt;
-&lt;p&gt;One issue that I did run into was some confusion over themes in Hugo. Each Hugo site has a &lt;tt class=&#34;docutils literal&#34;&gt;config.toml&lt;/tt&gt; that sets parameters for how the static site content should be generated. Those parameters also include information like social media links that get embedded in certain parts of the Hugo theme that structures the site content and controls the look and feel. Unfortunately, there don&#39;t seem to be standard keys for many of these parameters, so the key name for your GitHub or StackOverflow account information needs to be updated if you decide to change your site theme. You can see some of the work I had to do &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/0xazure/0xazure/commit/ed9a74d58acbcd49f0be613cfd14dbefb725a842&#34;&gt;in this commit&lt;/a&gt; to update these values when I changed my theme from &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/zyro/hyde-x&#34;&gt;hyde-x&lt;/a&gt; to &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/dplesca/purehugo&#34;&gt;purehugo&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I&#39;ve been keeping my eye on other static site generators as well, but Hugo is very popular and has a lot of great community contributions and support so I&#39;ll be using it for a while yet. Now that things are up and running I might take a stab at customizing my theme a little bit more, an opportunity I wouldn&#39;t have if Hugo and its public themes weren&#39;t open source. Where many static site generators use things like &lt;a class=&#34;reference external&#34; href=&#34;http://handlebarsjs.com/&#34;&gt;Handlebars&lt;/a&gt; or &lt;a class=&#34;reference external&#34; href=&#34;https://shopify.github.io/liquid/&#34;&gt;Liquid&lt;/a&gt; for templating, Hugo actually delegates straight to the built-in &lt;a class=&#34;reference external&#34; href=&#34;https://golang.org/pkg/text/template/&#34;&gt;text.template&lt;/a&gt; package in Go. This makes it immediately familiar to most Go developers, but I haven&#39;t had the opportunity to use Go much - especially recently - so I&#39;ll likely be spending a lot of time reading the documentation.&lt;/p&gt;
-&lt;p&gt;Hopefully this third attempt will be the one that sticks. Stay tuned for more posts on topics including &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/categories/open-source&#34;&gt;open source&lt;/a&gt;, &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/categories/nodejs&#34;&gt;NodeJS&lt;/a&gt;, &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/categories/rust&#34;&gt;Rust&lt;/a&gt;, &lt;a class=&#34;reference external&#34; href=&#34;https://stuartcrust.com/categories/functional-programming&#34;&gt;functional programming&lt;/a&gt;, and anything else I might get up to.&lt;/p&gt;
-&lt;/div&gt;</description>
+&lt;p&gt;The reason I&amp;rsquo;m giving it another try now is I&amp;rsquo;m taking a course that specifically focuses on open source and includes a requirement that the students blog about their work and experiences as they gain exposure to the open source community. I&amp;rsquo;m &lt;a href=&#34;https://github.com/0xazure&#34;&gt;not exactly a stranger&lt;/a&gt; to open source work, but I haven&amp;rsquo;t had time to be as active as I would like to be so this course is giving me a good excuse to commit more time to getting involved and getting my hands dirty with some contributions.&lt;/p&gt;
+
+&lt;p&gt;On the technical side, this site is built using the static site generator &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. I&amp;rsquo;ve been learning a lot about the ins and outs of Hugo&amp;rsquo;s project structure as I set this blog up, but so far I&amp;rsquo;m pretty happy with the results. Hugo is written in &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt;, the Google-sponsored C/++ replacement, and Hugo has a very active community that keeps improving the project.&lt;/p&gt;
+
+&lt;p&gt;One issue that I did run into was some confusion over themes in Hugo. Each Hugo site has a &lt;code&gt;config.toml&lt;/code&gt; that sets parameters for how the static site content should be generated. Those parameters also include information like social media links that get embedded in certain parts of the Hugo theme that structures the site content and controls the look and feel. Unfortunately, there don&amp;rsquo;t seem to be standard keys for many of these parameters, so the key name for your GitHub or StackOverflow account information needs to be updated if you decide to change your site theme. You can see some of the work I had to do &lt;a href=&#34;https://github.com/0xazure/0xazure/commit/ed9a74d58acbcd49f0be613cfd14dbefb725a842&#34;&gt;in this commit&lt;/a&gt; to update these values when I changed my theme from &lt;a href=&#34;https://github.com/zyro/hyde-x&#34;&gt;hyde-x&lt;/a&gt; to &lt;a href=&#34;https://github.com/dplesca/purehugo&#34;&gt;purehugo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been keeping my eye on other static site generators as well, but Hugo is very popular and has a lot of great community contributions and support so I&amp;rsquo;ll be using it for a while yet. Now that things are up and running I might take a stab at customizing my theme a little bit more, an opportunity I wouldn&amp;rsquo;t have if Hugo and its public themes weren&amp;rsquo;t open source. Where many static site generators use things like &lt;a href=&#34;http://handlebarsjs.com/&#34;&gt;Handlebars&lt;/a&gt; or &lt;a href=&#34;https://shopify.github.io/liquid/&#34;&gt;Liquid&lt;/a&gt; for templating, Hugo actually delegates straight to the built-in &lt;a href=&#34;https://golang.org/pkg/text/template/&#34;&gt;text.template&lt;/a&gt; package in Go. This makes it immediately familiar to most Go developers, but I haven&amp;rsquo;t had the opportunity to use Go much - especially recently - so I&amp;rsquo;ll likely be spending a lot of time reading the documentation.&lt;/p&gt;
+
+&lt;p&gt;Hopefully this third attempt will be the one that sticks. Stay tuned for more posts on topics including &lt;a href=&#34;https://stuartcrust.com/categories/open-source&#34;&gt;open source&lt;/a&gt;, &lt;a href=&#34;https://stuartcrust.com/categories/nodejs&#34;&gt;NodeJS&lt;/a&gt;, &lt;a href=&#34;https://stuartcrust.com/categories/rust&#34;&gt;Rust&lt;/a&gt;, &lt;a href=&#34;https://stuartcrust.com/categories/functional-programming&#34;&gt;functional programming&lt;/a&gt;, and anything else I might get up to.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

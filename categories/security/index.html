@@ -7,7 +7,7 @@
 
     <meta name="description" content="a constant work in progress">
 
-    <meta name="generator" content="Hugo 0.51" />
+    <meta name="generator" content="Hugo 0.53" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Security &middot; stuart crust">
@@ -107,127 +107,144 @@
                     </header>
 
                     <div class="post-description">
-                        <div class="document">
-
+                        
 
 <p>NodeJS has experienced a lot of growth over the years. Like any platform, programming or otherwise, much of that growth and user adoption depends not only on the quality of the platform itself, but also the ecosystem that builds up around it.</p>
-<p>In this respect, NodeJS has possibly one of the largest ecosystems available. With <a class="reference external" href="https://www.npmjs.com/">over 700,000 packages</a> published to npm, the NodeJS platform offers developers a lot of choice when it comes to 3rd-party modules. This choice lets developers choose and compose modules from many different authors when writing software, saving time, consolidating work, and reducing bugs instead of constantly <a class="reference external" href="https://en.wikipedia.org/wiki/Not_invented_here">reinventing the wheel</a>.</p>
-<p>The NodeJS ecosystem by and large follows the <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix philosophy</a>, in particular the primary tenant to</p>
+
+<p>In this respect, NodeJS has possibly one of the largest ecosystems available. With <a href="https://www.npmjs.com/">over 700,000 packages</a> published to npm, the NodeJS platform offers developers a lot of choice when it comes to 3rd-party modules. This choice lets developers choose and compose modules from many different authors when writing software, saving time, consolidating work, and reducing bugs instead of constantly <a href="https://en.wikipedia.org/wiki/Not_invented_here">reinventing the wheel</a>.</p>
+
+<p>The NodeJS ecosystem by and large follows the <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix philosophy</a>, in particular the primary tenant to</p>
+
 <blockquote>
 <p>Write programs [and libraries] that do one thing and do it well</p>
-<p class="attribution">&mdash;Peter H. Salus, <em>A Quarter-Century of Unix (1994)</em></p>
+
+<p>— Peter H. Salus, <em>A Quarter-Century of Unix (1994)</em></p>
 </blockquote>
-<p>Keeping a module's focus small is an important aspect of many programming design patterns such as the single-responsibility principle, as well as improving code reuse and composability. However, including these modules doesn't come for free. Every project dependency is an added burden that the maintainers need to keep up to date and have to modify their code as the API of the module changes. Sometimes serious bugs are found in these modules that can expose application secrets, user data, or unauthorized access, among other classes of vulnerabilities, that the module authors need to fix before dependent projects can update to fix the bug.</p>
-<p>Staying on top of vulnerability disclosures and keeping track of all of the changes from version to version in a project's dependencies is a challenging and resource-draining task. Even more challenging, authors must not only be concerned with the vulnerabilities in modules they depend on directly, but also those in all of the <a class="reference external" href="https://docs.gradle.org/current/userguide/dependency_management_terminology.html#sub:terminology_transitive_dependency">transitive dependencies</a> that NodeJS is (in)famous for.</p>
-<div class="section" id="npm-audit">
-<h2><tt class="docutils literal">npm audit</tt></h2>
-<p>In the <a class="reference external" href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">April 2018 announcement</a> of <tt class="docutils literal">npm&#64;6</tt>, the headlining feature the npm team showcased was <tt class="docutils literal">npm audit</tt>, a powerful tool designed to provide automatic security warnings when using code with a known security issue. The <tt class="docutils literal">npm audit</tt> tool allows developers to completely analyze a project's dependency tree - including all transitive dependnecies - to identify known vulnerable versions of dependencies based on data from the Node Security Platform database that npm <a class="reference external" href="https://medium.com/npm-inc/npm-acquires-lift-security-258e257ef639">acquired in April 2018</a>.</p>
-<p>The npm team made two really important decisions when designing <tt class="docutils literal">npm audit</tt>. First, all install requests issued through <tt class="docutils literal">npm install</tt> are automatically subjected to the same analysis that the <tt class="docutils literal">npm audit</tt> command performs, analyzing the package to be installed as well as any additional dependencies that package would pull into the project. Second, <tt class="docutils literal">npm audit</tt> suggests resolutions for vulnerabilities it identifies thereby giving clear actionable feedback to developers on the next steps they can take to resolve issues identified in the audit. These two decisions are critical because not only does npm take a security-conscious approach by default, but it tries to make resolving issues as painless as possible. Developers don't want to spend hours combing through changelogs or reviewing vulnerability reports just to find the package version that includes the vulnerability fix, they want to resolve the problem and get on with writing code.</p>
-<p>As of <tt class="docutils literal">npm&#64;6.1</tt>, <tt class="docutils literal">npm</tt> includes the <tt class="docutils literal">npm audit fix</tt> command to <a class="reference external" href="https://blog.npmjs.org/post/174001864165/v610-next0">automatically run all the package installations</a> recommended by <tt class="docutils literal">npm audit</tt>, lowering the pain of updating vulnerable packages even further.</p>
-<p>The npm team shares their vision with the inclusion of tools like <tt class="docutils literal">npm audit</tt> and a security-conscious approach to ecosystem packages:</p>
+
+<p>Keeping a module&rsquo;s focus small is an important aspect of many programming design patterns such as the single-responsibility principle, as well as improving code reuse and composability. However, including these modules doesn&rsquo;t come for free. Every project dependency is an added burden that the maintainers need to keep up to date and have to modify their code as the API of the module changes. Sometimes serious bugs are found in these modules that can expose application secrets, user data, or unauthorized access, among other classes of vulnerabilities, that the module authors need to fix before dependent projects can update to fix the bug.</p>
+
+<p>Staying on top of vulnerability disclosures and keeping track of all of the changes from version to version in a project&rsquo;s dependencies is a challenging and resource-draining task. Even more challenging, authors must not only be concerned with the vulnerabilities in modules they depend on directly, but also those in all of the <a href="https://docs.gradle.org/current/userguide/dependency_management_terminology.html#sub:terminology_transitive_dependency">transitive dependencies</a> that NodeJS is (in)famous for.</p>
+
+<h1 id="npm-audit">npm audit</h1>
+
+<p>In the <a href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">April 2018 announcement</a> of <code>npm@6</code>, the headlining feature the npm team showcased was <code>npm audit</code>, a powerful tool designed to provide automatic security warnings when using code with a known security issue. The <code>npm audit</code> tool allows developers to completely analyze a project&rsquo;s dependency tree - including all transitive dependencies - to identify known vulnerable versions of dependencies based on data from the Node Security Platform database that npm <a href="https://medium.com/npm-inc/npm-acquires-lift-security-258e257ef639">acquired in April 2018</a>.</p>
+
+<p>The npm team made two really important decisions when designing <code>npm audit</code>. First, all install requests issued through <code>npm install</code> are automatically subjected to the same analysis that the <code>npm audit</code> command performs, analyzing the package to be installed as well as any additional dependencies that package would pull into the project. Second, <code>npm audit</code> suggests resolutions for vulnerabilities it identifies thereby giving clear actionable feedback to developers on the next steps they can take to resolve issues identified in the audit. These two decisions are critical because not only does npm take a security-conscious approach by default, but it tries to make resolving issues as painless as possible. Developers don&rsquo;t want to spend hours combing through changelogs or reviewing vulnerability reports just to find the package version that includes the vulnerability fix, they want to resolve the problem and get on with writing code.</p>
+
+<p>As of <code>npm@6.1</code>, <code>npm</code> includes the <code>npm audit fix</code> command to <a href="https://blog.npmjs.org/post/174001864165/v610-next0">automatically run all the package installations</a> recommended by <code>npm audit</code>, lowering the pain of updating vulnerable packages even further.</p>
+
+<p>The npm team shares their vision with the inclusion of tools like <code>npm audit</code> and a security-conscious approach to ecosystem packages:</p>
+
 <blockquote>
 <p>By alerting the entire community to security vulnerabilities within a tool you already use, we can make JavaScript development safer for everyone.</p>
-<p class="attribution">&mdash;<a class="reference external" href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">npm, Inc.</a></p>
+
+<p>— <a href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">npm, Inc.</a></p>
 </blockquote>
-</div>
-<div class="section" id="auditing-filer">
-<h2>Auditing <tt class="docutils literal">filer</tt></h2>
-<p>The first thing to do after making a fresh clone of any project is to install its dependencies. After grabbing the <a class="reference external" href="https://github.com/filerjs/filer">filer</a> git url and cloning the repository, a quick <tt class="docutils literal">npm install</tt> pulls in all the dependencies we should need to get started.</p>
-<pre class="code shell literal-block">
-added <span class="literal number">1079</span> packages from <span class="literal number">1531</span> contributors and audited <span class="literal number">9518</span> packages in <span class="literal number">36</span>.358s
-found <span class="literal number">6</span> vulnerabilities <span class="operator">(</span><span class="literal number">1</span> low, <span class="literal number">5</span> moderate<span class="operator">)</span>
-  run <span class="literal string backtick">`</span>npm audit fix<span class="literal string backtick">`</span> to fix them, or <span class="literal string backtick">`</span>npm audit<span class="literal string backtick">`</span> <span class="keyword">for</span> details
-</pre>
-<p>It looks like <tt class="docutils literal">filer&#64;353290a</tt> has some vulnerable packages, which is a perfect opportunity to dig into the auditing process.</p>
-<p><tt class="docutils literal">npm&#64;6</tt> is pretty in-your-face about this information, which is important. It lists the total number of vulnerabilities, as well as breaks down the number of vulnerabilities of varying severity, and provides an actionable next step: running a full audit.</p>
-<p>Running <tt class="docutils literal">npm audit</tt> produces the following report:</p>
-<pre class="code shell literal-block">
-                    <span class="operator">===</span> npm audit security <span class="name variable">report</span> <span class="operator">===</span>
 
-<span class="comment single"># Run  npm install --save-dev karma&#64;3.0.0  to resolve 6 vulnerabilities
-</span>SEMVER WARNING: Recommended action is a potentially breaking change
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Memory Exposure                                              │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ tunnel-agent                                                 │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; tunnel-agent             │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/598                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<h1 id="auditing-filer">Auditing filer</h1>
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; boom &gt; hoek       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<p>The first thing to do after making a fresh clone of any project is to install its dependencies. After grabbing the <a href="https://github.com/filerjs/filer">filer</a> git url and cloning the repository, a quick <code>npm install</code> pulls in all the dependencies we should need to get started.</p>
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; cryptiles &gt; boom  │
-│               │ &gt; hoek                                                       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<pre><code class="language-sh">added 1079 packages from 1531 contributors and audited 9518 packages in 36.358s
+found 6 vulnerabilities (1 low, 5 moderate)
+  run `npm audit fix` to fix them, or `npm audit` for details
+</code></pre>
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; hoek              │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<p>It looks like <code>filer@353290a</code> has some vulnerable packages, which is a perfect opportunity to dig into the auditing process.</p>
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; sntp &gt; hoek       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<p><code>npm@6</code> is pretty in-your-face about this information, which is important. It lists the total number of vulnerabilities, as well as breaks down the number of vulnerabilities of varying severity, and provides an actionable next step: running a full audit.</p>
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Low           │ Regular Expression Denial of Service                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ timespan                                                     │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; timespan                           │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/533                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<p>Running <code>npm audit</code> produces the following report:</p>
 
-found <span class="literal number">6</span> vulnerabilities <span class="operator">(</span><span class="literal number">1</span> low, <span class="literal number">5</span> moderate<span class="operator">)</span> in <span class="literal number">9518</span> scanned packages
-<span class="literal number">6</span> vulnerabilities require semver-major dependency updates.
-</pre>
-<p>The audit provides a lot of information, but it's all broken down for the developer in a consistent format so even those who aren't familiar with vulnerability mitigation or announcement procedures can understand what's going on.</p>
-<p>One of the most important parts of the audit output is the path. This shows how the project and the vulnerable package are related, and is a subset of the total dependency graph for the project. This is really useful if there is no clear update path for the package your project depends on directly and you need to report (or ideally, submit a pull request) that a dependency in one of your direct dependencies should update one (or more) of its packages. Without this information clearly displayed, you would spend a lot of time chasing dependencies down by manually reviewing <tt class="docutils literal">package.json</tt> and <tt class="docutils literal"><span class="pre">package-lock.json</span></tt> files trying to figure out who needed to update their dependencies so you can update yours.</p>
-<p>In the case of Filer we're pretty lucky: not only are all of the vulnerable packages related to a single direct dependency, but that dependency is one that is only used during development; resolving the problems is a simple as updating to <tt class="docutils literal">karma&#64;3.0.0</tt>. Since this is a simple resolution, we could either run <tt class="docutils literal">npm audit fix</tt> and have <tt class="docutils literal">npm</tt> take care of the version updates for us, or we can update the <tt class="docutils literal">karma</tt> version in our <tt class="docutils literal">package.json</tt> and install the updated package.</p>
-<p>After updating <tt class="docutils literal">karma</tt>, re-running <tt class="docutils literal">npm audit</tt> to ensure we haven't introduced any new vulnerabilities, and running the project's tests to ensure we haven't accidentally broken any functionality, we should take the time to contribute this fix <a class="reference external" href="https://github.com/filerjs/filer/pull/385">back to the main project</a>. The fix was small and simple, but security is everyone's responsiblity; if you notice a project using outdated or vulnerable packages, take some time to help the maintainers out by submitting a pull request. Also, projects should consider looking into automating the process of keeping project dependencies up to date through various tools like <a class="reference external" href="https://greenkeeper.io/">Greenkeeper</a> and <a class="reference external" href="https://snyk.io/">Snyk</a>, which is a conversation <a class="reference external" href="https://github.com/filerjs/filer/issues/386">you can start</a> in your project today!</p>
-</div>
-</div>
+<pre><code class="language-sh">                        === npm audit security report ===
+
+    # Run  npm install --save-dev karma@3.0.0  to resolve 6 vulnerabilities
+    SEMVER WARNING: Recommended action is a potentially breaking change
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Memory Exposure                                              │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ tunnel-agent                                                 │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; tunnel-agent             │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/598                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; boom &gt; hoek       │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; cryptiles &gt; boom  │
+    │               │ &gt; hoek                                                       │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; hoek              │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; sntp &gt; hoek       │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Low           │ Regular Expression Denial of Service                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ timespan                                                     │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; timespan                           │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/533                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    found 6 vulnerabilities (1 low, 5 moderate) in 9518 scanned packages
+    6 vulnerabilities require semver-major dependency updates.
+</code></pre>
+
+<p>The audit provides a lot of information, but it&rsquo;s all broken down for the developer in a consistent format so even those who aren&rsquo;t familiar with vulnerability mitigation or announcement procedures can understand what&rsquo;s going on.</p>
+
+<p>One of the most important parts of the audit output is the path. This shows how the project and the vulnerable package are related, and is a subset of the total dependency graph for the project. This is really useful if there is no clear update path for the package your project depends on directly and you need to report (or ideally, submit a pull request) that a dependency in one of your direct dependencies should update one (or more) of its packages. Without this information clearly displayed, you would spend a lot of time chasing dependencies down by manually reviewing <code>package.json</code> and <code>package-lock.json</code> files trying to figure out who needed to update their dependencies so you can update yours.</p>
+
+<p>In the case of Filer we&rsquo;re pretty lucky: not only are all of the vulnerable packages related to a single direct dependency, but that dependency is one that is only used during development; resolving the problems is a simple as updating to <code>karma@3.0.0</code>. Since this is a simple resolution, we could either run <code>npm audit fix</code> and have <code>npm</code> take care of the version updates for us, or we can update the <code>karma</code> version in our <code>package.json</code> and install the updated package.</p>
+
+<p>After updating <code>karma</code>, re-running <code>npm audit</code> to ensure we haven&rsquo;t introduced any new vulnerabilities, and running the project&rsquo;s tests to ensure we haven&rsquo;t accidentally broken any functionality, we should take the time to contribute this fix <a href="https://github.com/filerjs/filer/pull/385">back to the main project</a>. The fix was small and simple, but security is everyone&rsquo;s responsibility; if you notice a project using outdated or vulnerable packages, take some time to help the maintainers out by submitting a pull request. Also, projects should consider looking into automating the process of keeping project dependencies up to date through various tools like <a href="https://greenkeeper.io/">Greenkeeper</a> and <a href="https://snyk.io/">Snyk</a>, which is a conversation <a href="https://github.com/filerjs/filer/issues/386">you can start</a> in your project today!</p>
+
                     </div>
                 </section>
                 

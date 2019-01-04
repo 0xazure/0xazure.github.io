@@ -7,7 +7,7 @@
 
     <meta name="description" content="a constant work in progress">
 
-    <meta name="generator" content="Hugo 0.51" />
+    <meta name="generator" content="Hugo 0.53" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Nodejs &middot; stuart crust">
@@ -107,16 +107,18 @@
                     </header>
 
                     <div class="post-description">
-                        <div class="document">
+                        <p>Today marks the first month of my return to open source. I say <em>return</em> even though I never really <em>left</em>, it&rsquo;s more of a return to active participation in the community. As I <a href="/2018/09/third-times-the-charm/">wrote about earlier</a>, one of my courses right now focuses on open source development, so I have been able to <a href="https://github.com/0xazure?tab=overview&amp;from=2018-09-01&amp;to=2018-09-30">contribute much more regularly</a> and I hope to be able to continue to do so even after the course is over.</p>
 
+<p>This past month has been all about getting back into the swing of things by contributing to <a href="https://github.com/filerjs/filer">filerjs/filer</a>, a port of NodeJS&rsquo; <code>fs</code> module to the web using backends like IndexedDB. My first contribution to filer, which I have <a href="/2018/09/its-dependencies-all-the-way-down/">already blogged about</a>, was to update a development dependency to resolve package vulnerabilities as reported by <code>npm audit</code>. This issue was logged as <a href="https://github.com/filerjs/filer/issues/384">filer#384</a> and fixed in <a href="https://github.com/filerjs/filer/pull/385">filer#385</a> by updating the vulnerable dependency. This issue also spawned some discussion as <a href="https://github.com/filerjs/filer/issues/386">filer#386</a> about automating the process of keeping project dependencies up to date so it is much easier to stay on top of new versions of dependencies.</p>
 
-<p>Today marks the first month of my return to open source. I say <em>return</em> even though I never really <em>left</em>, it's more of a return to active participation in the community. As I <a class="reference external" href="/2018/09/third-times-the-charm/">wrote about earlier</a>, one of my courses right now focuses on open source development, so I have been able to <a class="reference external" href="https://github.com/0xazure?tab=overview&amp;from=2018-09-01&amp;to=2018-09-30">contribute much more regularly</a> and I hope to be able to continue to do so even after the course is over.</p>
-<p>This past month has been all about getting back into the swing of things by contributing to <a class="reference external" href="https://github.com/filerjs/filer">filerjs/filer</a>, a port of NodeJS' <tt class="docutils literal">fs</tt> module to the web using backends like IndexedDB. My first contribution to filer, which I have <a class="reference external" href="/2018/09/its-dependencies-all-the-way-down/">already blogged about</a>, was to update a development dependency to resolve package vulnerabilities as reported by <tt class="docutils literal">npm audit</tt>. This issue was logged as <a class="reference external" href="https://github.com/filerjs/filer/issues/384">filer#384</a> and fixed in <a class="reference external" href="https://github.com/filerjs/filer/pull/385">filer#385</a> by updating the vulnerable dependency. This issue also spawned some discussion as <a class="reference external" href="https://github.com/filerjs/filer/issues/386">filer#386</a> about automating the process of keeping project dependencies up to date so it is much easier to stay on top of new versions of dependencies.</p>
-<p>Open source isn't just about contributing code and documentation though. It's also about the community, interacting with other developers, discussing issues and potential solutions, as well as reviewing and helping out other members of the community. In addition to helping out my classmates over Slack and in-class throughout the month, I also reviewed a few pull requests opened against the filer repository.</p>
-<p>The first issue I reviewed, <a class="reference external" href="https://github.com/filerjs/filer/pull/478">filer#478</a>, is a pull request that adds a test to <tt class="docutils literal">fs.watch()</tt> to verify the event type emitted when renaming an existing file. Other than the boilerplate mocha test code, the test logic itself is fairly straight forward. However, <tt class="docutils literal">fs.watch()</tt> and related watching functions are an interesting set of methods because they are not guaranted to be consistent due to the <a class="reference external" href="https://nodejs.org/api/fs.html#fs_caveats">underlying implementation details</a>. I actually had to go back to this pull request and re-review it because it turns out that filer <a class="reference external" href="https://github.com/filerjs/filer/issues/411#issuecomment-422946490">doesn't currently have support</a> for <tt class="docutils literal">rename</tt> events at all. This issue was also interesting because I picked out a minor style nitpick in the form of a missing semi-colon that the Travis build <a class="reference external" href="https://github.com/filerjs/filer/issues/482">didn't seem to pick up</a> for some reason. Rerunning the build resolved the issue, but it's always worrying when you run into issues with your build infrastructure and tests because it can shake your faith in them a bit.</p>
-<p>Another issue that I reviewed was <a class="reference external" href="https://github.com/filerjs/filer/pull/472">filer#472</a>. This pull request adds a test to ensure that reading from a nonexistant file results in an error. The submission is well done overall, with one minor nitpick that lead to me filing <a class="reference external" href="https://github.com/filerjs/filer/pull/498">filer#498</a> to reduce small nitpick-type comments on reviews. Nitpicks are generally a waste of everyone's time because style should be automatically enforced by some kind of automated tool before code is pushed; JavaScript doesn't have anything quite like <a class="reference external" href="https://golang.org/cmd/gofmt/">gofmt</a> or <a class="reference external" href="https://github.com/rust-lang-nursery/rustfmt">rustfmt</a>, but tools like <a class="reference external" href="https://github.com/xojs/xo">xo</a> and <a class="reference external" href="https://github.com/prettier/prettier">prettier</a> can help. In this review I also cautioned the original author of the pull request about changing multiple variables at a time in a test, which we ideally would like to avoid as we can easily end up testing more code paths than we either need or want to, thereby complicating the test or making it fragile against future changes to the code.</p>
-<p>Looking ahead, October marks the beginning of <a class="reference external" href="https://hacktoberfest.digitalocean.com/">Hacktoberfest</a>. I'm really excited to be participating this year; I participated once before but I either missed the cutoff or something happened to my package because I never received my t-shirt from DigitalOcean. I'll be writing a lot more short blog posts throughout October as I chronicle my participation in this event, and I'm hoping to find some interesting projects to contribute to for at least the rest of this year and hopefully well into the next.</p>
-</div>
+<p>Open source isn&rsquo;t just about contributing code and documentation though. It&rsquo;s also about the community, interacting with other developers, discussing issues and potential solutions, as well as reviewing and helping out other members of the community. In addition to helping out my classmates over Slack and in-class throughout the month, I also reviewed a few pull requests opened against the filer repository.</p>
+
+<p>The first issue I reviewed, <a href="https://github.com/filerjs/filer/pull/478">filer#478</a>, is a pull request that adds a test to <code>fs.watch()</code> to verify the event type emitted when renaming an existing file. Other than the boilerplate mocha test code, the test logic itself is fairly straight forward. However, <code>fs.watch()</code> and related watching functions are an interesting set of methods because they are not guaranteed to be consistent due to the <a href="https://nodejs.org/api/fs.html#fs_caveats">underlying implementation details</a>. I actually had to go back to this pull request and re-review it because it turns out that filer <a href="https://github.com/filerjs/filer/issues/411#issuecomment-422946490">doesn&rsquo;t currently have support</a> for <code>rename</code> events at all. This issue was also interesting because I picked out a minor style nitpick in the form of a missing semi-colon that the Travis build <a href="https://github.com/filerjs/filer/issues/482">didn&rsquo;t seem to pick up</a> for some reason. Rerunning the build resolved the issue, but it&rsquo;s always worrying when you run into issues with your build infrastructure and tests because it can shake your faith in them a bit.</p>
+
+<p>Another issue that I reviewed was <a href="https://github.com/filerjs/filer/pull/472">filer#472</a>. This pull request adds a test to ensure that reading from a nonexistent file results in an error. The submission is well done overall, with one minor nitpick that lead to me filing <a href="https://github.com/filerjs/filer/pull/498">filer#498</a> to reduce small nitpick-type comments on reviews. Nitpicks are generally a waste of everyone&rsquo;s time because style should be automatically enforced by some kind of automated tool before code is pushed; JavaScript doesn&rsquo;t have anything quite like <a href="https://golang.org/cmd/gofmt/">gofmt</a> or <a href="https://github.com/rust-lang-nursery/rustfmt">rustfmt</a>, but tools like <a href="https://github.com/xojs/xo">xo</a> and <a href="https://github.com/prettier/prettier">prettier</a> can help. In this review I also cautioned the original author of the pull request about changing multiple variables at a time in a test, which we ideally would like to avoid as we can easily end up testing more code paths than we either need or want to, thereby complicating the test or making it fragile against future changes to the code.</p>
+
+<p>Looking ahead, October marks the beginning of <a href="https://hacktoberfest.digitalocean.com/">Hacktoberfest</a>. I&rsquo;m really excited to be participating this year; I participated once before but I either missed the cutoff or something happened to my package because I never received my t-shirt from DigitalOcean. I&rsquo;ll be writing a lot more short blog posts throughout October as I chronicle my participation in this event, and I&rsquo;m hoping to find some interesting projects to contribute to for at least the rest of this year and hopefully well into the next.</p>
+
                     </div>
                 </section>
                 
@@ -144,127 +146,144 @@
                     </header>
 
                     <div class="post-description">
-                        <div class="document">
-
+                        
 
 <p>NodeJS has experienced a lot of growth over the years. Like any platform, programming or otherwise, much of that growth and user adoption depends not only on the quality of the platform itself, but also the ecosystem that builds up around it.</p>
-<p>In this respect, NodeJS has possibly one of the largest ecosystems available. With <a class="reference external" href="https://www.npmjs.com/">over 700,000 packages</a> published to npm, the NodeJS platform offers developers a lot of choice when it comes to 3rd-party modules. This choice lets developers choose and compose modules from many different authors when writing software, saving time, consolidating work, and reducing bugs instead of constantly <a class="reference external" href="https://en.wikipedia.org/wiki/Not_invented_here">reinventing the wheel</a>.</p>
-<p>The NodeJS ecosystem by and large follows the <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix philosophy</a>, in particular the primary tenant to</p>
+
+<p>In this respect, NodeJS has possibly one of the largest ecosystems available. With <a href="https://www.npmjs.com/">over 700,000 packages</a> published to npm, the NodeJS platform offers developers a lot of choice when it comes to 3rd-party modules. This choice lets developers choose and compose modules from many different authors when writing software, saving time, consolidating work, and reducing bugs instead of constantly <a href="https://en.wikipedia.org/wiki/Not_invented_here">reinventing the wheel</a>.</p>
+
+<p>The NodeJS ecosystem by and large follows the <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix philosophy</a>, in particular the primary tenant to</p>
+
 <blockquote>
 <p>Write programs [and libraries] that do one thing and do it well</p>
-<p class="attribution">&mdash;Peter H. Salus, <em>A Quarter-Century of Unix (1994)</em></p>
+
+<p>— Peter H. Salus, <em>A Quarter-Century of Unix (1994)</em></p>
 </blockquote>
-<p>Keeping a module's focus small is an important aspect of many programming design patterns such as the single-responsibility principle, as well as improving code reuse and composability. However, including these modules doesn't come for free. Every project dependency is an added burden that the maintainers need to keep up to date and have to modify their code as the API of the module changes. Sometimes serious bugs are found in these modules that can expose application secrets, user data, or unauthorized access, among other classes of vulnerabilities, that the module authors need to fix before dependent projects can update to fix the bug.</p>
-<p>Staying on top of vulnerability disclosures and keeping track of all of the changes from version to version in a project's dependencies is a challenging and resource-draining task. Even more challenging, authors must not only be concerned with the vulnerabilities in modules they depend on directly, but also those in all of the <a class="reference external" href="https://docs.gradle.org/current/userguide/dependency_management_terminology.html#sub:terminology_transitive_dependency">transitive dependencies</a> that NodeJS is (in)famous for.</p>
-<div class="section" id="npm-audit">
-<h2><tt class="docutils literal">npm audit</tt></h2>
-<p>In the <a class="reference external" href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">April 2018 announcement</a> of <tt class="docutils literal">npm&#64;6</tt>, the headlining feature the npm team showcased was <tt class="docutils literal">npm audit</tt>, a powerful tool designed to provide automatic security warnings when using code with a known security issue. The <tt class="docutils literal">npm audit</tt> tool allows developers to completely analyze a project's dependency tree - including all transitive dependnecies - to identify known vulnerable versions of dependencies based on data from the Node Security Platform database that npm <a class="reference external" href="https://medium.com/npm-inc/npm-acquires-lift-security-258e257ef639">acquired in April 2018</a>.</p>
-<p>The npm team made two really important decisions when designing <tt class="docutils literal">npm audit</tt>. First, all install requests issued through <tt class="docutils literal">npm install</tt> are automatically subjected to the same analysis that the <tt class="docutils literal">npm audit</tt> command performs, analyzing the package to be installed as well as any additional dependencies that package would pull into the project. Second, <tt class="docutils literal">npm audit</tt> suggests resolutions for vulnerabilities it identifies thereby giving clear actionable feedback to developers on the next steps they can take to resolve issues identified in the audit. These two decisions are critical because not only does npm take a security-conscious approach by default, but it tries to make resolving issues as painless as possible. Developers don't want to spend hours combing through changelogs or reviewing vulnerability reports just to find the package version that includes the vulnerability fix, they want to resolve the problem and get on with writing code.</p>
-<p>As of <tt class="docutils literal">npm&#64;6.1</tt>, <tt class="docutils literal">npm</tt> includes the <tt class="docutils literal">npm audit fix</tt> command to <a class="reference external" href="https://blog.npmjs.org/post/174001864165/v610-next0">automatically run all the package installations</a> recommended by <tt class="docutils literal">npm audit</tt>, lowering the pain of updating vulnerable packages even further.</p>
-<p>The npm team shares their vision with the inclusion of tools like <tt class="docutils literal">npm audit</tt> and a security-conscious approach to ecosystem packages:</p>
+
+<p>Keeping a module&rsquo;s focus small is an important aspect of many programming design patterns such as the single-responsibility principle, as well as improving code reuse and composability. However, including these modules doesn&rsquo;t come for free. Every project dependency is an added burden that the maintainers need to keep up to date and have to modify their code as the API of the module changes. Sometimes serious bugs are found in these modules that can expose application secrets, user data, or unauthorized access, among other classes of vulnerabilities, that the module authors need to fix before dependent projects can update to fix the bug.</p>
+
+<p>Staying on top of vulnerability disclosures and keeping track of all of the changes from version to version in a project&rsquo;s dependencies is a challenging and resource-draining task. Even more challenging, authors must not only be concerned with the vulnerabilities in modules they depend on directly, but also those in all of the <a href="https://docs.gradle.org/current/userguide/dependency_management_terminology.html#sub:terminology_transitive_dependency">transitive dependencies</a> that NodeJS is (in)famous for.</p>
+
+<h1 id="npm-audit">npm audit</h1>
+
+<p>In the <a href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">April 2018 announcement</a> of <code>npm@6</code>, the headlining feature the npm team showcased was <code>npm audit</code>, a powerful tool designed to provide automatic security warnings when using code with a known security issue. The <code>npm audit</code> tool allows developers to completely analyze a project&rsquo;s dependency tree - including all transitive dependencies - to identify known vulnerable versions of dependencies based on data from the Node Security Platform database that npm <a href="https://medium.com/npm-inc/npm-acquires-lift-security-258e257ef639">acquired in April 2018</a>.</p>
+
+<p>The npm team made two really important decisions when designing <code>npm audit</code>. First, all install requests issued through <code>npm install</code> are automatically subjected to the same analysis that the <code>npm audit</code> command performs, analyzing the package to be installed as well as any additional dependencies that package would pull into the project. Second, <code>npm audit</code> suggests resolutions for vulnerabilities it identifies thereby giving clear actionable feedback to developers on the next steps they can take to resolve issues identified in the audit. These two decisions are critical because not only does npm take a security-conscious approach by default, but it tries to make resolving issues as painless as possible. Developers don&rsquo;t want to spend hours combing through changelogs or reviewing vulnerability reports just to find the package version that includes the vulnerability fix, they want to resolve the problem and get on with writing code.</p>
+
+<p>As of <code>npm@6.1</code>, <code>npm</code> includes the <code>npm audit fix</code> command to <a href="https://blog.npmjs.org/post/174001864165/v610-next0">automatically run all the package installations</a> recommended by <code>npm audit</code>, lowering the pain of updating vulnerable packages even further.</p>
+
+<p>The npm team shares their vision with the inclusion of tools like <code>npm audit</code> and a security-conscious approach to ecosystem packages:</p>
+
 <blockquote>
 <p>By alerting the entire community to security vulnerabilities within a tool you already use, we can make JavaScript development safer for everyone.</p>
-<p class="attribution">&mdash;<a class="reference external" href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">npm, Inc.</a></p>
+
+<p>— <a href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">npm, Inc.</a></p>
 </blockquote>
-</div>
-<div class="section" id="auditing-filer">
-<h2>Auditing <tt class="docutils literal">filer</tt></h2>
-<p>The first thing to do after making a fresh clone of any project is to install its dependencies. After grabbing the <a class="reference external" href="https://github.com/filerjs/filer">filer</a> git url and cloning the repository, a quick <tt class="docutils literal">npm install</tt> pulls in all the dependencies we should need to get started.</p>
-<pre class="code shell literal-block">
-added <span class="literal number">1079</span> packages from <span class="literal number">1531</span> contributors and audited <span class="literal number">9518</span> packages in <span class="literal number">36</span>.358s
-found <span class="literal number">6</span> vulnerabilities <span class="operator">(</span><span class="literal number">1</span> low, <span class="literal number">5</span> moderate<span class="operator">)</span>
-  run <span class="literal string backtick">`</span>npm audit fix<span class="literal string backtick">`</span> to fix them, or <span class="literal string backtick">`</span>npm audit<span class="literal string backtick">`</span> <span class="keyword">for</span> details
-</pre>
-<p>It looks like <tt class="docutils literal">filer&#64;353290a</tt> has some vulnerable packages, which is a perfect opportunity to dig into the auditing process.</p>
-<p><tt class="docutils literal">npm&#64;6</tt> is pretty in-your-face about this information, which is important. It lists the total number of vulnerabilities, as well as breaks down the number of vulnerabilities of varying severity, and provides an actionable next step: running a full audit.</p>
-<p>Running <tt class="docutils literal">npm audit</tt> produces the following report:</p>
-<pre class="code shell literal-block">
-                    <span class="operator">===</span> npm audit security <span class="name variable">report</span> <span class="operator">===</span>
 
-<span class="comment single"># Run  npm install --save-dev karma&#64;3.0.0  to resolve 6 vulnerabilities
-</span>SEMVER WARNING: Recommended action is a potentially breaking change
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Memory Exposure                                              │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ tunnel-agent                                                 │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; tunnel-agent             │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/598                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<h1 id="auditing-filer">Auditing filer</h1>
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; boom &gt; hoek       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<p>The first thing to do after making a fresh clone of any project is to install its dependencies. After grabbing the <a href="https://github.com/filerjs/filer">filer</a> git url and cloning the repository, a quick <code>npm install</code> pulls in all the dependencies we should need to get started.</p>
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; cryptiles &gt; boom  │
-│               │ &gt; hoek                                                       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<pre><code class="language-sh">added 1079 packages from 1531 contributors and audited 9518 packages in 36.358s
+found 6 vulnerabilities (1 low, 5 moderate)
+  run `npm audit fix` to fix them, or `npm audit` for details
+</code></pre>
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; hoek              │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<p>It looks like <code>filer@353290a</code> has some vulnerable packages, which is a perfect opportunity to dig into the auditing process.</p>
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Moderate      │ Prototype pollution                                          │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ hoek                                                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; sntp &gt; hoek       │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/566                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<p><code>npm@6</code> is pretty in-your-face about this information, which is important. It lists the total number of vulnerabilities, as well as breaks down the number of vulnerabilities of varying severity, and provides an actionable next step: running a full audit.</p>
 
-┌───────────────┬──────────────────────────────────────────────────────────────┐
-│ Low           │ Regular Expression Denial of Service                         │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Package       │ timespan                                                     │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Dependency of │ karma <span class="operator">[</span>dev<span class="operator">]</span>                                                  │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Path          │ karma &gt; log4js &gt; loggly &gt; timespan                           │
-├───────────────┼──────────────────────────────────────────────────────────────┤
-│ More info     │ https://nodesecurity.io/advisories/533                       │
-└───────────────┴──────────────────────────────────────────────────────────────┘
+<p>Running <code>npm audit</code> produces the following report:</p>
 
-found <span class="literal number">6</span> vulnerabilities <span class="operator">(</span><span class="literal number">1</span> low, <span class="literal number">5</span> moderate<span class="operator">)</span> in <span class="literal number">9518</span> scanned packages
-<span class="literal number">6</span> vulnerabilities require semver-major dependency updates.
-</pre>
-<p>The audit provides a lot of information, but it's all broken down for the developer in a consistent format so even those who aren't familiar with vulnerability mitigation or announcement procedures can understand what's going on.</p>
-<p>One of the most important parts of the audit output is the path. This shows how the project and the vulnerable package are related, and is a subset of the total dependency graph for the project. This is really useful if there is no clear update path for the package your project depends on directly and you need to report (or ideally, submit a pull request) that a dependency in one of your direct dependencies should update one (or more) of its packages. Without this information clearly displayed, you would spend a lot of time chasing dependencies down by manually reviewing <tt class="docutils literal">package.json</tt> and <tt class="docutils literal"><span class="pre">package-lock.json</span></tt> files trying to figure out who needed to update their dependencies so you can update yours.</p>
-<p>In the case of Filer we're pretty lucky: not only are all of the vulnerable packages related to a single direct dependency, but that dependency is one that is only used during development; resolving the problems is a simple as updating to <tt class="docutils literal">karma&#64;3.0.0</tt>. Since this is a simple resolution, we could either run <tt class="docutils literal">npm audit fix</tt> and have <tt class="docutils literal">npm</tt> take care of the version updates for us, or we can update the <tt class="docutils literal">karma</tt> version in our <tt class="docutils literal">package.json</tt> and install the updated package.</p>
-<p>After updating <tt class="docutils literal">karma</tt>, re-running <tt class="docutils literal">npm audit</tt> to ensure we haven't introduced any new vulnerabilities, and running the project's tests to ensure we haven't accidentally broken any functionality, we should take the time to contribute this fix <a class="reference external" href="https://github.com/filerjs/filer/pull/385">back to the main project</a>. The fix was small and simple, but security is everyone's responsiblity; if you notice a project using outdated or vulnerable packages, take some time to help the maintainers out by submitting a pull request. Also, projects should consider looking into automating the process of keeping project dependencies up to date through various tools like <a class="reference external" href="https://greenkeeper.io/">Greenkeeper</a> and <a class="reference external" href="https://snyk.io/">Snyk</a>, which is a conversation <a class="reference external" href="https://github.com/filerjs/filer/issues/386">you can start</a> in your project today!</p>
-</div>
-</div>
+<pre><code class="language-sh">                        === npm audit security report ===
+
+    # Run  npm install --save-dev karma@3.0.0  to resolve 6 vulnerabilities
+    SEMVER WARNING: Recommended action is a potentially breaking change
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Memory Exposure                                              │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ tunnel-agent                                                 │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; tunnel-agent             │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/598                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; boom &gt; hoek       │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; cryptiles &gt; boom  │
+    │               │ &gt; hoek                                                       │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; hoek              │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Moderate      │ Prototype pollution                                          │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ hoek                                                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; sntp &gt; hoek       │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/566                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    ┌───────────────┬──────────────────────────────────────────────────────────────┐
+    │ Low           │ Regular Expression Denial of Service                         │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Package       │ timespan                                                     │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Dependency of │ karma [dev]                                                  │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ Path          │ karma &gt; log4js &gt; loggly &gt; timespan                           │
+    ├───────────────┼──────────────────────────────────────────────────────────────┤
+    │ More info     │ https://nodesecurity.io/advisories/533                       │
+    └───────────────┴──────────────────────────────────────────────────────────────┘
+
+    found 6 vulnerabilities (1 low, 5 moderate) in 9518 scanned packages
+    6 vulnerabilities require semver-major dependency updates.
+</code></pre>
+
+<p>The audit provides a lot of information, but it&rsquo;s all broken down for the developer in a consistent format so even those who aren&rsquo;t familiar with vulnerability mitigation or announcement procedures can understand what&rsquo;s going on.</p>
+
+<p>One of the most important parts of the audit output is the path. This shows how the project and the vulnerable package are related, and is a subset of the total dependency graph for the project. This is really useful if there is no clear update path for the package your project depends on directly and you need to report (or ideally, submit a pull request) that a dependency in one of your direct dependencies should update one (or more) of its packages. Without this information clearly displayed, you would spend a lot of time chasing dependencies down by manually reviewing <code>package.json</code> and <code>package-lock.json</code> files trying to figure out who needed to update their dependencies so you can update yours.</p>
+
+<p>In the case of Filer we&rsquo;re pretty lucky: not only are all of the vulnerable packages related to a single direct dependency, but that dependency is one that is only used during development; resolving the problems is a simple as updating to <code>karma@3.0.0</code>. Since this is a simple resolution, we could either run <code>npm audit fix</code> and have <code>npm</code> take care of the version updates for us, or we can update the <code>karma</code> version in our <code>package.json</code> and install the updated package.</p>
+
+<p>After updating <code>karma</code>, re-running <code>npm audit</code> to ensure we haven&rsquo;t introduced any new vulnerabilities, and running the project&rsquo;s tests to ensure we haven&rsquo;t accidentally broken any functionality, we should take the time to contribute this fix <a href="https://github.com/filerjs/filer/pull/385">back to the main project</a>. The fix was small and simple, but security is everyone&rsquo;s responsibility; if you notice a project using outdated or vulnerable packages, take some time to help the maintainers out by submitting a pull request. Also, projects should consider looking into automating the process of keeping project dependencies up to date through various tools like <a href="https://greenkeeper.io/">Greenkeeper</a> and <a href="https://snyk.io/">Snyk</a>, which is a conversation <a href="https://github.com/filerjs/filer/issues/386">you can start</a> in your project today!</p>
+
                     </div>
                 </section>
                 
@@ -290,86 +309,104 @@ found <span class="literal number">6</span> vulnerabilities <span class="operato
                     </header>
 
                     <div class="post-description">
-                        <div class="document">
+                        
 
+<p>I have a personal interest in <a href="https://en.wikipedia.org/wiki/Automation">automation</a>, mostly because I believe that we should be trying to offload everything we possibly can onto computing systems so that we can spend our time thinking about interesting problems rather than manually repeating the same tasks over and over again.
+Good programmers, coders, and software engineers (depending on how you identify) should be trying to automate as much of their jobs as possible for all kinds of reasons: to help mitigate the <a href="https://en.wikipedia.org/wiki/Bus_factor">bus factor</a>, to get rid of boring and repetitive parts of their jobs, and even to better document internal and external processes (if the process has been put into code - especially well-commented code - that is a form of documentation about the process!) that can then be tracked and versioned in a version control system.</p>
 
-<p>I have a personal interest in <a class="reference external" href="https://en.wikipedia.org/wiki/Automation">automation</a>, mostly because I believe that we should be trying to offload everything we possibly can onto computing systems so that we can spend our time thinking about interesting problems rather than manually repeating the same tasks over and over again.
-Good programmers, coders, and software engineers (depending on how you identify) should be trying to automate as much of their jobs as possible for all kinds of reasons: to help mitigate the <a class="reference external" href="https://en.wikipedia.org/wiki/Bus_factor">bus factor</a>, to get rid of boring and repetitive parts of their jobs, and even to better document internal and external processes (if the process has been put into code - especially well-commented code - that is a form of documentation about the process!) that can then be tracked and versioned in a version control system.</p>
-<div class="section" id="the-programming-loop">
-<h2>The Programming Loop</h2>
+<h1 id="the-programming-loop">The Programming Loop</h1>
+
 <p>Why am I talking about automation when the title of this post is about filesystem events? Before we talk about those kinds of events, we need to take a look at a simplified but typical example of the programming loop when writing code. Such a loop might look something like the following:</p>
-<ol class="arabic simple">
+
+<ol>
 <li>Make a change to some code</li>
 <li>Check the editor or IDE for feedback about the code you just wrote</li>
 <li>Run tools that check for programming errors, outright bugs, and stylistic errors</li>
-<li>Run the project's tests (the project <em>has</em> tests, right?)</li>
+<li>Run the project&rsquo;s tests (the project <em>has</em> tests, right?)</li>
 <li>Review tool and test feedback, and resolve issues</li>
 <li>Return to Step 1 and repeat</li>
 </ol>
-<p>That's a lot to do every time the code changes, but the tools are there to help write better code and catch a lot of little or subtle issues that people aren't as good at noticing as computers can be. To take advantage of all of these tools and their output, we want to make this loop from writing some code to reviewing feedback as quick as possible so the programmer isn't waiting around for feedback, gets annoyed at how long the process takes, and stops using the tools. Some projects also use a lot of different tools, and it can be a lot to remember how to run each tool individually and what command line arguments are required for the current project.</p>
-<p>Instead of having to remember all this information, it would be great to have to remember fewer commands to get feedback from all the tools. Automation to the rescue! Instead of running each tool separately ourselves, we can use a tool that runs other tools; in this case we want to use a task runner. <tt class="docutils literal">make</tt> is a well-known tool for automating this process, and can be used for many different kinds of projects:</p>
+
+<p>That&rsquo;s a lot to do every time the code changes, but the tools are there to help write better code and catch a lot of little or subtle issues that people aren&rsquo;t as good at noticing as computers can be. To take advantage of all of these tools and their output, we want to make this loop from writing some code to reviewing feedback as quick as possible so the programmer isn&rsquo;t waiting around for feedback, gets annoyed at how long the process takes, and stops using the tools. Some projects also use a lot of different tools, and it can be a lot to remember how to run each tool individually and what command line arguments are required for the current project.</p>
+
+<p>Instead of having to remember all this information, it would be great to have to remember fewer commands to get feedback from all the tools. Automation to the rescue! Instead of running each tool separately ourselves, we can use a tool that runs other tools; in this case we want to use a task runner. <code>make</code> is a well-known tool for automating this process, and can be used for many different kinds of projects:</p>
+
 <blockquote>
-<p>C programs [...] are most common, but you can use <em>make</em> with any programming language whose compiler can be run with a shell command. In fact, <em>make</em> is not limited to programs. You can use it to describe any task where some files must be updated automatically from others whenever the others change.</p>
-<p class="attribution">&mdash;<a class="reference external" href="https://linux.die.net/man/1/make">make manpage</a></p>
+<p>C programs [&hellip;] are most common, but you can use <em>make</em> with any programming language whose compiler can be run with a shell command. In fact, <em>make</em> is not limited to programs. You can use it to describe any task where some files must be updated automatically from others whenever the others change.</p>
+
+<p>— <a href="https://linux.die.net/man/1/make">make manpage</a></p>
 </blockquote>
-<p>Using a tool like <tt class="docutils literal">make</tt> can simplify the loop to something like the following:</p>
-<ol class="arabic simple">
+
+<p>Using a tool like <code>make</code> can simplify the loop to something like the following:</p>
+
+<ol>
 <li>Make a change to some code</li>
-<li>Run <tt class="docutils literal">make</tt></li>
-<li>Review tool and test feedback from each tool that <tt class="docutils literal">make</tt> runs, and resolve issues</li>
+<li>Run <code>make</code></li>
+<li>Review tool and test feedback from each tool that <code>make</code> runs, and resolve issues</li>
 <li>Return to Step 1 and repeat</li>
 </ol>
-<p>This significantly reduces the steps the programmer has to take every time they make a change as well as the number of commands they need to remember: all they have to do is run <tt class="docutils literal">make</tt>! But do we really need to remember to run a command? Is there some way that we can have <tt class="docutils literal">make</tt> or something like it run whenever we make a change to the code?</p>
-</div>
-<div class="section" id="enter-filesystem-events">
-<h2>Enter: Filesystem Events</h2>
-<p>Filesystem events are a great way to trigger other tasks. Other kinds of task runners such as <a class="reference external" href="https://gruntjs.com/">grunt</a> and <a class="reference external" href="https://gulpjs.com/">gulp</a> in NodeJS, as well as <a class="reference external" href="https://guardgem.org/">guard</a> in Ruby, let the programmer set up a process to &quot;watch&quot; individual files or entire directories for changes. When a file changes, these task runners pick up the change and perform whatever tasks the programmer has specified.</p>
-<p>NodeJS core exposes this functionality to the JavaScript runtime through functions in the <a class="reference external" href="https://nodejs.org/api/fs.html">fs module</a>. These functions include:</p>
-<ul class="simple">
-<li><a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener">fs.watch()</a></li>
-<li><a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener">fs.watchFile()</a></li>
-<li><a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_unwatchfile_filename_listener">fs.unwatchFile()</a></li>
+
+<p>This significantly reduces the steps the programmer has to take every time they make a change as well as the number of commands they need to remember: all they have to do is run <code>make</code>! But do we really need to remember to run a command? Is there some way that we can have <code>make</code> or something like it run whenever we make a change to the code?</p>
+
+<h1 id="enter-filesystem-events">Enter: Filesystem Events</h1>
+
+<p>Filesystem events are a great way to trigger other tasks. Other kinds of task runners such as <a href="https://gruntjs.com/">grunt</a> and <a href="https://gulpjs.com/">gulp</a> in NodeJS, as well as <a href="https://guardgem.org/">guard</a> in Ruby, let the programmer set up a process to &ldquo;watch&rdquo; individual files or entire directories for changes. When a file changes, these task runners pick up the change and perform whatever tasks the programmer has specified.</p>
+
+<p>NodeJS core exposes this functionality to the JavaScript runtime through functions in the <a href="https://nodejs.org/api/fs.html">fs module</a>. These functions include:</p>
+
+<ul>
+<li><a href="https://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener">fs.watch()</a></li>
+<li><a href="https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener">fs.watchFile()</a></li>
+<li><a href="https://nodejs.org/api/fs.html#fs_fs_unwatchfile_filename_listener">fs.unwatchFile()</a></li>
 </ul>
+
 <p>These functions respond to changes in the filesystem and communicate data about the detected changed file back to their listener functions.</p>
-</div>
-<div class="section" id="a-simple-example">
-<h2>A Simple Example</h2>
-<p>The following is an example of how to use the <tt class="docutils literal">fs.watch()</tt> function in NodeJS. This is the recommended function to use because it supports single files as well as directories where <tt class="docutils literal">fs.watchFile()</tt> only watches individual files, and it is <a class="reference external" href="https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener">more efficient</a> than both <tt class="docutils literal">fs.watchFile()</tt> and <tt class="docutils literal">fs.unwatchFile()</tt>.</p>
-<pre class="code js literal-block">
-<span class="literal string single">'use strict'</span> <span class="comment single">// enforce JavaScript strict mode
-</span>
-<span class="keyword reserved">const</span> <span class="name other">fs</span> <span class="operator">=</span> <span class="name other">require</span><span class="punctuation">(</span><span class="literal string single">'fs'</span><span class="punctuation">);</span> <span class="comment single">// import the core module
-</span>
-<span class="keyword reserved">const</span> <span class="name other">path</span> <span class="operator">=</span> <span class="literal string single">'.'</span> <span class="comment single">// start watching in the current directory
-</span>
-<span class="name other">fs</span><span class="punctuation">.</span><span class="name other">watch</span><span class="punctuation">(</span><span class="name other">path</span><span class="punctuation">,</span> <span class="punctuation">(</span><span class="name other">eventType</span><span class="punctuation">,</span> <span class="name other">filename</span><span class="punctuation">)</span> <span class="punctuation">=&gt;</span> <span class="punctuation">{</span>
-    <span class="keyword">if</span> <span class="punctuation">(</span><span class="name other">eventType</span> <span class="operator">===</span> <span class="literal string single">'change'</span><span class="punctuation">)</span> <span class="punctuation">{</span>
-        <span class="name other">console</span><span class="punctuation">.</span><span class="name other">log</span><span class="punctuation">(</span><span class="literal string backtick">`</span><span class="literal string interpol">${</span><span class="name other">filename</span><span class="literal string interpol">}</span><span class="literal string backtick"> changed!`</span><span class="punctuation">)</span>
-    <span class="punctuation">}</span>
-<span class="punctuation">})</span>
-</pre>
-</div>
-<div class="section" id="some-caveats">
-<h2>Some Caveats</h2>
-<p>The <tt class="docutils literal">fs.watch()</tt> function does <a class="reference external" href="https://nodejs.org/api/fs.html#fs_caveats">come with some caveats</a> due to the state of this kind of filesystem event handling on various platforms; specifically, the API is not 100% consistent across platforms and some options are not universally available due to the underlying implementations.</p>
-<p>Also, because <tt class="docutils literal">fs.watch()</tt> is event-driven, there is no matching set of functions in the experimental <tt class="docutils literal">fs</tt> Promise API <a class="reference external" href="https://nodejs.org/en/blog/release/v10.0.0/">introduced in Node 10.0.0</a> and there is no synchronous equivalent like there are for many other functions in the <tt class="docutils literal">fs</tt> module because the task is inherently asynchronous.</p>
+
+<h1 id="a-simple-example">A Simple Example</h1>
+
+<p>The following is an example of how to use the <code>fs.watch()</code> function in NodeJS. This is the recommended function to use because it supports single files as well as directories where <code>fs.watchFile()</code> only watches individual files, and it is <a href="https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener">more efficient</a> than both <code>fs.watchFile()</code> and <code>fs.unwatchFile()</code>.</p>
+
+<pre><code class="language-js">'use strict' // enforce JavaScript strict mode
+
+const fs = require('fs'); // import the core module
+
+const path = '.' // start watching in the current directory
+
+fs.watch(path, (eventType, filename) =&gt; {
+    if (eventType === 'change') {
+        console.log(`${filename} changed!`)
+    }
+})
+</code></pre>
+
+<h1 id="some-caveats">Some Caveats</h1>
+
+<p>The <code>fs.watch()</code> function does <a href="https://nodejs.org/api/fs.html#fs_caveats">come with some caveats</a> due to the state of this kind of filesystem event handling on various platforms; specifically, the API is not 100% consistent across platforms and some options are not universally available due to the underlying implementations.</p>
+
+<p>Also, because <code>fs.watch()</code> is event-driven, there is no matching set of functions in the experimental <code>fs</code> Promise API <a href="https://nodejs.org/en/blog/release/v10.0.0/">introduced in Node 10.0.0</a> and there is no synchronous equivalent like there are for many other functions in the <code>fs</code> module because the task is inherently asynchronous.</p>
+
 <p>However, this is still really useful functionality when working with files and filesystems, and is of particular interest in our pursuit of efficient automation.</p>
-</div>
-<div class="section" id="one-last-twist">
-<h2>One Last Twist</h2>
-<p>After looking a bit more into how <a class="reference external" href="https://gruntjs.com/">grunt</a> and <a class="reference external" href="https://gulpjs.com/">gulp</a> actually implement their file-watching functionality, it turns out that neither one of these popular test runners uses any of the <tt class="docutils literal">fs.watch()</tt> functions directly and don't even use the same dependency to provide watching functionality!</p>
-<p>Grunt's file-watching functionality is provided in a Grunt plugin called <a class="reference external" href="https://www.npmjs.com/package/grunt-contrib-watch">grunt-contrib-watch</a>, which uses the <a class="reference external" href="https://www.npmjs.com/package/gaze">gaze</a> package to interact with filesystem events.</p>
-<p>Gulp, on the other hand, relies on <a class="reference external" href="https://www.npmjs.com/pakage/gulp-watch">gulp-watch</a> for watching files, which uses a package called <a class="reference external" href="https://www.npmjs.com/package/chokidar">chokidar</a>.</p>
-<p>Chokidar goes <a class="reference external" href="https://www.npmjs.com/package/chokidar#why">into some detail</a> as to why <tt class="docutils literal">fs.watch()</tt> is insufficient, and gaze lists a <a class="reference external" href="https://www.npmjs.com/package/gaze#similar-projects">number of alternative projects</a>, so there are clearly some community opinions on the quality of the built-in functions.</p>
-<p>Some notable functionality <tt class="docutils literal">fs.watch()</tt> lacks:</p>
-<ul class="simple">
-<li>no wildcard support (e.g. cannot watch only for files that end with a particular extension, like <tt class="docutils literal">*.js</tt>)</li>
-<li>does not support recursive watching on platforms other than Windows or macOS (see <a class="reference external" href="https://nodejs.org/api/fs.html#fs_caveats">the fs watch caveats</a>)</li>
-<li><tt class="docutils literal">eventType</tt> is only one of <tt class="docutils literal">'rename'</tt> or <tt class="docutils literal">'change'</tt>, no support for other file events such as <tt class="docutils literal">'removed'</tt></li>
+
+<h1 id="one-last-twist">One Last Twist</h1>
+
+<p>After looking a bit more into how <a href="https://gruntjs.com/">grunt</a> and <a href="https://gulpjs.com/">gulp</a> actually implement their file-watching functionality, it turns out that neither one of these popular test runners uses any of the <code>fs.watch()</code> functions directly and don&rsquo;t even use the same dependency to provide watching functionality!</p>
+
+<p>Grunt&rsquo;s file-watching functionality is provided in a Grunt plugin called <a href="https://www.npmjs.com/package/grunt-contrib-watch">grunt-contrib-watch</a>, which uses the <a href="https://www.npmjs.com/package/gaze">gaze</a> package to interact with filesystem events.</p>
+
+<p>Gulp, on the other hand, relies on <a href="https://www.npmjs.com/pakage/gulp-watch">gulp-watch</a> for watching files, which uses a package called <a href="https://www.npmjs.com/package/chokidar">chokidar</a>.</p>
+
+<p>Chokidar goes <a href="https://www.npmjs.com/package/chokidar#why">into some detail</a> as to why <code>fs.watch()</code> is insufficient, and gaze lists a <a href="https://www.npmjs.com/package/gaze#similar-projects">number of alternative projects</a>, so there are clearly some community opinions on the quality of the built-in functions.</p>
+
+<p>Some notable functionality <code>fs.watch()</code> lacks:</p>
+
+<ul>
+<li>no wildcard support (e.g. cannot watch only for files that end with a particular extension, like <code>*.js</code>)</li>
+<li>does not support recursive watching on platforms other than Windows or macOS (see <a href="https://nodejs.org/api/fs.html#fs_caveats">the fs watch caveats</a>)</li>
+<li><code>eventType</code> is only one of <code>'rename'</code> or <code>'change'</code>, no support for other file events such as <code>'removed'</code></li>
 </ul>
-<p>As in everything, there are trade-offs when implementing functionality. For simple use cases, <tt class="docutils literal">fs.watch()</tt> may be sufficient and will not require including additional project dependencies. However, if file watching is a core piece of functionality, it might be worth evaluating some of the other options available on npm to find one with the necessary functionality for the project at hand, while also keeping you from tearing your hair out tracking down odd edgecases.</p>
-</div>
-</div>
+
+<p>As in everything, there are trade-offs when implementing functionality. For simple use cases, <code>fs.watch()</code> may be sufficient and will not require including additional project dependencies. However, if file watching is a core piece of functionality, it might be worth evaluating some of the other options available on npm to find one with the necessary functionality for the project at hand, while also keeping you from tearing your hair out tracking down odd edge cases.</p>
+
                     </div>
                 </section>
                 

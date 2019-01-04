@@ -17,86 +17,104 @@
       <pubDate>Thu, 13 Sep 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/09/filesystem-events-in-nodejs/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
+      <description>
 
+&lt;p&gt;I have a personal interest in &lt;a href=&#34;https://en.wikipedia.org/wiki/Automation&#34;&gt;automation&lt;/a&gt;, mostly because I believe that we should be trying to offload everything we possibly can onto computing systems so that we can spend our time thinking about interesting problems rather than manually repeating the same tasks over and over again.
+Good programmers, coders, and software engineers (depending on how you identify) should be trying to automate as much of their jobs as possible for all kinds of reasons: to help mitigate the &lt;a href=&#34;https://en.wikipedia.org/wiki/Bus_factor&#34;&gt;bus factor&lt;/a&gt;, to get rid of boring and repetitive parts of their jobs, and even to better document internal and external processes (if the process has been put into code - especially well-commented code - that is a form of documentation about the process!) that can then be tracked and versioned in a version control system.&lt;/p&gt;
 
-&lt;p&gt;I have a personal interest in &lt;a class=&#34;reference external&#34; href=&#34;https://en.wikipedia.org/wiki/Automation&#34;&gt;automation&lt;/a&gt;, mostly because I believe that we should be trying to offload everything we possibly can onto computing systems so that we can spend our time thinking about interesting problems rather than manually repeating the same tasks over and over again.
-Good programmers, coders, and software engineers (depending on how you identify) should be trying to automate as much of their jobs as possible for all kinds of reasons: to help mitigate the &lt;a class=&#34;reference external&#34; href=&#34;https://en.wikipedia.org/wiki/Bus_factor&#34;&gt;bus factor&lt;/a&gt;, to get rid of boring and repetitive parts of their jobs, and even to better document internal and external processes (if the process has been put into code - especially well-commented code - that is a form of documentation about the process!) that can then be tracked and versioned in a version control system.&lt;/p&gt;
-&lt;div class=&#34;section&#34; id=&#34;the-programming-loop&#34;&gt;
-&lt;h2&gt;The Programming Loop&lt;/h2&gt;
+&lt;h1 id=&#34;the-programming-loop&#34;&gt;The Programming Loop&lt;/h1&gt;
+
 &lt;p&gt;Why am I talking about automation when the title of this post is about filesystem events? Before we talk about those kinds of events, we need to take a look at a simplified but typical example of the programming loop when writing code. Such a loop might look something like the following:&lt;/p&gt;
-&lt;ol class=&#34;arabic simple&#34;&gt;
+
+&lt;ol&gt;
 &lt;li&gt;Make a change to some code&lt;/li&gt;
 &lt;li&gt;Check the editor or IDE for feedback about the code you just wrote&lt;/li&gt;
 &lt;li&gt;Run tools that check for programming errors, outright bugs, and stylistic errors&lt;/li&gt;
-&lt;li&gt;Run the project&#39;s tests (the project &lt;em&gt;has&lt;/em&gt; tests, right?)&lt;/li&gt;
+&lt;li&gt;Run the project&amp;rsquo;s tests (the project &lt;em&gt;has&lt;/em&gt; tests, right?)&lt;/li&gt;
 &lt;li&gt;Review tool and test feedback, and resolve issues&lt;/li&gt;
 &lt;li&gt;Return to Step 1 and repeat&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;That&#39;s a lot to do every time the code changes, but the tools are there to help write better code and catch a lot of little or subtle issues that people aren&#39;t as good at noticing as computers can be. To take advantage of all of these tools and their output, we want to make this loop from writing some code to reviewing feedback as quick as possible so the programmer isn&#39;t waiting around for feedback, gets annoyed at how long the process takes, and stops using the tools. Some projects also use a lot of different tools, and it can be a lot to remember how to run each tool individually and what command line arguments are required for the current project.&lt;/p&gt;
-&lt;p&gt;Instead of having to remember all this information, it would be great to have to remember fewer commands to get feedback from all the tools. Automation to the rescue! Instead of running each tool separately ourselves, we can use a tool that runs other tools; in this case we want to use a task runner. &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt; is a well-known tool for automating this process, and can be used for many different kinds of projects:&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s a lot to do every time the code changes, but the tools are there to help write better code and catch a lot of little or subtle issues that people aren&amp;rsquo;t as good at noticing as computers can be. To take advantage of all of these tools and their output, we want to make this loop from writing some code to reviewing feedback as quick as possible so the programmer isn&amp;rsquo;t waiting around for feedback, gets annoyed at how long the process takes, and stops using the tools. Some projects also use a lot of different tools, and it can be a lot to remember how to run each tool individually and what command line arguments are required for the current project.&lt;/p&gt;
+
+&lt;p&gt;Instead of having to remember all this information, it would be great to have to remember fewer commands to get feedback from all the tools. Automation to the rescue! Instead of running each tool separately ourselves, we can use a tool that runs other tools; in this case we want to use a task runner. &lt;code&gt;make&lt;/code&gt; is a well-known tool for automating this process, and can be used for many different kinds of projects:&lt;/p&gt;
+
 &lt;blockquote&gt;
-&lt;p&gt;C programs [...] are most common, but you can use &lt;em&gt;make&lt;/em&gt; with any programming language whose compiler can be run with a shell command. In fact, &lt;em&gt;make&lt;/em&gt; is not limited to programs. You can use it to describe any task where some files must be updated automatically from others whenever the others change.&lt;/p&gt;
-&lt;p class=&#34;attribution&#34;&gt;&amp;mdash;&lt;a class=&#34;reference external&#34; href=&#34;https://linux.die.net/man/1/make&#34;&gt;make manpage&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;C programs [&amp;hellip;] are most common, but you can use &lt;em&gt;make&lt;/em&gt; with any programming language whose compiler can be run with a shell command. In fact, &lt;em&gt;make&lt;/em&gt; is not limited to programs. You can use it to describe any task where some files must be updated automatically from others whenever the others change.&lt;/p&gt;
+
+&lt;p&gt;— &lt;a href=&#34;https://linux.die.net/man/1/make&#34;&gt;make manpage&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Using a tool like &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt; can simplify the loop to something like the following:&lt;/p&gt;
-&lt;ol class=&#34;arabic simple&#34;&gt;
+
+&lt;p&gt;Using a tool like &lt;code&gt;make&lt;/code&gt; can simplify the loop to something like the following:&lt;/p&gt;
+
+&lt;ol&gt;
 &lt;li&gt;Make a change to some code&lt;/li&gt;
-&lt;li&gt;Run &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Review tool and test feedback from each tool that &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt; runs, and resolve issues&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;make&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Review tool and test feedback from each tool that &lt;code&gt;make&lt;/code&gt; runs, and resolve issues&lt;/li&gt;
 &lt;li&gt;Return to Step 1 and repeat&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;This significantly reduces the steps the programmer has to take every time they make a change as well as the number of commands they need to remember: all they have to do is run &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt;! But do we really need to remember to run a command? Is there some way that we can have &lt;tt class=&#34;docutils literal&#34;&gt;make&lt;/tt&gt; or something like it run whenever we make a change to the code?&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;enter-filesystem-events&#34;&gt;
-&lt;h2&gt;Enter: Filesystem Events&lt;/h2&gt;
-&lt;p&gt;Filesystem events are a great way to trigger other tasks. Other kinds of task runners such as &lt;a class=&#34;reference external&#34; href=&#34;https://gruntjs.com/&#34;&gt;grunt&lt;/a&gt; and &lt;a class=&#34;reference external&#34; href=&#34;https://gulpjs.com/&#34;&gt;gulp&lt;/a&gt; in NodeJS, as well as &lt;a class=&#34;reference external&#34; href=&#34;https://guardgem.org/&#34;&gt;guard&lt;/a&gt; in Ruby, let the programmer set up a process to &amp;quot;watch&amp;quot; individual files or entire directories for changes. When a file changes, these task runners pick up the change and perform whatever tasks the programmer has specified.&lt;/p&gt;
-&lt;p&gt;NodeJS core exposes this functionality to the JavaScript runtime through functions in the &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html&#34;&gt;fs module&lt;/a&gt;. These functions include:&lt;/p&gt;
-&lt;ul class=&#34;simple&#34;&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener&#34;&gt;fs.watch()&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener&#34;&gt;fs.watchFile()&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_fs_unwatchfile_filename_listener&#34;&gt;fs.unwatchFile()&lt;/a&gt;&lt;/li&gt;
+
+&lt;p&gt;This significantly reduces the steps the programmer has to take every time they make a change as well as the number of commands they need to remember: all they have to do is run &lt;code&gt;make&lt;/code&gt;! But do we really need to remember to run a command? Is there some way that we can have &lt;code&gt;make&lt;/code&gt; or something like it run whenever we make a change to the code?&lt;/p&gt;
+
+&lt;h1 id=&#34;enter-filesystem-events&#34;&gt;Enter: Filesystem Events&lt;/h1&gt;
+
+&lt;p&gt;Filesystem events are a great way to trigger other tasks. Other kinds of task runners such as &lt;a href=&#34;https://gruntjs.com/&#34;&gt;grunt&lt;/a&gt; and &lt;a href=&#34;https://gulpjs.com/&#34;&gt;gulp&lt;/a&gt; in NodeJS, as well as &lt;a href=&#34;https://guardgem.org/&#34;&gt;guard&lt;/a&gt; in Ruby, let the programmer set up a process to &amp;ldquo;watch&amp;rdquo; individual files or entire directories for changes. When a file changes, these task runners pick up the change and perform whatever tasks the programmer has specified.&lt;/p&gt;
+
+&lt;p&gt;NodeJS core exposes this functionality to the JavaScript runtime through functions in the &lt;a href=&#34;https://nodejs.org/api/fs.html&#34;&gt;fs module&lt;/a&gt;. These functions include:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener&#34;&gt;fs.watch()&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener&#34;&gt;fs.watchFile()&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodejs.org/api/fs.html#fs_fs_unwatchfile_filename_listener&#34;&gt;fs.unwatchFile()&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;These functions respond to changes in the filesystem and communicate data about the detected changed file back to their listener functions.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;a-simple-example&#34;&gt;
-&lt;h2&gt;A Simple Example&lt;/h2&gt;
-&lt;p&gt;The following is an example of how to use the &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; function in NodeJS. This is the recommended function to use because it supports single files as well as directories where &lt;tt class=&#34;docutils literal&#34;&gt;fs.watchFile()&lt;/tt&gt; only watches individual files, and it is &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener&#34;&gt;more efficient&lt;/a&gt; than both &lt;tt class=&#34;docutils literal&#34;&gt;fs.watchFile()&lt;/tt&gt; and &lt;tt class=&#34;docutils literal&#34;&gt;fs.unwatchFile()&lt;/tt&gt;.&lt;/p&gt;
-&lt;pre class=&#34;code js literal-block&#34;&gt;
-&lt;span class=&#34;literal string single&#34;&gt;&#39;use strict&#39;&lt;/span&gt; &lt;span class=&#34;comment single&#34;&gt;// enforce JavaScript strict mode
-&lt;/span&gt;
-&lt;span class=&#34;keyword reserved&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;name other&#34;&gt;fs&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;name other&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;literal string single&#34;&gt;&#39;fs&#39;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;comment single&#34;&gt;// import the core module
-&lt;/span&gt;
-&lt;span class=&#34;keyword reserved&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;name other&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;literal string single&#34;&gt;&#39;.&#39;&lt;/span&gt; &lt;span class=&#34;comment single&#34;&gt;// start watching in the current directory
-&lt;/span&gt;
-&lt;span class=&#34;name other&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;watch&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;eventType&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;name other&#34;&gt;filename&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;eventType&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;===&lt;/span&gt; &lt;span class=&#34;literal string single&#34;&gt;&#39;change&#39;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;name other&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;literal string backtick&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;literal string interpol&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;name other&#34;&gt;filename&lt;/span&gt;&lt;span class=&#34;literal string interpol&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;literal string backtick&#34;&gt; changed!`&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;punctuation&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;punctuation&#34;&gt;})&lt;/span&gt;
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;some-caveats&#34;&gt;
-&lt;h2&gt;Some Caveats&lt;/h2&gt;
-&lt;p&gt;The &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; function does &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_caveats&#34;&gt;come with some caveats&lt;/a&gt; due to the state of this kind of filesystem event handling on various platforms; specifically, the API is not 100% consistent across platforms and some options are not universally available due to the underlying implementations.&lt;/p&gt;
-&lt;p&gt;Also, because &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; is event-driven, there is no matching set of functions in the experimental &lt;tt class=&#34;docutils literal&#34;&gt;fs&lt;/tt&gt; Promise API &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/en/blog/release/v10.0.0/&#34;&gt;introduced in Node 10.0.0&lt;/a&gt; and there is no synchronous equivalent like there are for many other functions in the &lt;tt class=&#34;docutils literal&#34;&gt;fs&lt;/tt&gt; module because the task is inherently asynchronous.&lt;/p&gt;
+
+&lt;h1 id=&#34;a-simple-example&#34;&gt;A Simple Example&lt;/h1&gt;
+
+&lt;p&gt;The following is an example of how to use the &lt;code&gt;fs.watch()&lt;/code&gt; function in NodeJS. This is the recommended function to use because it supports single files as well as directories where &lt;code&gt;fs.watchFile()&lt;/code&gt; only watches individual files, and it is &lt;a href=&#34;https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener&#34;&gt;more efficient&lt;/a&gt; than both &lt;code&gt;fs.watchFile()&lt;/code&gt; and &lt;code&gt;fs.unwatchFile()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;&#39;use strict&#39; // enforce JavaScript strict mode
+
+const fs = require(&#39;fs&#39;); // import the core module
+
+const path = &#39;.&#39; // start watching in the current directory
+
+fs.watch(path, (eventType, filename) =&amp;gt; {
+    if (eventType === &#39;change&#39;) {
+        console.log(`${filename} changed!`)
+    }
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;some-caveats&#34;&gt;Some Caveats&lt;/h1&gt;
+
+&lt;p&gt;The &lt;code&gt;fs.watch()&lt;/code&gt; function does &lt;a href=&#34;https://nodejs.org/api/fs.html#fs_caveats&#34;&gt;come with some caveats&lt;/a&gt; due to the state of this kind of filesystem event handling on various platforms; specifically, the API is not 100% consistent across platforms and some options are not universally available due to the underlying implementations.&lt;/p&gt;
+
+&lt;p&gt;Also, because &lt;code&gt;fs.watch()&lt;/code&gt; is event-driven, there is no matching set of functions in the experimental &lt;code&gt;fs&lt;/code&gt; Promise API &lt;a href=&#34;https://nodejs.org/en/blog/release/v10.0.0/&#34;&gt;introduced in Node 10.0.0&lt;/a&gt; and there is no synchronous equivalent like there are for many other functions in the &lt;code&gt;fs&lt;/code&gt; module because the task is inherently asynchronous.&lt;/p&gt;
+
 &lt;p&gt;However, this is still really useful functionality when working with files and filesystems, and is of particular interest in our pursuit of efficient automation.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;one-last-twist&#34;&gt;
-&lt;h2&gt;One Last Twist&lt;/h2&gt;
-&lt;p&gt;After looking a bit more into how &lt;a class=&#34;reference external&#34; href=&#34;https://gruntjs.com/&#34;&gt;grunt&lt;/a&gt; and &lt;a class=&#34;reference external&#34; href=&#34;https://gulpjs.com/&#34;&gt;gulp&lt;/a&gt; actually implement their file-watching functionality, it turns out that neither one of these popular test runners uses any of the &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; functions directly and don&#39;t even use the same dependency to provide watching functionality!&lt;/p&gt;
-&lt;p&gt;Grunt&#39;s file-watching functionality is provided in a Grunt plugin called &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/package/grunt-contrib-watch&#34;&gt;grunt-contrib-watch&lt;/a&gt;, which uses the &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/package/gaze&#34;&gt;gaze&lt;/a&gt; package to interact with filesystem events.&lt;/p&gt;
-&lt;p&gt;Gulp, on the other hand, relies on &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/pakage/gulp-watch&#34;&gt;gulp-watch&lt;/a&gt; for watching files, which uses a package called &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/package/chokidar&#34;&gt;chokidar&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Chokidar goes &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/package/chokidar#why&#34;&gt;into some detail&lt;/a&gt; as to why &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; is insufficient, and gaze lists a &lt;a class=&#34;reference external&#34; href=&#34;https://www.npmjs.com/package/gaze#similar-projects&#34;&gt;number of alternative projects&lt;/a&gt;, so there are clearly some community opinions on the quality of the built-in functions.&lt;/p&gt;
-&lt;p&gt;Some notable functionality &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; lacks:&lt;/p&gt;
-&lt;ul class=&#34;simple&#34;&gt;
-&lt;li&gt;no wildcard support (e.g. cannot watch only for files that end with a particular extension, like &lt;tt class=&#34;docutils literal&#34;&gt;*.js&lt;/tt&gt;)&lt;/li&gt;
-&lt;li&gt;does not support recursive watching on platforms other than Windows or macOS (see &lt;a class=&#34;reference external&#34; href=&#34;https://nodejs.org/api/fs.html#fs_caveats&#34;&gt;the fs watch caveats&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;tt class=&#34;docutils literal&#34;&gt;eventType&lt;/tt&gt; is only one of &lt;tt class=&#34;docutils literal&#34;&gt;&#39;rename&#39;&lt;/tt&gt; or &lt;tt class=&#34;docutils literal&#34;&gt;&#39;change&#39;&lt;/tt&gt;, no support for other file events such as &lt;tt class=&#34;docutils literal&#34;&gt;&#39;removed&#39;&lt;/tt&gt;&lt;/li&gt;
+
+&lt;h1 id=&#34;one-last-twist&#34;&gt;One Last Twist&lt;/h1&gt;
+
+&lt;p&gt;After looking a bit more into how &lt;a href=&#34;https://gruntjs.com/&#34;&gt;grunt&lt;/a&gt; and &lt;a href=&#34;https://gulpjs.com/&#34;&gt;gulp&lt;/a&gt; actually implement their file-watching functionality, it turns out that neither one of these popular test runners uses any of the &lt;code&gt;fs.watch()&lt;/code&gt; functions directly and don&amp;rsquo;t even use the same dependency to provide watching functionality!&lt;/p&gt;
+
+&lt;p&gt;Grunt&amp;rsquo;s file-watching functionality is provided in a Grunt plugin called &lt;a href=&#34;https://www.npmjs.com/package/grunt-contrib-watch&#34;&gt;grunt-contrib-watch&lt;/a&gt;, which uses the &lt;a href=&#34;https://www.npmjs.com/package/gaze&#34;&gt;gaze&lt;/a&gt; package to interact with filesystem events.&lt;/p&gt;
+
+&lt;p&gt;Gulp, on the other hand, relies on &lt;a href=&#34;https://www.npmjs.com/pakage/gulp-watch&#34;&gt;gulp-watch&lt;/a&gt; for watching files, which uses a package called &lt;a href=&#34;https://www.npmjs.com/package/chokidar&#34;&gt;chokidar&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Chokidar goes &lt;a href=&#34;https://www.npmjs.com/package/chokidar#why&#34;&gt;into some detail&lt;/a&gt; as to why &lt;code&gt;fs.watch()&lt;/code&gt; is insufficient, and gaze lists a &lt;a href=&#34;https://www.npmjs.com/package/gaze#similar-projects&#34;&gt;number of alternative projects&lt;/a&gt;, so there are clearly some community opinions on the quality of the built-in functions.&lt;/p&gt;
+
+&lt;p&gt;Some notable functionality &lt;code&gt;fs.watch()&lt;/code&gt; lacks:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;no wildcard support (e.g. cannot watch only for files that end with a particular extension, like &lt;code&gt;*.js&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;does not support recursive watching on platforms other than Windows or macOS (see &lt;a href=&#34;https://nodejs.org/api/fs.html#fs_caveats&#34;&gt;the fs watch caveats&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;eventType&lt;/code&gt; is only one of &lt;code&gt;&#39;rename&#39;&lt;/code&gt; or &lt;code&gt;&#39;change&#39;&lt;/code&gt;, no support for other file events such as &lt;code&gt;&#39;removed&#39;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;As in everything, there are trade-offs when implementing functionality. For simple use cases, &lt;tt class=&#34;docutils literal&#34;&gt;fs.watch()&lt;/tt&gt; may be sufficient and will not require including additional project dependencies. However, if file watching is a core piece of functionality, it might be worth evaluating some of the other options available on npm to find one with the necessary functionality for the project at hand, while also keeping you from tearing your hair out tracking down odd edgecases.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
+
+&lt;p&gt;As in everything, there are trade-offs when implementing functionality. For simple use cases, &lt;code&gt;fs.watch()&lt;/code&gt; may be sufficient and will not require including additional project dependencies. However, if file watching is a core piece of functionality, it might be worth evaluating some of the other options available on npm to find one with the necessary functionality for the project at hand, while also keeping you from tearing your hair out tracking down odd edge cases.&lt;/p&gt;
+</description>
     </item>
     
   </channel>
