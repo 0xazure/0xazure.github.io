@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.79.0" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Hacktoberfest - A Month of Open Source &middot; stuart crust">
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
 
-    <link rel="stylesheet" href='https://stuartcrust.com/css/all.min.css'>
+    <link rel="stylesheet" href='/css/blog.min.css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="alternate" type="application/rss+xml" title="stuart crust" href='https://stuartcrust.com/index.xml' />
@@ -91,123 +91,89 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                
-                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
-                                
-                                    <a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a>
-                                
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-hacktoberfest" href='/categories/hacktoberfest'>hacktoberfest</a>
+
+
                         </p>
                     </header>
-                    
                     <div class="post-description">
-                        
-
-<img src="https://assets.digitalocean.com/ghost/2018/09/Hacktoberfest_2018_twitter_facebook1_2134x1068.png" alt="" class="pure-img" >
-
+                        <p><!-- raw HTML omitted --></p>
 <p>The past month has flown by so quickly. After a full month dedicated to contributing to the open source community, I want to reflect on my experiences with Hacktoberfest 2018 and write a bit about things I learned over the past month, what went well, what I would do differently next time, and a general reflection on the Hacktoberfest event itself.</p>
-
 <p>First, a reflection on my goals. For the month of Hacktoberfest I wanted to make contributions to a number of different projects, and I specifically wanted to <a href="/2018/10/hacktoberfest-week-one">contribute to at least two projects that use Rust</a>. How did I do?</p>
-
 <table>
 <thead>
 <tr>
 <th>Week</th>
 <th>Issues / Pull Requests</th>
-<th align="center">Uses Rust?</th>
+<th style="text-align:center">Uses Rust?</th>
 <th>Blog Post</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>1</td>
 <td><a href="https://github.com/lk-geimfari/awesomo/pull/125">https://github.com/lk-geimfari/awesomo/pull/125</a></td>
-<td align="center">✘</td>
+<td style="text-align:center">✘</td>
 <td><a href="/2018/10/hacktoberfest-week-one">Week 1</a></td>
 </tr>
-
 <tr>
 <td>2</td>
 <td><a href="https://github.com/dplesca/purehugo/pull/26">https://github.com/dplesca/purehugo/pull/26</a></td>
-<td align="center">✘</td>
+<td style="text-align:center">✘</td>
 <td><a href="/2018/10/hacktoberfest-week-two">Week 2</a></td>
 </tr>
-
 <tr>
 <td>3</td>
-<td><a href="https://github.com/rustwasm/book/issues/127">https://github.com/rustwasm/book/issues/127</a> <br/>  <a href="https://github.com/rustwasm/book/pull/128">https://github.com/rustwasm/book/pull/128</a> <br/>  <a href="https://github.com/diesel-rs/diesel/issues/1891">https://github.com/diesel-rs/diesel/issues/1891</a></td>
-<td align="center">✔</td>
+<td><a href="https://github.com/rustwasm/book/issues/127">https://github.com/rustwasm/book/issues/127</a> <!-- raw HTML omitted -->  <a href="https://github.com/rustwasm/book/pull/128">https://github.com/rustwasm/book/pull/128</a> <!-- raw HTML omitted -->  <a href="https://github.com/diesel-rs/diesel/issues/1891">https://github.com/diesel-rs/diesel/issues/1891</a></td>
+<td style="text-align:center">✔</td>
 <td><a href="/2018/10/hacktoberfest-week-three">Week 3</a></td>
 </tr>
-
 <tr>
 <td>4</td>
 <td><a href="https://github.com/dplesca/purehugo/pull/28">https://github.com/dplesca/purehugo/pull/28</a></td>
-<td align="center">✘</td>
+<td style="text-align:center">✘</td>
 <td><a href="/2018/10/hacktoberfest-week-four">Week 4</a></td>
 </tr>
-
 <tr>
 <td>5</td>
 <td><a href="https://github.com/rustwasm/book/pull/129">https://github.com/rustwasm/book/pull/129</a></td>
-<td align="center">✔</td>
+<td style="text-align:center">✔</td>
 <td><a href="/2018/10/hacktoberfest-week-five">Week 5</a></td>
 </tr>
-
 <tr>
 <td>Total</td>
 <td></td>
-<td align="center">2 ✔</td>
+<td style="text-align:center">2 ✔</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-
 <p>In the past month, I made 4 contributions (issues or pull requests) to 2 different projects that use Rust. Ironically, I did not have the opportunity to <em>use</em> Rust or write any code as part of those contributions as all of those contributions were in the form of documentation. However, I did still achieve the goal I had set for myself for Hacktoberfest!</p>
-
 <p>I also ran some quick stats on my blog posts for this past month, as shown below:</p>
-
-<pre><code class="language-text">wc -w content/posts/2018/hacktoberfest-week-*.rst
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">wc -w content/posts/2018/hacktoberfest-week-*.rst
      673 content/posts/2018/hacktoberfest-week-one.rst
      822 content/posts/2018/hacktoberfest-week-two.rst
     1579 content/posts/2018/hacktoberfest-week-three.rst
      514 content/posts/2018/hacktoberfest-week-four.rst
      425 content/posts/2018/hacktoberfest-week-five.rst
     4013 total
-</code></pre>
-
-<p>For the month of October, I wrote a total of <code>4013</code> words about my contributions to open source, writing a one-time maximum of <code>1579</code> words during Week 3 about <a href="/2018/10/hacktoberfest-week-three">documentation and different ways to contribute</a> to open source projects.</p>
-
+</code></pre></div><p>For the month of October, I wrote a total of <code>4013</code> words about my contributions to open source, writing a one-time maximum of <code>1579</code> words during Week 3 about <a href="/2018/10/hacktoberfest-week-three">documentation and different ways to contribute</a> to open source projects.</p>
 <h1 id="what-went-well">What Went Well</h1>
-
 <p>Overall, I think Hacktoberfest was a positive experience. I had some really great interactions with the open source community on GitHub, and all of the project maintainers were very encouraging and helpful. Special shout-out to <a href="https://github.com/sendilkumarn">Sendil Kumar N</a>, a member of the <a href="https://github.com/rustwasm">rust-wasm</a> team, for an <a href="https://github.com/rustwasm/book/pull/128#pullrequestreview-167612434">especially warm welcome</a> to the Rust and WebAssembly Book repository.</p>
-
 <p>I am also happy to share that all of my pull requests were merged within the month. Hacktoberfest does not require pull requests to be merged as part of participating, only that they are created, but it was very validating that I did not have to go back to the drawing board or make many changes to my contributions for them to be accepted by the project maintainers. Hacktoberfest is definitely geared more towards small fixes and improvements, and while it is less likely to happen during an even like this I have made other contributions in the past that got tied up in <a href="https://en.wiktionary.org/wiki/bikeshedding">bikeshedding</a> and nitpicking such that no progress was made for weeks or months at a time.</p>
-
 <h1 id="what-to-do-differently">What to do Differently</h1>
-
 <p>Now that Hacktoberfest is over, I definitely think it was a mistake to jump around from project to project. Every time I went to make a contribution to a new project I would have to ramp up again, learning how the project is organized, where I can find existing documentation, how to successfully contribute to the project, etc. I also didn&rsquo;t feel like I was immersing myself in a community the way I had hoped to while participating in Hacktoberfest this year. As I have written about before, I am <a href="/2018/09/a-return-to-open-source">not a stranger to open source</a>, so I definitely felt there was something missing this month, and I think the project-hopping contributed to this feeling.</p>
-
 <p>The next time I participate in Hacktoberfest, I will be trying to focus a lot more on contributing code rather than documentation or other forms of contribution. I <a href="/2018/10/hacktoberfest-week-three">wrote at length</a> about different forms open source contributions can take during week three of Hacktoberfest and while I do not want to deemphasize the importance of things like documentation I am a programmer at heart, I genuinely enjoy writing code, and I&rsquo;d like to do more of that.</p>
-
 <h1 id="reflecting-on-hacktoberfest">Reflecting on Hacktoberfest</h1>
-
 <p>Hacktoberfest is a great outreach event to get more people participating in open source. There is definitely more awareness in the community the past few years about the new contributor experience, and GitHub tags like &ldquo;<a href="https://github.com/search?q=label%3A%22help+wanted%22">help wanted</a>&rdquo; and &ldquo;<a href="https://github.com/search?q=label%3A%22hacktoberfest%22">hacktoberfest</a>&rdquo; make it a lot easier for people to find projects and get involved. One of the downsides to this is sifting through all of the results to find a project of interest or an issue that details a fix or feature a new contributor might actually be able to tackle.</p>
-
 <p>Which brings us to: time constraints. Hacktoberfest is a month-long event, which seems like an excessive amount of time on October 1st, but once the event moves into its last week everyone realizes how little time a month turns out to be. The Hacktoberfest <a href="https://hacktoberfest.digitalocean.com/#stats--global">global stats</a> bear this out: there was a pretty healthy uptick in contributions during the last few days of the event as more contributors worked towards completing their five pull requests.</p>
-
 <p>These time constraints can also make people feel like they need to contribute as much as possible as quickly as possible, leading to contributions that focus on quantity over quality. Or interactions like the one I had on one of the first projects I was going to contribute to for Hacktoberfest: I indicated my interest in attempting to fix an issue, and someone else - who did not participate in the discussion on the issue or check if an issue had already been claimed - submitted a pull request ahead of me. <em>Twice</em>. Thankfully I had not started on an implementation at that point, so I simply moved on to another project and a different contribution.</p>
-
 <p>Part of the solution to this problem definitely falls to project maintainers. Creating separate issues for each contribution and assigning those issues to the claimant can resolve the ambiguity of who has priority to submit a pull request for a given issue. Also, not merging pull requests from anyone other than the claimant would go a long way to encouraging potential contributors to get involved and make sure they are taking unclaimed issues, rather than dropping off a pull request and moving on to the next contribution.</p>
-
 <p>In the projects I <em>did</em> contribute to, I had a really pleasant experience. The Rust projects in particular are very welcoming; the Rust community is well known for being friendly and inclusive and it was a pleasure to contribute to making these projects even better.</p>
-
 <p>All in all, I learned a lot this Hacktoberfest, particularly about myself, the kinds of projects I&rsquo;m interested in, and how I personally like to contribute to open source. I&rsquo;m looking forward to putting those lessons into practice during next year&rsquo;s Hacktoberfest, as well as in the rest of my open source contributions going forward.</p>
 
                     </div>
-                    
                 </section>
             </div>
             <div class="footer">

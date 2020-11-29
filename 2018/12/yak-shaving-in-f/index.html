@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.79.0" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Yak Shaving in F♭ &middot; stuart crust">
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
 
-    <link rel="stylesheet" href='https://stuartcrust.com/css/all.min.css'>
+    <link rel="stylesheet" href='/css/blog.min.css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="alternate" type="application/rss+xml" title="stuart crust" href='https://stuartcrust.com/index.xml' />
@@ -91,28 +91,17 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                
-                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
-                                
-                                    <a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
-                                
-                                    <a class="post-category post-category-clippy" href='https://stuartcrust.com/categories/clippy'>clippy</a>
-                                
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-rust" href='/categories/rust'>rust</a><a class="post-category post-category-clippy" href='/categories/clippy'>clippy</a>
+
+
                         </p>
                     </header>
-                    
                     <div class="post-description">
-                        
-
-<p>Following on from my <a href="/2018/11/i-see-you-are-writing-some-rust">introduction to <code>clippy</code> lints</a>, this week I am beginning my journey of actually implementing a <code>clippy</code> lint.</p>
-
+                        <p>Following on from my <a href="/2018/11/i-see-you-are-writing-some-rust">introduction to <code>clippy</code> lints</a>, this week I am beginning my journey of actually implementing a <code>clippy</code> lint.</p>
 <p>As a refresher, I am implementing <a href="https://github.com/rust-lang/rust-clippy/issues/1673"><code>rust-lang/rust-clippy#1673</code></a>:</p>
-
 <blockquote>
 <p>To summarize, if the type has a <code>get_foo</code> method we should suggest naming it <code>foo</code> instead to follow the API Guidelines for <a href="https://rust-lang-nursery.github.io/api-guidelines/naming.html#c-getter">Rust getter name conventions</a> <em>except</em> for cases of:</p>
-
 <ul>
 <li><code>get</code></li>
 <li><code>get_mut</code></li>
@@ -120,44 +109,34 @@
 <li><code>get_unchecked_mut</code></li>
 <li><code>get_ref</code></li>
 </ul>
-
 <p>This should be enough to get me started on a style lint for this convention, I should have some time over the next couple days to start digging into this.</p>
 </blockquote>
-
-<h2 id="clippy-s-author-lint"><code>clippy</code>&rsquo;s Author Lint</h2>
-
+<h2 id="clippys-author-lint"><code>clippy</code>&rsquo;s Author Lint</h2>
 <p>In typical TDD fashion, I want to start with the test case, the code I want to lint against, so I can test my implementation and drive design.
 I&rsquo;ve started off with the simple case of detecting the invalid style rather than worrying about whitelisting the exceptions identified.</p>
-
-<pre><code class="language-rust">pub struct MyStruct {
-    id: u32
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyStruct</span> {
+    id: <span style="color:#66d9ef">u32</span>
 }
 
-impl MyStruct {
-    pub fn get_id(&amp;self) -&gt; u32 {
+<span style="color:#66d9ef">impl</span> MyStruct {
+    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">get_id</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">u32</span> {
         self.id
     }
 }
 
-fn main() {
-   let s = MyStruct { id: 42 };
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+   <span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> MyStruct { id: <span style="color:#ae81ff">42</span> };
 
-   #[clippy::author]
-   let id = s.get_id();
+   <span style="color:#75715e">#[clippy::author]</span>
+   <span style="color:#66d9ef">let</span> id <span style="color:#f92672">=</span> s.get_id();
 }
-</code></pre>
-
-<p>I&rsquo;ve also added the <code>#[clippy::author]</code> annotation as <a href="https://github.com/rust-lang/rust-clippy/blob/master/CONTRIBUTING.md#author-lint">suggested by <code>clippy</code>&rsquo;s contributing documentation</a> to generate a starting point for the lint.</p>
-
+</code></pre></div><p>I&rsquo;ve also added the <code>#[clippy::author]</code> annotation as <a href="https://github.com/rust-lang/rust-clippy/blob/master/CONTRIBUTING.md#author-lint">suggested by <code>clippy</code>&rsquo;s contributing documentation</a> to generate a starting point for the lint.</p>
 <p>Next, I have to run the test to produce a <code>.stdout</code> file with the code generated by the <code>#[clippy::author]</code> lint. The instructions say:</p>
-
 <blockquote>
 <p>If the command was executed successfully, you can copy the code over to where you are implementing your lint.</p>
 </blockquote>
-
 <p>Let&rsquo;s try it out:</p>
-
-<pre><code class="language-text">$ TESTNAME=ui/getter_prefix cargo test --test compile-test
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ TESTNAME=ui/getter_prefix cargo test --test compile-test
     Finished dev [unoptimized + debuginfo] target(s) in 0.15s
      Running target/debug/deps/compile_test-f89d0316ceade355
 
@@ -182,7 +161,7 @@ if_chain! {
     if let ExprKind::MethodCall(ref method_name, ref generics, ref args) = init.node;
     // unimplemented: `ExprKind::MethodCall` is not further destructured at the moment
     if let PatKind::Binding(BindingAnnotation::Unannotated, _, name, None) = local.pat.node;
-    if name.node.as_str() == &quot;id&quot;;
+    if name.node.as_str() == &#34;id&#34;;
     then {
         // report your lint here
     }
@@ -201,7 +180,7 @@ diff of stdout:
 +    if let ExprKind::MethodCall(ref method_name, ref generics, ref args) = init.node;
 +    // unimplemented: `ExprKind::MethodCall` is not further destructured at the moment
 +    if let PatKind::Binding(BindingAnnotation::Unannotated, _, name, None) = local.pat.node;
-+    if name.node.as_str() == &quot;id&quot;;
++    if name.node.as_str() == &#34;id&#34;;
 +    then {
 +        // report your lint here
 +    }
@@ -211,11 +190,11 @@ diff of stdout:
 The actual stdout differed from the expected stdout.
 Actual stdout saved to /Users/scrust/devel/rust-clippy/target/debug/test_build_base/getter_prefix.stdout
 To update references, run this command from build directory:
-tests/ui/update-references.sh '/Users/scrust/devel/rust-clippy/target/debug/test_build_base' 'getter_prefix.rs'
+tests/ui/update-references.sh &#39;/Users/scrust/devel/rust-clippy/target/debug/test_build_base&#39; &#39;getter_prefix.rs&#39;
 
 error: 1 errors occurred comparing output.
 status: exit code: 0
-command: &quot;target/debug/clippy-driver&quot; &quot;tests/ui/getter_prefix.rs&quot; &quot;-L&quot; &quot;/Users/scrust/devel/rust-clippy/target/debug/test_build_base&quot; &quot;--target=x86_64-apple-darwin&quot; &quot;-C&quot; &quot;prefer-dynamic&quot; &quot;-o&quot; &quot;/Users/scrust/devel/rust-clippy/target/debug/test_build_base/getter_prefix.stage-id&quot; &quot;-L&quot; &quot;target/debug&quot; &quot;-L&quot; &quot;target/debug/deps&quot; &quot;-Dwarnings&quot; &quot;-L&quot; &quot;/Users/scrust/devel/rust-clippy/target/debug/test_build_base/getter_prefix.stage-id.aux&quot; &quot;-A&quot; &quot;unused&quot;
+command: &#34;target/debug/clippy-driver&#34; &#34;tests/ui/getter_prefix.rs&#34; &#34;-L&#34; &#34;/Users/scrust/devel/rust-clippy/target/debug/test_build_base&#34; &#34;--target=x86_64-apple-darwin&#34; &#34;-C&#34; &#34;prefer-dynamic&#34; &#34;-o&#34; &#34;/Users/scrust/devel/rust-clippy/target/debug/test_build_base/getter_prefix.stage-id&#34; &#34;-L&#34; &#34;target/debug&#34; &#34;-L&#34; &#34;target/debug/deps&#34; &#34;-Dwarnings&#34; &#34;-L&#34; &#34;/Users/scrust/devel/rust-clippy/target/debug/test_build_base/getter_prefix.stage-id.aux&#34; &#34;-A&#34; &#34;unused&#34;
 stdout:
 ------------------------------------------
 if_chain! {
@@ -225,7 +204,7 @@ if_chain! {
     if let ExprKind::MethodCall(ref method_name, ref generics, ref args) = init.node;
     // unimplemented: `ExprKind::MethodCall` is not further destructured at the moment
     if let PatKind::Binding(BindingAnnotation::Unannotated, _, name, None) = local.pat.node;
-    if name.node.as_str() == &quot;id&quot;;
+    if name.node.as_str() == &#34;id&#34;;
     then {
         // report your lint here
     }
@@ -237,7 +216,7 @@ stderr:
 
 ------------------------------------------
 
-thread '[ui] ui/getter_prefix.rs' panicked at 'explicit panic', /Users/scrust/.cargo/registry/src/github.com-1ecc6299db9ec823/compiletest_rs-0.3.17/src/runtest.rs:2553:9
+thread &#39;[ui] ui/getter_prefix.rs&#39; panicked at &#39;explicit panic&#39;, /Users/scrust/.cargo/registry/src/github.com-1ecc6299db9ec823/compiletest_rs-0.3.17/src/runtest.rs:2553:9
 note: Run with `RUST_BACKTRACE=1` for a backtrace.
 
 
@@ -251,7 +230,7 @@ test compile_test ... FAILED
 failures:
 
 ---- compile_test stdout ----
-thread 'compile_test' panicked at 'Some tests failed', /Users/scrust/.cargo/registry/src/github.com-1ecc6299db9ec823/compiletest_rs-0.3.17/src/lib.rs:89:22
+thread &#39;compile_test&#39; panicked at &#39;Some tests failed&#39;, /Users/scrust/.cargo/registry/src/github.com-1ecc6299db9ec823/compiletest_rs-0.3.17/src/lib.rs:89:22
 
 
 failures:
@@ -259,34 +238,21 @@ failures:
 
 test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out
 
-error: test failed, to rerun pass '--test compile-test'
-</code></pre>
-
-<p>Wow that&rsquo;s a lot out output.
+error: test failed, to rerun pass &#39;--test compile-test&#39;
+</code></pre></div><p>Wow that&rsquo;s a lot out output.
 More importantly, I don&rsquo;t actually know if it worked.
 I see</p>
-
-<pre><code class="language-text">test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 29 filtered out
-</code></pre>
-
-<p>but then I see</p>
-
-<pre><code class="language-text">The actual stdout differed from the expected stdout.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 29 filtered out
+</code></pre></div><p>but then I see</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">The actual stdout differed from the expected stdout.
 Actual stdout saved to /Users/scrust/devel/rust-clippy/target/debug/test_build_base/getter_prefix.stdout
-</code></pre>
-
-<p>and</p>
-
-<pre><code class="language-text">test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 225 filtered out
+</code></pre></div><p>and</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 225 filtered out
 
 test compile_test ... FAILED
-</code></pre>
-
-<p>I also don&rsquo;t see any generated <code>.stdout</code> file, so I&rsquo;m going to assume there&rsquo;s something wrong with my test case.</p>
-
+</code></pre></div><p>I also don&rsquo;t see any generated <code>.stdout</code> file, so I&rsquo;m going to assume there&rsquo;s something wrong with my test case.</p>
 <p>If I remove the author lint tag, I get a different result:</p>
-
-<pre><code class="language-text">$ TESTNAME=ui/getter_prefix cargo test --test compile-test
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ TESTNAME=ui/getter_prefix cargo test --test compile-test
     Finished dev [unoptimized + debuginfo] target(s) in 0.16s
      Running target/debug/deps/compile_test-f89d0316ceade355
 
@@ -330,57 +296,43 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out
 test compile_test ... ok
 
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
-</code></pre>
-
-<p>This all seems to pass, but I still don&rsquo;t see a generated <code>.stdout</code> file, and I&rsquo;ve also lost any output the <code>#[clippy:author]</code> annotation would have given me.</p>
-
+</code></pre></div><p>This all seems to pass, but I still don&rsquo;t see a generated <code>.stdout</code> file, and I&rsquo;ve also lost any output the <code>#[clippy:author]</code> annotation would have given me.</p>
 <p>I noticed a line from the earlier, possibly failed, test run:</p>
-
 <blockquote>
 <p>To update references, run this command from build directory:
 tests/ui/update-references.sh &lsquo;/Users/scrust/devel/rust-clippy/target/debug/test_build_base&rsquo; &lsquo;getter_prefix.rs&rsquo;</p>
 </blockquote>
-
 <p>What does this do?
 What&rsquo;s a &ldquo;reference&rdquo;?
 <code>clippy</code>&rsquo;s documentation doesn&rsquo;t seem to mention <code>tests/ui/update-references.sh</code> at all, though there is a mention of <code>tests/ui/update-all-references.sh</code> which seems to update all of the existing <code>.stderr</code> files that drive the UI tests.</p>
-
 <p>It turns out that running <code>tests/ui/update-references.sh</code> is necessary to actually write the <code>.stdout</code> file.
 I wasn&rsquo;t expecting this extra step because the way the instructions are phrased I though running the test would generate the <code>.stdout</code> file automatically.
 For the test I wrote, <code>#[clippy::author]</code> generated a <code>.stdout</code> file with the following code:</p>
-
-<pre><code class="language-text">if_chain! {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">if_chain! {
     if let StmtKind::Decl(ref decl, _) = stmt.node
     if let DeclKind::Local(ref local) = decl.node;
     if let Some(ref init) = local.init
     if let ExprKind::MethodCall(ref method_name, ref generics, ref args) = init.node;
     // unimplemented: `ExprKind::MethodCall` is not further destructured at the moment
     if let PatKind::Binding(BindingAnnotation::Unannotated, _, name, None) = local.pat.node;
-    if name.node.as_str() == &quot;id&quot;;
+    if name.node.as_str() == &#34;id&#34;;
     then {
         // report your lint here
     }
 }
-</code></pre>
-
-<p>I&rsquo;m not at all familiar with the <code>if_chain!</code> macro or any of these datatypes, so I definitely have some reading to do so I can understand what this snippet actually does.
+</code></pre></div><p>I&rsquo;m not at all familiar with the <code>if_chain!</code> macro or any of these datatypes, so I definitely have some reading to do so I can understand what this snippet actually does.
 I do see <code>if name.node.as_str() == &quot;id&quot;;</code> which seems to match the <code>id</code> field on <code>MyStruct</code> which is about the only piece I understand without delving deeper.</p>
-
 <p>Out of curiosity after reading a number of other lint tests, I decided to update main and added an assert statement:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+   <span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> MyStruct { id: <span style="color:#ae81ff">42</span> };
 
-<pre><code class="language-rust">fn main() {
-   let s = MyStruct { id: 42 };
+    <span style="color:#75715e">#[clippy::author]</span>
+    <span style="color:#66d9ef">let</span> id <span style="color:#f92672">=</span> s.get_id();
 
-    #[clippy::author]
-    let id = s.get_id();
-
-    assert_eq!(id, 42);
+    assert_eq<span style="color:#f92672">!</span>(id, <span style="color:#ae81ff">42</span>);
 }
-</code></pre>
-
-<p>and got yet another different result:</p>
-
-<pre><code class="language-text">$ TESTNAME=ui/getter_prefix cargo test --test compile-test
+</code></pre></div><p>and got yet another different result:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ TESTNAME=ui/getter_prefix cargo test --test compile-test
     Finished dev [unoptimized + debuginfo] target(s) in 0.16s
      Running target/debug/deps/compile_test-f89d0316ceade355
 
@@ -424,14 +376,11 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out
 test compile_test ... ok
 
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
-</code></pre>
-
-<p>I&rsquo;m not sure the <code>#[clippy::author]</code> annotation is going to help me too much in implementing this lint.
+</code></pre></div><p>I&rsquo;m not sure the <code>#[clippy::author]</code> annotation is going to help me too much in implementing this lint.
 Right now I don&rsquo;t know enough about <code>clippy</code> or the datatypes it uses to make heads or tails of the generated code, and the results of my test are inconsistent depending on various combinations of <code>assert_eq!</code> and the author annotation.
 This definitely calls for more research, so until next week it looks like I&rsquo;ll be getting to grips with some of <code>rustc</code>&rsquo;s compiler internals.</p>
 
                     </div>
-                    
                 </section>
             </div>
             <div class="footer">

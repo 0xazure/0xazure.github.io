@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diesel &middot; stuart crust</title>
+    <title>diesel &middot; stuart crust</title>
 
     <meta name="description" content="a constant work in progress">
 
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.79.0" />
     <meta name="twitter:card" content="summary">
     
-    <meta name="twitter:title" content="Diesel &middot; stuart crust">
+    <meta name="twitter:title" content="diesel &middot; stuart crust">
     <meta name="twitter:description" content="a constant work in progress">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Diesel &middot; stuart crust">
+    <meta property="og:title" content="diesel &middot; stuart crust">
     <meta property="og:description" content="a constant work in progress">
 
     
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
 
-    <link rel="stylesheet" href='https://stuartcrust.com/css/all.min.css'>
+    <link rel="stylesheet" href='/css/blog.min.css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="alternate" type="application/rss+xml" title="stuart crust" href='https://stuartcrust.com/index.xml' />
@@ -92,71 +92,37 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                
-                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
-                                
-                                    <a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a>
-                                
-                                    <a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
-                                
-                                    <a class="post-category post-category-rust-wasm" href='https://stuartcrust.com/categories/rust-wasm'>rust-wasm</a>
-                                
-                                    <a class="post-category post-category-rocket" href='https://stuartcrust.com/categories/rocket'>rocket</a>
-                                
-                                    <a class="post-category post-category-diesel" href='https://stuartcrust.com/categories/diesel'>diesel</a>
-                                
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-hacktoberfest" href='/categories/hacktoberfest'>hacktoberfest</a><a class="post-category post-category-rust" href='/categories/rust'>rust</a><a class="post-category post-category-rust-wasm" href='/categories/rust-wasm'>rust-wasm</a><a class="post-category post-category-rocket" href='/categories/rocket'>rocket</a><a class="post-category post-category-diesel" href='/categories/diesel'>diesel</a>
+
+
                         </p>
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>As of last week we are just about half way through Hacktoberfest. Time is just flying by, and I can&rsquo;t believe how quickly it&rsquo;s passing. In my <a href="/2018/10/hacktoberfest-week-two/">previous Hacktoberfest post</a> I wrote about my slightly self-interested contribution to <a href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the theme I use for this blog, and how I used some of Hugo&rsquo;s built-in functions to normalize URLs that used the <code>.Site.BaseURL</code> variable.</p>
-
+                        <p>As of last week we are just about half way through Hacktoberfest. Time is just flying by, and I can&rsquo;t believe how quickly it&rsquo;s passing. In my <a href="/2018/10/hacktoberfest-week-two/">previous Hacktoberfest post</a> I wrote about my slightly self-interested contribution to <a href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the theme I use for this blog, and how I used some of Hugo&rsquo;s built-in functions to normalize URLs that used the <code>.Site.BaseURL</code> variable.</p>
 <p>My contribution this week for Hacktoberfest is minor, but it started me on a path to encounter a number of issues with a common theme that should leave me with plenty of work to do over the next few weeks and possibly past the end of the month.</p>
-
 <h1 id="theme-week-documentation">Theme Week: Documentation</h1>
-
 <p>There has been a trend over the last number of years for contributors to open source to diversify how they contribute to open source. Code is not the only kind of contribution maintainers hope to receive, and they are happy to receive contributions in the form of documentation, code examples, sample projects, and feedback from first-time users, among others.</p>
-
 <p>For Hacktoberfest week three, I focused my efforts on project documentation, or a lack thereof, specifically from the perspective of a new user. So far during Hacktoberfest I haven&rsquo;t made more than one contribution to the same project; instead I&rsquo;ve jumped around quite a bit to different projects that use many different languages and project structures. This project hopping has given me some perspective on the onboarding and getting started instructions of a number of projects, which are critical for encouraging adoption and helping new users get up to speed on how to use or contribute to a project, application, or service. Documentation can also be tricky to get right the first, second, or even fifth time because it is hard to write a document that is useful for every audience, especially if the topic is technical in nature and the author(s) can&rsquo;t make many assumptions about the audience&rsquo;s technical background or ability. Many projects deal with this by dividing the documentation in two: one set of high-level documentation on getting the project up and running aimed at users, and another set of documentation that augments and extends this high-level documentation aimed at contributors and developers that provides much more technical detail.</p>
-
 <p>This past week also reiterates the importance of contributing to projects in ways other than implementing new features, writing test cases, or fixing bugs in code. There are so many ways to contribute to open source projects, and one of the best ways new contributors can help a project is to verify the project&rsquo;s onboarding flow by following basic steps like the project setup information and getting their development environment up and running. These are tasks that established contributors and maintainers do not have to do very often and documentation can get out of date; new contributors are great at spotting problem areas in guides, tutorials, and example code that can improve the onboarding experience and identify areas where further explanation may be necessary that established contributors may not be able to see.</p>
-
 <h1 id="project-one-rust-wasm">Project One: <code>rust-wasm</code></h1>
-
 <p>I have been excited about <a href="https://webassembly.org/">WebAssembly</a> since I first heard about the work being done to support it in multiple browser engines. WebAssembly is a binary instruction format predominantly designed for the web (though its success on the web will surely spur adoption in other areas just as NodeJS forced us to rethink possible applications for JavaScript) that can be targeted by many other languages like C++, Rust, Go, and Java, among others. <code>rust-wasm</code> is the Rust initiative to provide compilation for the wasm target as well as support interoperation with existing JavaScript code both shipped in browsers and provided as libraries through tools like <code>npm</code>.</p>
-
 <p>I wanted to get up and running with WebAssembly as a compilation target for Rust, so I decided to read some of the core documentation provided by the <code>rust-wasm</code> team: the <a href="https://rustwasm.github.io/book/">Rust and WebAssembly Book</a>. After taking a brief detour to set up a <a href="https://github.com/0xazure/homebrew-tap/blob/master/Formula/wasm-pack.rb">personal Homebrew tap</a> for the <code>wasm-pack</code> tool (which I hope, once the prerequisite Rust version lands on the stable channel, I will be able to contribute back to <code>homebrew/hombrew-core</code> and <code>rust-wasm</code>), I was able to set up all of the necessary project dependencies to start working through <a href="https://rustwasm.github.io/book/game-of-life/introduction.html">the tutorial</a>.</p>
-
 <h2 id="hello-world">Hello, World!</h2>
-
 <p>The Rust and WebAssembly Book bases the tutorial off a project template to get new users up and running more quickly. It spends a portion of <a href="https://rustwasm.github.io/book/game-of-life/hello-world.html">the introductory section</a> talking about each file in the template and its purpose in the larger project. When I got to the section describing <code>wasm-game-of-life/src/utils.rs</code>, I was given this explanation:</p>
-
 <blockquote>
 <p>The <code>src/utils.rs</code> module provides a couple included batteries that we will use later in the tutorial. We can ignore it for now.</p>
-
 <p>— Rust and WebAssembly, <em>5.2 - Hello, World!</em></p>
 </blockquote>
-
 <p>After the reasonably detailed explanations of other files in the project, this section stood out to me as one that could be improved. This section also makes reference to a philosophy of &ldquo;batteries included&rdquo;, which I had only ever been exposed to before <a href="https://docs.python.org/2/tutorial/stdlib.html#batteries-included">in Python jargon</a> and that may not be familiar to everyone who has not had a similar exposure, or for whom English is not their primary language and the idiom is lost in translation.</p>
-
 <p>Being a fresh set of eyes on the Rust and WebAssembly Book, I filed <a href="https://github.com/rustwasm/book/issues/127">rustwasm/book#127</a> to discuss some suggestions for how this section could be improved without the need for jargon-heavy idioms and to provide more details about the particular module in question. At the time of publishing I have not heard back from anyone on the <code>rust-wasm</code> team, but I am hopeful that I will be able to submit a pull request before the end of the month to improve this part of the tutorial.</p>
-
 <h2 id="typos-and-transcription-errors">Typos and Transcription Errors</h2>
-
 <p>Reading through the rest of the page, I ran across the simple error of a duplicated word in the explanation of <code>wasm-game-of-life/www/index.js</code>. I submitted my correction as <a href="https://github.com/rustwasm/book/pull/128">rustwasm/book#128</a> and it was accepted the same day. I even received a <a href="https://github.com/rustwasm/book/pull/128#pullrequestreview-167612434">congratulatory message</a> from one of the maintainers on my first contribution to the project which, as my first interaction with any of the project maintainers, is a nice personal touch that definitely makes me want to to continue to contribute to <code>rust-wasm</code>.</p>
-
 <h1 id="project-two-diesel">Project Two: Diesel</h1>
-
 <p>I have been playing around with reimplementing a currently active Postgresql-backed project using Rust, and discovered <a href="http://diesel.rs/">Diesel</a> as one of the ORM tools at the forefront of Rust development stacks. As with <code>rust-wasm</code>, I have not used Diesel in any of my projects, so I turned to the <a href="http://diesel.rs/guides/getting-started/">getting started guide</a> Diesel provides. It wasn&rsquo;t long after I got the <code>diesel-cli</code> tool installed that I ran into a discrepancy between the guide and the behaviour of the CLI tool, so I filed <a href="https://github.com/diesel-rs/diesel/issues/1891">diesel-rs/diesel#1891</a> to detail my expectations along with the actual output the tool was producing, as well as some suggestions for improving the clarity of documentation in a few disparate but related areas of the codebase and guide.</p>
-
 <p>I am of course very grateful for the guide because it is much more approachable - with many code samples and examples - than reading highly technical API documentation or <code>man</code> pages. However, it can be intimidating for a new user if they are following along with the steps in the guide and something unexpected happens; often the new user doesn&rsquo;t know if they did something in the wrong order or missed an important step, or if the guide is simply out of date and they are not sure how to get around the outdated part to continue their progress. It is also common for code and documentation to get out of sync, resulting in confused and annoyed users. Unfortunately there isn&rsquo;t a great technical solution to this issue and authors need to always take care to not only update code but also documentation, though Rust&rsquo;s <a href="https://doc.rust-lang.org/rustdoc/documentation-tests.html">documentation tests</a> are one example of a tool that can help by ensuring that example code included in comments is up to date and working.</p>
-
 <h1 id="project-next">Project: Next</h1>
-
 <p>As I am still a new user of <code>rust-wasm</code> and <a href="http://diesel.rs/">Diesel</a>, I am sure there are still many things I can contribute to these projects, both in terms of improving the onboarding experience for new users as well as other non-code contributions. I also have my eye on a few areas of the guide for <a href="https://rocket.rs/guide">Rocket</a>, a web framework written in Rust that was the reason I started using Diesel. I&rsquo;m hoping to hear back soon about the two issues I filed to improve documentation, and I&rsquo;d like to take the time this month to shepherd them through to getting pull requests opened and merged. As for this week, I&rsquo;ll be picking out my next few contributions for Hacktoberfest and might also start thinking about picking a project to stick with for a while now that I&rsquo;ve worked on a number of projects so far this term.</p>
 
                     </div>

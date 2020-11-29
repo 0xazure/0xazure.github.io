@@ -7,7 +7,7 @@
 
     <meta name="description" content="a constant work in progress">
 
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.79.0" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="stuart crust &middot; stuart crust">
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
 
-    <link rel="stylesheet" href='https://stuartcrust.com/css/all.min.css'>
+    <link rel="stylesheet" href='/css/blog.min.css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="alternate" type="application/rss+xml" title="stuart crust" href='https://stuartcrust.com/index.xml' />
@@ -92,69 +92,41 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a><a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a><a class="post-category post-category-go" href='https://stuartcrust.com/categories/go'>go</a><a class="post-category post-category-hugo" href='https://stuartcrust.com/categories/hugo'>hugo</a>
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-hacktoberfest" href='/categories/hacktoberfest'>hacktoberfest</a><a class="post-category post-category-go" href='/categories/go'>go</a><a class="post-category post-category-hugo" href='/categories/hugo'>hugo</a>
+
+
                         </p>
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>Hacktoberfest week two! <a href="/2018/10/hacktoberfest-week-one/">Week one</a> was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and <a href="/categories/rust/">my area of interest</a>.</p>
-
+                        <p>Hacktoberfest week two! <a href="/2018/10/hacktoberfest-week-one/">Week one</a> was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and <a href="/categories/rust/">my area of interest</a>.</p>
 <p>My contribution for this week had a bit more self-interest involved; I contributed a change to <a href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the <a href="https://gohugo.io">Hugo</a> blog theme I use for this blog, to <a href="https://github.com/dplesca/purehugo/pull/26">normalize URLs</a> that use Hugo&rsquo;s <code>.Site.BaseURL</code> variable.</p>
-
 <h1 id="the-problem">The Problem</h1>
-
 <p>Using the <a href="https://github.com/dplesca/purehugo">dplesca/purehugo</a> theme, I was noticing that many links to other parts of the site - that is, links that were not external links to e.g. GitHub or Twitter - contained multiple slashes after the site root. Modern web browsers are really good at dealing with partially-malformed URLs so there was no functional problem with any of the links as the browser&rsquo;s URL parser took over and cleaned them up into a value it could resolve, but it would still be better if the URLs were correctly formatted when Hugo generates the static site content.</p>
-
 <p>The malformed URLs looked something like this:</p>
-
-<pre><code class="language-html">&lt;a class=&quot;pure-button&quot; href=&quot;http://localhost:1313//index.xml&quot;&gt;[...]&lt;/a&gt;
-&lt;a class=&quot;post-category post-category-open source&quot; href=&quot;http://localhost:1313//categories/open-source&quot;&gt;open source&lt;/a&gt;
-</code></pre>
-
-<p>Delving into the template code revealed how <code>dplesca/purehugo</code> was generating the URLs:</p>
-
-<pre><code class="language-sourceCode">&lt;a class=&quot;pure-button&quot; href=&quot;{{ .Site.BaseURL }}/index.xml&quot;&gt;[...]&lt;/a&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pure-button&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://localhost:1313//index.xml&#34;</span>&gt;[...]&lt;/<span style="color:#f92672">a</span>&gt;
+&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-category post-category-open source&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://localhost:1313//categories/open-source&#34;</span>&gt;open source&lt;/<span style="color:#f92672">a</span>&gt;
+</code></pre></div><p>Delving into the template code revealed how <code>dplesca/purehugo</code> was generating the URLs:</p>
+<pre><code class="language-sourceCode" data-lang="sourceCode">&lt;a class=&quot;pure-button&quot; href=&quot;{{ .Site.BaseURL }}/index.xml&quot;&gt;[...]&lt;/a&gt;
 &lt;a class=&quot;post-category post-category-{{ . }}&quot; href=&quot;{{ $baseUrl }}/categories/{{ . | urlize }}&quot;&gt;{{ . }}&lt;/a&gt;
-</code></pre>
-
-<p>The template string used <code>.Site.BaseURL</code> and appended a slash before the next URL fragment. Since this results in a double slash in the generated output, I presume but have not confirmed that <code>.Site.BaseURL</code> always ends in a trailing slash that needs to be taken into consideration when generating URLs relative the the site&rsquo;s root.</p>
-
+</code></pre><p>The template string used <code>.Site.BaseURL</code> and appended a slash before the next URL fragment. Since this results in a double slash in the generated output, I presume but have not confirmed that <code>.Site.BaseURL</code> always ends in a trailing slash that needs to be taken into consideration when generating URLs relative the the site&rsquo;s root.</p>
 <h1 id="the-solution">The Solution</h1>
-
 <p>In a similar way to how we join file paths in NodeJS with <a href="https://nodejs.org/api/path.html#path_path_join_paths">path.join()</a>, we almost never want to be responsible for building URL paths ourselves. Luckily, Hugo provides <a href="https://gohugo.io/functions/">many built-in helper functions</a> that cover a whole range of use cases, including the one I decided to use to normalize URL paths throughout <code>dplesca/purehugo</code>: <a href="https://gohugo.io/functions/absurl/.">absURL</a></p>
-
 <p>From the Hugo documentation, <code>absURL</code></p>
-
 <blockquote>
 <p>Creates an absolute URL based on the configured <code>baseURL</code>.</p>
 </blockquote>
-
 <p>where <code>baseURL</code> is the hostname (and path) to the root of the site which is set as part of Hugo&rsquo;s <a href="https://gohugo.io/getting-started/configuration/#all-configuration-settings">site configuration</a>.</p>
-
 <p>This function was a perfect solution in most of the places where static files need to be linked and served to the client, such as JavaScript or CSS content. In those cases it was a simple matter of removing <code>.Site.BaseURL</code> and the subsequent concatenation and replace it with a call to the <code>absURL</code> function, like so:</p>
-
-<pre><code class="language-html">&lt;a class=&quot;pure-button&quot; href='{{ &quot;index.xml&quot; | absURL }}'&gt;[...]&lt;/a&gt;
-</code></pre>
-
-<p>Normalizing the post category links turned out to be a bit more complicated than this simple substitution because these links needed to include more URL fragments to create the complete path. In order to correctly concatenate and then normalize these URLs, I turned to another of Hugo&rsquo;s built-in functions: <a href="https://gohugo.io/functions/printf/">printf</a>.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pure-button&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{{ &#34;index.xml&#34; | absURL }}&#39;</span>&gt;[...]&lt;/<span style="color:#f92672">a</span>&gt;
+</code></pre></div><p>Normalizing the post category links turned out to be a bit more complicated than this simple substitution because these links needed to include more URL fragments to create the complete path. In order to correctly concatenate and then normalize these URLs, I turned to another of Hugo&rsquo;s built-in functions: <a href="https://gohugo.io/functions/printf/">printf</a>.</p>
 <p>Hugo&rsquo;s templating system is built almost entirely on top of Go&rsquo;s built-in <a href="https://golang.org/pkg/text/template/">template package</a>, which makes things very familiar if you have worked with Go templates before. It also means that Hugo can expose a lot of Go functions as Hugo functions available inside templates. In this case, Hugo&rsquo;s <code>printf</code> function exposes Go&rsquo;s <code>fmt.Sprintf</code> function which works much like <code>printf</code> in C.</p>
-
 <p>This is the solution I came up with for building the more complicated post category link URLs while still being able to normalize the resulting URL using <code>absURL</code>:</p>
-
-<pre><code class="language-html">&lt;a class=&quot;post-category post-category-{{ . }}&quot; href='{{ ( printf &quot;categories/%s&quot; . ) | absURL }}'&gt;{{ . }}&lt;/a&gt;
-</code></pre>
-
-<p>Unlike in NodeJS, in this case it&rsquo;s safe to do a simple string concatenation of <code>categories/&lt;category-name&gt;</code> because unlike with file systems, the fragment separator in URLs is always the <code>/</code> character.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-category post-category-{{ . }}&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{{ ( printf &#34;categories/%s&#34; . ) | absURL }}&#39;</span>&gt;{{ . }}&lt;/<span style="color:#f92672">a</span>&gt;
+</code></pre></div><p>Unlike in NodeJS, in this case it&rsquo;s safe to do a simple string concatenation of <code>categories/&lt;category-name&gt;</code> because unlike with file systems, the fragment separator in URLs is always the <code>/</code> character.</p>
 <h1 id="to-be-continued">To be Continued</h1>
-
 <p>I am very thankful to <code>purehugo</code>&rsquo;s author, <a href="https://github.com/dplesca">@dplesca</a>, for responding so quickly to my pull request with this change and for merging the pull request within a few hours of my submission. While working on this change I noticed a few other areas where I think <code>dplesca/purehugo</code> could be improved, and I&rsquo;m looking forward to working on it more as I continue using it to generate my blog and host my site content.</p>
-
 <p>Hacktoberfest continues on, and I need to start thinking about my next contribution. My school is on a break starting next week, so I&rsquo;m hoping to find the time to dig into something a bit larger and more challenging based on the projects I&rsquo;ve seen so far or had recommended to me by classmates.</p>
 
                     </div>
@@ -169,35 +141,24 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a><a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a><a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-hacktoberfest" href='/categories/hacktoberfest'>hacktoberfest</a><a class="post-category post-category-rust" href='/categories/rust'>rust</a>
+
+
                         </p>
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>Hacktoberfest, start! In my <a href="2018/09/a-return-to-open-source/">previous post</a> I mentioned that I was hoping to find some interesting projects to contribute to this month, and so far I&rsquo;ve come up with a pretty good shortlist of contributions I want to make.</p>
-
+                        <p>Hacktoberfest, start! In my <a href="2018/09/a-return-to-open-source/">previous post</a> I mentioned that I was hoping to find some interesting projects to contribute to this month, and so far I&rsquo;ve come up with a pretty good shortlist of contributions I want to make.</p>
 <p>To start the month off, I lent a hand to <a href="https://github.com/lk-geimfari/awesomo">lk-geimfari/awesomo</a> to <a href="https://github.com/lk-geimfari/awesomo/pull/125">reorganize their list</a> of Rust projects. They had already reorganized the one for Python and suggested contributors use that as a model for the rest of the reorganizations. There are still a bunch of languages on the list in the <a href="https://github.com/lk-geimfari/awesomo/issues/101">tracking issue</a>, so head on over and give them a hand!</p>
-
 <p>The work itself was straight forward; contributors were asked to alphabetize the projects in the list, and provide a table of contents and headings based on the example. I think this was a great first issue for Hacktoberfest because my goal for this month is to contribute to at least two projects that use <a href="https://www.rust-lang.org/en-US/">Rust</a>, and what better way to find out about cool projects than working with a list chock full of them?</p>
-
 <h1 id="alacritty">Alacritty</h1>
-
 <p><a href="https://github.com/jwilm/alacritty">Alacritty</a> was one of the first projects to catch my eye, not just because it was originally at the top of the list, but also because I saw an announcement post that Alacritty <a href="https://www.reddit.com/r/rust/comments/9gl75a/alacritty_now_supports_scrollback/">now supports terminal scrollback</a> which introduced me to the existence of the project in the first place. Alacritty claims to be &ldquo;the fastest terminal emulator in existence&rdquo;, and uses the GPU for rendering to enable optimizations that aren&rsquo;t possible using other terminal emulators. Alacritty is still very much in its infancy, with <a href="https://github.com/jwilm/alacritty/releases/tag/v0.2.1">version 0.2.1</a> as the most recent release at the time of writing. Windows support is planned before a 1.0 release, so if this intrigues you and you&rsquo;re a Windows developer <a href="https://github.com/jwilm/alacritty/issues/28">have a look at the tracking issue</a> and see if you can help out.</p>
-
 <h1 id="diesel">Diesel</h1>
-
 <p>Another project I was aware of before working with this awesome list of Rust projects is <a href="http://diesel.rs/">Diesel</a>, a safe, extensible object-relational mapper (ORM) for Rust. When deciding on the technology stack for my capstone project this year, I investigated using the <a href="https://rocket.rs/overview/">Rocket</a> web framework written in Rust, and Diesel is one of the ORMs <a href="https://rocket.rs/guide/state/#dependencies">recommended in the getting started guide</a>. Diesel provides a comfortable CLI experience for developers familiar with tools like <a href="https://guides.rubyonrails.org/active_record_basics.html">ActiveRecord</a> from Ruby on Rails and <a href="http://docs.sequelizejs.com/">Sequelize</a> in NodeJS, but drastically improves on both by leveraging Rust&rsquo;s type safety and by &ldquo;eliminat[ing] the possibility of incorrect database interactions at compile time.&rdquo;</p>
-
 <h1 id="exa">exa</h1>
-
 <p><a href="https://the.exa.website/">exa</a> is a modern replacement for the built-in unix <code>ls</code> command which aims to have better defaults and more features. I have been using <code>exa</code> myself for a few weeks and I am really enjoying the experience so far. With <code>ls</code> I set up a number of shell aliases and functions to do things like enable human-readable sizes and always show colours; in <code>exa</code> these features are turned on automatically without any setup. I am all for customizability in those cases where it&rsquo;s absolutely necessary but sane defaults is almost always a better solution, especially with a tool that most of us use hundreds of times a day.</p>
-
 <h1 id="to-be-continued">To be Continued</h1>
-
 <p>I definitely have some ideas about more projects that I&rsquo;d like to contribute to after seeing the <a href="https://github.com/lk-geimfari/awesomo">lk-geimfari/awesomo</a> list, either this month for Hacktoberfest or on an ongoing basis. If Rust isn&rsquo;t your language of choice, there are similar lists of projects in pretty much every popular language as well as some more obscure ones, so take a look, be inspired, and happy hacking!</p>
 
                     </div>
@@ -212,23 +173,19 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                <a class="post-category post-category-writing" href='https://stuartcrust.com/categories/writing'>writing</a><a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a><a class="post-category post-category-nodejs" href='https://stuartcrust.com/categories/nodejs'>nodejs</a><a class="post-category post-category-filer" href='https://stuartcrust.com/categories/filer'>filer</a>
-                            
+    under 
+    <a class="post-category post-category-writing" href='/categories/writing'>writing</a><a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-nodejs" href='/categories/nodejs'>nodejs</a><a class="post-category post-category-filer" href='/categories/filer'>filer</a>
+
+
                         </p>
                     </header>
 
                     <div class="post-description">
                         <p>Today marks the first month of my return to open source. I say <em>return</em> even though I never really <em>left</em>, it&rsquo;s more of a return to active participation in the community. As I <a href="/2018/09/third-times-the-charm/">wrote about earlier</a>, one of my courses right now focuses on open source development, so I have been able to <a href="https://github.com/0xazure?tab=overview&amp;from=2018-09-01&amp;to=2018-09-30">contribute much more regularly</a> and I hope to be able to continue to do so even after the course is over.</p>
-
-<p>This past month has been all about getting back into the swing of things by contributing to <a href="https://github.com/filerjs/filer">filerjs/filer</a>, a port of NodeJS&rsquo; <code>fs</code> module to the web using backends like IndexedDB. My first contribution to filer, which I have <a href="/2018/09/its-dependencies-all-the-way-down/">already blogged about</a>, was to update a development dependency to resolve package vulnerabilities as reported by <code>npm audit</code>. This issue was logged as <a href="https://github.com/filerjs/filer/issues/384">filer#384</a> and fixed in <a href="https://github.com/filerjs/filer/pull/385">filer#385</a> by updating the vulnerable dependency. This issue also spawned some discussion as <a href="https://github.com/filerjs/filer/issues/386">filer#386</a> about automating the process of keeping project dependencies up to date so it is much easier to stay on top of new versions of dependencies.</p>
-
+<p>This past month has been all about getting back into the swing of things by contributing to <a href="https://github.com/filerjs/filer">filerjs/filer</a>, a port of NodeJS' <code>fs</code> module to the web using backends like IndexedDB. My first contribution to filer, which I have <a href="/2018/09/its-dependencies-all-the-way-down/">already blogged about</a>, was to update a development dependency to resolve package vulnerabilities as reported by <code>npm audit</code>. This issue was logged as <a href="https://github.com/filerjs/filer/issues/384">filer#384</a> and fixed in <a href="https://github.com/filerjs/filer/pull/385">filer#385</a> by updating the vulnerable dependency. This issue also spawned some discussion as <a href="https://github.com/filerjs/filer/issues/386">filer#386</a> about automating the process of keeping project dependencies up to date so it is much easier to stay on top of new versions of dependencies.</p>
 <p>Open source isn&rsquo;t just about contributing code and documentation though. It&rsquo;s also about the community, interacting with other developers, discussing issues and potential solutions, as well as reviewing and helping out other members of the community. In addition to helping out my classmates over Slack and in-class throughout the month, I also reviewed a few pull requests opened against the filer repository.</p>
-
 <p>The first issue I reviewed, <a href="https://github.com/filerjs/filer/pull/478">filer#478</a>, is a pull request that adds a test to <code>fs.watch()</code> to verify the event type emitted when renaming an existing file. Other than the boilerplate mocha test code, the test logic itself is fairly straight forward. However, <code>fs.watch()</code> and related watching functions are an interesting set of methods because they are not guaranteed to be consistent due to the <a href="https://nodejs.org/api/fs.html#fs_caveats">underlying implementation details</a>. I actually had to go back to this pull request and re-review it because it turns out that filer <a href="https://github.com/filerjs/filer/issues/411#issuecomment-422946490">doesn&rsquo;t currently have support</a> for <code>rename</code> events at all. This issue was also interesting because I picked out a minor style nitpick in the form of a missing semi-colon that the Travis build <a href="https://github.com/filerjs/filer/issues/482">didn&rsquo;t seem to pick up</a> for some reason. Rerunning the build resolved the issue, but it&rsquo;s always worrying when you run into issues with your build infrastructure and tests because it can shake your faith in them a bit.</p>
-
 <p>Another issue that I reviewed was <a href="https://github.com/filerjs/filer/pull/472">filer#472</a>. This pull request adds a test to ensure that reading from a nonexistent file results in an error. The submission is well done overall, with one minor nitpick that lead to me filing <a href="https://github.com/filerjs/filer/pull/498">filer#498</a> to reduce small nitpick-type comments on reviews. Nitpicks are generally a waste of everyone&rsquo;s time because style should be automatically enforced by some kind of automated tool before code is pushed; JavaScript doesn&rsquo;t have anything quite like <a href="https://golang.org/cmd/gofmt/">gofmt</a> or <a href="https://github.com/rust-lang-nursery/rustfmt">rustfmt</a>, but tools like <a href="https://github.com/xojs/xo">xo</a> and <a href="https://github.com/prettier/prettier">prettier</a> can help. In this review I also cautioned the original author of the pull request about changing multiple variables at a time in a test, which we ideally would like to avoid as we can easily end up testing more code paths than we either need or want to, thereby complicating the test or making it fragile against future changes to the code.</p>
-
 <p>Looking ahead, October marks the beginning of <a href="https://hacktoberfest.digitalocean.com/">Hacktoberfest</a>. I&rsquo;m really excited to be participating this year; I participated once before but I either missed the cutoff or something happened to my package because I never received my t-shirt from DigitalOcean. I&rsquo;ll be writing a lot more short blog posts throughout October as I chronicle my participation in this event, and I&rsquo;m hoping to find some interesting projects to contribute to for at least the rest of this year and hopefully well into the next.</p>
 
                     </div>
@@ -243,72 +200,50 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a><a class="post-category post-category-nodejs" href='https://stuartcrust.com/categories/nodejs'>nodejs</a><a class="post-category post-category-npm" href='https://stuartcrust.com/categories/npm'>npm</a><a class="post-category post-category-security" href='https://stuartcrust.com/categories/security'>security</a>
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-nodejs" href='/categories/nodejs'>nodejs</a><a class="post-category post-category-npm" href='/categories/npm'>npm</a><a class="post-category post-category-security" href='/categories/security'>security</a>
+
+
                         </p>
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>NodeJS has experienced a lot of growth over the years. Like any platform, programming or otherwise, much of that growth and user adoption depends not only on the quality of the platform itself, but also the ecosystem that builds up around it.</p>
-
+                        <p>NodeJS has experienced a lot of growth over the years. Like any platform, programming or otherwise, much of that growth and user adoption depends not only on the quality of the platform itself, but also the ecosystem that builds up around it.</p>
 <p>In this respect, NodeJS has possibly one of the largest ecosystems available. With <a href="https://www.npmjs.com/">over 700,000 packages</a> published to npm, the NodeJS platform offers developers a lot of choice when it comes to 3rd-party modules. This choice lets developers choose and compose modules from many different authors when writing software, saving time, consolidating work, and reducing bugs instead of constantly <a href="https://en.wikipedia.org/wiki/Not_invented_here">reinventing the wheel</a>.</p>
-
 <p>The NodeJS ecosystem by and large follows the <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix philosophy</a>, in particular the primary tenant to</p>
-
 <blockquote>
 <p>Write programs [and libraries] that do one thing and do it well</p>
-
 <p>— Peter H. Salus, <em>A Quarter-Century of Unix (1994)</em></p>
 </blockquote>
-
 <p>Keeping a module&rsquo;s focus small is an important aspect of many programming design patterns such as the single-responsibility principle, as well as improving code reuse and composability. However, including these modules doesn&rsquo;t come for free. Every project dependency is an added burden that the maintainers need to keep up to date and have to modify their code as the API of the module changes. Sometimes serious bugs are found in these modules that can expose application secrets, user data, or unauthorized access, among other classes of vulnerabilities, that the module authors need to fix before dependent projects can update to fix the bug.</p>
-
 <p>Staying on top of vulnerability disclosures and keeping track of all of the changes from version to version in a project&rsquo;s dependencies is a challenging and resource-draining task. Even more challenging, authors must not only be concerned with the vulnerabilities in modules they depend on directly, but also those in all of the <a href="https://docs.gradle.org/current/userguide/dependency_management_terminology.html#sub:terminology_transitive_dependency">transitive dependencies</a> that NodeJS is (in)famous for.</p>
-
 <h1 id="npm-audit">npm audit</h1>
-
 <p>In the <a href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">April 2018 announcement</a> of <code>npm@6</code>, the headlining feature the npm team showcased was <code>npm audit</code>, a powerful tool designed to provide automatic security warnings when using code with a known security issue. The <code>npm audit</code> tool allows developers to completely analyze a project&rsquo;s dependency tree - including all transitive dependencies - to identify known vulnerable versions of dependencies based on data from the Node Security Platform database that npm <a href="https://medium.com/npm-inc/npm-acquires-lift-security-258e257ef639">acquired in April 2018</a>.</p>
-
 <p>The npm team made two really important decisions when designing <code>npm audit</code>. First, all install requests issued through <code>npm install</code> are automatically subjected to the same analysis that the <code>npm audit</code> command performs, analyzing the package to be installed as well as any additional dependencies that package would pull into the project. Second, <code>npm audit</code> suggests resolutions for vulnerabilities it identifies thereby giving clear actionable feedback to developers on the next steps they can take to resolve issues identified in the audit. These two decisions are critical because not only does npm take a security-conscious approach by default, but it tries to make resolving issues as painless as possible. Developers don&rsquo;t want to spend hours combing through changelogs or reviewing vulnerability reports just to find the package version that includes the vulnerability fix, they want to resolve the problem and get on with writing code.</p>
-
 <p>As of <code>npm@6.1</code>, <code>npm</code> includes the <code>npm audit fix</code> command to <a href="https://blog.npmjs.org/post/174001864165/v610-next0">automatically run all the package installations</a> recommended by <code>npm audit</code>, lowering the pain of updating vulnerable packages even further.</p>
-
 <p>The npm team shares their vision with the inclusion of tools like <code>npm audit</code> and a security-conscious approach to ecosystem packages:</p>
-
 <blockquote>
 <p>By alerting the entire community to security vulnerabilities within a tool you already use, we can make JavaScript development safer for everyone.</p>
-
 <p>— <a href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">npm, Inc.</a></p>
 </blockquote>
-
 <h1 id="auditing-filer">Auditing filer</h1>
-
 <p>The first thing to do after making a fresh clone of any project is to install its dependencies. After grabbing the <a href="https://github.com/filerjs/filer">filer</a> git url and cloning the repository, a quick <code>npm install</code> pulls in all the dependencies we should need to get started.</p>
-
-<pre><code class="language-sh">added 1079 packages from 1531 contributors and audited 9518 packages in 36.358s
-found 6 vulnerabilities (1 low, 5 moderate)
-  run `npm audit fix` to fix them, or `npm audit` for details
-</code></pre>
-
-<p>It looks like <code>filer@353290a</code> has some vulnerable packages, which is a perfect opportunity to dig into the auditing process.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">added <span style="color:#ae81ff">1079</span> packages from <span style="color:#ae81ff">1531</span> contributors and audited <span style="color:#ae81ff">9518</span> packages in 36.358s
+found <span style="color:#ae81ff">6</span> vulnerabilities <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> low, <span style="color:#ae81ff">5</span> moderate<span style="color:#f92672">)</span>
+  run <span style="color:#e6db74">`</span>npm audit fix<span style="color:#e6db74">`</span> to fix them, or <span style="color:#e6db74">`</span>npm audit<span style="color:#e6db74">`</span> <span style="color:#66d9ef">for</span> details
+</code></pre></div><p>It looks like <code>filer@353290a</code> has some vulnerable packages, which is a perfect opportunity to dig into the auditing process.</p>
 <p><code>npm@6</code> is pretty in-your-face about this information, which is important. It lists the total number of vulnerabilities, as well as breaks down the number of vulnerabilities of varying severity, and provides an actionable next step: running a full audit.</p>
-
 <p>Running <code>npm audit</code> produces the following report:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">                        <span style="color:#f92672">===</span> npm audit security report <span style="color:#f92672">===</span>
 
-<pre><code class="language-sh">                        === npm audit security report ===
-
-    # Run  npm install --save-dev karma@3.0.0  to resolve 6 vulnerabilities
+    <span style="color:#75715e"># Run  npm install --save-dev karma@3.0.0  to resolve 6 vulnerabilities</span>
     SEMVER WARNING: Recommended action is a potentially breaking change
     ┌───────────────┬──────────────────────────────────────────────────────────────┐
     │ Moderate      │ Memory Exposure                                              │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Package       │ tunnel-agent                                                 │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
-    │ Dependency of │ karma [dev]                                                  │
+    │ Dependency of │ karma <span style="color:#f92672">[</span>dev<span style="color:#f92672">]</span>                                                  │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; tunnel-agent             │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
@@ -320,7 +255,7 @@ found 6 vulnerabilities (1 low, 5 moderate)
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Package       │ hoek                                                         │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
-    │ Dependency of │ karma [dev]                                                  │
+    │ Dependency of │ karma <span style="color:#f92672">[</span>dev<span style="color:#f92672">]</span>                                                  │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; boom &gt; hoek       │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
@@ -332,7 +267,7 @@ found 6 vulnerabilities (1 low, 5 moderate)
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Package       │ hoek                                                         │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
-    │ Dependency of │ karma [dev]                                                  │
+    │ Dependency of │ karma <span style="color:#f92672">[</span>dev<span style="color:#f92672">]</span>                                                  │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; cryptiles &gt; boom  │
     │               │ &gt; hoek                                                       │
@@ -345,7 +280,7 @@ found 6 vulnerabilities (1 low, 5 moderate)
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Package       │ hoek                                                         │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
-    │ Dependency of │ karma [dev]                                                  │
+    │ Dependency of │ karma <span style="color:#f92672">[</span>dev<span style="color:#f92672">]</span>                                                  │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; hoek              │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
@@ -357,7 +292,7 @@ found 6 vulnerabilities (1 low, 5 moderate)
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Package       │ hoek                                                         │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
-    │ Dependency of │ karma [dev]                                                  │
+    │ Dependency of │ karma <span style="color:#f92672">[</span>dev<span style="color:#f92672">]</span>                                                  │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Path          │ karma &gt; log4js &gt; loggly &gt; request &gt; hawk &gt; sntp &gt; hoek       │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
@@ -369,23 +304,18 @@ found 6 vulnerabilities (1 low, 5 moderate)
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Package       │ timespan                                                     │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
-    │ Dependency of │ karma [dev]                                                  │
+    │ Dependency of │ karma <span style="color:#f92672">[</span>dev<span style="color:#f92672">]</span>                                                  │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ Path          │ karma &gt; log4js &gt; loggly &gt; timespan                           │
     ├───────────────┼──────────────────────────────────────────────────────────────┤
     │ More info     │ https://nodesecurity.io/advisories/533                       │
     └───────────────┴──────────────────────────────────────────────────────────────┘
 
-    found 6 vulnerabilities (1 low, 5 moderate) in 9518 scanned packages
-    6 vulnerabilities require semver-major dependency updates.
-</code></pre>
-
-<p>The audit provides a lot of information, but it&rsquo;s all broken down for the developer in a consistent format so even those who aren&rsquo;t familiar with vulnerability mitigation or announcement procedures can understand what&rsquo;s going on.</p>
-
+    found <span style="color:#ae81ff">6</span> vulnerabilities <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> low, <span style="color:#ae81ff">5</span> moderate<span style="color:#f92672">)</span> in <span style="color:#ae81ff">9518</span> scanned packages
+    <span style="color:#ae81ff">6</span> vulnerabilities require semver-major dependency updates.
+</code></pre></div><p>The audit provides a lot of information, but it&rsquo;s all broken down for the developer in a consistent format so even those who aren&rsquo;t familiar with vulnerability mitigation or announcement procedures can understand what&rsquo;s going on.</p>
 <p>One of the most important parts of the audit output is the path. This shows how the project and the vulnerable package are related, and is a subset of the total dependency graph for the project. This is really useful if there is no clear update path for the package your project depends on directly and you need to report (or ideally, submit a pull request) that a dependency in one of your direct dependencies should update one (or more) of its packages. Without this information clearly displayed, you would spend a lot of time chasing dependencies down by manually reviewing <code>package.json</code> and <code>package-lock.json</code> files trying to figure out who needed to update their dependencies so you can update yours.</p>
-
 <p>In the case of Filer we&rsquo;re pretty lucky: not only are all of the vulnerable packages related to a single direct dependency, but that dependency is one that is only used during development; resolving the problems is a simple as updating to <code>karma@3.0.0</code>. Since this is a simple resolution, we could either run <code>npm audit fix</code> and have <code>npm</code> take care of the version updates for us, or we can update the <code>karma</code> version in our <code>package.json</code> and install the updated package.</p>
-
 <p>After updating <code>karma</code>, re-running <code>npm audit</code> to ensure we haven&rsquo;t introduced any new vulnerabilities, and running the project&rsquo;s tests to ensure we haven&rsquo;t accidentally broken any functionality, we should take the time to contribute this fix <a href="https://github.com/filerjs/filer/pull/385">back to the main project</a>. The fix was small and simple, but security is everyone&rsquo;s responsibility; if you notice a project using outdated or vulnerable packages, take some time to help the maintainers out by submitting a pull request. Also, projects should consider looking into automating the process of keeping project dependencies up to date through various tools like <a href="https://greenkeeper.io/">Greenkeeper</a> and <a href="https://snyk.io/">Snyk</a>, which is a conversation <a href="https://github.com/filerjs/filer/issues/386">you can start</a> in your project today!</p>
 
                     </div>
@@ -400,22 +330,18 @@ found 6 vulnerabilities (1 low, 5 moderate)
                         <p class="post-meta">
                             
                             
-                                under 
-                                <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a><a class="post-category post-category-nodejs" href='https://stuartcrust.com/categories/nodejs'>nodejs</a><a class="post-category post-category-event-based programming" href='https://stuartcrust.com/categories/event-based%20programming'>event-based programming</a>
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-nodejs" href='/categories/nodejs'>nodejs</a><a class="post-category post-category-event-based-programming" href='/categories/event-based-programming'>event-based programming</a>
+
+
                         </p>
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>I have a personal interest in <a href="https://en.wikipedia.org/wiki/Automation">automation</a>, mostly because I believe that we should be trying to offload everything we possibly can onto computing systems so that we can spend our time thinking about interesting problems rather than manually repeating the same tasks over and over again.
+                        <p>I have a personal interest in <a href="https://en.wikipedia.org/wiki/Automation">automation</a>, mostly because I believe that we should be trying to offload everything we possibly can onto computing systems so that we can spend our time thinking about interesting problems rather than manually repeating the same tasks over and over again.
 Good programmers, coders, and software engineers (depending on how you identify) should be trying to automate as much of their jobs as possible for all kinds of reasons: to help mitigate the <a href="https://en.wikipedia.org/wiki/Bus_factor">bus factor</a>, to get rid of boring and repetitive parts of their jobs, and even to better document internal and external processes (if the process has been put into code - especially well-commented code - that is a form of documentation about the process!) that can then be tracked and versioned in a version control system.</p>
-
 <h1 id="the-programming-loop">The Programming Loop</h1>
-
 <p>Why am I talking about automation when the title of this post is about filesystem events? Before we talk about those kinds of events, we need to take a look at a simplified but typical example of the programming loop when writing code. Such a loop might look something like the following:</p>
-
 <ol>
 <li>Make a change to some code</li>
 <li>Check the editor or IDE for feedback about the code you just wrote</li>
@@ -424,85 +350,57 @@ Good programmers, coders, and software engineers (depending on how you identify)
 <li>Review tool and test feedback, and resolve issues</li>
 <li>Return to Step 1 and repeat</li>
 </ol>
-
 <p>That&rsquo;s a lot to do every time the code changes, but the tools are there to help write better code and catch a lot of little or subtle issues that people aren&rsquo;t as good at noticing as computers can be. To take advantage of all of these tools and their output, we want to make this loop from writing some code to reviewing feedback as quick as possible so the programmer isn&rsquo;t waiting around for feedback, gets annoyed at how long the process takes, and stops using the tools. Some projects also use a lot of different tools, and it can be a lot to remember how to run each tool individually and what command line arguments are required for the current project.</p>
-
 <p>Instead of having to remember all this information, it would be great to have to remember fewer commands to get feedback from all the tools. Automation to the rescue! Instead of running each tool separately ourselves, we can use a tool that runs other tools; in this case we want to use a task runner. <code>make</code> is a well-known tool for automating this process, and can be used for many different kinds of projects:</p>
-
 <blockquote>
 <p>C programs [&hellip;] are most common, but you can use <em>make</em> with any programming language whose compiler can be run with a shell command. In fact, <em>make</em> is not limited to programs. You can use it to describe any task where some files must be updated automatically from others whenever the others change.</p>
-
 <p>— <a href="https://linux.die.net/man/1/make">make manpage</a></p>
 </blockquote>
-
 <p>Using a tool like <code>make</code> can simplify the loop to something like the following:</p>
-
 <ol>
 <li>Make a change to some code</li>
 <li>Run <code>make</code></li>
 <li>Review tool and test feedback from each tool that <code>make</code> runs, and resolve issues</li>
 <li>Return to Step 1 and repeat</li>
 </ol>
-
 <p>This significantly reduces the steps the programmer has to take every time they make a change as well as the number of commands they need to remember: all they have to do is run <code>make</code>! But do we really need to remember to run a command? Is there some way that we can have <code>make</code> or something like it run whenever we make a change to the code?</p>
-
 <h1 id="enter-filesystem-events">Enter: Filesystem Events</h1>
-
 <p>Filesystem events are a great way to trigger other tasks. Other kinds of task runners such as <a href="https://gruntjs.com/">grunt</a> and <a href="https://gulpjs.com/">gulp</a> in NodeJS, as well as <a href="https://guardgem.org/">guard</a> in Ruby, let the programmer set up a process to &ldquo;watch&rdquo; individual files or entire directories for changes. When a file changes, these task runners pick up the change and perform whatever tasks the programmer has specified.</p>
-
 <p>NodeJS core exposes this functionality to the JavaScript runtime through functions in the <a href="https://nodejs.org/api/fs.html">fs module</a>. These functions include:</p>
-
 <ul>
 <li><a href="https://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener">fs.watch()</a></li>
 <li><a href="https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener">fs.watchFile()</a></li>
 <li><a href="https://nodejs.org/api/fs.html#fs_fs_unwatchfile_filename_listener">fs.unwatchFile()</a></li>
 </ul>
-
 <p>These functions respond to changes in the filesystem and communicate data about the detected changed file back to their listener functions.</p>
-
 <h1 id="a-simple-example">A Simple Example</h1>
-
 <p>The following is an example of how to use the <code>fs.watch()</code> function in NodeJS. This is the recommended function to use because it supports single files as well as directories where <code>fs.watchFile()</code> only watches individual files, and it is <a href="https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener">more efficient</a> than both <code>fs.watchFile()</code> and <code>fs.unwatchFile()</code>.</p>
-
-<pre><code class="language-js">'use strict' // enforce JavaScript strict mode
-
-const fs = require('fs'); // import the core module
-
-const path = '.' // start watching in the current directory
-
-fs.watch(path, (eventType, filename) =&gt; {
-    if (eventType === 'change') {
-        console.log(`${filename} changed!`)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#e6db74">&#39;use strict&#39;</span> <span style="color:#75715e">// enforce JavaScript strict mode
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fs&#39;</span>); <span style="color:#75715e">// import the core module
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#75715e">// start watching in the current directory
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">watch</span>(<span style="color:#a6e22e">path</span>, (<span style="color:#a6e22e">eventType</span>, <span style="color:#a6e22e">filename</span>) =&gt; {
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">eventType</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;change&#39;</span>) {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">filename</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> changed!`</span>)
     }
 })
-</code></pre>
-
-<h1 id="some-caveats">Some Caveats</h1>
-
+</code></pre></div><h1 id="some-caveats">Some Caveats</h1>
 <p>The <code>fs.watch()</code> function does <a href="https://nodejs.org/api/fs.html#fs_caveats">come with some caveats</a> due to the state of this kind of filesystem event handling on various platforms; specifically, the API is not 100% consistent across platforms and some options are not universally available due to the underlying implementations.</p>
-
 <p>Also, because <code>fs.watch()</code> is event-driven, there is no matching set of functions in the experimental <code>fs</code> Promise API <a href="https://nodejs.org/en/blog/release/v10.0.0/">introduced in Node 10.0.0</a> and there is no synchronous equivalent like there are for many other functions in the <code>fs</code> module because the task is inherently asynchronous.</p>
-
 <p>However, this is still really useful functionality when working with files and filesystems, and is of particular interest in our pursuit of efficient automation.</p>
-
 <h1 id="one-last-twist">One Last Twist</h1>
-
 <p>After looking a bit more into how <a href="https://gruntjs.com/">grunt</a> and <a href="https://gulpjs.com/">gulp</a> actually implement their file-watching functionality, it turns out that neither one of these popular test runners uses any of the <code>fs.watch()</code> functions directly and don&rsquo;t even use the same dependency to provide watching functionality!</p>
-
 <p>Grunt&rsquo;s file-watching functionality is provided in a Grunt plugin called <a href="https://www.npmjs.com/package/grunt-contrib-watch">grunt-contrib-watch</a>, which uses the <a href="https://www.npmjs.com/package/gaze">gaze</a> package to interact with filesystem events.</p>
-
 <p>Gulp, on the other hand, relies on <a href="https://www.npmjs.com/pakage/gulp-watch">gulp-watch</a> for watching files, which uses a package called <a href="https://www.npmjs.com/package/chokidar">chokidar</a>.</p>
-
 <p>Chokidar goes <a href="https://www.npmjs.com/package/chokidar#why">into some detail</a> as to why <code>fs.watch()</code> is insufficient, and gaze lists a <a href="https://www.npmjs.com/package/gaze#similar-projects">number of alternative projects</a>, so there are clearly some community opinions on the quality of the built-in functions.</p>
-
 <p>Some notable functionality <code>fs.watch()</code> lacks:</p>
-
 <ul>
 <li>no wildcard support (e.g. cannot watch only for files that end with a particular extension, like <code>*.js</code>)</li>
 <li>does not support recursive watching on platforms other than Windows or macOS (see <a href="https://nodejs.org/api/fs.html#fs_caveats">the fs watch caveats</a>)</li>
 <li><code>eventType</code> is only one of <code>'rename'</code> or <code>'change'</code>, no support for other file events such as <code>'removed'</code></li>
 </ul>
-
 <p>As in everything, there are trade-offs when implementing functionality. For simple use cases, <code>fs.watch()</code> may be sufficient and will not require including additional project dependencies. However, if file watching is a core piece of functionality, it might be worth evaluating some of the other options available on npm to find one with the necessary functionality for the project at hand, while also keeping you from tearing your hair out tracking down odd edge cases.</p>
 
                     </div>
@@ -517,25 +415,20 @@ fs.watch(path, (eventType, filename) =&gt; {
                         <p class="post-meta">
                             
                             
-                                under 
-                                <a class="post-category post-category-writing" href='https://stuartcrust.com/categories/writing'>writing</a><a class="post-category post-category-hugo" href='https://stuartcrust.com/categories/hugo'>hugo</a>
-                            
+    under 
+    <a class="post-category post-category-writing" href='/categories/writing'>writing</a><a class="post-category post-category-hugo" href='/categories/hugo'>hugo</a>
+
+
                         </p>
                     </header>
 
                     <div class="post-description">
                         <p>I&rsquo;ve been meaning to start blogging for a while. Not even blogging <em>consistently</em>, just writing some long-form-ish pieces on projects that I&rsquo;ve been working on, things I&rsquo;ve learned, or things that I might want for my own reference. I&rsquo;ve tried at least twice before - once when I purchased this domain back in December of <em>2013</em> and again at the end of 2016 - and as evidenced by the utter lack of content it&rsquo;s pretty clear I haven&rsquo;t been successful.</p>
-
 <p>I made a real attempt to begin publishing at the end of 2016 with the release of that year&rsquo;s <a href="http://adventofcode.com/2016/">Advent of Code</a>, but coursework kept me pretty busy and I never managed to finish and publish any of the posts I was working on at the time. I&rsquo;ll probably revisit some of them, clean them up, and post them - if I still remember what I was writing about - and the rest I may throw into a backlog so that if I ever run into a similar topic again I can incorporate my draft.</p>
-
 <p>The reason I&rsquo;m giving it another try now is I&rsquo;m taking a course that specifically focuses on open source and includes a requirement that the students blog about their work and experiences as they gain exposure to the open source community. I&rsquo;m <a href="https://github.com/0xazure">not exactly a stranger</a> to open source work, but I haven&rsquo;t had time to be as active as I would like to be so this course is giving me a good excuse to commit more time to getting involved and getting my hands dirty with some contributions.</p>
-
 <p>On the technical side, this site is built using the static site generator <a href="https://gohugo.io/">Hugo</a>. I&rsquo;ve been learning a lot about the ins and outs of Hugo&rsquo;s project structure as I set this blog up, but so far I&rsquo;m pretty happy with the results. Hugo is written in <a href="https://golang.org/">Go</a>, the Google-sponsored C/++ replacement, and Hugo has a very active community that keeps improving the project.</p>
-
 <p>One issue that I did run into was some confusion over themes in Hugo. Each Hugo site has a <code>config.toml</code> that sets parameters for how the static site content should be generated. Those parameters also include information like social media links that get embedded in certain parts of the Hugo theme that structures the site content and controls the look and feel. Unfortunately, there don&rsquo;t seem to be standard keys for many of these parameters, so the key name for your GitHub or StackOverflow account information needs to be updated if you decide to change your site theme. You can see some of the work I had to do <a href="https://github.com/0xazure/0xazure/commit/ed9a74d58acbcd49f0be613cfd14dbefb725a842">in this commit</a> to update these values when I changed my theme from <a href="https://github.com/zyro/hyde-x">hyde-x</a> to <a href="https://github.com/dplesca/purehugo">purehugo</a>.</p>
-
 <p>I&rsquo;ve been keeping my eye on other static site generators as well, but Hugo is very popular and has a lot of great community contributions and support so I&rsquo;ll be using it for a while yet. Now that things are up and running I might take a stab at customizing my theme a little bit more, an opportunity I wouldn&rsquo;t have if Hugo and its public themes weren&rsquo;t open source. Where many static site generators use things like <a href="http://handlebarsjs.com/">Handlebars</a> or <a href="https://shopify.github.io/liquid/">Liquid</a> for templating, Hugo actually delegates straight to the built-in <a href="https://golang.org/pkg/text/template/">text.template</a> package in Go. This makes it immediately familiar to most Go developers, but I haven&rsquo;t had the opportunity to use Go much - especially recently - so I&rsquo;ll likely be spending a lot of time reading the documentation.</p>
-
 <p>Hopefully this third attempt will be the one that sticks. Stay tuned for more posts on topics including <a href="/categories/open-source">open source</a>, <a href="/categories/nodejs">NodeJS</a>, <a href="/categories/rust">Rust</a>, <a href="/categories/functional-programming">functional programming</a>, and anything else I might get up to.</p>
 
                     </div>

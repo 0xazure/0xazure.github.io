@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.79.0" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Hacktoberfest - Week Four &middot; stuart crust">
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
 
-    <link rel="stylesheet" href='https://stuartcrust.com/css/all.min.css'>
+    <link rel="stylesheet" href='/css/blog.min.css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="alternate" type="application/rss+xml" title="stuart crust" href='https://stuartcrust.com/index.xml' />
@@ -91,43 +91,27 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                
-                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
-                                
-                                    <a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a>
-                                
-                                    <a class="post-category post-category-go" href='https://stuartcrust.com/categories/go'>go</a>
-                                
-                                    <a class="post-category post-category-hugo" href='https://stuartcrust.com/categories/hugo'>hugo</a>
-                                
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-hacktoberfest" href='/categories/hacktoberfest'>hacktoberfest</a><a class="post-category post-category-go" href='/categories/go'>go</a><a class="post-category post-category-hugo" href='/categories/hugo'>hugo</a>
+
+
                         </p>
                     </header>
-                    
                     <div class="post-description">
                         <p>Hacktoberfest week four! In keeping with the theme I <a href="/2018/10/hacktoberfest-week-three">set last week</a> I continued to improve open source project documentation as part of Hacktoberfest. This week I returned to <a href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the theme I use for this blog, to help out with improving some areas of the documentation I noticed could use a bit of polish during my first contribution to the project during Hacktoberfest <a href="/2018/10/hacktoberfest-week-two">week two</a>.</p>
-
 <p>In <a href="https://github.com/dplesca/purehugo/pull/28">dplesca/purehugo#28</a> I rephrased the section of the <code>README.md</code> that deals with code syntax highlighting on generated blogs. As I mention in the issue, it seems as though the original author simply missed a word when writing the section:</p>
-
 <blockquote>
 <p>All you need to do is to let rainbow.js the language of the highlighted code [&hellip;]</p>
 </blockquote>
-
 <p>which should instead read:</p>
-
 <blockquote>
 <p>All you need to do is to let rainbow.js <strong>know</strong> the language of the highlighted code [&hellip;]</p>
 </blockquote>
-
 <p>The simple fix in this case would be to add the missing word. However, since I knew I would be editing this part of the document anyways, I decided to take a bit more time and rephrase the existing wording to simplify the instructions and use more specific language to instruct new users what they need to do to get the highlighting library to pick up the desired language. I also added a full example of how to apply <a href="https://golang.org/">Go</a> syntax to a code block using Markdown, as I find seeing complete code samples or full examples in documentation to be very helpful when I&rsquo;m learning a new tool or framework, and serve as quick reminders if I&rsquo;m returning to a tool or framework I haven&rsquo;t used recently to get me back on track.</p>
-
 <p>This week turned into a twofer because while I was working on <a href="https://github.com/dplesca/purehugo/pull/28">dplesca/purehugo#28</a> I noticed a small spelling error elsewhere in the <code>README.md</code> file and submitted <a href="https://github.com/dplesca/purehugo/pull/27">dplesca/purehugo#27</a> to correct a word in one of the document headings. I only noticed the spelling mistake as I had just set up proper spell checking in Visual Studio Code using <a href="https://marketplace.visualstudio.com/items?itemName=ban.spellright">Spell Right by Bartosz Antosik</a> to warn me about typos and other spelling errors. I had been under the impression that VS Code shipped with spell checking by default but this does not seem to be the case. Further, the VS Code spellchecking addon I found <a href="https://github.com/microsoft/vscode-spell-check">published by Microsoft</a> is marked as deprecated and suggests finding an alternate addon. Correcting minor typos in documentation is small potatoes compared to some other Hacktoberfest contributions, but they are important changes that affect readability, comprehension, and the flow of the document(s) in which they occur.</p>
-
 <p>The end of Hacktoberfest is almost upon us, and I have one last post to share about my final contribution this month. Look forward to a piece about my first major contribution to a Rust project!</p>
 
                     </div>
-                    
                 </section>
             </div>
             <div class="footer">

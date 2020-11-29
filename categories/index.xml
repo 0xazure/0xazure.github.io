@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on stuart crust</title>
@@ -6,12 +6,9 @@
     <description>Recent content in Categories on stuart crust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    
-        <atom:link href="https://stuartcrust.com/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 03 Jan 2019 00:00:00 -0500</lastBuildDate><atom:link href="https://stuartcrust.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Clippy</title>
+      <title>clippy</title>
       <link>https://stuartcrust.com/categories/clippy/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 -0500</pubDate>
       
@@ -20,97 +17,7 @@
     </item>
     
     <item>
-      <title>Code Formatting</title>
-      <link>https://stuartcrust.com/categories/code-formatting/</link>
-      <pubDate>Sun, 18 Nov 2018 00:00:00 -0500</pubDate>
-      
-      <guid>https://stuartcrust.com/categories/code-formatting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Code Linting</title>
-      <link>https://stuartcrust.com/categories/code-linting/</link>
-      <pubDate>Sun, 18 Nov 2018 00:00:00 -0500</pubDate>
-      
-      <guid>https://stuartcrust.com/categories/code-linting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Diesel</title>
-      <link>https://stuartcrust.com/categories/diesel/</link>
-      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
-      
-      <guid>https://stuartcrust.com/categories/diesel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Event Based Programming</title>
-      <link>https://stuartcrust.com/categories/event-based-programming/</link>
-      <pubDate>Thu, 13 Sep 2018 00:00:00 -0400</pubDate>
-      
-      <guid>https://stuartcrust.com/categories/event-based-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Filer</title>
-      <link>https://stuartcrust.com/categories/filer/</link>
-      <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
-      
-      <guid>https://stuartcrust.com/categories/filer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go</title>
-      <link>https://stuartcrust.com/categories/go/</link>
-      <pubDate>Tue, 30 Oct 2018 00:00:00 -0400</pubDate>
-      
-      <guid>https://stuartcrust.com/categories/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hacktoberfest</title>
-      <link>https://stuartcrust.com/categories/hacktoberfest/</link>
-      <pubDate>Thu, 01 Nov 2018 00:00:00 -0400</pubDate>
-      
-      <guid>https://stuartcrust.com/categories/hacktoberfest/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hugo</title>
-      <link>https://stuartcrust.com/categories/hugo/</link>
-      <pubDate>Tue, 30 Oct 2018 00:00:00 -0400</pubDate>
-      
-      <guid>https://stuartcrust.com/categories/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Nodejs</title>
-      <link>https://stuartcrust.com/categories/nodejs/</link>
-      <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
-      
-      <guid>https://stuartcrust.com/categories/nodejs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Npm</title>
-      <link>https://stuartcrust.com/categories/npm/</link>
-      <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
-      
-      <guid>https://stuartcrust.com/categories/npm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Open Source</title>
+      <title>open source</title>
       <link>https://stuartcrust.com/categories/open-source/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 -0500</pubDate>
       
@@ -119,16 +26,7 @@
     </item>
     
     <item>
-      <title>Rocket</title>
-      <link>https://stuartcrust.com/categories/rocket/</link>
-      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
-      
-      <guid>https://stuartcrust.com/categories/rocket/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rust</title>
+      <title>rust</title>
       <link>https://stuartcrust.com/categories/rust/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 -0500</pubDate>
       
@@ -137,25 +35,25 @@
     </item>
     
     <item>
-      <title>Rust Wasm</title>
-      <link>https://stuartcrust.com/categories/rust-wasm/</link>
-      <pubDate>Wed, 31 Oct 2018 00:00:00 -0400</pubDate>
+      <title>code formatting</title>
+      <link>https://stuartcrust.com/categories/code-formatting/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 -0500</pubDate>
       
-      <guid>https://stuartcrust.com/categories/rust-wasm/</guid>
+      <guid>https://stuartcrust.com/categories/code-formatting/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Security</title>
-      <link>https://stuartcrust.com/categories/security/</link>
-      <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
+      <title>code linting</title>
+      <link>https://stuartcrust.com/categories/code-linting/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 -0500</pubDate>
       
-      <guid>https://stuartcrust.com/categories/security/</guid>
+      <guid>https://stuartcrust.com/categories/code-linting/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Supernova</title>
+      <title>supernova</title>
       <link>https://stuartcrust.com/categories/supernova/</link>
       <pubDate>Sun, 11 Nov 2018 00:00:00 -0500</pubDate>
       
@@ -164,11 +62,110 @@
     </item>
     
     <item>
-      <title>Writing</title>
+      <title>hacktoberfest</title>
+      <link>https://stuartcrust.com/categories/hacktoberfest/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/hacktoberfest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rust-wasm</title>
+      <link>https://stuartcrust.com/categories/rust-wasm/</link>
+      <pubDate>Wed, 31 Oct 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/rust-wasm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://stuartcrust.com/categories/go/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://stuartcrust.com/categories/hugo/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>diesel</title>
+      <link>https://stuartcrust.com/categories/diesel/</link>
+      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/diesel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rocket</title>
+      <link>https://stuartcrust.com/categories/rocket/</link>
+      <pubDate>Mon, 22 Oct 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/rocket/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>filer</title>
+      <link>https://stuartcrust.com/categories/filer/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/filer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nodejs</title>
+      <link>https://stuartcrust.com/categories/nodejs/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/nodejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>npm</title>
+      <link>https://stuartcrust.com/categories/npm/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/npm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>https://stuartcrust.com/categories/security/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>writing</title>
       <link>https://stuartcrust.com/categories/writing/</link>
       <pubDate>Sat, 29 Sep 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/categories/writing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>event-based programming</title>
+      <link>https://stuartcrust.com/categories/event-based-programming/</link>
+      <pubDate>Thu, 13 Sep 2018 00:00:00 -0400</pubDate>
+      
+      <guid>https://stuartcrust.com/categories/event-based-programming/</guid>
       <description></description>
     </item>
     

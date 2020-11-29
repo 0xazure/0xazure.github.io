@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.79.0" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Hacktoberfest - Week Five &middot; stuart crust">
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
 
-    <link rel="stylesheet" href='https://stuartcrust.com/css/all.min.css'>
+    <link rel="stylesheet" href='/css/blog.min.css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="alternate" type="application/rss+xml" title="stuart crust" href='https://stuartcrust.com/index.xml' />
@@ -91,31 +91,19 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                
-                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
-                                
-                                    <a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a>
-                                
-                                    <a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
-                                
-                                    <a class="post-category post-category-rust-wasm" href='https://stuartcrust.com/categories/rust-wasm'>rust-wasm</a>
-                                
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-hacktoberfest" href='/categories/hacktoberfest'>hacktoberfest</a><a class="post-category post-category-rust" href='/categories/rust'>rust</a><a class="post-category post-category-rust-wasm" href='/categories/rust-wasm'>rust-wasm</a>
+
+
                         </p>
                     </header>
-                    
                     <div class="post-description">
                         <p>With this fifth week, Hacktoberfest 2018 comes to a close. I&rsquo;ll be doing a retrospective on the whole month of contributions soon, but that is not this post. This week, I was able to make one of the contributions I had started back in <a href="/2018/10/hacktoberfest-week-three">week three</a>, a documentation contribution to the <a href="https://rustwasm.github.io/book/">Rust and WebAssembly Book</a>.</p>
-
 <p>As I mentioned in that post, I had filed <a href="https://github.com/rustwasm/book/issues/127">rustwasm/book#127</a> to suggest some improvements to the explanation of <code>src/utils.rs</code>, a module that the <code>rust-wasm</code> <a href="https://github.com/rustwasm/wasm-pack-template">project template</a> provides to make working with Rust compiled to WebAssembly easier including some debugging helpers in the form of a <a href="https://github.com/rustwasm/console_error_panic_hook">panic hook</a> to print well-formatted and helpful wasm error messages to <code>console.error</code>. <a href="https://github.com/fitzgen">Nick Fitzgerald</a>, a member of the <a href="https://www.rust-lang.org/en-US/team.html#Dev-tools-team">Rust dev tools team</a>, responded to <a href="https://github.com/rustwasm/book/issues/127#issuecomment-433858876">my issue</a> and said that he would be happy to merge a pull request that did the rephrasing I had suggested. Since I had already done the work up-front when I filed my issue, I was able to get a <a href="https://github.com/rustwasm/book/pull/129">pull request with the change</a> up very quickly and it got merged the same day.</p>
-
 <p>My change is <a href="https://rustwasm.github.io/book/game-of-life/hello-world.html#wasm-game-of-lifesrcutilsrs">live on the Rust and WebAssembly site</a> right now, and it feels really great to see something that I wrote included in a project in which I&rsquo;m excited to get even more involved. Big thanks to Nick for getting back to me about my proposed change and for the quick merge on <a href="https://github.com/rustwasm/book/pull/129">rustwasm/book#129</a> to get it incorporated.</p>
-
 <p>With that pull request opened (and merged), I was able to achieve my five pull requests for Hacktoberfest and secure my limited edition T-shirt. The T-shirt is nice, of course, but the real benefit of Hacktoberfest is to all the open source projects that took pull requests this past month, as well as for all the participants who were able to level up their programming skills while contributing to the open source community. More on that in the next post where I&rsquo;ll summarize my experience participating in Hacktoberfest 2018 and talk about what I learned, what went well, what I would do differently next time, and a general reflection on Hacktoberfest itself.</p>
 
                     </div>
-                    
                 </section>
             </div>
             <div class="footer">

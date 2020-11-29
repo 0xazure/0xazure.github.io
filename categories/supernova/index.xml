@@ -1,60 +1,43 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Supernova on stuart crust</title>
+    <title>supernova on stuart crust</title>
     <link>https://stuartcrust.com/categories/supernova/</link>
-    <description>Recent content in Supernova on stuart crust</description>
+    <description>Recent content in supernova on stuart crust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Nov 2018 00:00:00 -0500</lastBuildDate>
-    
-        <atom:link href="https://stuartcrust.com/categories/supernova/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 11 Nov 2018 00:00:00 -0500</lastBuildDate><atom:link href="https://stuartcrust.com/categories/supernova/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Improving CLI Ergonomics</title>
       <link>https://stuartcrust.com/2018/11/improving-cli-ergonomics/</link>
       <pubDate>Sun, 11 Nov 2018 00:00:00 -0500</pubDate>
       
       <guid>https://stuartcrust.com/2018/11/improving-cli-ergonomics/</guid>
-      <description>
-
-&lt;p&gt;In my day-to-day, I use &lt;em&gt;a lot&lt;/em&gt; of command-line tools.
+      <description>&lt;p&gt;In my day-to-day, I use &lt;em&gt;a lot&lt;/em&gt; of command-line tools.
 I generally find myself to be much more productive working in a non-GUI environment, mostly down to the fact that I can type much faster than I can move and aim a mouse and the less time I spend switching between keyboard and mouse the more time I can spend typing.
 Unfortunately, command-line tools have one major drawback: discoverability.
 If I am given a GUI application, I can click around, hover over different UI elements, and generally get a feel for how the interface is laid out.
 In a command-line tool, I don&amp;rsquo;t have any of these visual cues to help me learn the functionality; I have to start typing and see what happens.
 To supplement this lack of visual cues, good command-line tools generally have autocomplete snippets for your shell so you can type the command name and start hitting &lt;code&gt;TAB&lt;/code&gt; to see what options are available at a particular time, as well as extensive &lt;code&gt;man&lt;/code&gt; pages that describe all the various options, commands, and any sub-commands (though these &lt;code&gt;man&lt;/code&gt; pages are often extraordinarily verbose and rarely provide useful examples of how the tool is commonly used, so &lt;a href=&#34;https://tldr.sh/&#34;&gt;alternatives such as &lt;code&gt;tldr&lt;/code&gt;&lt;/a&gt; fill this gap).&lt;/p&gt;
-
 &lt;p&gt;I want &lt;a href=&#34;https://github.com/0xazure/supernova&#34;&gt;&lt;code&gt;supernova&lt;/code&gt;&lt;/a&gt; to be a good command-line tool, so I have been thinking about ways to improve discoverability and make the tool easier to use.
 A really interesting post by &lt;a href=&#34;https://twitter.com/jdxcode&#34;&gt;Jeff Dickey&lt;/a&gt;, an engineer at Heroku, crossed my timeline recently titled &lt;a href=&#34;https://medium.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46&#34;&gt;12 Factor CLI Apps&lt;/a&gt;
 In his post, Jeff provides twelve principles to guide CLI design in a similar fashion to Heroku&amp;rsquo;s original &lt;a href=&#34;https://12factor.net/&#34;&gt;Twelve-Factor App&lt;/a&gt; methodology.
 Out of the twelve principles, Principle 2 stood out to me, particularly in the context of &lt;code&gt;supernova&lt;/code&gt;; Jeff suggests to &amp;ldquo;prefer flags to args&amp;rdquo; when designing a CLI.
 He says:&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;Sometimes args are just fine though when the argument is obvious such as &lt;code&gt;$rm file_to_remove&lt;/code&gt;. A good rule of thumb is 1 type of argument is fine, 2 types are very suspect, and 3 are never good.&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;This rule of thumb got me thinking about &lt;code&gt;supernova&lt;/code&gt;&amp;rsquo;s current calling convention.
 Currently, you would use &lt;code&gt;supernova&lt;/code&gt; like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ supernova &amp;lt;username&amp;gt; [&amp;lt;auth-token&amp;gt;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This violates Jeff&amp;rsquo;s rule of thumb because &lt;code&gt;&amp;lt;username&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;auth-token&amp;gt;&lt;/code&gt; are not the same type of argument, and it&amp;rsquo;s arguably even worse because the &lt;code&gt;&amp;lt;auth-token&amp;gt;&lt;/code&gt; is optional here.&lt;/p&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ supernova &amp;lt;username&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&amp;lt;auth-token&amp;gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This violates Jeff&amp;rsquo;s rule of thumb because &lt;code&gt;&amp;lt;username&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;auth-token&amp;gt;&lt;/code&gt; are not the same type of argument, and it&amp;rsquo;s arguably even worse because the &lt;code&gt;&amp;lt;auth-token&amp;gt;&lt;/code&gt; is optional here.&lt;/p&gt;
 &lt;p&gt;I opened &lt;a href=&#34;https://github.com/0xazure/supernova/issues/16&#34;&gt;&lt;code&gt;0xazure/supernova#16&lt;/code&gt;&lt;/a&gt; to track this problem with our current calling convention.
 In it, I suggest using the &lt;a href=&#34;https://crates.io/crates/clap&#34;&gt;clap&lt;/a&gt; crate to improve our CLI and provide the facilities to do command-line argument parsing.&lt;/p&gt;
-
 &lt;h2 id=&#34;introducing-clap&#34;&gt;Introducing Clap&lt;/h2&gt;
-
 &lt;p&gt;Clap is a great crate that makes it super easy to add all kinds of CLI goodies to your command-line tool including auto-generated help, version, and usage information which are all, as Jeff highlights in Principle 1: Great help is essential, important to good CLIs.&lt;/p&gt;
-
 &lt;p&gt;Adding clap to the project would check off Principles 1 &amp;amp; 2, so I went ahead and &lt;a href=&#34;https://github.com/0xazure/supernova/pull/19&#34;&gt;created a pull request&lt;/a&gt; to add clap and improve &lt;code&gt;supernova&lt;/code&gt;&amp;rsquo;s calling convention. All that was necessary was to create a new clap-based &lt;code&gt;App&lt;/code&gt; with the desired arguments and flags, provide good help messages, and set &lt;code&gt;&amp;lt;auth-token&amp;gt;&lt;/code&gt; to be an optional argument.
 Having done all that, this is what clap generates, all for 13 lines of code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;$ supernova --help
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;$ supernova --help
 supernova 0.1.0
 
 USAGE:
@@ -69,52 +52,35 @@ OPTIONS:
 
 ARGS:
     &amp;lt;USERNAME&amp;gt;    The user whose stars to collect
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Clap will print the name as well as the version with every &lt;code&gt;--help&lt;/code&gt; request.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Clap will print the name as well as the version with every &lt;code&gt;--help&lt;/code&gt; request.
 I was a little wary of this at first, because while I definitely want to include this information in my CLI, I also don&amp;rsquo;t want the maintenance burden of having to remember to update the version string in &lt;code&gt;main.rs&lt;/code&gt; every time a new version is published.
 However, clap exposes some &lt;a href=&#34;https://docs.rs/clap/2.32.0/clap/#macros&#34;&gt;very handy macros&lt;/a&gt; that make use of environment variables &lt;a href=&#34;https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates&#34;&gt;exported by &lt;code&gt;cargo&lt;/code&gt;&lt;/a&gt; at build time to pull this information out of &lt;code&gt;Cargo.toml&lt;/code&gt;, so these values will always be up to date with the crate&amp;rsquo;s metadata and don&amp;rsquo;t require setting the values in code.&lt;/p&gt;
-
 &lt;p&gt;To actually extract all of the parsed arguments from clap, we call &lt;a href=&#34;https://docs.rs/clap/2.32.0/clap/struct.App.html#method.get_matches&#34;&gt;&lt;code&gt;App::get_matches()&lt;/code&gt;&lt;/a&gt; which produces an &lt;a href=&#34;https://docs.rs/clap/2.32.0/clap/struct.ArgMatches.html&#34;&gt;&lt;code&gt;ArgMatches&lt;/code&gt;&lt;/a&gt; struct we can query for specific arguments by name. Instead of parsing out each argument, I decided to try my hand at implementing the &lt;code&gt;From&lt;/code&gt; trait to convert &lt;code&gt;ArgMatches&lt;/code&gt; into &lt;code&gt;supernova&lt;/code&gt;&amp;rsquo;s &lt;code&gt;Config&lt;/code&gt; type so it can be passed directly to the next function call.&lt;/p&gt;
-
 &lt;h2 id=&#34;traits-in-rust&#34;&gt;Traits in Rust&lt;/h2&gt;
-
 &lt;p&gt;Before I talk about implementing the &lt;code&gt;From&lt;/code&gt; trait, I want to quickly talk about what traits actually are, as well as why I chose to implement &lt;code&gt;From&lt;/code&gt; instead of one of the other conversion traits.&lt;/p&gt;
-
 &lt;p&gt;The Rust Book &lt;a href=&#34;https://doc.rust-lang.org/book/second-edition/ch10-02-traits.html#traits-defining-shared-behavior&#34;&gt;explains traits like this&lt;/a&gt;:&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;A &lt;em&gt;trait&lt;/em&gt; tells the Rust compiler about functionality a particular type has and can share with other types. We can use traits to define shared behavior in an abstract way.&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;If you are familiar with the idea of &lt;em&gt;interfaces&lt;/em&gt; in other languages such as Java or Go, traits are a very similar idea.&lt;/p&gt;
-
 &lt;p&gt;There is an important caveat with traits.
 Again, from the Rust Book, &lt;a href=&#34;https://doc.rust-lang.org/book/second-edition/ch10-02-traits.html#implementing-a-trait-on-a-type&#34;&gt;Chapter 10.2, &lt;em&gt;Implementing a Trait on a Type&lt;/em&gt;&lt;/a&gt;:&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;One restriction to note with trait implementations is that we can implement a trait on a type only if either the trait or the type is local to our crate.&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;This means that I will need to implement my conversion on a type that I control, &lt;code&gt;Config&lt;/code&gt;, to convert between &lt;code&gt;ArgMatches&lt;/code&gt; and &lt;code&gt;Config&lt;/code&gt;.&lt;/p&gt;
-
 &lt;p&gt;The restriction on traits is very interesting, because while it is not necessary in my case it raises the question of how to convert from types that I do control into types defined in the standard library or in other crates.
 If I wanted to convert a &lt;code&gt;Config&lt;/code&gt; object into a &lt;code&gt;String&lt;/code&gt; for example, it might make sense to use the conveniently named &lt;a href=&#34;https://doc.rust-lang.org/std/convert/trait.Into.html&#34;&gt;&lt;code&gt;Into&lt;/code&gt; trait&lt;/a&gt;.
 However, the documentation for &lt;code&gt;Into&lt;/code&gt; states:&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;Library authors should not directly implement this trait, but should prefer implementing the &lt;code&gt;From&lt;/code&gt; trait, which offers greater flexibility and provides an equivalent &lt;code&gt;Into&lt;/code&gt; implementation for free, thanks to a blanket implementation in the standard library.&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;So, instead of implementing &lt;code&gt;Into&lt;/code&gt;, I should implement the conversion of &lt;code&gt;Config&lt;/code&gt; &lt;strong&gt;from&lt;/strong&gt; &lt;code&gt;String&lt;/code&gt;, and I get the equivalent &lt;code&gt;Into&lt;/code&gt; implementation for free?
 It seems a bit backwards since we are defining a trait that converts in the &lt;em&gt;opposite&lt;/em&gt; direction of our needs, but because of this blanket implementation in the standard library we get symmetric conversions between types for free as long as we implement &lt;code&gt;From&lt;/code&gt; on the type.
 That means we only have to write the conversion function once instead of needing to write it once in each direction, and I&amp;rsquo;m definitely in favour of anything that reduces the amount of code I need to write.&lt;/p&gt;
-
 &lt;h2 id=&#34;the-from-trait&#34;&gt;The &lt;code&gt;From&lt;/code&gt; Trait&lt;/h2&gt;
-
 &lt;p&gt;Actually implementing the &lt;code&gt;From&lt;/code&gt; trait was straight-forward, other than the &lt;a href=&#34;https://github.com/0xazure/supernova/pull/19/files#diff-b4aea3e418ccdb71239b96952d9cddb6R27&#34;&gt;necessary addition of a lifetime annotation&lt;/a&gt; because of how &lt;code&gt;ArgMatches&lt;/code&gt; is implemented on clap&amp;rsquo;s side.
 Implementing &lt;code&gt;From&lt;/code&gt; also let me replace another method in &lt;code&gt;Config&lt;/code&gt; which reduces the surface area of &lt;code&gt;Config&lt;/code&gt;&amp;rsquo;s implementation.&lt;/p&gt;
-
 &lt;p&gt;I&amp;rsquo;m not totally happy with implementing &lt;code&gt;From&lt;/code&gt; on &lt;code&gt;Config&lt;/code&gt; because I had to pull clap into the library side of &lt;code&gt;supernova&lt;/code&gt; instead of leaving arguments parsing completely in &lt;code&gt;main&lt;/code&gt;, so I may go back and change this implementation to provide better separation between data and arguments parsing.
 Or I may decide to move &lt;code&gt;Config&lt;/code&gt; out to its own module which would also increase separation of concerns.
 Either way, I was very happy to get my hands back on the keyboard writing Rust code this week, and I hope to be writing more in the near future!&lt;/p&gt;
@@ -127,39 +93,23 @@ Either way, I was very happy to get my hands back on the keyboard writing Rust c
       <pubDate>Sun, 04 Nov 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/11/open-source-level-up-becoming-a-maintainer/</guid>
-      <description>
-
-&lt;p&gt;After a &lt;a href=&#34;https://stuartcrust.com/2018/11/hacktoberfest-a-month-of-open-source&#34;&gt;month of open source&lt;/a&gt; following my &lt;a href=&#34;https://stuartcrust.com/2018/09/a-return-to-open-source&#34;&gt;return to open source&lt;/a&gt;, the next step in my journey is to really immerse myself in one or two projects and start making larger contributions. The open source course I&amp;rsquo;m taking is encouraging us to complete contributions to three &amp;ldquo;external&amp;rdquo; open source projects over the next 5 weeks, as well as make three contributions to &amp;ldquo;internal&amp;rdquo; projects during the same period. In this case, &amp;ldquo;external&amp;rdquo; refers to established projects in the open source community and &amp;ldquo;internal&amp;rdquo; refers to projects we as a class are starting ourselves to get a feel for being core maintainers of a project so we can gain experience on both sides of the process. As a class we had a brainstorming session to come up with ideas for internal projects we could start, and I donated one of my existing side-projects to the list, which has lead to&amp;hellip;&lt;/p&gt;
-
+      <description>&lt;p&gt;After a &lt;a href=&#34;https://stuartcrust.com/2018/11/hacktoberfest-a-month-of-open-source&#34;&gt;month of open source&lt;/a&gt; following my &lt;a href=&#34;https://stuartcrust.com/2018/09/a-return-to-open-source&#34;&gt;return to open source&lt;/a&gt;, the next step in my journey is to really immerse myself in one or two projects and start making larger contributions. The open source course I&amp;rsquo;m taking is encouraging us to complete contributions to three &amp;ldquo;external&amp;rdquo; open source projects over the next 5 weeks, as well as make three contributions to &amp;ldquo;internal&amp;rdquo; projects during the same period. In this case, &amp;ldquo;external&amp;rdquo; refers to established projects in the open source community and &amp;ldquo;internal&amp;rdquo; refers to projects we as a class are starting ourselves to get a feel for being core maintainers of a project so we can gain experience on both sides of the process. As a class we had a brainstorming session to come up with ideas for internal projects we could start, and I donated one of my existing side-projects to the list, which has lead to&amp;hellip;&lt;/p&gt;
 &lt;h2 id=&#34;level-up&#34;&gt;Level Up!&lt;/h2&gt;
-
 &lt;p&gt;With absolutely zero fanfare, hoops to jump through, or documents to sign, I suddenly became the initial maintainer of one of our course&amp;rsquo;s internal projects. I was able to generate enough interest in my side-project that members of my class wanted to contribute, and the project was added to the official list of internal projects. The amazing thing about open source development is you don&amp;rsquo;t need anyone&amp;rsquo;s permission or to be told to create something; if you have an idea and enough people are interested in using and/or growing that idea, you have an open source project. The project itself grows in a very organic way as people find out about the project and drop in to see what&amp;rsquo;s going on. Some people just drop in and perhaps contribute a little bit or share their use-case for the project, while others get started and then decide to stick around for a long time; that is the nature of open source.&lt;/p&gt;
-
 &lt;h2 id=&#34;supernova&#34;&gt;supernova&lt;/h2&gt;
-
 &lt;p&gt;The project I am maintaining is &lt;a href=&#34;https://github.com/0xazure/supernova&#34;&gt;&lt;code&gt;0xazure/supernova&lt;/code&gt;&lt;/a&gt;, and I would really encourage you to come check us out! We&amp;rsquo;re still in the early stages, but we would encourage any and all to take a look at what we&amp;rsquo;re building, make comments and submit issues or pull requests, and give us feedback. Even though it has been deemed an &amp;ldquo;internal&amp;rdquo; project for the course, we still welcome contributions from anyone who wants to get involved so stop by and &lt;a href=&#34;https://github.com/0xazure/supernova/issues/new&#34;&gt;file an issue&lt;/a&gt; if you have any questions.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;supernova&lt;/code&gt; started out as a learning project for me to improve my understanding of the &lt;a href=&#34;https://www.rust-lang.org&#34;&gt;Rust&lt;/a&gt; programming language, a {,de}serializing library written in Rust called &lt;a href=&#34;https://serde.rs/&#34;&gt;Serde&lt;/a&gt;, and the &lt;a href=&#34;https://developer.github.com/v3/&#34;&gt;GitHub API&lt;/a&gt;. I am a project-oriented learner, so whenever I have some tools and techniques I&amp;rsquo;d like to learn or improve, I start a project that tries to use them so I can have a better understanding of their strengths and weaknesses. The initial implementation as a CLI tool was designed to pull &lt;a href=&#34;https://developer.github.com/v3/activity/starring/#list-repositories-being-starred&#34;&gt;stars data&lt;/a&gt; from the GitHub API and display it in a formatted list. I have a tendency to use stars like I would bookmarks so I have accumulated a lot of stars since I joined GitHub, but I have no great way to view all of my stars in one place (GitHub insists on paginating the list) or export them in various formats. &lt;code&gt;supernova&lt;/code&gt; was only added to the internal projects list a week ago, but we already have &lt;a href=&#34;https://github.com/0xazure/supernova/issues?utf8=✓&amp;amp;q=is%3Aissue+is%3Aopen+created%3A&amp;lt;2018-11-04&#34;&gt;a number of open issues&lt;/a&gt; to start growing &lt;code&gt;supernova&lt;/code&gt;&amp;rsquo;s feature set.&lt;/p&gt;
-
+&lt;p&gt;&lt;code&gt;supernova&lt;/code&gt; started out as a learning project for me to improve my understanding of the &lt;a href=&#34;https://www.rust-lang.org&#34;&gt;Rust&lt;/a&gt; programming language, a {,de}serializing library written in Rust called &lt;a href=&#34;https://serde.rs/&#34;&gt;Serde&lt;/a&gt;, and the &lt;a href=&#34;https://developer.github.com/v3/&#34;&gt;GitHub API&lt;/a&gt;. I am a project-oriented learner, so whenever I have some tools and techniques I&amp;rsquo;d like to learn or improve, I start a project that tries to use them so I can have a better understanding of their strengths and weaknesses. The initial implementation as a CLI tool was designed to pull &lt;a href=&#34;https://developer.github.com/v3/activity/starring/#list-repositories-being-starred&#34;&gt;stars data&lt;/a&gt; from the GitHub API and display it in a formatted list. I have a tendency to use stars like I would bookmarks so I have accumulated a lot of stars since I joined GitHub, but I have no great way to view all of my stars in one place (GitHub insists on paginating the list) or export them in various formats. &lt;code&gt;supernova&lt;/code&gt; was only added to the internal projects list a week ago, but we already have &lt;a href=&#34;https://github.com/0xazure/supernova/issues?utf8=%E2%9C%93&amp;amp;q=is%3Aissue+is%3Aopen+created%3A%3C2018-11-04&#34;&gt;a number of open issues&lt;/a&gt; to start growing &lt;code&gt;supernova&lt;/code&gt;&amp;rsquo;s feature set.&lt;/p&gt;
 &lt;h2 id=&#34;first-week&#34;&gt;First Week&lt;/h2&gt;
-
 &lt;p&gt;In the first week we&amp;rsquo;ve been focusing on a lot of the low-hanging fruit for a new open source project: setting up the project infrastructure and documenting what we already have.&lt;/p&gt;
-
 &lt;p&gt;There are currently a few open issues for writing docs:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/0xazure/supernova/issues/4&#34;&gt;0xazure/supernova#4&lt;/a&gt; - Update the Readme&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/0xazure/supernova/issues/7&#34;&gt;0xazure/supernova#7&lt;/a&gt; - Create contributing guidelines&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;as well as the ever-present need to &lt;a href=&#34;https://doc.rust-lang.org/book/second-edition/ch14-02-publishing-to-crates-io.html#making-useful-documentation-comments&#34;&gt;document existing code&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;Within the first week we&amp;rsquo;ve also &lt;a href=&#34;https://github.com/0xazure/supernova/pull/9&#34;&gt;set up and enabled&lt;/a&gt; TravisCI for testing and &lt;a href=&#34;https://github.com/rust-lang-nursery/rust-clippy&#34;&gt;linting&lt;/a&gt; our codebase thanks to &lt;a href=&#34;https://github.com/SeanPrashad&#34;&gt;Sean Prashad&lt;/a&gt; and made &lt;code&gt;supernova&lt;/code&gt; more accessible to new contributors by &lt;a href=&#34;https://github.com/0xazure/supernova/pull/15&#34;&gt;converting existing documentation to Markdown&lt;/a&gt; thanks to &lt;a href=&#34;https://github.com/Mordax&#34;&gt;Mordax&lt;/a&gt;. I really enjoyed landing these contributions; it&amp;rsquo;s really exciting to see something I started as a side-project to get better at writing &lt;a href=&#34;https://www.rust-lang.org&#34;&gt;Rust&lt;/a&gt; grow and take on a life of its own.&lt;/p&gt;
-
 &lt;h2 id=&#34;next-week&#34;&gt;Next Week&lt;/h2&gt;
-
 &lt;p&gt;In the next week or so we hope to have a lot of the initial set up completed so that we can move on to adding functionality. My personal goal for next week is to submit a pull request for &lt;a href=&#34;https://github.com/0xazure/supernova/issues/16&#34;&gt;improving the usability of &lt;code&gt;supernova&lt;/code&gt;&lt;/a&gt; by following Guideline #2 of &lt;a href=&#34;https://medium.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46&#34;&gt;12 Factor CLI Apps&lt;/a&gt; to &amp;ldquo;prefer flags to args&amp;rdquo; to make input to the CLI more explicit and clear, as well as many other usability benefits.&lt;/p&gt;
-
 &lt;p&gt;I also need to start thinking about what external project(s) I want to contribute to over the next few weeks; I have some ideas from my contributions during Hackoberfest, but I&amp;rsquo;ll need to make a decision soon so I can get set up to contribute.&lt;/p&gt;
 </description>
     </item>

@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go &middot; stuart crust</title>
+    <title>go &middot; stuart crust</title>
 
     <meta name="description" content="a constant work in progress">
 
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.79.0" />
     <meta name="twitter:card" content="summary">
     
-    <meta name="twitter:title" content="Go &middot; stuart crust">
+    <meta name="twitter:title" content="go &middot; stuart crust">
     <meta name="twitter:description" content="a constant work in progress">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Go &middot; stuart crust">
+    <meta property="og:title" content="go &middot; stuart crust">
     <meta property="og:description" content="a constant work in progress">
 
     
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
 
-    <link rel="stylesheet" href='https://stuartcrust.com/css/all.min.css'>
+    <link rel="stylesheet" href='/css/blog.min.css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="alternate" type="application/rss+xml" title="stuart crust" href='https://stuartcrust.com/index.xml' />
@@ -92,39 +92,25 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                
-                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
-                                
-                                    <a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a>
-                                
-                                    <a class="post-category post-category-go" href='https://stuartcrust.com/categories/go'>go</a>
-                                
-                                    <a class="post-category post-category-hugo" href='https://stuartcrust.com/categories/hugo'>hugo</a>
-                                
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-hacktoberfest" href='/categories/hacktoberfest'>hacktoberfest</a><a class="post-category post-category-go" href='/categories/go'>go</a><a class="post-category post-category-hugo" href='/categories/hugo'>hugo</a>
+
+
                         </p>
                     </header>
 
                     <div class="post-description">
                         <p>Hacktoberfest week four! In keeping with the theme I <a href="/2018/10/hacktoberfest-week-three">set last week</a> I continued to improve open source project documentation as part of Hacktoberfest. This week I returned to <a href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the theme I use for this blog, to help out with improving some areas of the documentation I noticed could use a bit of polish during my first contribution to the project during Hacktoberfest <a href="/2018/10/hacktoberfest-week-two">week two</a>.</p>
-
 <p>In <a href="https://github.com/dplesca/purehugo/pull/28">dplesca/purehugo#28</a> I rephrased the section of the <code>README.md</code> that deals with code syntax highlighting on generated blogs. As I mention in the issue, it seems as though the original author simply missed a word when writing the section:</p>
-
 <blockquote>
 <p>All you need to do is to let rainbow.js the language of the highlighted code [&hellip;]</p>
 </blockquote>
-
 <p>which should instead read:</p>
-
 <blockquote>
 <p>All you need to do is to let rainbow.js <strong>know</strong> the language of the highlighted code [&hellip;]</p>
 </blockquote>
-
 <p>The simple fix in this case would be to add the missing word. However, since I knew I would be editing this part of the document anyways, I decided to take a bit more time and rephrase the existing wording to simplify the instructions and use more specific language to instruct new users what they need to do to get the highlighting library to pick up the desired language. I also added a full example of how to apply <a href="https://golang.org/">Go</a> syntax to a code block using Markdown, as I find seeing complete code samples or full examples in documentation to be very helpful when I&rsquo;m learning a new tool or framework, and serve as quick reminders if I&rsquo;m returning to a tool or framework I haven&rsquo;t used recently to get me back on track.</p>
-
 <p>This week turned into a twofer because while I was working on <a href="https://github.com/dplesca/purehugo/pull/28">dplesca/purehugo#28</a> I noticed a small spelling error elsewhere in the <code>README.md</code> file and submitted <a href="https://github.com/dplesca/purehugo/pull/27">dplesca/purehugo#27</a> to correct a word in one of the document headings. I only noticed the spelling mistake as I had just set up proper spell checking in Visual Studio Code using <a href="https://marketplace.visualstudio.com/items?itemName=ban.spellright">Spell Right by Bartosz Antosik</a> to warn me about typos and other spelling errors. I had been under the impression that VS Code shipped with spell checking by default but this does not seem to be the case. Further, the VS Code spellchecking addon I found <a href="https://github.com/microsoft/vscode-spell-check">published by Microsoft</a> is marked as deprecated and suggests finding an alternate addon. Correcting minor typos in documentation is small potatoes compared to some other Hacktoberfest contributions, but they are important changes that affect readability, comprehension, and the flow of the document(s) in which they occur.</p>
-
 <p>The end of Hacktoberfest is almost upon us, and I have one last post to share about my final contribution this month. Look forward to a piece about my first major contribution to a Rust project!</p>
 
                     </div>
@@ -139,77 +125,41 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                
-                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
-                                
-                                    <a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a>
-                                
-                                    <a class="post-category post-category-go" href='https://stuartcrust.com/categories/go'>go</a>
-                                
-                                    <a class="post-category post-category-hugo" href='https://stuartcrust.com/categories/hugo'>hugo</a>
-                                
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-hacktoberfest" href='/categories/hacktoberfest'>hacktoberfest</a><a class="post-category post-category-go" href='/categories/go'>go</a><a class="post-category post-category-hugo" href='/categories/hugo'>hugo</a>
+
+
                         </p>
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>Hacktoberfest week two! <a href="/2018/10/hacktoberfest-week-one/">Week one</a> was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and <a href="/categories/rust/">my area of interest</a>.</p>
-
+                        <p>Hacktoberfest week two! <a href="/2018/10/hacktoberfest-week-one/">Week one</a> was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and <a href="/categories/rust/">my area of interest</a>.</p>
 <p>My contribution for this week had a bit more self-interest involved; I contributed a change to <a href="https://github.com/dplesca/purehugo">dplesca/purehugo</a>, the <a href="https://gohugo.io">Hugo</a> blog theme I use for this blog, to <a href="https://github.com/dplesca/purehugo/pull/26">normalize URLs</a> that use Hugo&rsquo;s <code>.Site.BaseURL</code> variable.</p>
-
 <h1 id="the-problem">The Problem</h1>
-
 <p>Using the <a href="https://github.com/dplesca/purehugo">dplesca/purehugo</a> theme, I was noticing that many links to other parts of the site - that is, links that were not external links to e.g. GitHub or Twitter - contained multiple slashes after the site root. Modern web browsers are really good at dealing with partially-malformed URLs so there was no functional problem with any of the links as the browser&rsquo;s URL parser took over and cleaned them up into a value it could resolve, but it would still be better if the URLs were correctly formatted when Hugo generates the static site content.</p>
-
 <p>The malformed URLs looked something like this:</p>
-
-<pre><code class="language-html">&lt;a class=&quot;pure-button&quot; href=&quot;http://localhost:1313//index.xml&quot;&gt;[...]&lt;/a&gt;
-&lt;a class=&quot;post-category post-category-open source&quot; href=&quot;http://localhost:1313//categories/open-source&quot;&gt;open source&lt;/a&gt;
-</code></pre>
-
-<p>Delving into the template code revealed how <code>dplesca/purehugo</code> was generating the URLs:</p>
-
-<pre><code class="language-sourceCode">&lt;a class=&quot;pure-button&quot; href=&quot;{{ .Site.BaseURL }}/index.xml&quot;&gt;[...]&lt;/a&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pure-button&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://localhost:1313//index.xml&#34;</span>&gt;[...]&lt;/<span style="color:#f92672">a</span>&gt;
+&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-category post-category-open source&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://localhost:1313//categories/open-source&#34;</span>&gt;open source&lt;/<span style="color:#f92672">a</span>&gt;
+</code></pre></div><p>Delving into the template code revealed how <code>dplesca/purehugo</code> was generating the URLs:</p>
+<pre><code class="language-sourceCode" data-lang="sourceCode">&lt;a class=&quot;pure-button&quot; href=&quot;{{ .Site.BaseURL }}/index.xml&quot;&gt;[...]&lt;/a&gt;
 &lt;a class=&quot;post-category post-category-{{ . }}&quot; href=&quot;{{ $baseUrl }}/categories/{{ . | urlize }}&quot;&gt;{{ . }}&lt;/a&gt;
-</code></pre>
-
-<p>The template string used <code>.Site.BaseURL</code> and appended a slash before the next URL fragment. Since this results in a double slash in the generated output, I presume but have not confirmed that <code>.Site.BaseURL</code> always ends in a trailing slash that needs to be taken into consideration when generating URLs relative the the site&rsquo;s root.</p>
-
+</code></pre><p>The template string used <code>.Site.BaseURL</code> and appended a slash before the next URL fragment. Since this results in a double slash in the generated output, I presume but have not confirmed that <code>.Site.BaseURL</code> always ends in a trailing slash that needs to be taken into consideration when generating URLs relative the the site&rsquo;s root.</p>
 <h1 id="the-solution">The Solution</h1>
-
 <p>In a similar way to how we join file paths in NodeJS with <a href="https://nodejs.org/api/path.html#path_path_join_paths">path.join()</a>, we almost never want to be responsible for building URL paths ourselves. Luckily, Hugo provides <a href="https://gohugo.io/functions/">many built-in helper functions</a> that cover a whole range of use cases, including the one I decided to use to normalize URL paths throughout <code>dplesca/purehugo</code>: <a href="https://gohugo.io/functions/absurl/.">absURL</a></p>
-
 <p>From the Hugo documentation, <code>absURL</code></p>
-
 <blockquote>
 <p>Creates an absolute URL based on the configured <code>baseURL</code>.</p>
 </blockquote>
-
 <p>where <code>baseURL</code> is the hostname (and path) to the root of the site which is set as part of Hugo&rsquo;s <a href="https://gohugo.io/getting-started/configuration/#all-configuration-settings">site configuration</a>.</p>
-
 <p>This function was a perfect solution in most of the places where static files need to be linked and served to the client, such as JavaScript or CSS content. In those cases it was a simple matter of removing <code>.Site.BaseURL</code> and the subsequent concatenation and replace it with a call to the <code>absURL</code> function, like so:</p>
-
-<pre><code class="language-html">&lt;a class=&quot;pure-button&quot; href='{{ &quot;index.xml&quot; | absURL }}'&gt;[...]&lt;/a&gt;
-</code></pre>
-
-<p>Normalizing the post category links turned out to be a bit more complicated than this simple substitution because these links needed to include more URL fragments to create the complete path. In order to correctly concatenate and then normalize these URLs, I turned to another of Hugo&rsquo;s built-in functions: <a href="https://gohugo.io/functions/printf/">printf</a>.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pure-button&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{{ &#34;index.xml&#34; | absURL }}&#39;</span>&gt;[...]&lt;/<span style="color:#f92672">a</span>&gt;
+</code></pre></div><p>Normalizing the post category links turned out to be a bit more complicated than this simple substitution because these links needed to include more URL fragments to create the complete path. In order to correctly concatenate and then normalize these URLs, I turned to another of Hugo&rsquo;s built-in functions: <a href="https://gohugo.io/functions/printf/">printf</a>.</p>
 <p>Hugo&rsquo;s templating system is built almost entirely on top of Go&rsquo;s built-in <a href="https://golang.org/pkg/text/template/">template package</a>, which makes things very familiar if you have worked with Go templates before. It also means that Hugo can expose a lot of Go functions as Hugo functions available inside templates. In this case, Hugo&rsquo;s <code>printf</code> function exposes Go&rsquo;s <code>fmt.Sprintf</code> function which works much like <code>printf</code> in C.</p>
-
 <p>This is the solution I came up with for building the more complicated post category link URLs while still being able to normalize the resulting URL using <code>absURL</code>:</p>
-
-<pre><code class="language-html">&lt;a class=&quot;post-category post-category-{{ . }}&quot; href='{{ ( printf &quot;categories/%s&quot; . ) | absURL }}'&gt;{{ . }}&lt;/a&gt;
-</code></pre>
-
-<p>Unlike in NodeJS, in this case it&rsquo;s safe to do a simple string concatenation of <code>categories/&lt;category-name&gt;</code> because unlike with file systems, the fragment separator in URLs is always the <code>/</code> character.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-category post-category-{{ . }}&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{{ ( printf &#34;categories/%s&#34; . ) | absURL }}&#39;</span>&gt;{{ . }}&lt;/<span style="color:#f92672">a</span>&gt;
+</code></pre></div><p>Unlike in NodeJS, in this case it&rsquo;s safe to do a simple string concatenation of <code>categories/&lt;category-name&gt;</code> because unlike with file systems, the fragment separator in URLs is always the <code>/</code> character.</p>
 <h1 id="to-be-continued">To be Continued</h1>
-
 <p>I am very thankful to <code>purehugo</code>&rsquo;s author, <a href="https://github.com/dplesca">@dplesca</a>, for responding so quickly to my pull request with this change and for merging the pull request within a few hours of my submission. While working on this change I noticed a few other areas where I think <code>dplesca/purehugo</code> could be improved, and I&rsquo;m looking forward to working on it more as I continue using it to generate my blog and host my site content.</p>
-
 <p>Hacktoberfest continues on, and I need to start thinking about my next contribution. My school is on a break starting next week, so I&rsquo;m hoping to find the time to dig into something a bit larger and more challenging based on the projects I&rsquo;ve seen so far or had recommended to me by classmates.</p>
 
                     </div>

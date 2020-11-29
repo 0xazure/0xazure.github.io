@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.79.0" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Hacktoberfest - Week One &middot; stuart crust">
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
 
-    <link rel="stylesheet" href='https://stuartcrust.com/css/all.min.css'>
+    <link rel="stylesheet" href='/css/blog.min.css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="alternate" type="application/rss+xml" title="stuart crust" href='https://stuartcrust.com/index.xml' />
@@ -91,45 +91,26 @@
                         <p class="post-meta">
                             
                             
-                                under 
-                                
-                                    <a class="post-category post-category-open source" href='https://stuartcrust.com/categories/open%20source'>open source</a>
-                                
-                                    <a class="post-category post-category-hacktoberfest" href='https://stuartcrust.com/categories/hacktoberfest'>hacktoberfest</a>
-                                
-                                    <a class="post-category post-category-rust" href='https://stuartcrust.com/categories/rust'>rust</a>
-                                
-                            
+    under 
+    <a class="post-category post-category-open-source" href='/categories/open-source'>open source</a><a class="post-category post-category-hacktoberfest" href='/categories/hacktoberfest'>hacktoberfest</a><a class="post-category post-category-rust" href='/categories/rust'>rust</a>
+
+
                         </p>
                     </header>
-                    
                     <div class="post-description">
-                        
-
-<p>Hacktoberfest, start! In my <a href="2018/09/a-return-to-open-source/">previous post</a> I mentioned that I was hoping to find some interesting projects to contribute to this month, and so far I&rsquo;ve come up with a pretty good shortlist of contributions I want to make.</p>
-
+                        <p>Hacktoberfest, start! In my <a href="2018/09/a-return-to-open-source/">previous post</a> I mentioned that I was hoping to find some interesting projects to contribute to this month, and so far I&rsquo;ve come up with a pretty good shortlist of contributions I want to make.</p>
 <p>To start the month off, I lent a hand to <a href="https://github.com/lk-geimfari/awesomo">lk-geimfari/awesomo</a> to <a href="https://github.com/lk-geimfari/awesomo/pull/125">reorganize their list</a> of Rust projects. They had already reorganized the one for Python and suggested contributors use that as a model for the rest of the reorganizations. There are still a bunch of languages on the list in the <a href="https://github.com/lk-geimfari/awesomo/issues/101">tracking issue</a>, so head on over and give them a hand!</p>
-
 <p>The work itself was straight forward; contributors were asked to alphabetize the projects in the list, and provide a table of contents and headings based on the example. I think this was a great first issue for Hacktoberfest because my goal for this month is to contribute to at least two projects that use <a href="https://www.rust-lang.org/en-US/">Rust</a>, and what better way to find out about cool projects than working with a list chock full of them?</p>
-
 <h1 id="alacritty">Alacritty</h1>
-
 <p><a href="https://github.com/jwilm/alacritty">Alacritty</a> was one of the first projects to catch my eye, not just because it was originally at the top of the list, but also because I saw an announcement post that Alacritty <a href="https://www.reddit.com/r/rust/comments/9gl75a/alacritty_now_supports_scrollback/">now supports terminal scrollback</a> which introduced me to the existence of the project in the first place. Alacritty claims to be &ldquo;the fastest terminal emulator in existence&rdquo;, and uses the GPU for rendering to enable optimizations that aren&rsquo;t possible using other terminal emulators. Alacritty is still very much in its infancy, with <a href="https://github.com/jwilm/alacritty/releases/tag/v0.2.1">version 0.2.1</a> as the most recent release at the time of writing. Windows support is planned before a 1.0 release, so if this intrigues you and you&rsquo;re a Windows developer <a href="https://github.com/jwilm/alacritty/issues/28">have a look at the tracking issue</a> and see if you can help out.</p>
-
 <h1 id="diesel">Diesel</h1>
-
 <p>Another project I was aware of before working with this awesome list of Rust projects is <a href="http://diesel.rs/">Diesel</a>, a safe, extensible object-relational mapper (ORM) for Rust. When deciding on the technology stack for my capstone project this year, I investigated using the <a href="https://rocket.rs/overview/">Rocket</a> web framework written in Rust, and Diesel is one of the ORMs <a href="https://rocket.rs/guide/state/#dependencies">recommended in the getting started guide</a>. Diesel provides a comfortable CLI experience for developers familiar with tools like <a href="https://guides.rubyonrails.org/active_record_basics.html">ActiveRecord</a> from Ruby on Rails and <a href="http://docs.sequelizejs.com/">Sequelize</a> in NodeJS, but drastically improves on both by leveraging Rust&rsquo;s type safety and by &ldquo;eliminat[ing] the possibility of incorrect database interactions at compile time.&rdquo;</p>
-
 <h1 id="exa">exa</h1>
-
 <p><a href="https://the.exa.website/">exa</a> is a modern replacement for the built-in unix <code>ls</code> command which aims to have better defaults and more features. I have been using <code>exa</code> myself for a few weeks and I am really enjoying the experience so far. With <code>ls</code> I set up a number of shell aliases and functions to do things like enable human-readable sizes and always show colours; in <code>exa</code> these features are turned on automatically without any setup. I am all for customizability in those cases where it&rsquo;s absolutely necessary but sane defaults is almost always a better solution, especially with a tool that most of us use hundreds of times a day.</p>
-
 <h1 id="to-be-continued">To be Continued</h1>
-
 <p>I definitely have some ideas about more projects that I&rsquo;d like to contribute to after seeing the <a href="https://github.com/lk-geimfari/awesomo">lk-geimfari/awesomo</a> list, either this month for Hacktoberfest or on an ongoing basis. If Rust isn&rsquo;t your language of choice, there are similar lists of projects in pretty much every popular language as well as some more obscure ones, so take a look, be inspired, and happy hacking!</p>
 
                     </div>
-                    
                 </section>
             </div>
             <div class="footer">

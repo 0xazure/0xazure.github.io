@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo on stuart crust</title>
+    <title>hugo on stuart crust</title>
     <link>https://stuartcrust.com/categories/hugo/</link>
-    <description>Recent content in Hugo on stuart crust</description>
+    <description>Recent content in hugo on stuart crust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Oct 2018 00:00:00 -0400</lastBuildDate>
-    
-        <atom:link href="https://stuartcrust.com/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 30 Oct 2018 00:00:00 -0400</lastBuildDate><atom:link href="https://stuartcrust.com/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hacktoberfest - Week Four</title>
       <link>https://stuartcrust.com/2018/10/hacktoberfest-week-four/</link>
@@ -18,23 +14,16 @@
       
       <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-four/</guid>
       <description>&lt;p&gt;Hacktoberfest week four! In keeping with the theme I &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-three&#34;&gt;set last week&lt;/a&gt; I continued to improve open source project documentation as part of Hacktoberfest. This week I returned to &lt;a href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the theme I use for this blog, to help out with improving some areas of the documentation I noticed could use a bit of polish during my first contribution to the project during Hacktoberfest &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-two&#34;&gt;week two&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;In &lt;a href=&#34;https://github.com/dplesca/purehugo/pull/28&#34;&gt;dplesca/purehugo#28&lt;/a&gt; I rephrased the section of the &lt;code&gt;README.md&lt;/code&gt; that deals with code syntax highlighting on generated blogs. As I mention in the issue, it seems as though the original author simply missed a word when writing the section:&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;All you need to do is to let rainbow.js the language of the highlighted code [&amp;hellip;]&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;which should instead read:&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;All you need to do is to let rainbow.js &lt;strong&gt;know&lt;/strong&gt; the language of the highlighted code [&amp;hellip;]&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;The simple fix in this case would be to add the missing word. However, since I knew I would be editing this part of the document anyways, I decided to take a bit more time and rephrase the existing wording to simplify the instructions and use more specific language to instruct new users what they need to do to get the highlighting library to pick up the desired language. I also added a full example of how to apply &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; syntax to a code block using Markdown, as I find seeing complete code samples or full examples in documentation to be very helpful when I&amp;rsquo;m learning a new tool or framework, and serve as quick reminders if I&amp;rsquo;m returning to a tool or framework I haven&amp;rsquo;t used recently to get me back on track.&lt;/p&gt;
-
 &lt;p&gt;This week turned into a twofer because while I was working on &lt;a href=&#34;https://github.com/dplesca/purehugo/pull/28&#34;&gt;dplesca/purehugo#28&lt;/a&gt; I noticed a small spelling error elsewhere in the &lt;code&gt;README.md&lt;/code&gt; file and submitted &lt;a href=&#34;https://github.com/dplesca/purehugo/pull/27&#34;&gt;dplesca/purehugo#27&lt;/a&gt; to correct a word in one of the document headings. I only noticed the spelling mistake as I had just set up proper spell checking in Visual Studio Code using &lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=ban.spellright&#34;&gt;Spell Right by Bartosz Antosik&lt;/a&gt; to warn me about typos and other spelling errors. I had been under the impression that VS Code shipped with spell checking by default but this does not seem to be the case. Further, the VS Code spellchecking addon I found &lt;a href=&#34;https://github.com/microsoft/vscode-spell-check&#34;&gt;published by Microsoft&lt;/a&gt; is marked as deprecated and suggests finding an alternate addon. Correcting minor typos in documentation is small potatoes compared to some other Hacktoberfest contributions, but they are important changes that affect readability, comprehension, and the flow of the document(s) in which they occur.&lt;/p&gt;
-
 &lt;p&gt;The end of Hacktoberfest is almost upon us, and I have one last post to share about my final contribution this month. Look forward to a piece about my first major contribution to a Rust project!&lt;/p&gt;
 </description>
     </item>
@@ -45,62 +34,33 @@
       <pubDate>Mon, 15 Oct 2018 00:00:00 -0400</pubDate>
       
       <guid>https://stuartcrust.com/2018/10/hacktoberfest-week-two/</guid>
-      <description>
-
-&lt;p&gt;Hacktoberfest week two! &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one/&#34;&gt;Week one&lt;/a&gt; was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and &lt;a href=&#34;https://stuartcrust.com/categories/rust/&#34;&gt;my area of interest&lt;/a&gt;.&lt;/p&gt;
-
+      <description>&lt;p&gt;Hacktoberfest week two! &lt;a href=&#34;https://stuartcrust.com/2018/10/hacktoberfest-week-one/&#34;&gt;Week one&lt;/a&gt; was all about getting into the groove of Hacktoberfest, making a small change to contribute, and finding out about other awesome projects in open source and &lt;a href=&#34;https://stuartcrust.com/categories/rust/&#34;&gt;my area of interest&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;My contribution for this week had a bit more self-interest involved; I contributed a change to &lt;a href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt;, the &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; blog theme I use for this blog, to &lt;a href=&#34;https://github.com/dplesca/purehugo/pull/26&#34;&gt;normalize URLs&lt;/a&gt; that use Hugo&amp;rsquo;s &lt;code&gt;.Site.BaseURL&lt;/code&gt; variable.&lt;/p&gt;
-
 &lt;h1 id=&#34;the-problem&#34;&gt;The Problem&lt;/h1&gt;
-
 &lt;p&gt;Using the &lt;a href=&#34;https://github.com/dplesca/purehugo&#34;&gt;dplesca/purehugo&lt;/a&gt; theme, I was noticing that many links to other parts of the site - that is, links that were not external links to e.g. GitHub or Twitter - contained multiple slashes after the site root. Modern web browsers are really good at dealing with partially-malformed URLs so there was no functional problem with any of the links as the browser&amp;rsquo;s URL parser took over and cleaned them up into a value it could resolve, but it would still be better if the URLs were correctly formatted when Hugo generates the static site content.&lt;/p&gt;
-
 &lt;p&gt;The malformed URLs looked something like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;a class=&amp;quot;pure-button&amp;quot; href=&amp;quot;http://localhost:1313//index.xml&amp;quot;&amp;gt;[...]&amp;lt;/a&amp;gt;
-&amp;lt;a class=&amp;quot;post-category post-category-open source&amp;quot; href=&amp;quot;http://localhost:1313//categories/open-source&amp;quot;&amp;gt;open source&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Delving into the template code revealed how &lt;code&gt;dplesca/purehugo&lt;/code&gt; was generating the URLs:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sourceCode&#34;&gt;&amp;lt;a class=&amp;quot;pure-button&amp;quot; href=&amp;quot;{{ .Site.BaseURL }}/index.xml&amp;quot;&amp;gt;[...]&amp;lt;/a&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;pure-button&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://localhost:1313//index.xml&amp;#34;&lt;/span&gt;&amp;gt;[...]&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;post-category post-category-open source&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://localhost:1313//categories/open-source&amp;#34;&lt;/span&gt;&amp;gt;open source&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Delving into the template code revealed how &lt;code&gt;dplesca/purehugo&lt;/code&gt; was generating the URLs:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sourceCode&#34; data-lang=&#34;sourceCode&#34;&gt;&amp;lt;a class=&amp;quot;pure-button&amp;quot; href=&amp;quot;{{ .Site.BaseURL }}/index.xml&amp;quot;&amp;gt;[...]&amp;lt;/a&amp;gt;
 &amp;lt;a class=&amp;quot;post-category post-category-{{ . }}&amp;quot; href=&amp;quot;{{ $baseUrl }}/categories/{{ . | urlize }}&amp;quot;&amp;gt;{{ . }}&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The template string used &lt;code&gt;.Site.BaseURL&lt;/code&gt; and appended a slash before the next URL fragment. Since this results in a double slash in the generated output, I presume but have not confirmed that &lt;code&gt;.Site.BaseURL&lt;/code&gt; always ends in a trailing slash that needs to be taken into consideration when generating URLs relative the the site&amp;rsquo;s root.&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The template string used &lt;code&gt;.Site.BaseURL&lt;/code&gt; and appended a slash before the next URL fragment. Since this results in a double slash in the generated output, I presume but have not confirmed that &lt;code&gt;.Site.BaseURL&lt;/code&gt; always ends in a trailing slash that needs to be taken into consideration when generating URLs relative the the site&amp;rsquo;s root.&lt;/p&gt;
 &lt;h1 id=&#34;the-solution&#34;&gt;The Solution&lt;/h1&gt;
-
 &lt;p&gt;In a similar way to how we join file paths in NodeJS with &lt;a href=&#34;https://nodejs.org/api/path.html#path_path_join_paths&#34;&gt;path.join()&lt;/a&gt;, we almost never want to be responsible for building URL paths ourselves. Luckily, Hugo provides &lt;a href=&#34;https://gohugo.io/functions/&#34;&gt;many built-in helper functions&lt;/a&gt; that cover a whole range of use cases, including the one I decided to use to normalize URL paths throughout &lt;code&gt;dplesca/purehugo&lt;/code&gt;: &lt;a href=&#34;https://gohugo.io/functions/absurl/.&#34;&gt;absURL&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;From the Hugo documentation, &lt;code&gt;absURL&lt;/code&gt;&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;Creates an absolute URL based on the configured &lt;code&gt;baseURL&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;where &lt;code&gt;baseURL&lt;/code&gt; is the hostname (and path) to the root of the site which is set as part of Hugo&amp;rsquo;s &lt;a href=&#34;https://gohugo.io/getting-started/configuration/#all-configuration-settings&#34;&gt;site configuration&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;This function was a perfect solution in most of the places where static files need to be linked and served to the client, such as JavaScript or CSS content. In those cases it was a simple matter of removing &lt;code&gt;.Site.BaseURL&lt;/code&gt; and the subsequent concatenation and replace it with a call to the &lt;code&gt;absURL&lt;/code&gt; function, like so:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;a class=&amp;quot;pure-button&amp;quot; href=&#39;{{ &amp;quot;index.xml&amp;quot; | absURL }}&#39;&amp;gt;[...]&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Normalizing the post category links turned out to be a bit more complicated than this simple substitution because these links needed to include more URL fragments to create the complete path. In order to correctly concatenate and then normalize these URLs, I turned to another of Hugo&amp;rsquo;s built-in functions: &lt;a href=&#34;https://gohugo.io/functions/printf/&#34;&gt;printf&lt;/a&gt;.&lt;/p&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;pure-button&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{{ &amp;#34;index.xml&amp;#34; | absURL }}&amp;#39;&lt;/span&gt;&amp;gt;[...]&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Normalizing the post category links turned out to be a bit more complicated than this simple substitution because these links needed to include more URL fragments to create the complete path. In order to correctly concatenate and then normalize these URLs, I turned to another of Hugo&amp;rsquo;s built-in functions: &lt;a href=&#34;https://gohugo.io/functions/printf/&#34;&gt;printf&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Hugo&amp;rsquo;s templating system is built almost entirely on top of Go&amp;rsquo;s built-in &lt;a href=&#34;https://golang.org/pkg/text/template/&#34;&gt;template package&lt;/a&gt;, which makes things very familiar if you have worked with Go templates before. It also means that Hugo can expose a lot of Go functions as Hugo functions available inside templates. In this case, Hugo&amp;rsquo;s &lt;code&gt;printf&lt;/code&gt; function exposes Go&amp;rsquo;s &lt;code&gt;fmt.Sprintf&lt;/code&gt; function which works much like &lt;code&gt;printf&lt;/code&gt; in C.&lt;/p&gt;
-
 &lt;p&gt;This is the solution I came up with for building the more complicated post category link URLs while still being able to normalize the resulting URL using &lt;code&gt;absURL&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;a class=&amp;quot;post-category post-category-{{ . }}&amp;quot; href=&#39;{{ ( printf &amp;quot;categories/%s&amp;quot; . ) | absURL }}&#39;&amp;gt;{{ . }}&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Unlike in NodeJS, in this case it&amp;rsquo;s safe to do a simple string concatenation of &lt;code&gt;categories/&amp;lt;category-name&amp;gt;&lt;/code&gt; because unlike with file systems, the fragment separator in URLs is always the &lt;code&gt;/&lt;/code&gt; character.&lt;/p&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;post-category post-category-{{ . }}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{{ ( printf &amp;#34;categories/%s&amp;#34; . ) | absURL }}&amp;#39;&lt;/span&gt;&amp;gt;{{ . }}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Unlike in NodeJS, in this case it&amp;rsquo;s safe to do a simple string concatenation of &lt;code&gt;categories/&amp;lt;category-name&amp;gt;&lt;/code&gt; because unlike with file systems, the fragment separator in URLs is always the &lt;code&gt;/&lt;/code&gt; character.&lt;/p&gt;
 &lt;h1 id=&#34;to-be-continued&#34;&gt;To be Continued&lt;/h1&gt;
-
 &lt;p&gt;I am very thankful to &lt;code&gt;purehugo&lt;/code&gt;&amp;rsquo;s author, &lt;a href=&#34;https://github.com/dplesca&#34;&gt;@dplesca&lt;/a&gt;, for responding so quickly to my pull request with this change and for merging the pull request within a few hours of my submission. While working on this change I noticed a few other areas where I think &lt;code&gt;dplesca/purehugo&lt;/code&gt; could be improved, and I&amp;rsquo;m looking forward to working on it more as I continue using it to generate my blog and host my site content.&lt;/p&gt;
-
 &lt;p&gt;Hacktoberfest continues on, and I need to start thinking about my next contribution. My school is on a break starting next week, so I&amp;rsquo;m hoping to find the time to dig into something a bit larger and more challenging based on the projects I&amp;rsquo;ve seen so far or had recommended to me by classmates.&lt;/p&gt;
 </description>
     </item>
@@ -112,17 +72,11 @@
       
       <guid>https://stuartcrust.com/2018/09/third-times-the-charm/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been meaning to start blogging for a while. Not even blogging &lt;em&gt;consistently&lt;/em&gt;, just writing some long-form-ish pieces on projects that I&amp;rsquo;ve been working on, things I&amp;rsquo;ve learned, or things that I might want for my own reference. I&amp;rsquo;ve tried at least twice before - once when I purchased this domain back in December of &lt;em&gt;2013&lt;/em&gt; and again at the end of 2016 - and as evidenced by the utter lack of content it&amp;rsquo;s pretty clear I haven&amp;rsquo;t been successful.&lt;/p&gt;
-
 &lt;p&gt;I made a real attempt to begin publishing at the end of 2016 with the release of that year&amp;rsquo;s &lt;a href=&#34;http://adventofcode.com/2016/&#34;&gt;Advent of Code&lt;/a&gt;, but coursework kept me pretty busy and I never managed to finish and publish any of the posts I was working on at the time. I&amp;rsquo;ll probably revisit some of them, clean them up, and post them - if I still remember what I was writing about - and the rest I may throw into a backlog so that if I ever run into a similar topic again I can incorporate my draft.&lt;/p&gt;
-
 &lt;p&gt;The reason I&amp;rsquo;m giving it another try now is I&amp;rsquo;m taking a course that specifically focuses on open source and includes a requirement that the students blog about their work and experiences as they gain exposure to the open source community. I&amp;rsquo;m &lt;a href=&#34;https://github.com/0xazure&#34;&gt;not exactly a stranger&lt;/a&gt; to open source work, but I haven&amp;rsquo;t had time to be as active as I would like to be so this course is giving me a good excuse to commit more time to getting involved and getting my hands dirty with some contributions.&lt;/p&gt;
-
 &lt;p&gt;On the technical side, this site is built using the static site generator &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. I&amp;rsquo;ve been learning a lot about the ins and outs of Hugo&amp;rsquo;s project structure as I set this blog up, but so far I&amp;rsquo;m pretty happy with the results. Hugo is written in &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt;, the Google-sponsored C/++ replacement, and Hugo has a very active community that keeps improving the project.&lt;/p&gt;
-
 &lt;p&gt;One issue that I did run into was some confusion over themes in Hugo. Each Hugo site has a &lt;code&gt;config.toml&lt;/code&gt; that sets parameters for how the static site content should be generated. Those parameters also include information like social media links that get embedded in certain parts of the Hugo theme that structures the site content and controls the look and feel. Unfortunately, there don&amp;rsquo;t seem to be standard keys for many of these parameters, so the key name for your GitHub or StackOverflow account information needs to be updated if you decide to change your site theme. You can see some of the work I had to do &lt;a href=&#34;https://github.com/0xazure/0xazure/commit/ed9a74d58acbcd49f0be613cfd14dbefb725a842&#34;&gt;in this commit&lt;/a&gt; to update these values when I changed my theme from &lt;a href=&#34;https://github.com/zyro/hyde-x&#34;&gt;hyde-x&lt;/a&gt; to &lt;a href=&#34;https://github.com/dplesca/purehugo&#34;&gt;purehugo&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;I&amp;rsquo;ve been keeping my eye on other static site generators as well, but Hugo is very popular and has a lot of great community contributions and support so I&amp;rsquo;ll be using it for a while yet. Now that things are up and running I might take a stab at customizing my theme a little bit more, an opportunity I wouldn&amp;rsquo;t have if Hugo and its public themes weren&amp;rsquo;t open source. Where many static site generators use things like &lt;a href=&#34;http://handlebarsjs.com/&#34;&gt;Handlebars&lt;/a&gt; or &lt;a href=&#34;https://shopify.github.io/liquid/&#34;&gt;Liquid&lt;/a&gt; for templating, Hugo actually delegates straight to the built-in &lt;a href=&#34;https://golang.org/pkg/text/template/&#34;&gt;text.template&lt;/a&gt; package in Go. This makes it immediately familiar to most Go developers, but I haven&amp;rsquo;t had the opportunity to use Go much - especially recently - so I&amp;rsquo;ll likely be spending a lot of time reading the documentation.&lt;/p&gt;
-
 &lt;p&gt;Hopefully this third attempt will be the one that sticks. Stay tuned for more posts on topics including &lt;a href=&#34;https://stuartcrust.com/categories/open-source&#34;&gt;open source&lt;/a&gt;, &lt;a href=&#34;https://stuartcrust.com/categories/nodejs&#34;&gt;NodeJS&lt;/a&gt;, &lt;a href=&#34;https://stuartcrust.com/categories/rust&#34;&gt;Rust&lt;/a&gt;, &lt;a href=&#34;https://stuartcrust.com/categories/functional-programming&#34;&gt;functional programming&lt;/a&gt;, and anything else I might get up to.&lt;/p&gt;
 </description>
     </item>
