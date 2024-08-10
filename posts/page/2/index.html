@@ -137,7 +137,7 @@
                     </header>
 
                     <div class="post-description">
-                        <p>Hacktoberfest, start! In my <a href="2018/09/a-return-to-open-source/">previous post</a> I mentioned that I was hoping to find some interesting projects to contribute to this month, and so far I&rsquo;ve come up with a pretty good shortlist of contributions I want to make.</p>
+                        <p>Hacktoberfest, start! In my <a href="/2018/09/a-return-to-open-source/">previous post</a> I mentioned that I was hoping to find some interesting projects to contribute to this month, and so far I&rsquo;ve come up with a pretty good shortlist of contributions I want to make.</p>
 <p>To start the month off, I lent a hand to <a href="https://github.com/lk-geimfari/awesomo">lk-geimfari/awesomo</a> to <a href="https://github.com/lk-geimfari/awesomo/pull/125">reorganize their list</a> of Rust projects. They had already reorganized the one for Python and suggested contributors use that as a model for the rest of the reorganizations. There are still a bunch of languages on the list in the <a href="https://github.com/lk-geimfari/awesomo/issues/101">tracking issue</a>, so head on over and give them a hand!</p>
 <p>The work itself was straight forward; contributors were asked to alphabetize the projects in the list, and provide a table of contents and headings based on the example. I think this was a great first issue for Hacktoberfest because my goal for this month is to contribute to at least two projects that use <a href="https://www.rust-lang.org/en-US/">Rust</a>, and what better way to find out about cool projects than working with a list chock full of them?</p>
 <h1 id="alacritty">Alacritty</h1>
@@ -381,7 +381,7 @@ Good programmers, coders, and software engineers (depending on how you identify)
 <h1 id="one-last-twist">One Last Twist</h1>
 <p>After looking a bit more into how <a href="https://gruntjs.com/">grunt</a> and <a href="https://gulpjs.com/">gulp</a> actually implement their file-watching functionality, it turns out that neither one of these popular test runners uses any of the <code>fs.watch()</code> functions directly and don&rsquo;t even use the same dependency to provide watching functionality!</p>
 <p>Grunt&rsquo;s file-watching functionality is provided in a Grunt plugin called <a href="https://www.npmjs.com/package/grunt-contrib-watch">grunt-contrib-watch</a>, which uses the <a href="https://www.npmjs.com/package/gaze">gaze</a> package to interact with filesystem events.</p>
-<p>Gulp, on the other hand, relies on <a href="https://www.npmjs.com/pakage/gulp-watch">gulp-watch</a> for watching files, which uses a package called <a href="https://www.npmjs.com/package/chokidar">chokidar</a>.</p>
+<p>Gulp, on the other hand, relies on <a href="https://www.npmjs.com/package/gulp-watch">gulp-watch</a> for watching files, which uses a package called <a href="https://www.npmjs.com/package/chokidar">chokidar</a>.</p>
 <p>Chokidar goes <a href="https://www.npmjs.com/package/chokidar#why">into some detail</a> as to why <code>fs.watch()</code> is insufficient, and gaze lists a <a href="https://www.npmjs.com/package/gaze#similar-projects">number of alternative projects</a>, so there are clearly some community opinions on the quality of the built-in functions.</p>
 <p>Some notable functionality <code>fs.watch()</code> lacks:</p>
 <ul>
